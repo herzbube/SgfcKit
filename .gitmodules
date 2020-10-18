@@ -1,0 +1,3 @@
+[submodule "libsgfcplusplus"]
+	path = libsgfcplusplus
+	url = https://github.com/herzbube/libsgfcplusplus.git
