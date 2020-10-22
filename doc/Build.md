@@ -11,11 +11,13 @@ After cloning the repository you must first initialize its Git submodules:
     cd /path/to/project
     git submodule update --init --recursive
 
-In the next step you build libsgfc++:
+In the next step you build libsgfc++ and install it to a well-defined prefix where the SgfcKit build system expects it to be. You can skip this step if you have libsgfc++ installed somewhere else on the system. If it's in a non-default installation path you'll have to define that path to the build system - see the section "Integrating libsgfc++ into the build" below for details.
 
     cd libsgfcplusplus
-    ./scripts/build.sh
-    cd ..
+    ./script/build.sh
+    cd build
+    cmake --install . --prefix install
+    cd ../..
 
 Now you're ready to build. These commands should do it:
 
@@ -106,6 +108,29 @@ The following example only builds the shared library:
 
     cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_DEFAULT=NO -DENABLE_SHARED_LIBRARY=YES ..
     cmake --build .
+
+## Integrating libsgfc++ into the build
+
+The SgfcKit build system integrates libsgfc++ by way of the CMake `find_package()` command. It attempts to locate the package in two steps:
+
+1. First the build system looks for a system-wide package in a series of likely installation paths. The search logic is exceedingly complicated and can be looked up in the CMake documentation of the `find_package()` command.
+2. If there is no system-wide package the build system then looks for the package in a defined installation path.
+
+If both lookup attempts fail, the build fails.
+
+You can define the installation path where the build system should look for the package by defining the variable `LIBSGFCPLUSPLUS_INSTALLATION_PREFIX`:
+
+    cmake -DCMAKE_BUILD_TYPE=Release \
+          -DLIBSGFCPLUSPLUS_INSTALLATION_PREFIX=/path/to/folder \
+          ..
+
+If you don't define an installation path, the build system assumes `libsgfcplusplus/build/install` as the default installation path. This path points into the libsgfc++ Git submodule, where it is expected that you previously built and installed libsgfc++ with the following instructions:
+
+    cd libsgfcplusplus
+    ./script/build.sh
+    cd build
+    cmake --install . --prefix install
+    cd ../..
 
 ## Xcode build
 

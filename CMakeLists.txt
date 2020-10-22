@@ -119,6 +119,56 @@ set ( SOURCES_LIST_FILE_NAME "SourcesList.cmake" )
 # management.
 set ( COMPILE_OPTION_OBJECTIVE_C_ARC "-fobjc-arc" )
 
+# Define a number of variables for working with the libsgfc++ library
+set ( LIBSGFCPLUSPLUS_LIBRARY_BASE_NAME libsgfcplusplus )
+set ( LIBSGFCPLUSPLUS_PACKAGE_NAME ${LIBSGFCPLUSPLUS_LIBRARY_BASE_NAME} )
+set ( LIBSGFCPLUSPLUS_PACKAGE_FOUND_VARIABLE_NAME ${LIBSGFCPLUSPLUS_PACKAGE_NAME}_FOUND )
+set ( LIBSGFCPLUSPLUS_TARGET_NAMESPACE ${LIBSGFCPLUSPLUS_LIBRARY_BASE_NAME} )
+set ( LIBSGFCPLUSPLUS_SHARED_LIBRARY_TARGET_NAME ${LIBSGFCPLUSPLUS_TARGET_NAMESPACE}::${LIBSGFCPLUSPLUS_LIBRARY_BASE_NAME}_shared )
+set ( LIBSGFCPLUSPLUS_STATIC_LIBRARY_TARGET_NAME ${LIBSGFCPLUSPLUS_TARGET_NAMESPACE}::${LIBSGFCPLUSPLUS_LIBRARY_BASE_NAME}_static )
+set ( LIBSGFCPLUSPLUS_SHARED_FRAMEWORK_TARGET_NAME ${LIBSGFCPLUSPLUS_SHARED_LIBRARY_TARGET_NAME}_framework )
+set ( LIBSGFCPLUSPLUS_STATIC_FRAMEWORK_TARGET_NAME ${LIBSGFCPLUSPLUS_STATIC_LIBRARY_TARGET_NAME}_framework )
+
+# Attempt to find the libsgfc++ package, first as a system-wide package, then
+# if that fails in a custom location. The default is to look in the libsgfc++
+# Git submodule, but the user can override this.
+find_package (
+  ${LIBSGFCPLUSPLUS_PACKAGE_NAME}
+  0.1
+  EXACT
+  QUIET
+)
+if ( ${${LIBSGFCPLUSPLUS_PACKAGE_FOUND_VARIABLE_NAME}} )
+  message ( STATUS "Found system-wide libsgfc++ CMake package." )
+  message ( STATUS "libsgfcplusplus_FOUND = ${libsgfcplusplus_FOUND}" )
+else()
+  message ( STATUS "System-wide libsgfc++ CMake package not found." )
+
+  if ( NOT DEFINED LIBSGFCPLUSPLUS_INSTALLATION_PREFIX )
+    message ( STATUS "Using default installation prefix to find libsgfc++ CMake package." )
+    message ( STATUS "Define LIBSGFCPLUSPLUS_INSTALLATION_PREFIX to override this." )
+    # A well known path within the libsgfc++ Git submodule where we expect the
+    # user to have installed a version of libsgfc++ that was built from the
+    # sources in the Git submodule.
+    set ( LIBSGFCPLUSPLUS_INSTALLATION_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/libsgfcplusplus/build/install" )
+  else()
+    message ( STATUS "Using user-provided installation prefix to find libsgfc++ CMake package." )
+  endif()
+
+  find_package (
+    ${LIBSGFCPLUSPLUS_PACKAGE_NAME}
+    0.1
+    EXACT
+    QUIET
+    HINTS ${LIBSGFCPLUSPLUS_INSTALLATION_PREFIX}
+  )
+  if ( ${${LIBSGFCPLUSPLUS_PACKAGE_FOUND_VARIABLE_NAME}} )
+    message ( STATUS "Found libsgfc++ CMake package in installation prefix ${LIBSGFCPLUSPLUS_INSTALLATION_PREFIX}." )
+  else()
+    message ( FATAL_ERROR "libsgfc++ CMake package not found in installation prefix ${LIBSGFCPLUSPLUS_INSTALLATION_PREFIX}." )
+  endif()
+endif()
+
 # Define defaults for optional build parts
 if ( NOT DEFINED ENABLE_DEFAULT )
   set ( ENABLE_DEFAULT YES )

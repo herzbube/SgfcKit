@@ -313,18 +313,49 @@ if ( ${ENABLE_STATIC_FRAMEWORK} )
 endif()
 
 # Define additional link options.
-# - target_link_libraries: Link against the Foundation system framework. This
-#   provides essential Objective-C symbols (e.g. NSObject).
+# - Link against the Objective-C system library. This provides essential
+#   Objective-C symbols (e.g. NSObject).
+# - Link against libsgfc++. The reason why we run target_link_libraries() for
+#   the object libraries and the static libraries, even though those don't need
+#   to be linked, is that target_link_libraries() also adds the INTERFACE
+#   include directories of the linked libsgfc++ target to the include
+#   directories of our own targets.
+if ( ${AT_LEAST_ONE_SHARED_LIBRARY_IS_ENABLED} )
+  target_link_libraries (
+    ${SHARED_OBJECT_LIBRARY_TARGET_NAME}
+    ${LIBSGFCPLUSPLUS_SHARED_LIBRARY_TARGET_NAME}
+  )
+endif()
+if ( ${AT_LEAST_ONE_STATIC_LIBRARY_IS_ENABLED} )
+  target_link_libraries (
+    ${STATIC_OBJECT_LIBRARY_TARGET_NAME}
+    ${LIBSGFCPLUSPLUS_STATIC_LIBRARY_TARGET_NAME}
+  )
+endif()
 if ( ${ENABLE_SHARED_LIBRARY} )
   target_link_libraries (
     ${SHARED_LIBRARY_TARGET_NAME}
     ${OBJECTIVEC_SYSTEM_LIBRARY}
+    ${LIBSGFCPLUSPLUS_SHARED_LIBRARY_TARGET_NAME}
+  )
+endif()
+if ( ENABLE_STATIC_LIBRARY )
+  target_link_libraries (
+    ${STATIC_LIBRARY_TARGET_NAME}
+    ${LIBSGFCPLUSPLUS_STATIC_LIBRARY_TARGET_NAME}
   )
 endif()
 if ( ENABLE_SHARED_FRAMEWORK )
   target_link_libraries (
     ${SHARED_FRAMEWORK_TARGET_NAME}
     ${OBJECTIVEC_SYSTEM_LIBRARY}
+    ${LIBSGFCPLUSPLUS_SHARED_FRAMEWORK_TARGET_NAME}
+  )
+endif()
+if ( ENABLE_STATIC_FRAMEWORK )
+  target_link_libraries (
+    ${STATIC_FRAMEWORK_TARGET_NAME}
+    ${LIBSGFCPLUSPLUS_STATIC_FRAMEWORK_TARGET_NAME}
   )
 endif()
 
