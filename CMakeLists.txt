@@ -61,26 +61,26 @@ enable_testing ()
 # Define a base name that is used throughout the build system to form the
 # filesystem name of the build artifacts. Notably this determines the name of
 # the generated shared library file, static library file and test executable
-# file. Macro names related to the export header file are also derived from
-# the base name.
-set ( LIBRARY_BASENAME SgfcKit )
+# file. The project-specific subdirectory where the public header files are
+# installed is also derived from the base name.
+set ( LIBRARY_BASE_NAME SgfcKit )
 
 # Define target names
-set ( SHARED_LIBRARY_TARGET_NAME ${LIBRARY_BASENAME}_shared )
-set ( STATIC_LIBRARY_TARGET_NAME ${LIBRARY_BASENAME}_static )
+set ( SHARED_LIBRARY_TARGET_NAME ${LIBRARY_BASE_NAME}_shared )
+set ( STATIC_LIBRARY_TARGET_NAME ${LIBRARY_BASE_NAME}_static )
 set ( SHARED_OBJECT_LIBRARY_TARGET_NAME ${SHARED_LIBRARY_TARGET_NAME}_objects )
 set ( STATIC_OBJECT_LIBRARY_TARGET_NAME ${STATIC_LIBRARY_TARGET_NAME}_objects )
 set ( SHARED_FRAMEWORK_TARGET_NAME ${SHARED_LIBRARY_TARGET_NAME}_framework )
 set ( STATIC_FRAMEWORK_TARGET_NAME ${STATIC_LIBRARY_TARGET_NAME}_framework )
-set ( TEST_EXECUTABLE_TARGET_NAME ${LIBRARY_BASENAME}-test )
-set ( EXAMPLE_EXECUTABLE_TARGET_NAME ${LIBRARY_BASENAME}-example )
-set ( DOCUMENTATION_TARGET_NAME ${LIBRARY_BASENAME}-doc )
+set ( TEST_EXECUTABLE_TARGET_NAME ${LIBRARY_BASE_NAME}-test )
+set ( EXAMPLE_EXECUTABLE_TARGET_NAME ${LIBRARY_BASE_NAME}-example )
+set ( DOCUMENTATION_TARGET_NAME ${LIBRARY_BASE_NAME}-doc )
 
 # Define target output basic names. The regular prefix and suffix will still be
 # tacked on.
-set ( SHARED_LIBRARY_OUTPUT_NAME ${LIBRARY_BASENAME} )
+set ( SHARED_LIBRARY_OUTPUT_NAME ${LIBRARY_BASE_NAME} )
 set ( STATIC_LIBRARY_OUTPUT_NAME ${STATIC_LIBRARY_TARGET_NAME} )
-set ( SHARED_FRAMEWORK_OUTPUT_NAME ${LIBRARY_BASENAME} )
+set ( SHARED_FRAMEWORK_OUTPUT_NAME ${LIBRARY_BASE_NAME} )
 set ( STATIC_FRAMEWORK_OUTPUT_NAME ${STATIC_LIBRARY_TARGET_NAME} )
 
 # On some systems the module GNUInstallDirs is auto-included, but on other
