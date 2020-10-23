@@ -9,8 +9,6 @@ if ( NOT DEFINED HEADERS_PUBLIC )
   message ( FATAL_ERROR "List of public header files not defined by ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_LIST_FILE_NAME}" )
 endif()
 
-# Find the Foundation system framework.
-#find_library ( FOUNDATION Foundation REQUIRED )
 # Find the objc system library
 find_library ( OBJECTIVEC_SYSTEM_LIBRARY objc REQUIRED )
 
