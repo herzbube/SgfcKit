@@ -51,6 +51,13 @@ if ( ${MSVC} )
   message ( STATUS "MSVC_VERSION = ${MSVC_VERSION}" )
 endif()
 
+# Specify the C++ standard
+# If we don't set a standard the compiler has problems parsing the upstream
+# header files. To be on the safe side we set the same version of the standard
+# that libsgfc++ uses.
+set ( CMAKE_CXX_STANDARD 17 )
+set ( CMAKE_CXX_STANDARD_REQUIRED True )
+
 # Enable testing for this folder and all subfolders. Because this appears in
 # the top-level CMakeLists.txt file it enables testing for the entire project.
 # CMakeLists.txt in sub-folders can now add tests with the add_test() command.
