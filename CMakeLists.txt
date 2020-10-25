@@ -118,6 +118,11 @@ set ( SOURCES_LIST_FILE_NAME "SourcesList.cmake" )
 # because the library's code was explicitly written with no manual memory
 # management.
 set ( COMPILE_OPTION_OBJECTIVE_C_ARC "-fobjc-arc" )
+# Enable exception-safe ARC. This is enabled by default in Objective-C++,
+# which makes up a lot if not most of the library's code. Nevertheless we
+# explicitly enable this option to be on the safe side, also in the future.
+# Cf. https://clang.llvm.org/docs/AutomaticReferenceCounting.html#exceptions.
+set ( COMPILE_OPTION_OBJECTIVE_C_ARC_EXCEPTIONS "-fobjc-arc-exceptions" )
 
 # Define a number of variables for working with the libsgfc++ library
 set ( LIBSGFCPLUSPLUS_LIBRARY_BASE_NAME libsgfcplusplus )
