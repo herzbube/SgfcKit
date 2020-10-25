@@ -2,9 +2,9 @@ include( ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_LIST_FILE_NAME} )
 if ( NOT DEFINED SOURCES )
   message ( FATAL_ERROR "List of source files not defined by ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_LIST_FILE_NAME}" )
 endif()
-#if ( NOT DEFINED HEADERS_PRIVATE )
-#  message ( FATAL_ERROR "List of private header files not defined by ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_LIST_FILE_NAME}" )
-#endif()
+if ( NOT DEFINED HEADERS_PRIVATE )
+  message ( FATAL_ERROR "List of private header files not defined by ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_LIST_FILE_NAME}" )
+endif()
 if ( NOT DEFINED HEADERS_PUBLIC )
   message ( FATAL_ERROR "List of public header files not defined by ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_LIST_FILE_NAME}" )
 endif()
@@ -31,12 +31,12 @@ find_library ( FOUNDATION_SYSTEM_FRAMEWORK Foundation REQUIRED )
 # fill will do, the one we pick here has no special significance.
 #
 # [1] https://cmake.org/cmake/help/latest/command/add_library.html#object-libraries
-#set ( SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY SgfcUtility.cpp )
-#list (
-#  REMOVE_ITEM
-#  SOURCES
-#  ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
-#)
+set ( SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY factory/SGFCKitFactory.mm )
+list (
+  REMOVE_ITEM
+  SOURCES
+  ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
+)
 
 # The following two targets are "object library" targets: They compile the
 # sources but don't aggregate them into an actual shared or static library yet.
@@ -50,7 +50,7 @@ if ( ${AT_LEAST_ONE_SHARED_LIBRARY_IS_ENABLED} )
     # We list header files here only because we want CMake to add them to an
     # Xcode or Visual Studio project that it generates.
     ${HEADERS_PUBLIC}
-#    ${HEADERS_PRIVATE}
+    ${HEADERS_PRIVATE}
   )
 endif()
 if ( ${AT_LEAST_ONE_STATIC_LIBRARY_IS_ENABLED} )
@@ -61,7 +61,7 @@ if ( ${AT_LEAST_ONE_STATIC_LIBRARY_IS_ENABLED} )
     # We list header files here only because we want CMake to add them to an
     # Xcode or Visual Studio project that it generates.
     ${HEADERS_PUBLIC}
-#    ${HEADERS_PRIVATE}
+    ${HEADERS_PRIVATE}
   )
 endif()
 
@@ -72,7 +72,7 @@ if ( ${ENABLE_SHARED_LIBRARY} )
     ${SHARED_LIBRARY_TARGET_NAME}
     SHARED
     $<TARGET_OBJECTS:${SHARED_OBJECT_LIBRARY_TARGET_NAME}>
-#    ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
+    ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
   )
 endif()
 if ( ${ENABLE_STATIC_LIBRARY} )
@@ -80,7 +80,7 @@ if ( ${ENABLE_STATIC_LIBRARY} )
     ${STATIC_LIBRARY_TARGET_NAME}
     STATIC
     $<TARGET_OBJECTS:${STATIC_OBJECT_LIBRARY_TARGET_NAME}>
-#    ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
+    ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
   )
 endif()
 
@@ -92,7 +92,7 @@ if ( ${ENABLE_SHARED_FRAMEWORK} )
     ${SHARED_FRAMEWORK_TARGET_NAME}
     SHARED
     $<TARGET_OBJECTS:${SHARED_OBJECT_LIBRARY_TARGET_NAME}>
-#    ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
+    ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
     # Furtherdown we invoke set_property() to set the targets' PUBLIC_HEADER
     # property. For the shared and static library targets this works fine and
     # causes CMake to copy the header files to their proper destination at
@@ -110,7 +110,7 @@ if ( ${ENABLE_STATIC_FRAMEWORK} )
     ${STATIC_FRAMEWORK_TARGET_NAME}
     STATIC
     $<TARGET_OBJECTS:${STATIC_OBJECT_LIBRARY_TARGET_NAME}>
-#    ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
+    ${SOURCE_FILE_EXCEPTED_FROM_OBJECT_LIBRARY}
     # For an explanation of this line, see the comment above in the add_library()
     # command for SHARED_FRAMEWORK_TARGET_NAME.
     ${HEADERS_PUBLIC}

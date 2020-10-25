@@ -14,8 +14,10 @@
 // limitations under the License.
 // -----------------------------------------------------------------------------
 
+#pragma once
+
 // System includes
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 // Forward declarations
 @class SGFCArguments;
@@ -77,7 +79,7 @@
 + (SGFCDocument*) documentWithGame:(SGFCGame*)game;
 
 /// @brief Returns a newly constructed SGFCGame object. The game type is
-/// SGFCConstants::DefaultGameType. The game is not associated with any
+/// #SGFCDefaultGameType. The game is not associated with any
 /// document. The game has no game tree.
 + (SGFCGame*) game;
 

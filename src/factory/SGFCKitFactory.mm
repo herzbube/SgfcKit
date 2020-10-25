@@ -15,70 +15,81 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
-#include "../../include/SGFCDocument.h"
-#include "../../include/SGFCKitFactory.h"
+#import "../../include/SGFCDocument.h"
+#import "../../include/SGFCKitFactory.h"
+#import "../SGFCExceptionUtility.h"
 
 @implementation SGFCKitFactory
 
-#pragma mark - SGFCKitFactory overrides
+#pragma mark - Public API
 
 + (SGFCArguments*) emptyArguments
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"emptyArguments"];
   return nil;
 }
 
 + (SGFCCommandLine*) commandLineWithArguments:(SGFCArguments*)arguments
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"commandLineWithArguments"];
   return nil;
 }
 
 + (SGFCCommandLine*) commandLineWithNoArguments
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"commandLineWithNoArguments"];
   return nil;
 }
 
 + (SGFCDocumentReader*) documentReader
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"documentReader"];
   return nil;
 }
 
 + (SGFCDocumentWriter*) documentWriter
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"documentWriter"];
   return nil;
 }
 
 + (SGFCDocument*) document
 {
-  return [[SGFCDocument alloc] init];
+  return [SGFCDocument document];
 }
 
 + (SGFCDocument*) documentWithGame:(SGFCGame*)game
 {
-  return nil;
+  return [SGFCDocument documentWithGame:game];
 }
 
 + (SGFCGame*) game
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"game"];
   return nil;
 }
 
 + (SGFCGame*) gameWithRootNode:(SGFCNode*)rootNode
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameWithRootNode"];
   return nil;
 }
 
 + (SGFCNode*) node
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"node"];
   return nil;
 }
 
 + (SGFCPropertyFactory*) propertyFactory
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyFactory"];
   return nil;
 }
 
 + (SGFCPropertyValueFactory*) propertyValueFactory
 {
+  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueFactory"];
   return nil;
 }
 

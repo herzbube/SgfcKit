@@ -14,8 +14,10 @@
 // limitations under the License.
 // -----------------------------------------------------------------------------
 
+#pragma once
+
 // System includes
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 // Forward declarations
 @class NSArray;
@@ -31,6 +33,30 @@
 {
 }
 
+/// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument is
+/// empty and contains no games.
++ (SGFCDocument*) document;
+
+/// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument
+/// content consists of the specified game @a game. The SGFCDocument object
+/// takes ownership of @a game.
+///
+/// @exception NSInvalidArgumentException Is raised if @a game is @e nil.
++ (SGFCDocument*) documentWithGame:(SGFCGame*)game;
+
+/// @brief Initializes an SGFCDocument object. The SGFCDocument is empty and
+/// contains no games.
+- (id) init;
+
+/// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument
+/// content consists of the specified game @a game. The SGFCDocument object
+/// takes ownership of @a game.
+///
+/// This is the designated initializer of SGFCDocument.
+///
+/// @exception NSInvalidArgumentException Is raised if @a game is @e nil.
+- (id) initWithGame:(SGFCGame*)game;
+
 /// @brief Returns true if the document has no content. Returns false if
 /// the document has some content.
 ///
@@ -43,7 +69,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if the property is set with
 /// a @e nil value, or if the property is set with a collection that contains
-/// duplicates.
+/// @e nil values or duplicates.
 @property(nonatomic, strong) NSArray* games;
 
 /// @brief Adds @a game as the last game to the collection of games that

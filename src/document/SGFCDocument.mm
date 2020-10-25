@@ -15,67 +15,159 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
-#include "../../include/SGFCDocument.h"
+#import "../../include/SGFCDocument.h"
+#import "../interface/internal/SGFCGameInternalAdditions.h"
+#import "../SGFCExceptionUtility.h"
 
 // libsgfc++ includes
-//#include <libsgfcplusplus/SgfcPlusPlusFactory.h>
+#import <libsgfcplusplus/ISgfcDocument.h>
+#import <libsgfcplusplus/SgfcPlusPlusFactory.h>
 
-// TODO xxx remove
-#include <iostream>
+// System includes
+#import <Foundation/NSException.h>
+
+#pragma mark - Class extension
+
+@interface SGFCDocument()
+{
+  std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument> wrappedDocument;
+}
+
+- (id) initPrivateWithGame:(SGFCGame*)game;
+
+@end
 
 @implementation SGFCDocument
 
 #pragma mark - Initialization and deallocation
 
-// -----------------------------------------------------------------------------
-/// @brief Initializes an SGFCDocument object.
-///
-/// @note This is the designated initializer of SGFCDocument.
-// -----------------------------------------------------------------------------
++ (SGFCDocument*) document
+{
+  return [[SGFCDocument alloc] init];
+}
+
++ (SGFCDocument*) documentWithGame:(SGFCGame*)game
+{
+  return [[SGFCDocument alloc] initWithGame:game];
+}
+
 - (id) init
+{
+  return [self initPrivateWithGame:nil];
+}
+
+- (id) initWithGame:(SGFCGame*)game
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:game
+                                                 invalidArgumentName:@"game"];
+
+  return [self initPrivateWithGame:game];
+}
+
+- (id) initPrivateWithGame:(SGFCGame*)game
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
   if (! self)
     return nil;
 
+  if (game == nil)
+    wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument();
+  else
+    wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument([game wrappedGame]);
+
+  self.games = [NSMutableArray arrayWithCapacity:0];
 
   return self;
 }
 
 - (void) dealloc
 {
-  // TODO xxx remove
-  std::cout << "SGFCDocument dealloc invoked" << std::endl;
+  wrappedDocument = nullptr;
+  // Don't use property accessor because of nil check
+  _games = nil;
 }
 
-#pragma mark - SGFCDocument overrides
+#pragma mark - Public API
 
 - (bool) isEmpty
 {
-  return true;
+  return wrappedDocument->IsEmpty();
 }
 
 - (void) setGames:(NSArray*)games
 {
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:games
+                                                 invalidArgumentName:@"games"];
+
+  std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>> wrappedGames;
+
+  for (id gameObject in games)
+  {
+    if (! gameObject)
+      [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"games\" contains a nil object"];
+    if (! [gameObject isKindOfClass:[SGFCGame class]])
+      [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"games\" contains an object that is not of type SGFCGame"];
+
+    SGFCGame* game = gameObject;
+    wrappedGames.push_back([game wrappedGame]);
+  }
+
+  try
+  {
+    wrappedDocument->SetGames(wrappedGames);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  _games = [NSMutableArray arrayWithArray:games];
 }
 
 - (void) appendGame:(SGFCGame*)game
 {
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:game
+                                                 invalidArgumentName:@"game"];
+
+  try
+  {
+    wrappedDocument->AppendGame([game wrappedGame]);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  [(NSMutableArray*)_games addObject:game];
 }
 
 - (void) removeGame:(SGFCGame*)game
 {
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:game
+                                                 invalidArgumentName:@"game"];
+
+  try
+  {
+    wrappedDocument->RemoveGame([game wrappedGame]);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  [(NSMutableArray*)_games removeObject:game];
 }
 
 - (void) removeAllGames
 {
+  wrappedDocument->RemoveAllGames();
+  [(NSMutableArray*)_games removeAllObjects];
 }
 
 - (void) debugPrintToConsole
 {
-  // TODO xxx remove
-  std::cout << "SGFCDocument debugPrintToConsole invoked" << std::endl;
+  wrappedDocument->DebugPrintToConsole();
 }
 
 @end
