@@ -2,7 +2,7 @@
 
 ## Naming
 
-- Class names start with the library prefix `SGFC` to avoid namespace clashes when a program combines this with several other libraries in a single global namespace. Remember: Objective-C has no namespaces!
+- Class names and types that are visible in thhe public API start with the library prefix `SGFC` to avoid namespace clashes when a program combines this with several other libraries in a single global namespace. Remember: Objective-C has no namespaces!
 - After the prefix class names start with an uppercase letter. Example: `SGFCFactory`.
 - Method names start with a lowercase letter.
 - Variable names start with a lowercase letter.
@@ -31,6 +31,10 @@
 - No inline code in header files.
 - Avoid including header files in other header files, whenever possible use forward declarations.
 
+## Implementation files
+
+- Use `#pragma mark` statements to help IDE users. Typical sections are "Class extension", "Initialization and deallocation", "Public API", "Internal API" and "Private API".
+
 ## Code structure
 
 - Only one variable declaration per line.
@@ -48,6 +52,7 @@
 - Always declare a property's setter semantics, i.e. explicitly declare `strong` even though it is the default and could be omitted.
 - Use `nonatomic` unless the property really needs to be atomic.
 
-## Other stuff
+## Documentation
 
 - Everything should be documented with Doxygen documentation blocks; exceptions are possible but should remain rare.
+- When a class is part of the public API its designated initializer must be documented in the header file. Consequently if the default `init` is the designated initializer, it must be explicitly declared in the public header file so that there is a spot for the documentation.
