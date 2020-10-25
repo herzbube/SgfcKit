@@ -6,7 +6,7 @@ set (
   game/SGFCBoardSize.mm
   SGFCConstants.mm
   SGFCExceptionUtility.mm
-  SourcesList.cmake
+  ${SOURCES_LIST_FILE_NAME}
 )
 
 set (

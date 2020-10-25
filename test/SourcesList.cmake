@@ -1,4 +1,4 @@
 set (
   SOURCES
-  SourcesList.cmake
+  ${SOURCES_LIST_FILE_NAME}
 )
