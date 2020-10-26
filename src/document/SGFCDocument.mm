@@ -69,11 +69,15 @@
     return nil;
 
   if (game == nil)
+  {
     _wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument();
+    self.games = [NSMutableArray arrayWithCapacity:0];
+  }
   else
+  {
     _wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument([game wrappedGame]);
-
-  self.games = [NSMutableArray arrayWithCapacity:0];
+    self.games = [NSMutableArray arrayWithObject:game];
+  }
 
   return self;
 }
