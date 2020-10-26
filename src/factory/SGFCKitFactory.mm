@@ -16,6 +16,7 @@
 
 // Project includes
 #import "../../include/SGFCDocument.h"
+#import "../../include/SGFCGame.h"
 #import "../../include/SGFCNode.h"
 #import "../../include/SGFCKitFactory.h"
 #import "../SGFCExceptionUtility.h"
@@ -66,14 +67,12 @@
 
 + (SGFCGame*) game
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"game"];
-  return nil;
+  return [SGFCGame game];
 }
 
 + (SGFCGame*) gameWithRootNode:(SGFCNode*)rootNode
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameWithRootNode"];
-  return nil;
+  return [SGFCGame gameWithRootNode:rootNode];
 }
 
 + (SGFCNode*) node
