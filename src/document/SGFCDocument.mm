@@ -30,7 +30,7 @@
 
 @interface SGFCDocument()
 {
-  std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument> wrappedDocument;
+  std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument> _wrappedDocument;
 }
 @end
 
@@ -69,9 +69,9 @@
     return nil;
 
   if (game == nil)
-    wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument();
+    _wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument();
   else
-    wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument([game wrappedGame]);
+    _wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument([game wrappedGame]);
 
   self.games = [NSMutableArray arrayWithCapacity:0];
 
@@ -80,7 +80,7 @@
 
 - (void) dealloc
 {
-  wrappedDocument = nullptr;
+  _wrappedDocument = nullptr;
   // Don't use property accessor because of nil check
   _games = nil;
 }
@@ -89,7 +89,7 @@
 
 - (bool) isEmpty
 {
-  return wrappedDocument->IsEmpty();
+  return _wrappedDocument->IsEmpty();
 }
 
 - (void) setGames:(NSArray*)games
@@ -112,7 +112,7 @@
 
   try
   {
-    wrappedDocument->SetGames(wrappedGames);
+    _wrappedDocument->SetGames(wrappedGames);
   }
   catch (std::invalid_argument& exception)
   {
@@ -129,7 +129,7 @@
 
   try
   {
-    wrappedDocument->AppendGame([game wrappedGame]);
+    _wrappedDocument->AppendGame([game wrappedGame]);
   }
   catch (std::invalid_argument& exception)
   {
@@ -146,7 +146,7 @@
 
   try
   {
-    wrappedDocument->RemoveGame([game wrappedGame]);
+    _wrappedDocument->RemoveGame([game wrappedGame]);
   }
   catch (std::invalid_argument& exception)
   {
@@ -158,13 +158,13 @@
 
 - (void) removeAllGames
 {
-  wrappedDocument->RemoveAllGames();
+  _wrappedDocument->RemoveAllGames();
   [(NSMutableArray*)_games removeAllObjects];
 }
 
 - (void) debugPrintToConsole
 {
-  wrappedDocument->DebugPrintToConsole();
+  _wrappedDocument->DebugPrintToConsole();
 }
 
 @end

@@ -29,7 +29,7 @@
 
 @interface SGFCGame()
 {
-  std::shared_ptr<LibSgfcPlusPlus::ISgfcGame> wrappedGame;
+  std::shared_ptr<LibSgfcPlusPlus::ISgfcGame> _wrappedGame;
 }
 
 @property(nonatomic, strong) SGFCTreeBuilder* treeBuilder;
@@ -71,9 +71,9 @@
     return nil;
 
   if (rootNode == nil)
-    wrappedGame = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateGame();
+    _wrappedGame = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateGame();
   else
-    wrappedGame = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateGame([rootNode wrappedNode]);
+    _wrappedGame = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateGame([rootNode wrappedNode]);
 
   self.rootNode = rootNode;
   self.treeBuilder = [[SGFCTreeBuilder alloc] initWithGame:self];
@@ -83,7 +83,7 @@
 
 - (void) dealloc
 {
-  wrappedGame = nullptr;
+  _wrappedGame = nullptr;
   // Don't use property accessor because of nil check
   _rootNode = nil;
   self.treeBuilder = nil;
@@ -131,7 +131,7 @@
 
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>) wrappedGame
 {
-  return wrappedGame;
+  return _wrappedGame;
 }
 
 @end
