@@ -32,7 +32,6 @@
   std::shared_ptr<LibSgfcPlusPlus::ISgfcGame> wrappedGame;
 }
 
-- (id) initPrivateWithRootNode:(SGFCNode*)rootNode;
 @property(nonatomic, strong) SGFCTreeBuilder* treeBuilder;
 
 @end

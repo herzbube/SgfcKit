@@ -32,9 +32,6 @@
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument> wrappedDocument;
 }
-
-- (id) initPrivateWithGame:(SGFCGame*)game;
-
 @end
 
 @implementation SGFCDocument
