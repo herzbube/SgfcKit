@@ -161,4 +161,3 @@
 @property(nonatomic, strong, readonly) SGFCTreeBuilder* treeBuilder;
 
 @end
-

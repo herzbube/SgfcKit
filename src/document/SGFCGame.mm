@@ -18,6 +18,8 @@
 #import "../../include/SGFCConstants.h"
 #import "../../include/SGFCGame.h"
 #import "../interface/internal/SGFCGameInternalAdditions.h"
+#import "../interface/internal/SGFCNodeInternalAdditions.h"
+#import "../interface/internal/SGFCTreeBuilderInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
 
 // libsgfc++ includes
@@ -31,6 +33,7 @@
 }
 
 - (id) initPrivateWithRootNode:(SGFCNode*)rootNode;
+@property(nonatomic, strong) SGFCTreeBuilder* treeBuilder;
 
 @end
 
@@ -71,10 +74,10 @@
   if (rootNode == nil)
     wrappedGame = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateGame();
   else
-    [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"Initializing with root node"];
-//    wrappedGame = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateGame([rootNode wrappedNode]);
+    wrappedGame = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateGame([rootNode wrappedNode]);
 
   self.rootNode = rootNode;
+  self.treeBuilder = [[SGFCTreeBuilder alloc] initWithGame:self];
 
   return self;
 }
@@ -84,6 +87,7 @@
   wrappedGame = nullptr;
   // Don't use property accessor because of nil check
   _rootNode = nil;
+  self.treeBuilder = nil;
 }
 
 #pragma mark - Public API

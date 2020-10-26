@@ -16,6 +16,7 @@
 
 // Project includes
 #import "../../include/SGFCDocument.h"
+#import "../../include/SGFCNode.h"
 #import "../../include/SGFCKitFactory.h"
 #import "../SGFCExceptionUtility.h"
 
@@ -77,8 +78,7 @@
 
 + (SGFCNode*) node
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"node"];
-  return nil;
+  return [SGFCNode node];
 }
 
 + (SGFCPropertyFactory*) propertyFactory
