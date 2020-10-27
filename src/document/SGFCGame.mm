@@ -103,10 +103,10 @@
   return 0;
 }
 
-- (bool) hasBoardSize
+- (BOOL) hasBoardSize
 {
   [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameType"];
-  return true;
+  return YES;
 }
 
 - (SGFCBoardSize) boardSize
@@ -115,10 +115,10 @@
   return SGFCBoardSizeMinimum;
 }
 
-- (bool) hasRootNode
+- (BOOL) hasRootNode
 {
   [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameType"];
-  return true;
+  return YES;
 }
 
 - (SGFCTreeBuilder*) getTreeBuilder

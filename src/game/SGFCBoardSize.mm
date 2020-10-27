@@ -26,22 +26,22 @@ SGFCBoardSize SGFCBoardSizeMake(SGFCNumber columns, SGFCNumber rows)
   return boardSize;
 }
 
-bool SGFCBoardSizeIsSquare(SGFCBoardSize boardSize)
+BOOL SGFCBoardSizeIsSquare(SGFCBoardSize boardSize)
 {
-  return (boardSize.Columns == boardSize.Rows);
+  return (boardSize.Columns == boardSize.Rows ? YES : NO);
 }
 
-bool SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
+BOOL SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
 {
   if (boardSize1.Columns != boardSize2.Columns)
-    return false;
+    return NO;
   else if (boardSize1.Rows != boardSize2.Rows)
-    return false;
+    return NO;
   else
-    return true;
+    return YES;
 }
 
-bool SGFCBoardSizeNotEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
+BOOL SGFCBoardSizeNotEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
 {
-  return ! SGFCBoardSizeEqualToBoardSize(boardSize1, boardSize2);
+  return SGFCBoardSizeEqualToBoardSize(boardSize1, boardSize2) ? NO : YES;
 }

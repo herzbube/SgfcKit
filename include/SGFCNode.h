@@ -98,60 +98,60 @@
 /// last child node. The collection is empty if the node has no children.
 @property(nonatomic, strong, readonly) NSArray* children;
 
-/// @brief Returns true if the node has one or more children. Returns
-/// false if the node has no children.
-@property(nonatomic, readonly) bool hasChildren;
+/// @brief Returns YES if the node has one or more children. Returns
+/// NO if the node has no children.
+@property(nonatomic, readonly) BOOL hasChildren;
 
 /// @brief Returns the node's next sibling node. Returns @e nil if
 /// the node has no next sibling node, i.e. if the node is the last child
 /// of its parent.
 @property(nonatomic, strong, readonly) SGFCNode* nextSibling;
 
-/// @brief Returns true if the node has a next sibling node. Returns false
+/// @brief Returns YES if the node has a next sibling node. Returns NO
 /// if the node has no next sibling node, i.e. if the node is the last child
 /// of its parent.
-@property(nonatomic, readonly) bool hasNextSibling;
+@property(nonatomic, readonly) BOOL hasNextSibling;
 
 /// @brief Returns the node's previous sibling node. Returns @e nil if
 /// the node has no previous sibling node, i.e. if the node is the first
 /// child of its parent.
 @property(nonatomic, strong, readonly) SGFCNode* previousSibling;
 
-/// @brief Returns true if the node has a previous sibling node. Returns
-/// false if the node has no previous sibling node, i.e. if the node is the
+/// @brief Returns YES if the node has a previous sibling node. Returns
+/// NO if the node has no previous sibling node, i.e. if the node is the
 /// first child of its parent.
-@property(nonatomic, readonly) bool hasPreviousSibling;
+@property(nonatomic, readonly) BOOL hasPreviousSibling;
 
 /// @brief Returns the node's parent node. Returns @e nil if the node
 /// has no parent node, i.e. if the node is the root node of a game tree.
 @property(nonatomic, weak, readonly) SGFCNode* parent;
 
-/// @brief Returns true if the node has a parent node. Returns false if the
+/// @brief Returns YES if the node has a parent node. Returns NO if the
 /// node has no parent node, i.e. if the node is the root node of a game
 /// tree.
-@property(nonatomic, readonly) bool hasParent;
+@property(nonatomic, readonly) BOOL hasParent;
 
-/// @brief Returns true if the node is a descendant of @a node, i.e. if the
-/// node is anywhere below @a node in the game tree. Returns false if the
+/// @brief Returns YES if the node is a descendant of @a node, i.e. if the
+/// node is anywhere below @a node in the game tree. Returns NO if the
 /// node is not a descendant of @a node.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a node is @e nil.
-- (bool) isDescendantOfNode:(SGFCNode*)node;
+- (BOOL) isDescendantOfNode:(SGFCNode*)node;
 
-/// @brief Returns true if the node is an ancestor of @a node, i.e. if the
-/// node is a direct or indirect parent of @a node. Returns false if the
+/// @brief Returns YES if the node is an ancestor of @a node, i.e. if the
+/// node is a direct or indirect parent of @a node. Returns NO if the
 /// node is not an ancestor of @a node.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a node is @e nil.
-- (bool) isAncestorOfNode:(SGFCNode*)node;
+- (BOOL) isAncestorOfNode:(SGFCNode*)node;
 
 /// @brief Returns the root node of the game tree that contains the node.
 /// Returns @e nil if the node is already the root node.
 @property(nonatomic, strong, readonly) SGFCNode* root;
 
-/// @brief Returns true if the node is the root node of a game tree. Returns
-/// false if the node is not the root node of a game tree.
-@property(nonatomic, readonly) bool isRoot;
+/// @brief Returns YES if the node is the root node of a game tree. Returns
+/// NO if the node is not the root node of a game tree.
+@property(nonatomic, readonly) BOOL isRoot;
 
 /// @brief A collection with the properties of the node. The collection is empty
 /// if the node has no properties. The collection has no particular order.

@@ -106,12 +106,12 @@
 /// object is not an instance of ISgfcGameTypeProperty.
 @property(nonatomic, readonly) SGFCNumber gameTypeAsNumber;
 
-/// @brief Returns true if the game has a board size. Returns false if the
+/// @brief Returns YES if the game has a board size. Returns NO if the
 /// game has no board size.
 ///
 /// The game has no board size if boardSize() returns
 /// #SGFCBoardSizeNone or #SGFCBoardSizeInvalid.
-@property(nonatomic, readonly) bool hasBoardSize;
+@property(nonatomic, readonly) BOOL hasBoardSize;
 
 /// @brief Returns the board size found in the root node property of type
 /// #SGFCPropertyTypeSZ, as an SGFCBoardSize value.
@@ -147,12 +147,12 @@
 /// object is not an instance of ISgfcBoardSizeProperty.
 @property(nonatomic, readonly) SGFCBoardSize boardSize;
 
-/// @brief Returns true if the game has a root node. Returns false if the
+/// @brief Returns YES if the game has a root node. Returns NO if the
 /// game has no root node.
-@property(nonatomic, readonly) bool hasRootNode;
+@property(nonatomic, readonly) BOOL hasRootNode;
 
 /// @brief The game tree's root node. Returns @e nil if hasRootNode() returns
-/// false. Setting a new value discards the previous root node, and with it the
+/// NO. Setting a new value discards the previous root node, and with it the
 /// entire previous game tree.
 @property(nonatomic, strong) SGFCNode* rootNode;
 

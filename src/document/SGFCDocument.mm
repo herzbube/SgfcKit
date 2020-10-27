@@ -91,9 +91,9 @@
 
 #pragma mark - Public API
 
-- (bool) isEmpty
+- (BOOL) isEmpty
 {
-  return _wrappedDocument->IsEmpty();
+  return _wrappedDocument->IsEmpty() ? YES : NO;
 }
 
 - (void) setGames:(NSArray*)games

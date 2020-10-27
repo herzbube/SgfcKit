@@ -126,9 +126,9 @@
   return array;
 }
 
-- (bool) hasChildren
+- (BOOL) hasChildren
 {
-  return _wrappedNode->HasChildren();
+  return _wrappedNode->HasChildren() ? YES : NO;
 }
 
 - (SGFCNode*) nextSibling
@@ -136,9 +136,9 @@
   return [self nodeOrNil:_wrappedNode->GetNextSibling()];
 }
 
-- (bool) hasNextSibling
+- (BOOL) hasNextSibling
 {
-  return _wrappedNode->HasNextSibling();
+  return _wrappedNode->HasNextSibling() ? YES : NO;
 }
 
 - (SGFCNode*) previousSibling
@@ -146,9 +146,9 @@
   return [self nodeOrNil:_wrappedNode->GetPreviousSibling()];
 }
 
-- (bool) hasPreviousSibling
+- (BOOL) hasPreviousSibling
 {
-  return _wrappedNode->HasPreviousSibling();
+  return _wrappedNode->HasPreviousSibling() ? YES : NO;
 }
 
 - (SGFCNode*) parent
@@ -156,19 +156,19 @@
   return [self nodeOrNil:_wrappedNode->GetParent()];
 }
 
-- (bool) hasParent
+- (BOOL) hasParent
 {
-  return _wrappedNode->HasParent();
+  return _wrappedNode->HasParent() ? YES : NO;
 }
 
-- (bool) isDescendantOfNode:(SGFCNode*)node
+- (BOOL) isDescendantOfNode:(SGFCNode*)node
 {
-  return _wrappedNode->IsDescendantOf([node wrappedNode]);
+  return _wrappedNode->IsDescendantOf([node wrappedNode]) ? YES : NO;
 }
 
-- (bool) isAncestorOfNode:(SGFCNode*)node
+- (BOOL) isAncestorOfNode:(SGFCNode*)node
 {
-  return _wrappedNode->IsAncestorOf([node wrappedNode]);
+  return _wrappedNode->IsAncestorOf([node wrappedNode]) ? YES : NO;
 }
 
 - (SGFCNode*) root
@@ -176,9 +176,9 @@
   return [self nodeOrNil:_wrappedNode->GetRoot()];
 }
 
-- (bool) isRoot
+- (BOOL) isRoot
 {
-  return _wrappedNode->IsRoot();
+  return _wrappedNode->IsRoot() ? YES : NO;
 }
 
 - (NSArray*) properties

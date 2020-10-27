@@ -19,6 +19,9 @@
 // Project includes
 #import "SGFCTypedefs.h"
 
+// System includes
+#import <Foundation/NSObjCRuntime.h>
+
 /// @brief The SGFCBoardSize struct is a simple type that can hold the value
 /// of #SGFCPropertyTypeSZ. The constant #SGFCBoardSizeNone
 /// is used to indicate that #SGFCPropertyTypeSZ does not exist on a game
@@ -52,16 +55,16 @@ typedef struct
 /// @a rows.
 extern SGFCBoardSize SGFCBoardSizeMake(SGFCNumber columns, SGFCNumber rows);
 
-/// @brief Returns true if @a boardSize represents a square board. Returns false
+/// @brief Returns YES if @a boardSize represents a square board. Returns NO
 /// if @a boardSize represents a rectangular board.
-extern bool SGFCBoardSizeIsSquare(SGFCBoardSize boardSize);
+extern BOOL SGFCBoardSizeIsSquare(SGFCBoardSize boardSize);
 
-/// @brief Returns true if the number of columns and rows is the same for
-/// @a boardSize1 and @a boardSize2. Returns false if either the number of
+/// @brief Returns YES if the number of columns and rows is the same for
+/// @a boardSize1 and @a boardSize2. Returns NO if either the number of
 /// columns or rows or both is different.
-extern bool SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2);
+extern BOOL SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2);
 
-/// @brief Returns true if either the number of columns or rows or both
-/// is different for @a boardSize1 and @a boardSize2. Returns false if the
+/// @brief Returns YES if either the number of columns or rows or both
+/// is different for @a boardSize1 and @a boardSize2. Returns NO if the
 /// number of columns and rows is the same.
-extern bool SGFCBoardSizeNotEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2);
+extern BOOL SGFCBoardSizeNotEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2);

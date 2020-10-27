@@ -57,11 +57,11 @@
 /// @exception NSInvalidArgumentException Is raised if @a game is @e nil.
 - (id) initWithGame:(SGFCGame*)game;
 
-/// @brief Returns true if the document has no content. Returns false if
+/// @brief Returns YES if the document has no content. Returns NO if
 /// the document has some content.
 ///
 /// The document is empty if it contains no games.
-@property(nonatomic, readonly, getter=isEmpty) bool empty;
+@property(nonatomic, readonly, getter=isEmpty) BOOL empty;
 
 /// @brief A collection of SGFCGame objects that together make up the document.
 /// The collection does not contain @e nil values. The collection does not
