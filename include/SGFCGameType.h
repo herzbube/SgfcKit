@@ -28,7 +28,7 @@
 /// @attention Do not rely on the numeric value underlying each enumeration
 /// member. Specifically, do not attempt to map the numeric value to the game
 /// type's representation in the SGF content.
-typedef enum : NSUInteger
+typedef NS_ENUM(NSUInteger, SGFCGameType)
 {
   SGFCGameTypeGo,
   SGFCGameTypeOthello,
@@ -71,4 +71,4 @@ typedef enum : NSUInteger
   SGFCGameTypeGipf,
   SGFCGameTypeKropki,
   SGFCGameTypeUnknown,
-} SGFCGameType;
+};

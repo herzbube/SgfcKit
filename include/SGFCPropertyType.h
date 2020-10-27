@@ -25,7 +25,7 @@
 /// used for all other non-standard properties.
 ///
 /// @ingroup public-api
-typedef enum : NSUInteger
+typedef NS_ENUM(NSUInteger, SGFCPropertyType)
 {
   // ----------------------------------------------------------------------
   // Standard properties from FF4
@@ -426,4 +426,4 @@ typedef enum : NSUInteger
   /// @brief The property type is unknown, i.e. the property is a custom
   /// property not defined by the SGF standard.
   SGFCPropertyTypeUnknown,
-} SGFCPropertyType;
+};
