@@ -29,6 +29,7 @@
 /// @ingroup game-tree
 @interface SGFCGame(SGFCGameInternalAdditions)
 
+/// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>) wrappedGame;
 
 @end

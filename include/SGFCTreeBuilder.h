@@ -24,15 +24,24 @@
 @class SGFCNode;
 
 /// @brief The SGFCTreeBuilder interface provides methods to manipulate the
-/// nodes of a game tree. Do @b NOT attempt to create an SGFCTreeBuilder object
-/// yourself, instead always use the SGFCTreeBuilder object provided by an
-/// SGFCGame instance whose game tree you want to manipulate.
+/// nodes of a game tree.
+///
+/// Do @b NOT attempt to create an SGFCTreeBuilder object yourself, instead
+/// always use the SGFCTreeBuilder object provided by an SGFCGame instance
+/// whose game tree you want to manipulate.
 ///
 /// @ingroup public-api
 /// @ingroup game-tree
 @interface SGFCTreeBuilder : NSObject
 {
 }
+
+/// @brief Do @b NOT use this initializer, it always raises
+/// NSInvalidArgumentException.
+///
+/// @exception NSInvalidArgumentException Is raised whenever this initializer
+/// is invoked.
+- (id) init;
 
 /// @brief Returns the SGFCGame object whose game tree the methods in the
 /// SGFCTreeBuilder operate on.

@@ -31,9 +31,12 @@
 /// @file
 ///
 /// @brief This file defines the library's public constants.
+///
+/// @ingroup public-api
+/// @ingroup library-support
 
 
-/// @name SGFCKit constants
+/// @name SgfcKit constants
 //@{
 /// @brief The library name.
 extern NSString* SGFCLibraryName;

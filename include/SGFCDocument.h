@@ -48,7 +48,7 @@
 /// contains no games.
 - (id) init;
 
-/// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument
+/// @brief Initializes an SGFCDocument object. The SGFCDocument
 /// content consists of the specified game @a game. The SGFCDocument object
 /// takes ownership of @a game.
 ///

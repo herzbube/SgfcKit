@@ -32,11 +32,6 @@
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcNode> _wrappedNode;
 }
-
-@property(nonatomic, strong, readwrite) SGFCNode* firstChild;
-@property(nonatomic, strong, readwrite) SGFCNode* nextSibling;
-@property(nonatomic, weak, readwrite) SGFCNode* parent;
-
 @end
 
 @implementation SGFCNode

@@ -24,7 +24,7 @@
 #import <libsgfcplusplus/SgfcPlusPlusFactory.h>
 
 // System includes
-#import <Foundation/NSException.h>
+#import <Foundation/NSArray.h>
 
 #pragma mark - Class extension
 
