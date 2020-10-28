@@ -21,6 +21,7 @@ set (
 
 set (
   HEADERS_PUBLIC
+  ../include/SGFCArgumentType.h
   ../include/SGFCBoardSize.h
   ../include/SGFCConstants.h
   ../include/SGFCDocument.h
