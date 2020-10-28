@@ -6,6 +6,8 @@ set (
   document/SGFCTreeBuilder.mm
   factory/SGFCKitFactory.mm
   game/SGFCBoardSize.mm
+  sgfc/argument/SGFCArgument.mm
+  sgfc/argument/SGFCArguments.mm
   SGFCConstants.mm
   SGFCExceptionUtility.mm
   SGFCMappingUtility.mm
@@ -15,6 +17,8 @@ set (
 
 set (
   HEADERS_PRIVATE
+  interface/internal/SGFCArgumentInternalAdditions.h
+  interface/internal/SGFCArgumentsInternalAdditions.h
   interface/internal/SGFCGameInternalAdditions.h
   interface/internal/SGFCNodeInternalAdditions.h
   interface/internal/SGFCTreeBuilderInternalAdditions.h
@@ -25,6 +29,8 @@ set (
 
 set (
   HEADERS_PUBLIC
+  ../include/SGFCArgument.h
+  ../include/SGFCArguments.h
   ../include/SGFCArgumentType.h
   ../include/SGFCBoardSize.h
   ../include/SGFCConstants.h

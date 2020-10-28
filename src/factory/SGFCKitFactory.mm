@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../include/SGFCArguments.h"
 #import "../../include/SGFCDocument.h"
 #import "../../include/SGFCGame.h"
 #import "../../include/SGFCNode.h"
@@ -27,8 +28,7 @@
 
 + (SGFCArguments*) emptyArguments
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"emptyArguments"];
-  return nil;
+  return [SGFCArguments emptyArguments];
 }
 
 + (SGFCCommandLine*) commandLineWithArguments:(SGFCArguments*)arguments
