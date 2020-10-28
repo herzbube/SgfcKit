@@ -16,14 +16,20 @@
 
 // Project includes
 #import "../include/SGFCArgumentType.h"
+#import "../include/SGFCColor.h"
+#import "../include/SGFCDouble.h"
 #import "../include/SGFCGameType.h"
 #import "../include/SGFCPropertyType.h"
+#import "../include/SGFCPropertyValueType.h"
 #import "SGFCPrivateConstants.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcArgumentType.h>
+#import <libsgfcplusplus/SgfcColor.h>
+#import <libsgfcplusplus/SgfcDouble.h>
 #import <libsgfcplusplus/SgfcGameType.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
+#import <libsgfcplusplus/SgfcPropertyValueType.h>
 
 // System includes
 #import <Foundation/NSValue.h>
@@ -66,6 +72,30 @@ NSDictionary* argumentTypeFromSgfcKitMap =
   @(SGFCArgumentTypeCorrectVariationLevelAndRootMoves) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::CorrectVariationLevelAndRootMoves)),
   @(SGFCArgumentTypeReverseVariationOrdering) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ReverseVariationOrdering)),
   @(SGFCArgumentTypeExpandCompressedPointLists) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ExpandCompressedPointLists)),
+};
+
+NSDictionary* colorToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcColor::Black)) : @(SGFCColorBlack),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcColor::White)) : @(SGFCColorWhite),
+};
+
+NSDictionary* colorFromSgfcKitMap =
+@{
+  @(SGFCColorBlack) : @(static_cast<int>(LibSgfcPlusPlus::SgfcColor::Black)),
+  @(SGFCColorWhite) : @(static_cast<int>(LibSgfcPlusPlus::SgfcColor::White)),
+};
+
+NSDictionary* doubleToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcDouble::Normal)) : @(SGFCDoubleNormal),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcDouble::Emphasized)) : @(SGFCDoubleEmphasized),
+};
+
+NSDictionary* doubleFromSgfcKitMap =
+@{
+  @(SGFCDoubleNormal) : @(static_cast<int>(LibSgfcPlusPlus::SgfcDouble::Normal)),
+  @(SGFCDoubleEmphasized) : @(static_cast<int>(LibSgfcPlusPlus::SgfcDouble::Emphasized)),
 };
 
 NSDictionary* gameTypeToSgfcKitMap =
@@ -376,4 +406,34 @@ NSDictionary* propertyTypeFromSgfcKitMap =
   @(SGFCPropertyTypeIP) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyType::IP)),
   @(SGFCPropertyTypeKI) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyType::KI)),
   @(SGFCPropertyTypeUnknown) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyType::Unknown)),
+};
+
+NSDictionary* propertyValueTypeToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::None)) : @(SGFCPropertyValueTypeNone),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Number)) : @(SGFCPropertyValueTypeNumber),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Real)) : @(SGFCPropertyValueTypeReal),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Double)) : @(SGFCPropertyValueTypeDouble),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Color)) : @(SGFCPropertyValueTypeColor),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::SimpleText)) : @(SGFCPropertyValueTypeSimpleText),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Text)) : @(SGFCPropertyValueTypeText),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Point)) : @(SGFCPropertyValueTypePoint),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Move)) : @(SGFCPropertyValueTypeMove),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Stone)) : @(SGFCPropertyValueTypeStone),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Unknown)) : @(SGFCPropertyValueTypeUnknown),
+};
+
+NSDictionary* propertyValueTypeFromSgfcKitMap =
+@{
+  @(SGFCPropertyValueTypeNone) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::None)),
+  @(SGFCPropertyValueTypeNumber) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Number)),
+  @(SGFCPropertyValueTypeReal) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Real)),
+  @(SGFCPropertyValueTypeDouble) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Double)),
+  @(SGFCPropertyValueTypeColor) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Color)),
+  @(SGFCPropertyValueTypeSimpleText) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::SimpleText)),
+  @(SGFCPropertyValueTypeText) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Text)),
+  @(SGFCPropertyValueTypePoint) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Point)),
+  @(SGFCPropertyValueTypeMove) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Move)),
+  @(SGFCPropertyValueTypeStone) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Stone)),
+  @(SGFCPropertyValueTypeUnknown) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Unknown)),
 };

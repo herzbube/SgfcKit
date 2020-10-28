@@ -33,13 +33,16 @@ set (
   ../include/SGFCArguments.h
   ../include/SGFCArgumentType.h
   ../include/SGFCBoardSize.h
+  ../include/SGFCColor.h
   ../include/SGFCConstants.h
   ../include/SGFCDocument.h
+  ../include/SGFCDouble.h
   ../include/SGFCGame.h
   ../include/SGFCGameType.h
   ../include/SGFCKitFactory.h
   ../include/SGFCNode.h
   ../include/SGFCPropertyType.h
+  ../include/SGFCPropertyValueType.h
   ../include/SGFCTreeBuilder.h
   ../include/SGFCTypedefs.h
 )

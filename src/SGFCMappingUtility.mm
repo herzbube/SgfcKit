@@ -46,6 +46,38 @@
   return static_cast<LibSgfcPlusPlus::SgfcArgumentType>(mappedValue);
 }
 
++ (SGFCColor) toSgfcKitColor:(LibSgfcPlusPlus::SgfcColor)color
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(color)
+                                                     usingMap:colorToSgfcKitMap
+                                                 withEnumName:@"SgfcColor"];
+  return static_cast<SGFCColor>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcColor) fromSgfcKitColor:(SGFCColor)color
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:color
+                                                usingMap:colorFromSgfcKitMap
+                                            withEnumName:@"SGFCColor"];
+  return static_cast<LibSgfcPlusPlus::SgfcColor>(mappedValue);
+}
+
++ (SGFCDouble) toSgfcKitDouble:(LibSgfcPlusPlus::SgfcDouble)doubleValue
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(doubleValue)
+                                                     usingMap:doubleToSgfcKitMap
+                                                 withEnumName:@"SgfcDouble"];
+  return static_cast<SGFCDouble>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcDouble) fromSgfcKitDouble:(SGFCDouble)doubleValue
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:doubleValue
+                                                usingMap:doubleFromSgfcKitMap
+                                            withEnumName:@"SGFCDouble"];
+  return static_cast<LibSgfcPlusPlus::SgfcDouble>(mappedValue);
+}
+
 + (SGFCGameType) toSgfcKitGameType:(LibSgfcPlusPlus::SgfcGameType)gameType
 {
   NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(gameType)
@@ -76,6 +108,22 @@
                                                 usingMap:propertyTypeFromSgfcKitMap
                                             withEnumName:@"SGFCPropertyType"];
   return static_cast<LibSgfcPlusPlus::SgfcPropertyType>(mappedValue);
+}
+
++ (SGFCPropertyValueType) toSgfcKitPropertyValueType:(LibSgfcPlusPlus::SgfcPropertyValueType)propertyValueType
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(propertyValueType)
+                                                     usingMap:propertyValueTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcPropertyValueType"];
+  return static_cast<SGFCPropertyValueType>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcPropertyValueType) fromSgfcKitPropertyValueType:(SGFCPropertyValueType)propertyValueType
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:propertyValueType
+                                                usingMap:propertyValueTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCPropertyValueType"];
+  return static_cast<LibSgfcPlusPlus::SgfcPropertyValueType>(mappedValue);
 }
 
 + (NSInteger) toSgfcKitInteger:(int)intValue

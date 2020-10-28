@@ -38,6 +38,22 @@ extern NSDictionary* argumentTypeToSgfcKitMap;
 /// from the libsgfc++ enumeration SgfcArgumentType.
 extern NSDictionary* argumentTypeFromSgfcKitMap;
 
+/// @brief Maps values from the libsgfc++ enumeration SgfcColor to
+/// values from the SgfcKit enumeration SGFCColor.
+extern NSDictionary* colorToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCColor to
+/// values from the libsgfc++ enumeration SgfcColor.
+extern NSDictionary* colorFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcDouble to
+/// values from the SgfcKit enumeration SGFCDouble.
+extern NSDictionary* doubleToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCDouble to
+/// values from the libsgfc++ enumeration SgfcDouble.
+extern NSDictionary* doubleFromSgfcKitMap;
+
 /// @brief Maps values from the libsgfc++ enumeration SgfcGameType to values
 /// from the SgfcKit enumeration SGFCGameType.
 extern NSDictionary* gameTypeToSgfcKitMap;
@@ -53,4 +69,12 @@ extern NSDictionary* propertyTypeToSgfcKitMap;
 /// @brief Maps values from the SgfcKit enumeration SGFCPropertyType to values
 /// from the libsgfc++ enumeration SgfcPropertyType.
 extern NSDictionary* propertyTypeFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcPropertyValueType to
+/// values from the SgfcKit enumeration SGFCPropertyValueType.
+extern NSDictionary* propertyValueTypeToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCPropertyValueType to
+/// values from the libsgfc++ enumeration SgfcPropertyValueType.
+extern NSDictionary* propertyValueTypeFromSgfcKitMap;
 //@}

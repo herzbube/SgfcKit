@@ -18,14 +18,20 @@
 
 // Project includes
 #import "../include/SGFCArgumentType.h"
+#import "../include/SGFCColor.h"
+#import "../include/SGFCDouble.h"
 #import "../include/SGFCGameType.h"
 #import "../include/SGFCPropertyType.h"
+#import "../include/SGFCPropertyValueType.h"
 #import "../include/SGFCTypedefs.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcArgumentType.h>
+#import <libsgfcplusplus/SgfcColor.h>
+#import <libsgfcplusplus/SgfcDouble.h>
 #import <libsgfcplusplus/SgfcGameType.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
+#import <libsgfcplusplus/SgfcPropertyValueType.h>
 #import <libsgfcplusplus/SgfcTypedefs.h>
 
 // C++ Standard Library includes
@@ -72,6 +78,62 @@
 /// error in the library, i.e. an SGFCArgumentType value was
 /// not added to #argumentTypeFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcArgumentType) fromSgfcKitArgumentType:(SGFCArgumentType)argumentType;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCColor to
+/// the corresponding value from the libsgfc++ enumeration
+/// SgfcColor.
+///
+/// This is a convenience function that looks up @a color in
+/// #colorToSgfcKitMap.
+///
+/// @exception NSInvalidArgumentException Is raised if there is no mapping, i.e.
+/// if @a color does not appear in #colorToSgfcKitMap.
+/// In practice this should never occur. If it occurs it indicates a programming
+/// error in the library, i.e. an LibSgfcPlusPlus::SgfcColor value was
+/// not added to #colorToSgfcKitMap.
++ (SGFCColor) toSgfcKitColor:(LibSgfcPlusPlus::SgfcColor)color;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcColor to
+/// the corresponding value from the the SgfcKit enumeration
+/// SGFCColor.
+///
+/// This is a convenience function that looks up @a color in
+/// #colorFromSgfcKitMap.
+///
+/// @exception NSInvalidArgumentException Is raised if there is no mapping, i.e.
+/// if @a color does not appear in #colorFromSgfcKitMap.
+/// In practice this should never occur. If it occurs it indicates a programming
+/// error in the library, i.e. an SGFCColor value was
+/// not added to #colorFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcColor) fromSgfcKitColor:(SGFCColor)color;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCDouble to
+/// the corresponding value from the libsgfc++ enumeration
+/// SgfcDouble.
+///
+/// This is a convenience function that looks up @a doubleValue in
+/// #doubleToSgfcKitMap.
+///
+/// @exception NSInvalidArgumentException Is raised if there is no mapping, i.e.
+/// if @a doubleValue does not appear in #doubleToSgfcKitMap.
+/// In practice this should never occur. If it occurs it indicates a programming
+/// error in the library, i.e. an LibSgfcPlusPlus::SgfcDouble value was
+/// not added to #doubleToSgfcKitMap.
++ (SGFCDouble) toSgfcKitDouble:(LibSgfcPlusPlus::SgfcDouble)doubleValue;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcDouble to
+/// the corresponding value from the the SgfcKit enumeration
+/// SGFCDouble.
+///
+/// This is a convenience function that looks up @a doubleValue in
+/// #doubleFromSgfcKitMap.
+///
+/// @exception NSInvalidArgumentException Is raised if there is no mapping, i.e.
+/// if @a doubleValue does not appear in #doubleFromSgfcKitMap.
+/// In practice this should never occur. If it occurs it indicates a programming
+/// error in the library, i.e. an SGFCDouble value was
+/// not added to #doubleFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcDouble) fromSgfcKitDouble:(SGFCDouble)doubleValue;
 
 /// @brief Maps a value from the SgfcKit enumeration SGFCGameType to the
 /// corresponding value from the libsgfc++ enumeration SgfcGameType.
@@ -124,6 +186,34 @@
 /// error in the library, i.e. an SGFCPropertyType value was
 /// not added to #propertyTypeFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcPropertyType) fromSgfcKitPropertyType:(SGFCPropertyType)propertyType;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCPropertyValueType to
+/// the corresponding value from the libsgfc++ enumeration
+/// SgfcPropertyValueType.
+///
+/// This is a convenience function that looks up @a propertyValueType in
+/// #propertyValueTypeToSgfcKitMap.
+///
+/// @exception NSInvalidArgumentException Is raised if there is no mapping, i.e.
+/// if @a propertyValueType does not appear in #propertyValueTypeToSgfcKitMap.
+/// In practice this should never occur. If it occurs it indicates a programming
+/// error in the library, i.e. an LibSgfcPlusPlus::SgfcPropertyValueType value was
+/// not added to #propertyValueTypeToSgfcKitMap.
++ (SGFCPropertyValueType) toSgfcKitPropertyValueType:(LibSgfcPlusPlus::SgfcPropertyValueType)propertyValueType;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcPropertyValueType to
+/// the corresponding value from the the SgfcKit enumeration
+/// SGFCPropertyValueType.
+///
+/// This is a convenience function that looks up @a propertyValueType in
+/// #propertyValueTypeFromSgfcKitMap.
+///
+/// @exception NSInvalidArgumentException Is raised if there is no mapping, i.e.
+/// if @a propertyValueType does not appear in #propertyValueTypeFromSgfcKitMap.
+/// In practice this should never occur. If it occurs it indicates a programming
+/// error in the library, i.e. an SGFCPropertyValueType value was
+/// not added to #propertyValueTypeFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcPropertyValueType) fromSgfcKitPropertyValueType:(SGFCPropertyValueType)propertyValueType;
 
 /// @brief Maps an int value (used in libsgfc++) to an NSInteger value
 /// (used in SgfcKit).
