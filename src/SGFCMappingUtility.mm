@@ -32,122 +32,50 @@
 
 + (SGFCArgumentType) toSgfcKitArgumentType:(LibSgfcPlusPlus::SgfcArgumentType)argumentType
 {
-  int argumentTypeAsInt = static_cast<int>(argumentType);
-  NSNumber* key = @(argumentTypeAsInt);
-  NSNumber* value = argumentTypeToSgfcKitMap[key];
-  if (value)
-  {
-    return static_cast<SGFCArgumentType>([value unsignedIntValue]);
-  }
-  else
-  {
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithFormat:@"LibSgfcPlusPlus::SgfcArgumentType value not mapped: %@"
-                                              objectArgumentValue:key];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return SGFCArgumentTypeBeginningOfSgfData;
-  }
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(argumentType)
+                                                     usingMap:argumentTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcArgumentType"];
+  return static_cast<SGFCArgumentType>(mappedValue);
 }
 
 + (LibSgfcPlusPlus::SgfcArgumentType) fromSgfcKitArgumentType:(SGFCArgumentType)argumentType
 {
-  int argumentTypeAsInt = static_cast<int>(argumentType);
-  NSNumber* key = @(argumentTypeAsInt);
-  NSNumber* value = argumentTypeFromSgfcKitMap[key];
-  if (value)
-  {
-    return static_cast<LibSgfcPlusPlus::SgfcArgumentType>([value intValue]);
-  }
-  else
-  {
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithFormat:@"SGFCArgumentType value not mapped: %@"
-                                              objectArgumentValue:key];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return LibSgfcPlusPlus::SgfcArgumentType::BeginningOfSgfData;
-  }
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:argumentType
+                                                usingMap:argumentTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCArgumentType"];
+  return static_cast<LibSgfcPlusPlus::SgfcArgumentType>(mappedValue);
 }
 
 + (SGFCGameType) toSgfcKitGameType:(LibSgfcPlusPlus::SgfcGameType)gameType
 {
-  int gameTypeAsInt = static_cast<int>(gameType);
-  NSNumber* key = @(gameTypeAsInt);
-  NSNumber* value = gameTypeToSgfcKitMap[key];
-  if (value)
-  {
-    return static_cast<SGFCGameType>([value unsignedIntValue]);
-  }
-  else
-  {
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithFormat:@"LibSgfcPlusPlus::SgfcGameType value not mapped: %@"
-                                              objectArgumentValue:key];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return SGFCGameTypeUnknown;
-  }
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(gameType)
+                                                     usingMap:gameTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcGameType"];
+  return static_cast<SGFCGameType>(mappedValue);
 }
 
 + (LibSgfcPlusPlus::SgfcGameType) fromSgfcKitGameType:(SGFCGameType)gameType
 {
-  int gameTypeAsInt = static_cast<int>(gameType);
-  NSNumber* key = @(gameTypeAsInt);
-  NSNumber* value = gameTypeFromSgfcKitMap[key];
-  if (value)
-  {
-    return static_cast<LibSgfcPlusPlus::SgfcGameType>([value intValue]);
-  }
-  else
-  {
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithFormat:@"SGFCGameType value not mapped: %@"
-                                              objectArgumentValue:key];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return LibSgfcPlusPlus::SgfcGameType::Unknown;
-  }
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:gameType
+                                                usingMap:gameTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCGameType"];
+  return static_cast<LibSgfcPlusPlus::SgfcGameType>(mappedValue);
 }
 
 + (SGFCPropertyType) toSgfcKitPropertyType:(LibSgfcPlusPlus::SgfcPropertyType)propertyType
 {
-  int propertyTypeAsInt = static_cast<int>(propertyType);
-  NSNumber* key = @(propertyTypeAsInt);
-  NSNumber* value = propertyTypeToSgfcKitMap[key];
-  if (value)
-  {
-    return static_cast<SGFCPropertyType>([value unsignedIntValue]);
-  }
-  else
-  {
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithFormat:@"LibSgfcPlusPlus::SgfcPropertyType value not mapped: %@"
-                                              objectArgumentValue:key];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return SGFCPropertyTypeUnknown;
-  }
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(propertyType)
+                                                     usingMap:propertyTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcPropertyType"];
+  return static_cast<SGFCPropertyType>(mappedValue);
 }
 
 + (LibSgfcPlusPlus::SgfcPropertyType) fromSgfcKitPropertyType:(SGFCPropertyType)propertyType
 {
-  int propertyTypeAsInt = static_cast<int>(propertyType);
-  NSNumber* key = @(propertyTypeAsInt);
-  NSNumber* value = propertyTypeFromSgfcKitMap[key];
-  if (value)
-  {
-    return static_cast<LibSgfcPlusPlus::SgfcPropertyType>([value intValue]);
-  }
-  else
-  {
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithFormat:@"SGFCPropertyType value not mapped: %@"
-                                              objectArgumentValue:key];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return LibSgfcPlusPlus::SgfcPropertyType::Unknown;
-  }
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:propertyType
+                                                usingMap:propertyTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCPropertyType"];
+  return static_cast<LibSgfcPlusPlus::SgfcPropertyType>(mappedValue);
 }
 
 + (NSInteger) toSgfcKitInteger:(int)intValue
@@ -223,6 +151,52 @@
 {
   // The typedefs in libsgfc++ and SgfcKit have the same underlying type
   return static_cast<LibSgfcPlusPlus::SgfcReal>(realValue);
+}
+
+#pragma mark - Private API
+
++ (NSUInteger) toSgfcKitValue:(int)fromValueAsInt
+                     usingMap:(NSDictionary*)map
+                 withEnumName:(NSString*)enumName
+{
+  NSNumber* fromValueAsNumber = @(fromValueAsInt);
+  NSNumber* mappedValueAsNumber = map[fromValueAsNumber];
+  if (mappedValueAsNumber)
+  {
+    // All SgfcKit enumerations are typed as NSUInteger
+    return [mappedValueAsNumber unsignedIntegerValue];
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"LibSgfcPlusPlus::%@ value not mapped: %@", enumName, fromValueAsNumber];
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
+}
+
++ (int) fromSgfcKitValue:(NSUInteger)fromValueAsUnsignedInteger
+                usingMap:(NSDictionary*)map
+            withEnumName:(NSString*)enumName
+{
+  NSNumber* fromValueAsNumber = @(fromValueAsUnsignedInteger);
+  NSNumber* mappedValueAsNumber = map[fromValueAsNumber];
+  if (mappedValueAsNumber)
+  {
+    // All libsgfc++ enumerations are treated as int
+    return [mappedValueAsNumber intValue];
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"%@ value not mapped: %@", enumName, fromValueAsNumber];
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
 }
 
 @end
