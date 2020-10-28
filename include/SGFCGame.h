@@ -111,6 +111,10 @@
 ///
 /// The game has no board size if boardSize() returns
 /// #SGFCBoardSizeNone or #SGFCBoardSizeInvalid.
+///
+/// @exception NSInternalInconsistencyException Is raised if a property object
+/// for #SGFCPropertyTypeSZ is found in the game's root node, but the property
+/// object is not an instance of ISgfcBoardSizeProperty.
 @property(nonatomic, readonly) BOOL hasBoardSize;
 
 /// @brief Returns the board size found in the root node property of type

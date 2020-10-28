@@ -21,8 +21,10 @@
 #import "../interface/internal/SGFCNodeInternalAdditions.h"
 #import "../interface/internal/SGFCTreeBuilderInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
+#import "../SGFCMappingUtility.h"
 
 // libsgfc++ includes
+#import <libsgfcplusplus/ISgfcGame.h>
 #import <libsgfcplusplus/SgfcPlusPlusFactory.h>
 
 #pragma mark - Class extension
@@ -84,7 +86,7 @@
 - (void) dealloc
 {
   _wrappedGame = nullptr;
-  // Don't use property accessor because of nil check
+  // Don't use property accessor because it does stuff with the wrapped object
   _rootNode = nil;
   self.treeBuilder = nil;
 }
@@ -93,38 +95,72 @@
 
 - (SGFCGameType) gameType
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameType"];
-  return SGFCGameTypeUnknown;
+  try
+  {
+    return [SGFCMappingUtility toSgfcKitGameType:_wrappedGame->GetGameType()];
+  }
+  catch (std::logic_error& exception)
+  {
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithCStringReason:exception.what()];
+  }
 }
 
 - (SGFCNumber) gameTypeAsNumber
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameType"];
-  return 0;
+  try
+  {
+    return [SGFCMappingUtility toSgfcKitNumber:_wrappedGame->GetGameTypeAsNumber()];
+  }
+  catch (std::logic_error& exception)
+  {
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithCStringReason:exception.what()];
+  }
 }
 
 - (BOOL) hasBoardSize
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameType"];
-  return YES;
+  try
+  {
+    return [SGFCMappingUtility toSgfcKitBoolean:_wrappedGame->HasBoardSize()];
+  }
+  catch (std::logic_error& exception)
+  {
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithCStringReason:exception.what()];
+  }
 }
 
 - (SGFCBoardSize) boardSize
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameType"];
-  return SGFCBoardSizeMinimum;
+  LibSgfcPlusPlus::SgfcBoardSize wrappedBoardSize;
+
+  try
+  {
+    wrappedBoardSize = _wrappedGame->GetBoardSize();
+  }
+  catch (std::logic_error& exception)
+  {
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithCStringReason:exception.what()];
+  }
+
+  SGFCBoardSize boardSize = SGFCBoardSizeMake(
+    [SGFCMappingUtility toSgfcKitNumber:wrappedBoardSize.Columns],
+    [SGFCMappingUtility toSgfcKitNumber:wrappedBoardSize.Rows]);
+  return boardSize;
 }
 
 - (BOOL) hasRootNode
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameType"];
-  return YES;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedGame->HasRootNode()];
 }
 
-- (SGFCTreeBuilder*) getTreeBuilder
+- (void) setRootNode:(SGFCNode*)rootNode
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameType"];
-  return nil;
+  if (rootNode)
+    _wrappedGame->SetRootNode([rootNode wrappedNode]);
+  else
+    _wrappedGame->SetRootNode(nullptr);
+
+  _rootNode = rootNode;
 }
 
 #pragma mark - Internal API
