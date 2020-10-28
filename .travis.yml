@@ -1,0 +1,39 @@
+# Travis CI only supports macOS as environment for Objective-C.
+language: objective-c
+
+# We strive to build with relatively new versions of each environment because
+# we want to use modern compilers (we need at least C++17, see CMakeLists.txt).
+osx_image: xcode12.2
+
+# Our dependencies are covered by Git submodules. We don't have to clone Git
+# submodules, Travis already does that by default. Since we have no other
+# dependencies we skip the installation phase.
+install: skip
+
+before_script:
+  - echo ------------------------------------------------------------
+  - echo Building libsgfc++
+  - echo ------------------------------------------------------------
+  - cd libsgfcplusplus
+  - ./script/build.sh
+  - cd build
+  - cmake --install . --prefix install
+  - cd ../..
+  - echo ------------------------------------------------------------
+  - echo Running CMake to create build system
+  - echo ------------------------------------------------------------
+  - mkdir build
+  - cd build
+  # Specify the configuration for single-configuration build systems.
+  # We don't want to rely on Xcode for the build, to make at least a
+  # token effort to remain platform independent.
+  - cmake -DCMAKE_BUILD_TYPE=Release ..
+  - cd ..
+
+script:
+  # Build the project
+  - cd build
+  - cmake --build .
+  # Perform a dummy deploy to test the CMake install routine. We do it in the
+  # script phase (not the deploy phase) so that the build breaks if this fails.
+  - cmake --install . --prefix install
