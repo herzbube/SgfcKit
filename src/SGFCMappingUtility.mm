@@ -201,4 +201,28 @@
   return [stringValue UTF8String];
 }
 
++ (SGFCNumber) toSgfcKitNumber:(LibSgfcPlusPlus::SgfcNumber)numberValue
+{
+  // The typedefs in libsgfc++ and SgfcKit have the same underlying type
+  return static_cast<SGFCNumber>(numberValue);
+}
+
++ (LibSgfcPlusPlus::SgfcNumber) fromSgfcKitNumber:(SGFCNumber)numberValue
+{
+  // The typedefs in libsgfc++ and SgfcKit have the same underlying type
+  return static_cast<LibSgfcPlusPlus::SgfcNumber>(numberValue);
+}
+
++ (SGFCReal) toSgfcKitReal:(LibSgfcPlusPlus::SgfcReal)realValue
+{
+  // The typedefs in libsgfc++ and SgfcKit have the same underlying type
+  return static_cast<SGFCReal>(realValue);
+}
+
++ (LibSgfcPlusPlus::SgfcReal) fromSgfcKitReal:(SGFCReal)realValue
+{
+  // The typedefs in libsgfc++ and SgfcKit have the same underlying type
+  return static_cast<LibSgfcPlusPlus::SgfcReal>(realValue);
+}
+
 @end

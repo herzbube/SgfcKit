@@ -20,11 +20,13 @@
 #import "../include/SGFCArgumentType.h"
 #import "../include/SGFCGameType.h"
 #import "../include/SGFCPropertyType.h"
+#import "../include/SGFCTypedefs.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcArgumentType.h>
 #import <libsgfcplusplus/SgfcGameType.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
+#import <libsgfcplusplus/SgfcTypedefs.h>
 
 // C++ Standard Library includes
 #import <string>
@@ -146,5 +148,21 @@
 /// @brief Maps an NSString value (used in SgfcKit) to an std::string value
 /// (used in libsgfc++).
 + (std::string) fromSgfcKitString:(NSString*)stringValue;
+
+/// @brief Maps an SgfcNumber value (used in libsgfc++) to an SGFCNumber value
+/// (used in SgfcKit).
++ (SGFCNumber) toSgfcKitNumber:(LibSgfcPlusPlus::SgfcNumber)numberValue;
+
+/// @brief Maps an SGFCNumber value (used in SgfcKit) to an SgfcNumber value
+/// (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcNumber) fromSgfcKitNumber:(SGFCNumber)numberValue;
+
+/// @brief Maps an SgfcReal value (used in libsgfc++) to an SGFCReal value
+/// (used in SgfcKit).
++ (SGFCReal) toSgfcKitReal:(LibSgfcPlusPlus::SgfcReal)realValue;
+
+/// @brief Maps an SGFCReal value (used in SgfcKit) to an SgfcReal value
+/// (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcReal) fromSgfcKitReal:(SGFCReal)realValue;
 
 @end
