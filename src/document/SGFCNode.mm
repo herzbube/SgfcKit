@@ -18,6 +18,7 @@
 #import "../../include/SGFCNode.h"
 #import "../interface/internal/SGFCNodeInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
+#import "../SGFCMappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcNode.h>
@@ -123,7 +124,7 @@
 
 - (BOOL) hasChildren
 {
-  return _wrappedNode->HasChildren() ? YES : NO;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->HasChildren()];
 }
 
 - (SGFCNode*) nextSibling
@@ -133,7 +134,7 @@
 
 - (BOOL) hasNextSibling
 {
-  return _wrappedNode->HasNextSibling() ? YES : NO;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->HasNextSibling()];
 }
 
 - (SGFCNode*) previousSibling
@@ -143,7 +144,7 @@
 
 - (BOOL) hasPreviousSibling
 {
-  return _wrappedNode->HasPreviousSibling() ? YES : NO;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->HasPreviousSibling()];
 }
 
 - (SGFCNode*) parent
@@ -153,17 +154,17 @@
 
 - (BOOL) hasParent
 {
-  return _wrappedNode->HasParent() ? YES : NO;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->HasParent()];
 }
 
 - (BOOL) isDescendantOfNode:(SGFCNode*)node
 {
-  return _wrappedNode->IsDescendantOf([node wrappedNode]) ? YES : NO;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->IsDescendantOf([node wrappedNode])];
 }
 
 - (BOOL) isAncestorOfNode:(SGFCNode*)node
 {
-  return _wrappedNode->IsAncestorOf([node wrappedNode]) ? YES : NO;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->IsAncestorOf([node wrappedNode])];
 }
 
 - (SGFCNode*) root
@@ -173,7 +174,7 @@
 
 - (BOOL) isRoot
 {
-  return _wrappedNode->IsRoot() ? YES : NO;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->IsRoot()];
 }
 
 - (NSArray*) properties

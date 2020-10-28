@@ -18,6 +18,7 @@
 #import "../../include/SGFCDocument.h"
 #import "../interface/internal/SGFCGameInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
+#import "../SGFCMappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcDocument.h>
@@ -93,7 +94,7 @@
 
 - (BOOL) isEmpty
 {
-  return _wrappedDocument->IsEmpty() ? YES : NO;
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedDocument->IsEmpty()];
 }
 
 - (void) setGames:(NSArray*)games
