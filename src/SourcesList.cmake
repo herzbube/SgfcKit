@@ -8,6 +8,8 @@ set (
   game/SGFCBoardSize.mm
   SGFCConstants.mm
   SGFCExceptionUtility.mm
+  SGFCMappingUtility.mm
+  SGFCPrivateConstants.mm
   ${SOURCES_LIST_FILE_NAME}
 )
 
@@ -17,6 +19,8 @@ set (
   interface/internal/SGFCNodeInternalAdditions.h
   interface/internal/SGFCTreeBuilderInternalAdditions.h
   SGFCExceptionUtility.h
+  SGFCMappingUtility.h
+  SGFCPrivateConstants.h
 )
 
 set (

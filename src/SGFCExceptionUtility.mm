@@ -37,7 +37,7 @@
 }
 
 + (void) raiseInvalidArgumentExceptionWithFormat:(NSString*)format
-                                   argumentValue:(int)argumentValue
+                             objectArgumentValue:(id)argumentValue
 {
   NSString* reason = [NSString stringWithFormat:format, argumentValue];
   [self raiseInvalidArgumentExceptionWithReason:reason];
