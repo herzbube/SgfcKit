@@ -75,35 +75,35 @@
 /// that has the string value @a simpleTextValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a simpleTextValue
-/// is nil.
+/// is @e nil.
 + (SGFCSimpleTextPropertyValue*) propertyValueWithSimpleText:(NSString*)simpleTextValue;
 
 /// @brief Returns a newly constructed SGFCTextPropertyValue object
 /// that has the string value @a textValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a textValue
-/// is nil.
+/// is @e nil.
 + (SGFCTextPropertyValue*) propertyValueWithText:(NSString*)textValue;
 
 /// @brief Returns a newly constructed SGFCPointPropertyValue object
 /// that has the string value @a pointValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
-/// is nil.
+/// is @e nil.
 + (SGFCPointPropertyValue*) propertyValueWithPoint:(NSString*)pointValue;
 
 /// @brief Returns a newly constructed SGFCMovePropertyValue object
 /// that has the string value @a moveValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a moveValue
-/// is nil.
+/// is @e nil.
 + (SGFCMovePropertyValue*) propertyValueWithMove:(NSString*)moveValue;
 
 /// @brief Returns a newly constructed SGFCStonePropertyValue object
 /// that has the string value @a stoneValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
-/// is nil.
+/// is @e nil.
 + (SGFCStonePropertyValue*) propertyValueWithStone:(NSString*)stoneValue;
 
 /// @brief Returns a newly constructed SGFCSinglePropertyValue object
@@ -111,7 +111,7 @@
 /// #SGFCPropertyValueTypeUnknown.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a value
-/// is nil.
+/// is @e nil.
 + (SGFCSinglePropertyValue*) propertyValueWithValue:(NSString*)value;
 //@}
 
@@ -124,7 +124,7 @@
 /// @a pointValue can be given in any one of the notations enumerated in
 /// SGFCGoPointNotation.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a pointValue is nil.
+/// @exception NSInvalidArgumentException Is raised if @a pointValue is @e nil.
 /// Is also raised if @a boardSize refers to
 /// a board that is not square, a board with size smaller than the minimum
 /// required by the SGF standard (#SGFCBoardSizeMinimum), or a
@@ -146,7 +146,7 @@
 /// object does not hold an SGFCGoPoint object.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
-/// is nil.
+/// is @e nil.
 + (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue;
 
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object
@@ -158,7 +158,7 @@
 /// placed by the move on the board. @a moveValue can be given in any one of
 /// the notations enumerated in SGFCGoPointNotation.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a moveValue is nil.
+/// @exception NSInvalidArgumentException Is raised if @a moveValue is @e nil.
 /// Is also raised if @a boardSize refers to
 /// a board that is not square, a board with size smaller than the minimum
 /// required by the SGF standard (#SGFCBoardSizeMinimum), or a
@@ -186,7 +186,7 @@
 /// placed by the move on the board.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a moveValue
-/// is nil.
+/// is @e nil.
 + (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
                                                color:(SGFCColor)color;
 
@@ -204,7 +204,7 @@
 /// @a stoneValue can be given in any one of the notations enumerated in
 /// SGFCGoPointNotation.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a stoneValue is nil.
+/// @exception NSInvalidArgumentException Is raised if @a stoneValue is @e nil.
 /// Is also raised if @a boardSize refers to
 /// a board that is not square, a board with size smaller than the minimum
 /// required by the SGF standard (#SGFCBoardSizeMinimum), or a
@@ -230,7 +230,7 @@
 /// @a stoneValue refers to the Go point on which the stone is located.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a moveValue
-/// is nil.
+/// is @e nil.
 + (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
                                                  color:(SGFCColor)color;
 //@}
@@ -248,7 +248,7 @@
 /// the string values @a simpleTextValue1 and @a simpleTextValue2.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a simpleTextValue1
-/// is nil or if @a simpleTextValue2 is nil.
+/// is @e nil or if @a simpleTextValue2 is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithSimpleText:(NSString*)simpleTextValue1
                                                         simpleText:(NSString*)simpleTextValue2;
 
@@ -258,7 +258,7 @@
 /// string values @a numberValue and @a simpleTextValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a simpleTextValue
-/// is nil.
+/// is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithNumber:(SGFCNumber)numberValue
                                                     simpleText:(NSString*)simpleTextValue;
 
@@ -267,7 +267,7 @@
 /// string values @a pointValue1 and @a pointValue2, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue1
-/// is nil or if @a pointValue2 is nil.
+/// is @e nil or if @a pointValue2 is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithPoint:(NSString*)pointValue1
                                                         point:(NSString*)pointValue2;
 
@@ -277,7 +277,7 @@
 /// @a pointValue and @a simpleTextValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
-/// is nil or if @a simpleTextValue is nil.
+/// is @e nil or if @a simpleTextValue is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithPoint:(NSString*)pointValue
                                                    simpleText:(NSString*)simpleTextValue;
 
@@ -287,7 +287,7 @@
 /// @a stoneValue and @a pointValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
-/// is nil or if @a pointValue is nil.
+/// is @e nil or if @a pointValue is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithStone:(NSString*)stoneValue
                                                         point:(NSString*)pointValue;
 
@@ -296,7 +296,7 @@
 /// and @a valueObject2.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a valueObject1
-/// is nil or if @a valueObject2 is nil.
+/// is @e nil or if @a valueObject2 is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithValue1:(SGFCSinglePropertyValue*)valueObject1
                                                         value2:(SGFCSinglePropertyValue*)valueObject2;
 //@}
@@ -308,7 +308,7 @@
 /// string values @a pointValue1 and @a pointValue2, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue1
-/// is nil or if @a pointValue2 is nil.
+/// is @e nil or if @a pointValue2 is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithGoPoint:(NSString*)pointValue1
                                                         goPoint:(NSString*)pointValue2
                                                       boardSize:(SGFCBoardSize)boardSize;
@@ -319,7 +319,7 @@
 /// @a pointValue and @a simpleTextValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
-/// is nil or if @a simpleTextValue is nil.
+/// is @e nil or if @a simpleTextValue is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithGoPoint:(NSString*)pointValue
                                                       boardSize:(SGFCBoardSize)boardSize
                                                      simpleText:(NSString*)simpleTextValue;
@@ -330,7 +330,7 @@
 /// @a stoneValue and @a pointValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
-/// is nil or if @a pointValue is nil.
+/// is @e nil or if @a pointValue is @e nil.
 + (SGFCComposedPropertyValue*) composedPropertyValueWithGoStone:(NSString*)stoneValue
                                                           color:(SGFCColor)color
                                                         goPoint:(NSString*)pointValue

@@ -176,7 +176,8 @@
 /// returned SGFCProperty object is an instance of SGFCBoardSizeProperty
 /// or SGFCGameTypeProperty.
 ///
-/// If @a propertyValue is nil the property is initialized without values.
+/// If @a propertyValue is @e nil the SGFCProperty object is initialized with
+/// no values.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a propertyType is
 /// #SGFCPropertyTypeUnknown, or, in case @a propertyType is
@@ -196,7 +197,8 @@
 /// returned SGFCProperty object is an instance of SGFCBoardSizeProperty
 /// or SGFCGameTypeProperty.
 ///
-/// If @a propertyValues is nil the property is initialized without values.
+/// If @a propertyValues is @e nil the SGFCProperty object is initialized with
+/// no values.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a propertyType is
 /// #SGFCPropertyTypeUnknown, or, in case @a propertyType is
@@ -222,7 +224,7 @@
 /// #SGFCPropertyTypeGM, the returned SGFCProperty object is an instance
 /// of SGFCBoardSizeProperty or SGFCGameTypeProperty.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a propertyName is nil
+/// @exception NSInvalidArgumentException Is raised if @a propertyName is @e nil
 - (id) initWithPropertyName:(NSString*)propertyName;
 
 /// @brief Initializes an SGFCProperty object. The object has the
@@ -241,11 +243,12 @@
 /// If the mapped SGFCPropertyType value is #SGFCPropertyTypeSZ or
 /// #SGFCPropertyTypeGM, the returned SGFCProperty object is an instance
 /// of SGFCBoardSizeProperty or SGFCGameTypeProperty.
+//////
+/// If @a propertyValue is @e nil the SGFCProperty object is initialized with
+/// no values.
 ///
-/// If @a propertyValue is nil the property is initialized without values.
-///
-/// @exception NSInvalidArgumentException Is raised if @a propertyName is nil,
-/// if the mapped SGFCPropertyType value is #SGFCPropertyTypeSZ or
+/// @exception NSInvalidArgumentException Is raised if @a propertyName is
+/// @e nil, if the mapped SGFCPropertyType value is #SGFCPropertyTypeSZ or
 /// #SGFCPropertyTypeGM and @a propertyValue does not meet the requirements of
 /// these property types. See the documentation of SGFCBoardSizeProperty or
 /// SGFCGameTypeProperty for details.
@@ -269,10 +272,11 @@
 /// #SGFCPropertyTypeGM, the returned SGFCProperty object is an instance
 /// of SGFCBoardSizeProperty or SGFCGameTypeProperty.
 ///
-/// If @a propertyValues is nil the property is initialized without values.
+/// If @a propertyValues is @e nil the SGFCProperty object is initialized with
+/// no values.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a propertyName is nil,
-/// if the mapped SGFCPropertyType value is #SGFCPropertyTypeSZ or
+/// @exception NSInvalidArgumentException Is raised if @a propertyName is
+/// @e nil, if the mapped SGFCPropertyType value is #SGFCPropertyTypeSZ or
 /// #SGFCPropertyTypeGM and @a propertyValues contains more than one value or
 /// the value does not meet the requirements of these property types. See the
 /// documentation of SGFCBoardSizeProperty or SGFCGameTypeProperty

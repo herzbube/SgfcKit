@@ -85,7 +85,7 @@
 
 /// @brief Inserts @a child as a child to @a node, before the reference
 /// child node @a referenceChild. @a child may not be @e nil.
-/// @a referenceChild may be nil, but if it's not then it must be a
+/// @a referenceChild may be @e nil, but if it's not then it must be a
 /// child of @a node.
 ///
 /// If @a referenceChild is @e nil then @a child is inserted as the

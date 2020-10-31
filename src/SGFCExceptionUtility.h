@@ -34,9 +34,9 @@
 {
 }
 
-/// @brief Does nothing if @a argument is not nil. Raises an
-/// NSInvalidArgumentException if @a argument is nil. The exception reason is a
-/// standard message that is parameterized with @a argumentName.
+/// @brief Does nothing if @a argument is not @e nil. Raises an
+/// NSInvalidArgumentException if @a argument is @e nil. The exception reason
+/// is a standard message that is parameterized with @a argumentName.
 + (void) raiseInvalidArgumentExceptionIfArgumentIsNil:(id)argument
                                   invalidArgumentName:(NSString*)argumentName;
 
