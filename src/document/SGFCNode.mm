@@ -17,11 +17,13 @@
 // Project includes
 #import "../../include/SGFCNode.h"
 #import "../interface/internal/SGFCNodeInternalAdditions.h"
+#import "../interface/internal/SGFCPropertyInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
 #import "../SGFCMappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcNode.h>
+#import <libsgfcplusplus/ISgfcProperty.h>
 #import <libsgfcplusplus/SgfcPlusPlusFactory.h>
 
 // System includes
@@ -60,6 +62,7 @@
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedNode\" is nullptr"];
 
   _wrappedNode = wrappedNode;
+  _properties = [NSArray array];
 
   return self;
 }
@@ -67,6 +70,8 @@
 - (void) dealloc
 {
   _wrappedNode = nullptr;
+  // Don't use property accessor because of nil check
+  _properties = nil;
 }
 
 #pragma mark - NSObject overrides
@@ -177,10 +182,34 @@
   return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->IsRoot()];
 }
 
-- (NSArray*) properties
+- (void) setProperties:(NSArray*)properties
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"properties"];
-  return nil;
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:properties
+                                                 invalidArgumentName:@"properties"];
+
+  std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>> wrappedProperties;
+
+  for (id propertyObject in properties)
+  {
+    if (! propertyObject)
+      [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"properties\" contains a nil object"];
+    if (! [propertyObject isKindOfClass:[SGFCProperty class]])
+      [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"properties\" contains an object that is not of type SGFCProperty"];
+
+    SGFCProperty* property = propertyObject;
+    wrappedProperties.push_back([property wrappedProperty]);
+  }
+
+  try
+  {
+    _wrappedNode->SetProperties(wrappedProperties);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  _properties = properties;
 }
 
 - (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
