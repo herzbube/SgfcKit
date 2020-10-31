@@ -41,7 +41,8 @@
 /// content consists of the specified game @a game. The SGFCDocument object
 /// takes ownership of @a game.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a game is @e nil.
+/// If @a game is @e nil the returned SGFCDocument object is empty and contains
+/// no games.
 + (SGFCDocument*) documentWithGame:(SGFCGame*)game;
 
 /// @brief Initializes an SGFCDocument object. The SGFCDocument is empty and
@@ -52,9 +53,9 @@
 /// content consists of the specified game @a game. The SGFCDocument object
 /// takes ownership of @a game.
 ///
-/// This is the designated initializer of SGFCDocument.
+/// If @a game is @e nil the SGFCDocument object is initialized with no games.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a game is @e nil.
+/// This is the designated initializer of SGFCDocument.
 - (id) initWithGame:(SGFCGame*)game;
 
 /// @brief Returns YES if the document has no content. Returns NO if

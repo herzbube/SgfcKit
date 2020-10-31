@@ -75,7 +75,8 @@
 /// SGFCDocument content consists of the specified game @a game. The
 /// SGFCDocument object takes ownership of @a game.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a game is @e nil.
+/// If @a game is @e nil the returned SGFCDocument object is empty and contains
+/// no games.
 + (SGFCDocument*) documentWithGame:(SGFCGame*)game;
 
 /// @brief Returns a newly constructed SGFCGame object. The game type is
@@ -88,7 +89,8 @@
 /// root node. The game is not associated with any document. The SGFCGame
 /// object takes ownership of @a rootNode.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a rootNode is @e nil.
+/// If @a rootNode is @e nil the returned SGFCGame object has no game tree and
+/// its game type is #SGFCDefaultGameType.
 + (SGFCGame*) gameWithRootNode:(SGFCNode*)rootNode;
 
 /// @brief Returns a newly constructed SGFCNode object that has no parent,

@@ -54,18 +54,10 @@
 
 - (id) init
 {
-  return [self initPrivateWithRootNode:nil];
+  return [self initWithRootNode:nil];
 }
 
 - (id) initWithRootNode:(SGFCNode*)rootNode
-{
-  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:rootNode
-                                                 invalidArgumentName:@"rootNode"];
-
-  return [self initPrivateWithRootNode:rootNode];
-}
-
-- (id) initPrivateWithRootNode:(SGFCNode*)rootNode
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];

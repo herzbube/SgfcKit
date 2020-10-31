@@ -49,7 +49,8 @@
 /// root node. The game is not associated with any document. The SGFCGame
 /// object takes ownership of @a rootNode.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a rootNode is @e nil.
+/// If @a rootNode is @e nil the returned SGFCGame object has no game tree and
+/// its game type is #SGFCDefaultGameType.
 + (SGFCGame*) gameWithRootNode:(SGFCNode*)rootNode;
 
 /// @brief Initializes an SGFCGame object. The game type is
@@ -62,9 +63,10 @@
 /// root node. The game is not associated with any document. The SGFCGame
 /// object takes ownership of @a rootNode.
 ///
-/// This is the designated initializer of SGFCGame.
+/// If @a rootNode is @e nil the SGFCGame object is initialized without a game
+/// tree and with game type #SGFCDefaultGameType.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a rootNode is @e nil.
+/// This is the designated initializer of SGFCGame.
 - (id) initWithRootNode:(SGFCNode*)rootNode;
 
 /// @brief Returns the game type found in the root node property of type

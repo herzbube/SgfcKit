@@ -51,18 +51,10 @@
 
 - (id) init
 {
-  return [self initPrivateWithGame:nil];
+  return [self initWithGame:nil];
 }
 
 - (id) initWithGame:(SGFCGame*)game
-{
-  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:game
-                                                 invalidArgumentName:@"game"];
-
-  return [self initPrivateWithGame:game];
-}
-
-- (id) initPrivateWithGame:(SGFCGame*)game
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
