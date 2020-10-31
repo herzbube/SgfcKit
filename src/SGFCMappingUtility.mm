@@ -161,7 +161,7 @@
   return (boolValue == NO) ? false : true;
 }
 
-+ (NSString*) toSgfcKitString:(std::string)stringValue
++ (NSString*) toSgfcKitString:(const std::string&)stringValue
 {
   // TODO Currently we have no guarantee from libsgfc++ about the encoding in
   // use, so we just assume UTF-8. Maybe we will have to do something here in

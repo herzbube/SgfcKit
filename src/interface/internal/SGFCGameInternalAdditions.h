@@ -22,6 +22,9 @@
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcGame.h>
 
+// C++ Standard Library includes
+#include <memory>
+
 /// @brief The SGFCGameInternalAdditions category adds a library-internal API to
 /// the SGFCGame class.
 ///

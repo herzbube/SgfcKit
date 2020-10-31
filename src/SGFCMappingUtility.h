@@ -233,7 +233,7 @@
 
 /// @brief Maps an std::string value (used in libsgfc++) to an NSString value
 /// (used in SgfcKit).
-+ (NSString*) toSgfcKitString:(std::string)stringValue;
++ (NSString*) toSgfcKitString:(const std::string&)stringValue;
 
 /// @brief Maps an NSString value (used in SgfcKit) to an std::string value
 /// (used in libsgfc++).
