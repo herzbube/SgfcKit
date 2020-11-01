@@ -38,4 +38,10 @@
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>) wrappedSinglePropertyValue;
 
+/// @brief Sets the wrapped libsgfc++ object to @a wrappedSinglePropertyValue.
+///
+/// @exception NSInvalidArgumentException Is raised if
+/// @a wrappedSinglePropertyValue is @e nullptr.
+- (void) setWrappedSinglePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>)wrappedSinglePropertyValue;
+
 @end

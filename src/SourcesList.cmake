@@ -1,5 +1,6 @@
 set (
   SOURCES
+  document/typedpropertyvalue/SGFCColorPropertyValue.mm
   document/SGFCComposedPropertyValue.mm
   document/SGFCDocument.mm
   document/SGFCGame.mm
@@ -43,6 +44,7 @@ set (
   ../include/SGFCArgumentType.h
   ../include/SGFCBoardSize.h
   ../include/SGFCColor.h
+  ../include/SGFCColorPropertyValue.h
   ../include/SGFCComposedPropertyValue.h
   ../include/SGFCConstants.h
   ../include/SGFCDocument.h

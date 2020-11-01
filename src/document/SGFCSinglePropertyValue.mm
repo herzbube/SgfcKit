@@ -158,4 +158,12 @@
   return _wrappedSinglePropertyValue;
 }
 
+- (void) setWrappedSinglePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>)wrappedSinglePropertyValue
+{
+  if (wrappedSinglePropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedSinglePropertyValue\" is nullptr"];
+
+  _wrappedSinglePropertyValue = wrappedSinglePropertyValue;
+}
+
 @end

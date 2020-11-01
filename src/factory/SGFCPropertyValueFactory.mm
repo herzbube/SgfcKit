@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../include/SGFCColorPropertyValue.h"
 #import "../../include/SGFCPropertyValueFactory.h"
 #import "../SGFCExceptionUtility.h"
 
@@ -42,8 +43,7 @@
 
 + (SGFCColorPropertyValue*) propertyValueWithColor:(SGFCColor)colorValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithColor:"];
-  return nil;
+  return [SGFCColorPropertyValue colorPropertyValueWithColorValue:colorValue];
 }
 
 + (SGFCSimpleTextPropertyValue*) propertyValueWithSimpleText:(NSString*)simpleTextValue
