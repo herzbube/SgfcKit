@@ -16,7 +16,12 @@
 
 // Project includes
 #import "../../include/SGFCColorPropertyValue.h"
+#import "../../include/SGFCDoublePropertyValue.h"
+#import "../../include/SGFCNumberPropertyValue.h"
 #import "../../include/SGFCPropertyValueFactory.h"
+#import "../../include/SGFCRealPropertyValue.h"
+#import "../../include/SGFCSimpleTextPropertyValue.h"
+#import "../../include/SGFCTextPropertyValue.h"
 #import "../SGFCExceptionUtility.h"
 
 @implementation SGFCPropertyValueFactory
@@ -25,20 +30,17 @@
 
 + (SGFCNumberPropertyValue*) propertyValueWithNumber:(SGFCNumber)numberValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithNumber:"];
-  return nil;
+  return [SGFCNumberPropertyValue numberPropertyValueWithNumberValue:numberValue];
 }
 
 + (SGFCRealPropertyValue*) propertyValueWithReal:(SGFCReal)realValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithReal:"];
-  return nil;
+  return [SGFCRealPropertyValue realPropertyValueWithRealValue:realValue];
 }
 
 + (SGFCDoublePropertyValue*) propertyValueWithDouble:(SGFCDouble)doubleValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithDouble:"];
-  return nil;
+  return [SGFCDoublePropertyValue doublePropertyValueWithDoubleValue:doubleValue];
 }
 
 + (SGFCColorPropertyValue*) propertyValueWithColor:(SGFCColor)colorValue
@@ -48,14 +50,12 @@
 
 + (SGFCSimpleTextPropertyValue*) propertyValueWithSimpleText:(NSString*)simpleTextValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithSimpleText:"];
-  return nil;
+  return [SGFCSimpleTextPropertyValue simpleTextPropertyValueWithSimpleTextValue:simpleTextValue];
 }
 
 + (SGFCTextPropertyValue*) propertyValueWithText:(NSString*)textValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithText:"];
-  return nil;
+  return [SGFCTextPropertyValue textPropertyValueWithTextValue:textValue];
 }
 
 + (SGFCPointPropertyValue*) propertyValueWithPoint:(NSString*)pointValue
