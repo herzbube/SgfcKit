@@ -38,10 +38,16 @@
 
 /// @brief Returns a newly constructed SGFCStonePropertyValue object.
 /// The object holds the Stone value @a moveValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a stoneValue
+/// is @e nil.
 + (SGFCStonePropertyValue*) stonePropertyValueWithStoneValue:(NSString*)stoneValue;
 
 /// @brief Initializes an SGFCStonePropertyValue object.
 /// The object holds the Stone value @a stoneValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a stoneValue
+/// is @e nil.
 ///
 /// This is the designated initializer of SGFCStonePropertyValue.
 - (id) initWithStoneValue:(NSString*)stoneValue;

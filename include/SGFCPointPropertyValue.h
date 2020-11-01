@@ -38,10 +38,16 @@
 
 /// @brief Returns a newly constructed SGFCPointPropertyValue object.
 /// The object holds the Point value @a pointValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a pointValue
+/// is @e nil.
 + (SGFCPointPropertyValue*) pointPropertyValueWithPointValue:(NSString*)pointValue;
 
 /// @brief Initializes an SGFCPointPropertyValue object.
 /// The object holds the Point value @a pointValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a pointValue
+/// is @e nil.
 ///
 /// This is the designated initializer of SGFCPointPropertyValue.
 - (id) initWithPointValue:(NSString*)pointValue;

@@ -38,10 +38,16 @@
 
 /// @brief Returns a newly constructed SGFCMovePropertyValue object.
 /// The object holds the Move value @a moveValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a moveValue
+/// is @e nil.
 + (SGFCMovePropertyValue*) movePropertyValueWithMoveValue:(NSString*)moveValue;
 
 /// @brief Initializes an SGFCMovePropertyValue object.
 /// The object holds the Move value @a moveValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a moveValue
+/// is @e nil.
 ///
 /// This is the designated initializer of SGFCMovePropertyValue.
 - (id) initWithMoveValue:(NSString*)moveValue;

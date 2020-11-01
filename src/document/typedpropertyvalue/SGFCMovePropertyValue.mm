@@ -47,6 +47,9 @@
 
 - (id) initWithMoveValue:(NSString*)moveValue
 {
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:moveValue
+                                                 invalidArgumentName:@"moveValue"];
+
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
   // initializer has a problem.

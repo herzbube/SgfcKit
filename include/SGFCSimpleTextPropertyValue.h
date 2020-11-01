@@ -37,10 +37,16 @@
 
 /// @brief Returns a newly constructed SGFCSimpleTextPropertyValue object.
 /// The object holds the SimpleText value @a simpleTextValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a simpleTextValue
+/// is @e nil.
 + (SGFCSimpleTextPropertyValue*) simpleTextPropertyValueWithSimpleTextValue:(NSString*)simpleTextValue;
 
 /// @brief Initializes an SGFCSimpleTextPropertyValue object.
 /// The object holds the SimpleText value @a simpleTextValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a simpleTextValue
+/// is @e nil.
 ///
 /// This is the designated initializer of SGFCSimpleTextPropertyValue.
 - (id) initWithSimpleTextValue:(NSString*)simpleTextValue;

@@ -37,10 +37,16 @@
 
 /// @brief Returns a newly constructed SGFCTextPropertyValue object.
 /// The object holds the Text value @a textValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a textValue
+/// is @e nil.
 + (SGFCTextPropertyValue*) textPropertyValueWithTextValue:(NSString*)textValue;
 
 /// @brief Initializes an SGFCTextPropertyValue object.
 /// The object holds the Text value @a textValue.
+///
+/// @exception NSInvalidArgumentException Is raised if @a textValue
+/// is @e nil.
 ///
 /// This is the designated initializer of SGFCTextPropertyValue.
 - (id) initWithTextValue:(NSString*)textValue;
