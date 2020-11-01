@@ -53,6 +53,14 @@
 /// @a reason is assumed to have UTF-8 encoding.
 + (void) raiseInvalidArgumentExceptionWithCStringReason:(const char*)reason;
 
+/// @brief Raises an SGFCInvalidOperationException using @a reason as the
+/// reason.
++ (void) raiseInvalidOperationExceptionWithReason:(NSString*)reason;
+
+/// @brief Raises an SGFCInvalidOperationException using @a reason as the
+/// reason. @a reason is assumed to have UTF-8 encoding.
++ (void) raiseInvalidOperationExceptionWithCStringReason:(const char*)reason;
+
 /// @brief Raises an NSInternalInconsistencyException using @a reason as the
 /// reason. @a reason is assumed to have UTF-8 encoding.
 + (void) raiseInternalInconsistencyExceptionWithCStringReason:(const char*)reason;

@@ -56,6 +56,19 @@
   [self raiseInvalidArgumentExceptionWithReason:[NSString stringWithUTF8String:reason]];
 }
 
++ (void) raiseInvalidOperationExceptionWithReason:(NSString*)reason
+{
+  NSException* exception = [NSException exceptionWithName:SGFCInvalidOperationException
+                                                   reason:reason
+                                                 userInfo:nil];
+  @throw exception;
+}
+
++ (void) raiseInvalidOperationExceptionWithCStringReason:(const char*)reason
+{
+  [self raiseInvalidOperationExceptionWithReason:[NSString stringWithUTF8String:reason]];
+}
+
 + (void) raiseInternalInconsistencyExceptionWithCStringReason:(const char*)reason
 {
   NSException* exception = [NSException exceptionWithName:NSInternalInconsistencyException

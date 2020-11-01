@@ -163,7 +163,9 @@ extern const SGFCBoardSize SGFCBoardSizeDefaultChess;
 
 /// @name Exception names
 //@{
-extern NSExceptionName const SGFCTypeException;
+/// @brief Exception that is raised when invoking a method or operation is
+/// invalid for the receiver's current state.
+extern NSExceptionName const SGFCInvalidOperationException;
 
 /// @brief Exception that is raised when a requested method or operation is not
 /// implemented.
