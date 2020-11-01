@@ -27,7 +27,7 @@
 @class NSString;
 @class SGFCBoardSizeProperty;
 @class SGFCGameTypeProperty;
-@class SGFCPropertyValue;
+@protocol SGFCPropertyValue;
 
 /// @brief The SGFCProperty class provides access to the data of a single
 /// property of an SGF node. One property has 0-n values.
@@ -69,7 +69,7 @@
 /// not meet the requirements of these property types. See the documentation
 /// of SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
 + (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
-                             value:(SGFCPropertyValue*)propertyValue;
+                             value:(id<SGFCPropertyValue>)propertyValue;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property type @a propertyType and the specified property
@@ -138,7 +138,7 @@
 /// these property types. See the documentation of SGFCBoardSizeProperty or
 /// SGFCGameTypeProperty for details.
 + (SGFCProperty*) propertyWithName:(NSString*)propertyName
-                             value:(SGFCPropertyValue*)propertyValue;
+                             value:(id<SGFCPropertyValue>)propertyValue;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property name @a propertyName and the specified property
@@ -200,7 +200,7 @@
 /// not meet the requirements of these property types. See the documentation
 /// of SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
 - (id) initWithPropertyType:(SGFCPropertyType)propertyType
-                      value:(SGFCPropertyValue*)propertyValue;
+                      value:(id<SGFCPropertyValue>)propertyValue;
 
 /// @brief Initializes an SGFCProperty object. The object has the
 /// specified property type @a propertyType and the specified property
@@ -269,7 +269,7 @@
 /// these property types. See the documentation of SGFCBoardSizeProperty or
 /// SGFCGameTypeProperty for details.
 - (id) initWithPropertyName:(NSString*)propertyName
-                      value:(SGFCPropertyValue*)propertyValue;
+                      value:(id<SGFCPropertyValue>)propertyValue;
 
 /// @brief Initializes an SGFCProperty object. The object has the
 /// specified property name @a propertyName and the specified property
@@ -351,7 +351,7 @@
 ///
 /// This is a convenience method for properties that can have only a single
 /// value.
-@property(nonatomic, strong, readonly) SGFCPropertyValue* propertyValue;
+@property(nonatomic, strong, readonly) id<SGFCPropertyValue> propertyValue;
 
 /// @brief Returns an SGFCGameTypeProperty object if GetPropertyType()
 /// returns #SGFCPropertyTypeGM. Returns @e nil otherwise.

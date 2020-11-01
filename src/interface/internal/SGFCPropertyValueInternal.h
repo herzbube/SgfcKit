@@ -25,12 +25,16 @@
 // C++ Standard Library includes
 #include <memory>
 
-/// @brief The SGFCPropertyValueInternalAdditions category adds a
-/// library-internal API to the SGFCPropertyValue class.
+/// @brief The SGFCPropertyValueInternal protocol extends the SGFCPropertyValue
+/// protocol with a library-internal API. Library classes must adopt
+/// SGFCPropertyValueInternal, not SGFCPropertyValue, because parts of the
+/// library implementation.
 ///
 /// @ingroup private-api
 /// @ingroup property-value
-@interface SGFCPropertyValue(SGFCPropertyValueInternalAdditions)
+@protocol SGFCPropertyValueInternal <SGFCPropertyValue>
+
+@required
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>) wrappedPropertyValue;

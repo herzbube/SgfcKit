@@ -1,10 +1,11 @@
 set (
   SOURCES
+  document/SGFCComposedPropertyValue.mm
   document/SGFCDocument.mm
   document/SGFCGame.mm
   document/SGFCNode.mm
   document/SGFCProperty.mm
-  document/SGFCPropertyValue.mm
+  document/SGFCSinglePropertyValue.mm
   document/SGFCTreeBuilder.mm
   factory/SGFCKitFactory.mm
   factory/SGFCPropertyFactory.mm
@@ -23,10 +24,12 @@ set (
   HEADERS_PRIVATE
   interface/internal/SGFCArgumentInternalAdditions.h
   interface/internal/SGFCArgumentsInternalAdditions.h
+  interface/internal/SGFCComposedPropertyValueInternalAdditions.h
   interface/internal/SGFCGameInternalAdditions.h
   interface/internal/SGFCNodeInternalAdditions.h
   interface/internal/SGFCPropertyInternalAdditions.h
-  interface/internal/SGFCPropertyValueInternalAdditions.h
+  interface/internal/SGFCPropertyValueInternal.h
+  interface/internal/SGFCSinglePropertyValueInternalAdditions.h
   interface/internal/SGFCTreeBuilderInternalAdditions.h
   SGFCExceptionUtility.h
   SGFCMappingUtility.h
@@ -40,6 +43,7 @@ set (
   ../include/SGFCArgumentType.h
   ../include/SGFCBoardSize.h
   ../include/SGFCColor.h
+  ../include/SGFCComposedPropertyValue.h
   ../include/SGFCConstants.h
   ../include/SGFCDocument.h
   ../include/SGFCDouble.h
@@ -53,6 +57,7 @@ set (
   ../include/SGFCPropertyValue.h
   ../include/SGFCPropertyValueFactory.h
   ../include/SGFCPropertyValueType.h
+  ../include/SGFCSinglePropertyValue.h
   ../include/SGFCTreeBuilder.h
   ../include/SGFCTypedefs.h
 )

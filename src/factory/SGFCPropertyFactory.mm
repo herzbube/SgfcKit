@@ -29,7 +29,7 @@
 }
 
 + (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
-                             value:(SGFCPropertyValue*)propertyValue
+                             value:(id<SGFCPropertyValue>)propertyValue
 {
   return [SGFCProperty propertyWithType:propertyType
                                   value:propertyValue];
@@ -48,7 +48,7 @@
 }
 
 + (SGFCProperty*) propertyWithName:(NSString*)propertyName
-                             value:(SGFCPropertyValue*)propertyValue
+                             value:(id<SGFCPropertyValue>)propertyValue
 {
   return [SGFCProperty propertyWithName:propertyName
                                   value:propertyValue];

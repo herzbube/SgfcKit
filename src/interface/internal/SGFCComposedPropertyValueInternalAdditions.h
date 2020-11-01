@@ -14,32 +14,28 @@
 // limitations under the License.
 // -----------------------------------------------------------------------------
 
+#pragma once
+
 // Project includes
-#import "../../include/SGFCPropertyValue.h"
-#import "../interface/internal/SGFCPropertyValueInternalAdditions.h"
+#import "../../../include/SGFCComposedPropertyValue.h"
+#import "SGFCPropertyValueInternal.h"
 
 // libsgfc++ includes
-#import <libsgfcplusplus/ISgfcPropertyValue.h>
+#import <libsgfcplusplus/ISgfcComposedPropertyValue.h>
 
-#pragma mark - Class extension
+// C++ Standard Library includes
+#include <memory>
 
-@interface SGFCPropertyValue()
-{
-  std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue> _wrappedPropertyValue;
-}
-@end
+/// @brief The SGFCComposedPropertyValueInternalAdditions category adds a
+/// library-internal API to the SGFCComposedPropertyValue class, first by
+/// declaring methods unique to the category, and second by adopting the
+/// SGFCPropertyValueInternal protocol.
+///
+/// @ingroup private-api
+/// @ingroup property-value
+@interface SGFCComposedPropertyValue(SGFCComposedPropertyValueInternalAdditions) <SGFCPropertyValueInternal>
 
-@implementation SGFCPropertyValue
-
-#pragma mark - Initialization and deallocation
-
-#pragma mark - Public API
-
-#pragma mark - Internal API
-
-- (std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>) wrappedPropertyValue
-{
-  return _wrappedPropertyValue;
-}
+/// @brief Returns the wrapped libsgfc++ object.
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue>) wrappedComposedPropertyValue;
 
 @end

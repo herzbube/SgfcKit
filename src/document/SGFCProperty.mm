@@ -17,7 +17,7 @@
 // Project includes
 #import "../../include/SGFCProperty.h"
 #import "../interface/internal/SGFCPropertyInternalAdditions.h"
-#import "../interface/internal/SGFCPropertyValueInternalAdditions.h"
+#import "../interface/internal/SGFCPropertyValueInternal.h"
 #import "../SGFCExceptionUtility.h"
 #import "../SGFCMappingUtility.h"
 
@@ -48,7 +48,7 @@
 }
 
 + (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
-                             value:(SGFCPropertyValue*)propertyValue
+                             value:(id<SGFCPropertyValue>)propertyValue
 {
   return [[SGFCProperty alloc] initWithPropertyType:propertyType
                                               value:propertyValue];
@@ -67,7 +67,7 @@
 }
 
 + (SGFCProperty*) propertyWithName:(NSString*)propertyName
-                             value:(SGFCPropertyValue*)propertyValue
+                             value:(id<SGFCPropertyValue>)propertyValue
 {
   return [[SGFCProperty alloc] initWithPropertyName:propertyName
                                               value:propertyValue];
@@ -91,7 +91,7 @@
 }
 
 - (id) initWithPropertyType:(SGFCPropertyType)propertyType
-                      value:(SGFCPropertyValue*)propertyValue
+                      value:(id<SGFCPropertyValue>)propertyValue
 {
   return [self initWithPropertyName:[SGFCProperty propertyNameForPropertyType:propertyType]
                               value:propertyValue];
@@ -111,7 +111,7 @@
 }
 
 - (id) initWithPropertyName:(NSString*)propertyName
-                      value:(SGFCPropertyValue*)propertyValue
+                      value:(id<SGFCPropertyValue>)propertyValue
 {
   if (propertyValue)
   {
@@ -199,11 +199,11 @@
   _propertyValues = propertyValues;
 }
 
-- (SGFCPropertyValue*) propertyValue
+- (id<SGFCPropertyValue>) propertyValue
 {
   auto wrappedPropertyValue = _wrappedProperty->GetPropertyValue();
 
-  for (SGFCPropertyValue* propertyValue in _propertyValues)
+  for (id<SGFCPropertyValueInternal> propertyValue in _propertyValues)
   {
     if ([propertyValue wrappedPropertyValue] == wrappedPropertyValue)
       return propertyValue;
@@ -250,10 +250,10 @@
   {
     if (! propertyValueObject)
       [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" contains a nil object"];
-    if (! [propertyValueObject isKindOfClass:[SGFCPropertyValue class]])
-      [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" contains an object that is not of type SGFCPropertyValue"];
+    if (! [propertyValueObject conformsToProtocol:@protocol(SGFCPropertyValueInternal)])
+      [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" contains an object that does not conform to protocol SGFCPropertyValueInternal"];
 
-    SGFCPropertyValue* propertyValue = propertyValueObject;
+    id<SGFCPropertyValueInternal> propertyValue = propertyValueObject;
     wrappedPropertyValues.push_back([propertyValue wrappedPropertyValue]);
   }
 

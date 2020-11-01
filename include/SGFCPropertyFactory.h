@@ -25,7 +25,7 @@
 @class SGFCGameTypeProperty;
 @class SGFCNumberPropertyValue;
 @class SGFCProperty;
-@class SGFCPropertyValue;
+@protocol SGFCPropertyValue;
 
 /// @brief The SGFCPropertyFactory class is a class that contains only class
 /// methods. The class methods are factory methods used to construct
@@ -69,7 +69,7 @@
 /// not meet the requirements of these property types. See the documentation
 /// of SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
 + (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
-                             value:(SGFCPropertyValue*)propertyValue;
+                             value:(id<SGFCPropertyValue>)propertyValue;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property type @a propertyType and the specified property
@@ -138,7 +138,7 @@
 /// these property types. See the documentation of SGFCBoardSizeProperty or
 /// SGFCGameTypeProperty for details.
 + (SGFCProperty*) propertyWithName:(NSString*)propertyName
-                             value:(SGFCPropertyValue*)propertyValue;
+                             value:(id<SGFCPropertyValue>)propertyValue;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property name @a propertyName and the specified property
