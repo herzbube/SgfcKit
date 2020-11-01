@@ -1,5 +1,6 @@
 set (
   SOURCES
+  document/typedpropertyvalue/go/SGFCGoPointPropertyValue.mm
   document/typedpropertyvalue/SGFCColorPropertyValue.mm
   document/typedpropertyvalue/SGFCDoublePropertyValue.mm
   document/typedpropertyvalue/SGFCMovePropertyValue.mm
@@ -19,6 +20,7 @@ set (
   factory/SGFCKitFactory.mm
   factory/SGFCPropertyFactory.mm
   factory/SGFCPropertyValueFactory.mm
+  game/go/SGFCGoPoint.mm
   game/SGFCBoardSize.mm
   sgfc/argument/SGFCArgument.mm
   sgfc/argument/SGFCArguments.mm
@@ -35,7 +37,9 @@ set (
   interface/internal/SGFCArgumentsInternalAdditions.h
   interface/internal/SGFCComposedPropertyValueInternalAdditions.h
   interface/internal/SGFCGameInternalAdditions.h
+  interface/internal/SGFCGoPointInternalAdditions.h
   interface/internal/SGFCNodeInternalAdditions.h
+  interface/internal/SGFCPointPropertyValueInternalAdditions.h
   interface/internal/SGFCPropertyInternalAdditions.h
   interface/internal/SGFCPropertyValueInternal.h
   interface/internal/SGFCSinglePropertyValueInternalAdditions.h
@@ -61,7 +65,9 @@ set (
   ../include/SGFCDoublePropertyValue.h
   ../include/SGFCGame.h
   ../include/SGFCGameType.h
+  ../include/SGFCGoPoint.h
   ../include/SGFCGoPointNotation.h
+  ../include/SGFCGoPointPropertyValue.h
   ../include/SGFCMovePropertyValue.h
   ../include/SGFCKitFactory.h
   ../include/SGFCNode.h

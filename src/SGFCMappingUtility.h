@@ -302,6 +302,17 @@
 /// outside the range of the primitive C++ type @e int.
 + (int) fromSgfcKitInteger:(NSInteger)intValue;
 
+/// @brief Maps an unsigned int value (used in libsgfc++) to an NSUInteger value
+/// (used in SgfcKit).
++ (NSUInteger) toSgfcKitUInteger:(unsigned int)uintValue;
+
+/// @brief Maps an NSUInteger value (used in SgfcKit) to an unsigned int value
+/// (used in libsgfc++).
+///
+/// @exception NSInternalInconsistencyException Is raised if @a uintValue is
+/// outside the range of the primitive C++ type @e unsigned int.
++ (unsigned int) fromSgfcKitUInteger:(NSUInteger)uintValue;
+
 /// @brief Maps a bool value (used in libsgfc++) to a BOOL value
 /// (used in SgfcKit).
 + (BOOL) toSgfcKitBoolean:(bool)boolValue;

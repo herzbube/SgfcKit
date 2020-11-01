@@ -183,6 +183,31 @@
   }
 }
 
++ (NSUInteger) toSgfcKitUInteger:(unsigned int)uintValue
+{
+  // NSUInteger is either an int (32-bit systems) or a long (64-bit systems), so
+  // NSUInteger can always hold an unsigned int value.
+  return uintValue;
+}
+
++ (unsigned int) fromSgfcKitUInteger:(NSUInteger)uintValue
+{
+  if (uintValue >= std::numeric_limits<unsigned int>::min() &&
+      uintValue <= std::numeric_limits<unsigned int>::max())
+  {
+    return static_cast<unsigned int>(uintValue);
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"NSUInteger value cannot be mapped to unsigned int: %@", @(uintValue)];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
+}
+
 + (BOOL) toSgfcKitBoolean:(bool)boolValue
 {
   return boolValue ? YES : NO;

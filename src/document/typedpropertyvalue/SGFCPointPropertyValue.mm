@@ -100,4 +100,15 @@
   return nil;
 }
 
+#pragma mark - Internal API - SGFCPointPropertyValueInternalAdditions overrides
+
+- (void) setWrappedPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcPointPropertyValue>)wrappedPointPropertyValue
+{
+  if (wrappedPointPropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedPointPropertyValue\" is nullptr"];
+
+  [self setWrappedSinglePropertyValue:wrappedPointPropertyValue];
+  _wrappedPointPropertyValue = wrappedPointPropertyValue;
+}
+
 @end
