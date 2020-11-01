@@ -37,10 +37,14 @@
 
 - (id) init
 {
-  // This always raises NSInvalidArgumentException! Implementing this
-  // initializer guards against the library client attempting to manually
-  // allocate/initialize an SGFCArgument.
-  return [self initWithWrappedArgument:nullptr];
+  // Call designated initializer of superclass (NSObject)
+  self = [super init];
+  if (! self)
+    return nil;
+
+  // Always raising an exception is intended. This guards against the library
+  // client attempting to manually allocate/initialize an SGFCArgument.
+  [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCArgument cannot be instantiated from outside of the library"];
 }
 
 - (id) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument

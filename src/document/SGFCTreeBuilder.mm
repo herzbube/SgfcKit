@@ -38,10 +38,14 @@
 
 - (id) init
 {
-  // This always raises NSInvalidArgumentException! Implementing this
-  // initializer guards against the library client attempting to manually
-  // allocate/initialize an SGFCTreeBuilder.
-  return [self initWithGame:nil];
+  // Call designated initializer of superclass (NSObject)
+  self = [super init];
+  if (! self)
+    return nil;
+
+  // Always raising an exception is intended. This guards against the library
+  // client attempting to manually allocate/initialize an SGFCTreeBuilder.
+  [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCTreeBuilder cannot be instantiated from outside of the library"];
 }
 
 - (id) initWithGame:(SGFCGame*)game

@@ -37,9 +37,9 @@
 }
 
 /// @brief Do @b NOT use this initializer, it always raises
-/// NSInvalidArgumentException.
+/// SGFCInvalidOperationException.
 ///
-/// @exception NSInvalidArgumentException Is raised whenever this initializer
+/// @exception SGFCInvalidOperationException Is raised whenever this initializer
 /// is invoked.
 - (id) init;
 
