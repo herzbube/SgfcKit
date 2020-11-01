@@ -2,9 +2,12 @@ set (
   SOURCES
   document/typedpropertyvalue/SGFCColorPropertyValue.mm
   document/typedpropertyvalue/SGFCDoublePropertyValue.mm
+  document/typedpropertyvalue/SGFCMovePropertyValue.mm
   document/typedpropertyvalue/SGFCNumberPropertyValue.mm
+  document/typedpropertyvalue/SGFCPointPropertyValue.mm
   document/typedpropertyvalue/SGFCRealPropertyValue.mm
   document/typedpropertyvalue/SGFCSimpleTextPropertyValue.mm
+  document/typedpropertyvalue/SGFCStonePropertyValue.mm
   document/typedpropertyvalue/SGFCTextPropertyValue.mm
   document/SGFCComposedPropertyValue.mm
   document/SGFCDocument.mm
@@ -57,9 +60,11 @@ set (
   ../include/SGFCDoublePropertyValue.h
   ../include/SGFCGame.h
   ../include/SGFCGameType.h
+  ../include/SGFCMovePropertyValue.h
   ../include/SGFCKitFactory.h
   ../include/SGFCNode.h
   ../include/SGFCNumberPropertyValue.h
+  ../include/SGFCPointPropertyValue.h
   ../include/SGFCProperty.h
   ../include/SGFCPropertyFactory.h
   ../include/SGFCPropertyType.h
@@ -69,6 +74,7 @@ set (
   ../include/SGFCRealPropertyValue.h
   ../include/SGFCSimpleTextPropertyValue.h
   ../include/SGFCSinglePropertyValue.h
+  ../include/SGFCStonePropertyValue.h
   ../include/SGFCTextPropertyValue.h
   ../include/SGFCTreeBuilder.h
   ../include/SGFCTypedefs.h

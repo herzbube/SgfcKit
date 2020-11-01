@@ -17,10 +17,13 @@
 // Project includes
 #import "../../include/SGFCColorPropertyValue.h"
 #import "../../include/SGFCDoublePropertyValue.h"
+#import "../../include/SGFCMovePropertyValue.h"
 #import "../../include/SGFCNumberPropertyValue.h"
+#import "../../include/SGFCPointPropertyValue.h"
 #import "../../include/SGFCPropertyValueFactory.h"
 #import "../../include/SGFCRealPropertyValue.h"
 #import "../../include/SGFCSimpleTextPropertyValue.h"
+#import "../../include/SGFCStonePropertyValue.h"
 #import "../../include/SGFCTextPropertyValue.h"
 #import "../SGFCExceptionUtility.h"
 
@@ -60,20 +63,17 @@
 
 + (SGFCPointPropertyValue*) propertyValueWithPoint:(NSString*)pointValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithPoint:"];
-  return nil;
+  return [SGFCPointPropertyValue pointPropertyValueWithPointValue:pointValue];
 }
 
 + (SGFCMovePropertyValue*) propertyValueWithMove:(NSString*)moveValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithMove:"];
-  return nil;
+  return [SGFCMovePropertyValue movePropertyValueWithMoveValue:moveValue];
 }
 
 + (SGFCStonePropertyValue*) propertyValueWithStone:(NSString*)stoneValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithStone:"];
-  return nil;
+  return [SGFCStonePropertyValue stonePropertyValueWithStoneValue:stoneValue];
 }
 
 + (SGFCSinglePropertyValue*) propertyValueWithValue:(NSString*)value
