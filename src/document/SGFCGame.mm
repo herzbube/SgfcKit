@@ -93,7 +93,7 @@
   }
   catch (std::logic_error& exception)
   {
-    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithCStringReason:exception.what()];
+    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
   }
 }
 
@@ -105,7 +105,7 @@
   }
   catch (std::logic_error& exception)
   {
-    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithCStringReason:exception.what()];
+    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
   }
 }
 
@@ -117,7 +117,7 @@
   }
   catch (std::logic_error& exception)
   {
-    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithCStringReason:exception.what()];
+    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
   }
 }
 
@@ -131,7 +131,7 @@
   }
   catch (std::logic_error& exception)
   {
-    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithCStringReason:exception.what()];
+    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
   }
 
   SGFCBoardSize boardSize = SGFCBoardSizeMake(

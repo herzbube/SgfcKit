@@ -85,9 +85,9 @@
 ///         that is not defined in the SGF standard. Invoke gameTypeAsNumber()
 ///         to obtain the game type as Number value.
 ///
-/// @exception NSInternalInconsistencyException Is raised if a property object
+/// @exception #SGFCInvalidOperationException Is raised if a property object
 /// for #SGFCPropertyTypeGM is found in the game's root node, but the property
-/// object is not an instance of ISgfcGameTypeProperty.
+/// object is not an instance of SGFCGameTypeProperty.
 @property(nonatomic, readonly) SGFCGameType gameType;
 
 /// @brief Returns the game type found in the root node property of type
@@ -103,9 +103,9 @@
 ///         programmatically), this is the Number value that corresponds to
 ///         #SGFCDefaultGameType.
 ///
-/// @exception NSInternalInconsistencyException Is raised if a property object
+/// @exception #SGFCInvalidOperationException Is raised if a property object
 /// for #SGFCPropertyTypeGM is found in the game's root node, but the property
-/// object is not an instance of ISgfcGameTypeProperty.
+/// object is not an instance of SGFCGameTypeProperty.
 @property(nonatomic, readonly) SGFCNumber gameTypeAsNumber;
 
 /// @brief Returns YES if the game has a board size. Returns NO if the
@@ -114,9 +114,9 @@
 /// The game has no board size if boardSize() returns
 /// #SGFCBoardSizeNone or #SGFCBoardSizeInvalid.
 ///
-/// @exception NSInternalInconsistencyException Is raised if a property object
+/// @exception #SGFCInvalidOperationException Is raised if a property object
 /// for #SGFCPropertyTypeSZ is found in the game's root node, but the property
-/// object is not an instance of ISgfcBoardSizeProperty.
+/// object is not an instance of SGFCBoardSizeProperty.
 @property(nonatomic, readonly) BOOL hasBoardSize;
 
 /// @brief Returns the board size found in the root node property of type
@@ -148,9 +148,9 @@
 ///         the constraints defined by the SGF standard. See the
 ///         documentation of #SGFCBoardSizeInvalid for details.
 ///
-/// @exception NSInternalInconsistencyException Is raised if a property object
+/// @exception #SGFCInvalidOperationException Is raised if a property object
 /// for #SGFCPropertyTypeSZ is found in the game's root node, but the property
-/// object is not an instance of ISgfcBoardSizeProperty.
+/// object is not an instance of SGFCBoardSizeProperty.
 @property(nonatomic, readonly) SGFCBoardSize boardSize;
 
 /// @brief Returns YES if the game has a root node. Returns NO if the
