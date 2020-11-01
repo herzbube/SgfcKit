@@ -224,7 +224,7 @@
   return nil;
 }
 
-#pragma mark - Internal API
+#pragma mark - Internal API - SGFCPropertyInternalAdditions overrides
 
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>) wrappedProperty
 {

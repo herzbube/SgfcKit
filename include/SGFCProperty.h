@@ -353,12 +353,12 @@
 /// value.
 @property(nonatomic, strong, readonly) id<SGFCPropertyValue> propertyValue;
 
-/// @brief Returns an SGFCGameTypeProperty object if GetPropertyType()
+/// @brief Returns an SGFCGameTypeProperty object if propertyType()
 /// returns #SGFCPropertyTypeGM. Returns @e nil otherwise.
 /// The caller is not the owner of the returned object.
 - (SGFCGameTypeProperty*) toGameTypeProperty;
 
-/// @brief Returns an SGFCBoardSizeProperty object if GetPropertyType()
+/// @brief Returns an SGFCBoardSizeProperty object if propertyType()
 /// returns #SGFCPropertyTypeSZ. Returns @e nil otherwise.
 /// The caller is not the owner of the returned object.
 - (SGFCBoardSizeProperty*) toBoardSizeProperty;

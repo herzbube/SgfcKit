@@ -95,7 +95,7 @@
   return [SGFCMappingUtility toSgfcKitString:_wrappedArgument->ToString()];
 }
 
-#pragma mark - Internal API
+#pragma mark - Internal API - SGFCArgumentInternalAdditions overrides
 
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>) wrappedArgument
 {

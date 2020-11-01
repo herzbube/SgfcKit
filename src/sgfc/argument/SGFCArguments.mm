@@ -133,7 +133,7 @@
   [(NSMutableArray*)_arguments removeAllObjects];
 }
 
-#pragma mark - Internal API
+#pragma mark - Internal API - SGFCArgumentsInternalAdditions overrides
 
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>) wrappedArguments
 {

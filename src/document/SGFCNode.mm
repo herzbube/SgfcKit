@@ -218,7 +218,7 @@
   return nil;
 }
 
-#pragma mark - Internal API
+#pragma mark - Internal API - SGFCNodeInternalAdditions overrides
 
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>) wrappedNode
 {

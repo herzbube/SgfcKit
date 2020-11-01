@@ -26,12 +26,12 @@
 /// @brief The SGFCTreeBuilder interface provides methods to manipulate the
 /// nodes of a game tree.
 ///
+/// @ingroup public-api
+/// @ingroup game-tree
+///
 /// Do @b NOT attempt to create an SGFCTreeBuilder object yourself, instead
 /// always use the SGFCTreeBuilder object provided by an SGFCGame instance
 /// whose game tree you want to manipulate.
-///
-/// @ingroup public-api
-/// @ingroup game-tree
 @interface SGFCTreeBuilder : NSObject
 {
 }

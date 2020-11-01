@@ -28,12 +28,12 @@
 /// argument type, the argument also has either an integer type or an
 /// SGFCPropertyType parameter.
 ///
+/// @ingroup public-api
+/// @ingroup sgfc-arguments
+///
 /// Do @b NOT attempt to create an SGFCArgument object yourself, instead always
 /// use the add methods of the SGFCArguments object that you want to add an
 /// argument to.
-///
-/// @ingroup public-api
-/// @ingroup sgfc-arguments
 @interface SGFCArgument : NSObject
 {
 }

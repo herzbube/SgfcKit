@@ -155,7 +155,7 @@
   _rootNode = rootNode;
 }
 
-#pragma mark - Internal API
+#pragma mark - Internal API - SGFCGameInternalAdditions overrides
 
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>) wrappedGame
 {
