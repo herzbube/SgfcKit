@@ -142,8 +142,8 @@
   }
   else
   {
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithFormat:@"NSInteger value cannot be mapped to int: %@"
-                                              objectArgumentValue:@(intValue)];
+    NSString* reason = [NSString stringWithFormat:@"NSInteger value cannot be mapped to int: %@", @(intValue)];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
 
     // Dummy return to make compiler happy (compiler does not see that an
     // exception is raised)
@@ -217,7 +217,7 @@
   else
   {
     NSString* reason = [NSString stringWithFormat:@"LibSgfcPlusPlus::%@ value not mapped: %@", enumName, fromValueAsNumber];
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:reason];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
 
     // Dummy return to make compiler happy (compiler does not see that an
     // exception is raised)
@@ -239,7 +239,7 @@
   else
   {
     NSString* reason = [NSString stringWithFormat:@"%@ value not mapped: %@", enumName, fromValueAsNumber];
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:reason];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
 
     // Dummy return to make compiler happy (compiler does not see that an
     // exception is raised)

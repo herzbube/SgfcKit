@@ -62,6 +62,10 @@
 + (void) raiseInvalidOperationExceptionWithCStringReason:(const char*)reason;
 
 /// @brief Raises an NSInternalInconsistencyException using @a reason as the
+/// reason.
++ (void) raiseInternalInconsistencyExceptionWithReason:(NSString*)reason;
+
+/// @brief Raises an NSInternalInconsistencyException using @a reason as the
 /// reason. @a reason is assumed to have UTF-8 encoding.
 + (void) raiseInternalInconsistencyExceptionWithCStringReason:(const char*)reason;
 

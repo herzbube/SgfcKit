@@ -69,12 +69,17 @@
   [self raiseInvalidOperationExceptionWithReason:[NSString stringWithUTF8String:reason]];
 }
 
-+ (void) raiseInternalInconsistencyExceptionWithCStringReason:(const char*)reason
++ (void) raiseInternalInconsistencyExceptionWithReason:(NSString*)reason
 {
   NSException* exception = [NSException exceptionWithName:NSInternalInconsistencyException
-                                                   reason:[NSString stringWithUTF8String:reason]
+                                                   reason:reason
                                                  userInfo:nil];
   @throw exception;
+}
+
++ (void) raiseInternalInconsistencyExceptionWithCStringReason:(const char*)reason
+{
+  [self raiseInternalInconsistencyExceptionWithReason:[NSString stringWithUTF8String:reason]];
 }
 
 + (void) raiseNotImplementedExceptionWithReason:(NSString*)what
