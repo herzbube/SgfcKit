@@ -17,8 +17,10 @@
 // Project includes
 #import "../include/SGFCArgumentType.h"
 #import "../include/SGFCColor.h"
+#import "../include/SGFCCoordinateSystem.h"
 #import "../include/SGFCDouble.h"
 #import "../include/SGFCGameType.h"
+#import "../include/SGFCGoPointNotation.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
 #import "SGFCPrivateConstants.h"
@@ -26,8 +28,10 @@
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcArgumentType.h>
 #import <libsgfcplusplus/SgfcColor.h>
+#import <libsgfcplusplus/SgfcCoordinateSystem.h>
 #import <libsgfcplusplus/SgfcDouble.h>
 #import <libsgfcplusplus/SgfcGameType.h>
+#import <libsgfcplusplus/SgfcGoPointNotation.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
 
@@ -436,4 +440,30 @@ NSDictionary* propertyValueTypeFromSgfcKitMap =
   @(SGFCPropertyValueTypeMove) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Move)),
   @(SGFCPropertyValueTypeStone) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Stone)),
   @(SGFCPropertyValueTypeUnknown) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Unknown)),
+};
+
+NSDictionary* coordinateSystemToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::UpperLeftOrigin)) : @(SGFCCoordinateSystemUpperLeftOrigin),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::LowerLeftOrigin)) : @(SGFCCoordinateSystemLowerLeftOrigin),
+};
+
+NSDictionary* coordinateSystemFromSgfcKitMap =
+@{
+  @(SGFCCoordinateSystemUpperLeftOrigin) : @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::UpperLeftOrigin)),
+  @(SGFCCoordinateSystemLowerLeftOrigin) : @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::LowerLeftOrigin)),
+};
+
+NSDictionary* goPointNotationToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Sgf)) : @(SGFCGoPointNotationSgf),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Figure)) : @(SGFCGoPointNotationFigure),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Hybrid)) : @(SGFCGoPointNotationHybrid),
+};
+
+NSDictionary* goPointNotationFromSgfcKitMap =
+@{
+  @(SGFCGoPointNotationSgf) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Sgf)),
+  @(SGFCGoPointNotationFigure) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Figure)),
+  @(SGFCGoPointNotationHybrid) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Hybrid)),
 };

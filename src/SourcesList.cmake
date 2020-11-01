@@ -55,11 +55,13 @@ set (
   ../include/SGFCColorPropertyValue.h
   ../include/SGFCComposedPropertyValue.h
   ../include/SGFCConstants.h
+  ../include/SGFCCoordinateSystem.h
   ../include/SGFCDocument.h
   ../include/SGFCDouble.h
   ../include/SGFCDoublePropertyValue.h
   ../include/SGFCGame.h
   ../include/SGFCGameType.h
+  ../include/SGFCGoPointNotation.h
   ../include/SGFCMovePropertyValue.h
   ../include/SGFCKitFactory.h
   ../include/SGFCNode.h

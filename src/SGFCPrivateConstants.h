@@ -46,6 +46,14 @@ extern NSDictionary* colorToSgfcKitMap;
 /// values from the libsgfc++ enumeration SgfcColor.
 extern NSDictionary* colorFromSgfcKitMap;
 
+/// @brief Maps values from the libsgfc++ enumeration SgfcCoordinateSystem to
+/// values from the SgfcKit enumeration SGFCCoordinateSystem.
+extern NSDictionary* coordinateSystemToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCCoordinateSystem to
+/// values from the libsgfc++ enumeration SgfcCoordinateSystem.
+extern NSDictionary* coordinateSystemFromSgfcKitMap;
+
 /// @brief Maps values from the libsgfc++ enumeration SgfcDouble to
 /// values from the SgfcKit enumeration SGFCDouble.
 extern NSDictionary* doubleToSgfcKitMap;
@@ -61,6 +69,14 @@ extern NSDictionary* gameTypeToSgfcKitMap;
 /// @brief Maps values from the SgfcKit enumeration SGFCGameType to values
 /// from the libsgfc++ enumeration SgfcGameType.
 extern NSDictionary* gameTypeFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcGoPointNotation to
+/// values from the SgfcKit enumeration SGFCGoPointNotation.
+extern NSDictionary* goPointNotationToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCGoPointNotation to
+/// values from the libsgfc++ enumeration SgfcGoPointNotation.
+extern NSDictionary* goPointNotationFromSgfcKitMap;
 
 /// @brief Maps values from the libsgfc++ enumeration SgfcPropertyType to values
 /// from the SgfcKit enumeration SGFCPropertyType.

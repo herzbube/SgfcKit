@@ -62,6 +62,22 @@
   return static_cast<LibSgfcPlusPlus::SgfcColor>(mappedValue);
 }
 
++ (SGFCCoordinateSystem) toSgfcKitCoordinateSystem:(LibSgfcPlusPlus::SgfcCoordinateSystem)coordinateSystem
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(coordinateSystem)
+                                                     usingMap:coordinateSystemToSgfcKitMap
+                                                 withEnumName:@"SgfcCoordinateSystem"];
+  return static_cast<SGFCCoordinateSystem>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcCoordinateSystem) fromSgfcKitCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:coordinateSystem
+                                                usingMap:coordinateSystemFromSgfcKitMap
+                                            withEnumName:@"SGFCCoordinateSystem"];
+  return static_cast<LibSgfcPlusPlus::SgfcCoordinateSystem>(mappedValue);
+}
+
 + (SGFCDouble) toSgfcKitDouble:(LibSgfcPlusPlus::SgfcDouble)doubleValue
 {
   NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(doubleValue)
@@ -92,6 +108,22 @@
                                                 usingMap:gameTypeFromSgfcKitMap
                                             withEnumName:@"SGFCGameType"];
   return static_cast<LibSgfcPlusPlus::SgfcGameType>(mappedValue);
+}
+
++ (SGFCGoPointNotation) toSgfcKitGoPointNotation:(LibSgfcPlusPlus::SgfcGoPointNotation)goPointNotation
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(goPointNotation)
+                                                     usingMap:goPointNotationToSgfcKitMap
+                                                 withEnumName:@"SgfcGoPointNotation"];
+  return static_cast<SGFCGoPointNotation>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcGoPointNotation) fromSgfcKitGoPointNotation:(SGFCGoPointNotation)goPointNotation
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:goPointNotation
+                                                usingMap:goPointNotationFromSgfcKitMap
+                                            withEnumName:@"SGFCGoPointNotation"];
+  return static_cast<LibSgfcPlusPlus::SgfcGoPointNotation>(mappedValue);
 }
 
 + (SGFCPropertyType) toSgfcKitPropertyType:(LibSgfcPlusPlus::SgfcPropertyType)propertyType

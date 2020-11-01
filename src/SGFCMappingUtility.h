@@ -19,8 +19,10 @@
 // Project includes
 #import "../include/SGFCArgumentType.h"
 #import "../include/SGFCColor.h"
+#import "../include/SGFCCoordinateSystem.h"
 #import "../include/SGFCDouble.h"
 #import "../include/SGFCGameType.h"
+#import "../include/SGFCGoPointNotation.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
 #import "../include/SGFCTypedefs.h"
@@ -28,8 +30,10 @@
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcArgumentType.h>
 #import <libsgfcplusplus/SgfcColor.h>
+#import <libsgfcplusplus/SgfcCoordinateSystem.h>
 #import <libsgfcplusplus/SgfcDouble.h>
 #import <libsgfcplusplus/SgfcGameType.h>
+#import <libsgfcplusplus/SgfcGoPointNotation.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
 #import <libsgfcplusplus/SgfcTypedefs.h>
@@ -111,6 +115,36 @@
 /// #colorFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcColor) fromSgfcKitColor:(SGFCColor)color;
 
+/// @brief Maps a value from the SgfcKit enumeration SGFCCoordinateSystem to
+/// the corresponding value from the libsgfc++ enumeration
+/// SgfcCoordinateSystem.
+///
+/// This is a convenience function that looks up @a coordinateSystem in
+/// #coordinateSystemToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a coordinateSystem does not appear in
+/// #coordinateSystemToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcCoordinateSystem value was not added to
+/// #coordinateSystemToSgfcKitMap.
++ (SGFCCoordinateSystem) toSgfcKitCoordinateSystem:(LibSgfcPlusPlus::SgfcCoordinateSystem)coordinateSystem;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcCoordinateSystem to
+/// the corresponding value from the the SgfcKit enumeration
+/// SGFCCoordinateSystem.
+///
+/// This is a convenience function that looks up @a coordinateSystem in
+/// #coordinateSystemFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a coordinateSystem does not appear in
+/// #coordinateSystemFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCCoordinateSystem value was not added to
+/// #coordinateSystemFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcCoordinateSystem) fromSgfcKitCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem;
+
 /// @brief Maps a value from the SgfcKit enumeration SGFCDouble to
 /// the corresponding value from the libsgfc++ enumeration
 /// SgfcDouble.
@@ -168,6 +202,36 @@
 /// SGFCGameType value was not added to
 /// #gameTypeFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcGameType) fromSgfcKitGameType:(SGFCGameType)gameType;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCGoPointNotation to
+/// the corresponding value from the libsgfc++ enumeration
+/// SgfcGoPointNotation.
+///
+/// This is a convenience function that looks up @a goPointNotation in
+/// #goPointNotationToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a goPointNotation does not appear in
+/// #goPointNotationToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcGoPointNotation value was not added to
+/// #goPointNotationToSgfcKitMap.
++ (SGFCGoPointNotation) toSgfcKitGoPointNotation:(LibSgfcPlusPlus::SgfcGoPointNotation)goPointNotation;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcGoPointNotation to
+/// the corresponding value from the the SgfcKit enumeration
+/// SGFCGoPointNotation.
+///
+/// This is a convenience function that looks up @a goPointNotation in
+/// #goPointNotationFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a goPointNotation does not appear in
+/// #goPointNotationFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCGoPointNotation value was not added to
+/// #goPointNotationFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcGoPointNotation) fromSgfcKitGoPointNotation:(SGFCGoPointNotation)goPointNotation;
 
 /// @brief Maps a value from the SgfcKit enumeration SGFCPropertyType to the
 /// corresponding value from the libsgfc++ enumeration SgfcPropertyType.
