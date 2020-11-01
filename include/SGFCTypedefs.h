@@ -17,13 +17,13 @@
 #pragma once
 
 /// @brief The SGFCNumber type represents the Number value type defined by
-/// the SGF standard.
+/// the SGF standard. Values are signed integer numbers.
 ///
 /// @ingroup public-api
 typedef long SGFCNumber;
 
 /// @brief The SGFCReal type represents the Real value type defined by
-/// the SGF standard.
+/// the SGF standard. Values are signed floating point numbers.
 ///
 /// @ingroup public-api
 typedef double SGFCReal;

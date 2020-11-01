@@ -71,12 +71,14 @@
   _wrappedColorPropertyValue = nullptr;
 }
 
-#pragma mark - Public API
+#pragma mark - SGFCSinglePropertyValue overrides
 
 - (SGFCColorPropertyValue*) toColorValue
 {
   return self;
 }
+
+#pragma mark - Public API
 
 - (SGFCColor) colorValue
 {

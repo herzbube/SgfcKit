@@ -23,17 +23,6 @@
 // System includes
 #import <Foundation/NSObject.h>
 
-// Forward declarations
-@class SGFCNumberPropertyValue;
-@class SGFCRealPropertyValue;
-@class SGFCDoublePropertyValue;
-@class SGFCColorPropertyValue;
-@class SGFCSimpleTextPropertyValue;
-@class SGFCTextPropertyValue;
-@class SGFCPointPropertyValue;
-@class SGFCMovePropertyValue;
-@class SGFCStonePropertyValue;
-
 /// @brief The SGFCComposedPropertyValue class provides access to one of
 /// the values of a property of an SGF node. The value is a composite of two
 /// SGFCSinglePropertyValue objects.

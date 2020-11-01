@@ -37,7 +37,8 @@
 ///
 /// This is the designated initializer of SGFCArgument.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a wrappedArgument is @e nil.
+/// @exception NSInvalidArgumentException Is raised if @a wrappedArgument is
+/// @e nullptr.
 - (id) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument;
 
 /// @brief Returns the wrapped libsgfc++ object.
