@@ -17,6 +17,7 @@
 // Project includes
 #import "../../../include/SGFCMovePropertyValue.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
+#import "../../interface/internal/SGFCStonePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
 
@@ -101,6 +102,17 @@
 - (SGFCGoMovePropertyValue*) toGoMoveValue
 {
   return nil;
+}
+
+#pragma mark - Internal API - SGFCMovePropertyValueInternalAdditions overrides
+
+- (void) setWrappedMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcMovePropertyValue>)wrappedMovePropertyValue
+{
+  if (wrappedMovePropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedMovePropertyValue\" is nullptr"];
+
+  [self setWrappedSinglePropertyValue:wrappedMovePropertyValue];
+  _wrappedMovePropertyValue = wrappedMovePropertyValue;
 }
 
 @end
