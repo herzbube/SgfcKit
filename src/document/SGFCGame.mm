@@ -123,21 +123,14 @@
 
 - (SGFCBoardSize) boardSize
 {
-  LibSgfcPlusPlus::SgfcBoardSize wrappedBoardSize;
-
   try
   {
-    wrappedBoardSize = _wrappedGame->GetBoardSize();
+    return [SGFCMappingUtility toSgfcKitBoardSize:_wrappedGame->GetBoardSize()];
   }
   catch (std::logic_error& exception)
   {
     [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
   }
-
-  SGFCBoardSize boardSize = SGFCBoardSizeMake(
-    [SGFCMappingUtility toSgfcKitNumber:wrappedBoardSize.Columns],
-    [SGFCMappingUtility toSgfcKitNumber:wrappedBoardSize.Rows]);
-  return boardSize;
 }
 
 - (BOOL) hasRootNode

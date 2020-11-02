@@ -64,14 +64,9 @@
   self = [self initWithGoStone:stoneValue
                          color:color];
 
-  LibSgfcPlusPlus::SgfcBoardSize wrappedBoardSize =
-  {
-    [SGFCMappingUtility fromSgfcKitNumber:boardSize.Columns],
-    [SGFCMappingUtility fromSgfcKitNumber:boardSize.Rows]
-  };
   _wrappedGoStonePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoStonePropertyValue(
     [SGFCMappingUtility fromSgfcKitString:stoneValue],
-    wrappedBoardSize,
+    [SGFCMappingUtility fromSgfcKitBoardSize:boardSize],
     [SGFCMappingUtility fromSgfcKitColor:color]);
   self.goStone = [[SGFCGoStone alloc] initWithWrappedGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
 

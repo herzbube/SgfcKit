@@ -18,6 +18,7 @@
 
 // Project includes
 #import "../include/SGFCArgumentType.h"
+#import "../include/SGFCBoardSize.h"
 #import "../include/SGFCColor.h"
 #import "../include/SGFCCoordinateSystem.h"
 #import "../include/SGFCDouble.h"
@@ -29,6 +30,7 @@
 
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcArgumentType.h>
+#import <libsgfcplusplus/SgfcBoardSize.h>
 #import <libsgfcplusplus/SgfcColor.h>
 #import <libsgfcplusplus/SgfcCoordinateSystem.h>
 #import <libsgfcplusplus/SgfcDouble.h>
@@ -344,5 +346,13 @@
 /// @brief Maps an SGFCReal value (used in SgfcKit) to an SgfcReal value
 /// (used in libsgfc++).
 + (LibSgfcPlusPlus::SgfcReal) fromSgfcKitReal:(SGFCReal)realValue;
+
+/// @brief Maps an SgfcBoardSize value (used in libsgfc++) to an SGFCBoardSize
+/// value (used in SgfcKit).
++ (SGFCBoardSize) toSgfcKitBoardSize:(LibSgfcPlusPlus::SgfcBoardSize)boardSizeValue;
+
+/// @brief Maps an SGFCBoardSize value (used in SgfcKit) to an SgfcBoardSize
+/// value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcBoardSize) fromSgfcKitBoardSize:(SGFCBoardSize)boardSizeValue;
 
 @end

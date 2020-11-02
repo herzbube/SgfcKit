@@ -71,14 +71,9 @@
 
   self = [self initWithColor:color];
 
-  LibSgfcPlusPlus::SgfcBoardSize wrappedBoardSize =
-  {
-    [SGFCMappingUtility fromSgfcKitNumber:boardSize.Columns],
-    [SGFCMappingUtility fromSgfcKitNumber:boardSize.Rows]
-  };
   _wrappedGoMovePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoMovePropertyValue(
     [SGFCMappingUtility fromSgfcKitString:moveValue],
-    wrappedBoardSize,
+    [SGFCMappingUtility fromSgfcKitBoardSize:boardSize],
     [SGFCMappingUtility fromSgfcKitColor:color]);
   self.goMove = [[SGFCGoMove alloc] initWithWrappedGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
 

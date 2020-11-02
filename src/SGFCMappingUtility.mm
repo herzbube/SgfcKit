@@ -304,4 +304,22 @@
   }
 }
 
++ (SGFCBoardSize) toSgfcKitBoardSize:(LibSgfcPlusPlus::SgfcBoardSize)boardSizeValue
+{
+  SGFCBoardSize mappedBoardSize = SGFCBoardSizeMake(
+    [SGFCMappingUtility toSgfcKitNumber:boardSizeValue.Columns],
+    [SGFCMappingUtility toSgfcKitNumber:boardSizeValue.Rows]);
+  return mappedBoardSize;
+}
+
++ (LibSgfcPlusPlus::SgfcBoardSize) fromSgfcKitBoardSize:(SGFCBoardSize)boardSizeValue
+{
+  LibSgfcPlusPlus::SgfcBoardSize mappedBoardSize =
+  {
+    [SGFCMappingUtility fromSgfcKitNumber:boardSizeValue.Columns],
+    [SGFCMappingUtility fromSgfcKitNumber:boardSizeValue.Rows]
+  };
+  return mappedBoardSize;
+}
+
 @end
