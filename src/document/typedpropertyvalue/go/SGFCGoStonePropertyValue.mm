@@ -41,17 +41,17 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
-                                             boardSize:(SGFCBoardSize)boardSize
-                                                 color:(SGFCColor)color
++ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStone:(NSString*)stoneValue
+                                                    boardSize:(SGFCBoardSize)boardSize
+                                                        color:(SGFCColor)color
 {
   return [[SGFCGoStonePropertyValue alloc] initWithGoStone:stoneValue
                                                  boardSize:boardSize
                                                      color:color];
 }
 
-+ (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
-                                                 color:(SGFCColor)color
++ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStone:(NSString*)stoneValue
+                                                        color:(SGFCColor)color
 {
   return [[SGFCGoStonePropertyValue alloc] initWithGoStone:stoneValue
                                                      color:color];

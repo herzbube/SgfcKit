@@ -59,9 +59,9 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-+ (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
-                                           boardSize:(SGFCBoardSize)boardSize
-                                               color:(SGFCColor)color;
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMove:(NSString*)moveValue
+                                                 boardSize:(SGFCBoardSize)boardSize
+                                                     color:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move
@@ -75,13 +75,13 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
-+ (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
-                                                color:(SGFCColor)color;
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMove:(NSString*)moveValue
+                                                     color:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move
 /// specified by @a color. The move is a pass move.
-+ (SGFCGoMovePropertyValue*) propertyValueWithColor:(SGFCColor)color;
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithColor:(SGFCColor)color;
 
 /// @brief Initializes an SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move

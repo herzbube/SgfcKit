@@ -41,23 +41,23 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
-                                           boardSize:(SGFCBoardSize)boardSize
-                                               color:(SGFCColor)color
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMove:(NSString*)moveValue
+                                                 boardSize:(SGFCBoardSize)boardSize
+                                                     color:(SGFCColor)color
 {
   return [[SGFCGoMovePropertyValue alloc] initWithGoMove:moveValue
                                                boardSize:boardSize
                                                    color:color];
 }
 
-+ (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
-                                               color:(SGFCColor)color
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMove:(NSString*)moveValue
+                                                     color:(SGFCColor)color
 {
   return [[SGFCGoMovePropertyValue alloc] initWithGoMove:moveValue
                                                    color:color];
 }
 
-+ (SGFCGoMovePropertyValue*) propertyValueWithColor:(SGFCColor)color;
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithColor:(SGFCColor)color
 {
   return [[SGFCGoMovePropertyValue alloc] initWithColor:color];
 }
