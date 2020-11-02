@@ -16,7 +16,11 @@
 
 // Project includes
 #import "../../include/SGFCColorPropertyValue.h"
+#import "../../include/SGFCComposedPropertyValue.h"
 #import "../../include/SGFCDoublePropertyValue.h"
+#import "../../include/SGFCGoMovePropertyValue.h"
+#import "../../include/SGFCGoPointPropertyValue.h"
+#import "../../include/SGFCGoStonePropertyValue.h"
 #import "../../include/SGFCMovePropertyValue.h"
 #import "../../include/SGFCNumberPropertyValue.h"
 #import "../../include/SGFCPointPropertyValue.h"
@@ -78,122 +82,128 @@
 
 + (SGFCSinglePropertyValue*) propertyValueWithValue:(NSString*)value
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithValue:"];
-  return nil;
+  return [SGFCSinglePropertyValue singlePropertyValueWithRawValue:value];
 }
 
 + (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue
                                              boardSize:(SGFCBoardSize)boardSize
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithGoPoint:boardSize:"];
-  return nil;
+  return [SGFCGoPointPropertyValue goPointPropertyValueWithPointValue:pointValue
+                                                            boardSize:boardSize];
 }
 
 + (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithGoPoint:"];
-  return nil;
+  return [SGFCGoPointPropertyValue goPointPropertyValueWithPointValue:pointValue];
 }
 
 + (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
                                            boardSize:(SGFCBoardSize)boardSize
                                                color:(SGFCColor)color
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithGoMove:boardSize:color:"];
-  return nil;
+  return [SGFCGoMovePropertyValue goMovePropertyValueWithGoMove:moveValue
+                                                      boardSize:boardSize
+                                                          color:color];
 }
 
 + (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
                                                color:(SGFCColor)color
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithGoMove:color:"];
-  return nil;
+  return [SGFCGoMovePropertyValue goMovePropertyValueWithGoMove:moveValue
+                                                          color:color];
 }
 
-+ (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(SGFCColor)color
++ (SGFCGoMovePropertyValue*) propertyValueWithGoMovePlayedByColor:(SGFCColor)color
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithGoMove:"];
-  return nil;
+  return [SGFCGoMovePropertyValue goMovePropertyValueWithColor:color];
 }
 
 + (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
                                              boardSize:(SGFCBoardSize)boardSize
                                                  color:(SGFCColor)color
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithGoStone:boardSize:color:"];
-  return nil;
+  return [SGFCGoStonePropertyValue goStonePropertyValueWithGoStone:stoneValue
+                                                         boardSize:boardSize
+                                                             color:color];
 }
 
 + (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
                                                  color:(SGFCColor)color
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueWithGoStone:color:"];
-  return nil;
+  return [SGFCGoStonePropertyValue goStonePropertyValueWithGoStone:stoneValue
+                                                             color:color];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithNumber:(SGFCNumber)numberValue1
                                                         number:(SGFCNumber)numberValue2
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithNumber:number:"];
-  return nil;
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:[SGFCPropertyValueFactory propertyValueWithNumber:numberValue1]
+                                                             value2:[SGFCPropertyValueFactory propertyValueWithNumber:numberValue2]];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithSimpleText:(NSString*)simpleTextValue1
                                                         simpleText:(NSString*)simpleTextValue2
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithSimpleText:simpleText:"];
-  return nil;
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:[SGFCPropertyValueFactory propertyValueWithSimpleText:simpleTextValue1]
+                                                             value2:[SGFCPropertyValueFactory propertyValueWithSimpleText:simpleTextValue2]];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithNumber:(SGFCNumber)numberValue
                                                     simpleText:(NSString*)simpleTextValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithNumber:simpleText:"];
-  return nil;
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:[SGFCPropertyValueFactory propertyValueWithNumber:numberValue]
+                                                             value2:[SGFCPropertyValueFactory propertyValueWithSimpleText:simpleTextValue]];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithPoint:(NSString*)pointValue1
                                                         point:(NSString*)pointValue2
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithPoint:point:"];
-  return nil;
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:[SGFCPropertyValueFactory propertyValueWithPoint:pointValue1]
+                                                             value2:[SGFCPropertyValueFactory propertyValueWithPoint:pointValue2]];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithPoint:(NSString*)pointValue
                                                    simpleText:(NSString*)simpleTextValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithPoint:simpleText:"];
-  return nil;
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:[SGFCPropertyValueFactory propertyValueWithPoint:pointValue]
+                                                             value2:[SGFCPropertyValueFactory propertyValueWithSimpleText:simpleTextValue]];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithStone:(NSString*)stoneValue
                                                         point:(NSString*)pointValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithStone:point:"];
-  return nil;
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:[SGFCPropertyValueFactory propertyValueWithStone:stoneValue]
+                                                             value2:[SGFCPropertyValueFactory propertyValueWithPoint:pointValue]];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithValue1:(SGFCSinglePropertyValue*)valueObject1
                                                         value2:(SGFCSinglePropertyValue*)valueObject2
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithValue1:value2:"];
-  return nil;
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:valueObject1
+                                                             value2:valueObject2];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithGoPoint:(NSString*)pointValue1
                                                         goPoint:(NSString*)pointValue2
                                                       boardSize:(SGFCBoardSize)boardSize
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithGoPoint:goPoint:boardSize:"];
-  return nil;
+  SGFCGoPointPropertyValue* valueObject1 = [SGFCPropertyValueFactory propertyValueWithGoPoint:pointValue1
+                                                                                    boardSize:boardSize];
+  SGFCGoPointPropertyValue* valueObject2 = [SGFCPropertyValueFactory propertyValueWithGoPoint:pointValue2
+                                                                                    boardSize:boardSize];
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:valueObject1
+                                                             value2:valueObject2];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithGoPoint:(NSString*)pointValue
                                                       boardSize:(SGFCBoardSize)boardSize
                                                      simpleText:(NSString*)simpleTextValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithGoPoint:boardSize:simpleText:"];
-  return nil;
+  SGFCGoPointPropertyValue* valueObject1 = [SGFCPropertyValueFactory propertyValueWithGoPoint:pointValue
+                                                                                    boardSize:boardSize];
+  SGFCSimpleTextPropertyValue* valueObject2 = [SGFCPropertyValueFactory propertyValueWithSimpleText:simpleTextValue];
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:valueObject1
+                                                             value2:valueObject2];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithGoStone:(NSString*)stoneValue
@@ -201,8 +211,13 @@
                                                         goPoint:(NSString*)pointValue
                                                       boardSize:(SGFCBoardSize)boardSize
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"composedPropertyValueWithGoStone:color:goPoint:boardSize:"];
-  return nil;
+  SGFCGoStonePropertyValue* valueObject1 = [SGFCPropertyValueFactory propertyValueWithGoStone:stoneValue
+                                                                                    boardSize:boardSize
+                                                                                        color:color];
+  SGFCGoPointPropertyValue* valueObject2 = [SGFCPropertyValueFactory propertyValueWithGoPoint:pointValue
+                                                                                    boardSize:boardSize];
+  return [SGFCComposedPropertyValue composedPropertyValueWithValue1:valueObject1
+                                                             value2:valueObject2];
 }
 
 @end

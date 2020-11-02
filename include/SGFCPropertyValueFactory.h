@@ -193,7 +193,7 @@
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object
 /// that has no value. @a color is the color of the player who made the
 /// move. The move is a pass move.
-+ (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(SGFCColor)color;
++ (SGFCGoMovePropertyValue*) propertyValueWithGoMovePlayedByColor:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoStonePropertyValue object
 /// that has the string value @a stoneValue. @a color is the color of the
