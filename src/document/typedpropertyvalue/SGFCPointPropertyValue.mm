@@ -96,6 +96,10 @@
   catch (std::logic_error& exception)
   {
     [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return nil;
   }
 }
 

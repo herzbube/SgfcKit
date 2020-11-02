@@ -50,6 +50,10 @@
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCGoStone.
   [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCGoStone cannot be instantiated from outside of the library"];
+
+  // Dummy return to make compiler happy (compiler does not see that an
+  // exception is raised)
+  return self;
 }
 
 - (id) initWithWrappedGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)wrappedGoStone;

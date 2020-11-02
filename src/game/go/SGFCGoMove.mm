@@ -50,6 +50,10 @@
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCGoMove.
   [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCGoMove cannot be instantiated from outside of the library"];
+
+  // Dummy return to make compiler happy (compiler does not see that an
+  // exception is raised)
+  return self;
 }
 
 - (id) initWithWrappedGoMove:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMove>)wrappedGoMove;
