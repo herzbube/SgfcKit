@@ -58,6 +58,14 @@
 + (SGFCGoPointPropertyValue*) goPointPropertyValueWithPointValue:(NSString*)pointValue
                                                        boardSize:(SGFCBoardSize)boardSize;
 
+/// @brief Returns a newly constructed SGFCGoPointPropertyValue object.
+/// No attempt is made to interpret @a pointValue. As a consequence, the
+/// SGFCGoPointPropertyValue object does not hold an SGFCGoPoint object.
+///
+/// @exception NSInvalidArgumentException Is raised if @a pointValue
+/// is @e nil.
++ (SGFCGoPointPropertyValue*) goPointPropertyValueWithPointValue:(NSString*)pointValue;
+
 /// @brief Initializes an SGFCGoPointPropertyValue object. The object
 /// holds an SGFCGoPoint object that refers to the point specified by
 /// @a pointValue. @a boardSize indicates the size of the Go board that the Go
@@ -79,10 +87,18 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-///
-/// This is the designated initializer of SGFCPointPropertyValue.
 - (id) initWithPointValue:(NSString*)pointValue
                 boardSize:(SGFCBoardSize)boardSize;
+
+/// @brief Initializes an SGFCGoPointPropertyValue object.
+/// No attempt is made to interpret @a pointValue. As a consequence, the
+/// SGFCGoPointPropertyValue object does not hold an SGFCGoPoint object.
+///
+/// @exception NSInvalidArgumentException Is raised if @a pointValue
+/// is @e nil.
+///
+/// This is the designated initializer of SGFCPointPropertyValue.
+- (id) initWithPointValue:(NSString*)pointValue;
 
 /// @brief Returns an SGFCGoPoint object that contains the property value
 /// data and makes it available in various forms and notations. Returns

@@ -48,18 +48,36 @@
                                                     boardSize:boardSize];
 }
 
++ (SGFCGoPointPropertyValue*) goPointPropertyValueWithPointValue:(NSString*)pointValue
+{
+  return [[SGFCGoPointPropertyValue alloc] initWithPointValue:pointValue];
+}
+
 - (id) initWithPointValue:(NSString*)pointValue
                 boardSize:(SGFCBoardSize)boardSize
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:pointValue
                                                  invalidArgumentName:@"pointValue"];
 
+  self = [self initWithPointValue:pointValue];
+
+  _wrappedGoPointPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoPointPropertyValue(
+    [SGFCMappingUtility fromSgfcKitString:pointValue],
+    [SGFCMappingUtility fromSgfcKitBoardSize:boardSize]);
+  self.goPoint = [[SGFCGoPoint alloc] initWithWrappedGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
+
+  [self setWrappedPointPropertyValue:_wrappedGoPointPropertyValue];
+
+  return self;
+}
+
+- (id) initWithPointValue:(NSString*)pointValue
+{
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
   // initializer has a problem.
   auto wrappedGoPointPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoPointPropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:pointValue],
-    [SGFCMappingUtility fromSgfcKitBoardSize:boardSize]);
+    [SGFCMappingUtility fromSgfcKitString:pointValue]);
 
   // Call designated initializer of superclass (SGFCPointPropertyValue).
   // The superclass creates a useless wrapped object which we are going to
@@ -69,7 +87,7 @@
     return nil;
 
   _wrappedGoPointPropertyValue = wrappedGoPointPropertyValue;
-  self.goPoint = [[SGFCGoPoint alloc] initWithWrappedGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
+  self.goPoint = nil;
 
   // Overwrite the useless wrapped object that the superclass
   // initializer created with the real wrapped object.
