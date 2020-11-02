@@ -18,7 +18,6 @@
 
 // Project includes
 #import "../../../include/SGFCPointPropertyValue.h"
-//#import "SGFCPropertyValueInternal.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcPointPropertyValue.h>
@@ -32,9 +31,6 @@
 /// @ingroup private-api
 /// @ingroup property-value
 @interface SGFCPointPropertyValue(SGFCPointPropertyValueInternalAdditions)
-
-///// @brief Returns the wrapped libsgfc++ object.
-//- (std::shared_ptr<LibSgfcPlusPlus::ISgfcPointPropertyValue>) wrappedPointPropertyValue;
 
 /// @brief Sets the wrapped libsgfc++ object to @a wrappedPointPropertyValue.
 ///

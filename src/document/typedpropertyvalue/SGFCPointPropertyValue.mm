@@ -16,6 +16,7 @@
 
 // Project includes
 #import "../../../include/SGFCPointPropertyValue.h"
+#import "../../interface/internal/SGFCPointPropertyValueInternalAdditions.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"

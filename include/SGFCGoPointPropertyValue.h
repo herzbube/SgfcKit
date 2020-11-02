@@ -79,6 +79,8 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
+///
+/// This is the designated initializer of SGFCPointPropertyValue.
 - (id) initWithPointValue:(NSString*)pointValue
                 boardSize:(SGFCBoardSize)boardSize;
 

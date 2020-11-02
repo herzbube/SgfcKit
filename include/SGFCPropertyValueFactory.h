@@ -229,7 +229,7 @@
 ///
 /// @a stoneValue refers to the Go point on which the stone is located.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a moveValue
+/// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
 + (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
                                                  color:(SGFCColor)color;
