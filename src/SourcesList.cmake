@@ -78,8 +78,8 @@ set (
   ../include/SGFCGoPoint.h
   ../include/SGFCGoPointNotation.h
   ../include/SGFCGoPointPropertyValue.h
-  ../include/SGFCGoStonePropertyValue.h
   ../include/SGFCGoStone.h
+  ../include/SGFCGoStonePropertyValue.h
   ../include/SGFCMovePropertyValue.h
   ../include/SGFCKitFactory.h
   ../include/SGFCNode.h

@@ -64,11 +64,11 @@
 
   _wrappedGoStone = wrappedGoStone;
 
-  auto location = _wrappedGoStone->GetLocation();
-  if (location == nullptr)
+  auto wrappedLocation = _wrappedGoStone->GetLocation();
+  if (wrappedLocation == nullptr)
     self.location = nil;
   else
-    self.location = [[SGFCGoPoint alloc] initWithWrappedGoPoint:location];
+    self.location = [[SGFCGoPoint alloc] initWithWrappedGoPoint:wrappedLocation];
 
   return self;
 }

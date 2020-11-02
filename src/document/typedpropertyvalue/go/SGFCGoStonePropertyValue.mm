@@ -75,6 +75,8 @@
     [SGFCMappingUtility fromSgfcKitColor:color]);
   self.goStone = [[SGFCGoStone alloc] initWithWrappedGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
 
+  [self setWrappedStonePropertyValue:_wrappedGoStonePropertyValue];
+
   return self;
 }
 
@@ -94,7 +96,7 @@
   // Call designated initializer of superclass (SGFCStonePropertyValue).
   // The superclass creates a useless wrapped object which we are going to
   // overwrite in a moment.
-  self = [super initWithStoneValue:stoneValue];
+  self = [super initWithStoneValue:[SGFCMappingUtility toSgfcKitString:wrappedGoStonePropertyValue->GetRawStoneValue()]];
   if (! self)
     return nil;
 

@@ -50,7 +50,7 @@
 /// a board that is not square, a board with size smaller than the minimum
 /// required by the SGF standard (#SGFCBoardSizeMinimum), or a
 /// board with size larger than the maximum allowed by the SGF standard
-/// (#SGFCBoardSizeMaximumGo). Is also thrown if @a stoneValue is
+/// (#SGFCBoardSizeMaximumGo). Is also raised if @a stoneValue is
 /// not given in one of the notations enumerated in SGFCGoPointNotation, or
 /// if @a stoneValue violates one of the restrictions imposed by the used
 /// notation (e.g. y-axis compound larger than 25 when
@@ -90,7 +90,7 @@
 /// a board that is not square, a board with size smaller than the minimum
 /// required by the SGF standard (#SGFCBoardSizeMinimum), or a
 /// board with size larger than the maximum allowed by the SGF standard
-/// (#SGFCBoardSizeMaximumGo). Is also thrown if @a stoneValue is
+/// (#SGFCBoardSizeMaximumGo). Is also raised if @a stoneValue is
 /// not given in one of the notations enumerated in SGFCGoPointNotation, or
 /// if @a stoneValue violates one of the restrictions imposed by the used
 /// notation (e.g. y-axis compound larger than 25 when

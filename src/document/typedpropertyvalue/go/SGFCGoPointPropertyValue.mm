@@ -69,7 +69,7 @@
   // Call designated initializer of superclass (SGFCPointPropertyValue).
   // The superclass creates a useless wrapped object which we are going to
   // overwrite in a moment.
-  self = [super initWithPointValue:pointValue];
+  self = [super initWithPointValue:[SGFCMappingUtility toSgfcKitString:wrappedGoPointPropertyValue->GetRawPointValue()]];
   if (! self)
     return nil;
 
