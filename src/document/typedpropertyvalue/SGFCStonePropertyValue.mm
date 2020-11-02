@@ -17,6 +17,7 @@
 // Project includes
 #import "../../../include/SGFCStonePropertyValue.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
+#import "../../interface/internal/SGFCStonePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
 
@@ -101,6 +102,17 @@
 - (SGFCGoStonePropertyValue*) toGoStoneValue
 {
   return nil;
+}
+
+#pragma mark - Internal API - SGFCStonePropertyValueInternalAdditions overrides
+
+- (void) setWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue
+{
+  if (wrappedStonePropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedStonePropertyValue\" is nullptr"];
+
+  [self setWrappedSinglePropertyValue:wrappedStonePropertyValue];
+  _wrappedStonePropertyValue = wrappedStonePropertyValue;
 }
 
 @end
