@@ -41,7 +41,7 @@
 /// The object holds the Real value @a realValue.
 ///
 /// This is the designated initializer of SGFCRealPropertyValue.
-- (id) initWithRealValue:(SGFCReal)realValue;
+- (id) initWithRealValue:(SGFCReal)realValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as an SGFCReal value.
 ///

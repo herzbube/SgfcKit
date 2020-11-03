@@ -30,6 +30,9 @@
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPoint> _wrappedGoPoint;
 }
+
+- (id) initWithWrappedGoPoint:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPoint>)wrappedGoPoint NS_DESIGNATED_INITIALIZER;
+
 @end
 
 @implementation SGFCGoPoint
@@ -38,18 +41,13 @@
 
 - (id) init
 {
-  // Call designated initializer of superclass (NSObject)
-  self = [super init];
-  if (! self)
-    return nil;
-
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCGoPoint.
   [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCGoPoint cannot be instantiated from outside of the library"];
 
   // Dummy return to make compiler happy (compiler does not see that an
   // exception is raised)
-  return self;
+  return [self initWithWrappedGoPoint:nullptr];
 }
 
 - (id) initWithWrappedGoPoint:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPoint>)wrappedGoPoint;

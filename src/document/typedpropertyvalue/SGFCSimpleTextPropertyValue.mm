@@ -45,6 +45,11 @@
   return [[SGFCSimpleTextPropertyValue alloc] initWithSimpleTextValue:simpleTextValue];
 }
 
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  return [self initWithSimpleTextValue:rawValue];
+}
+
 - (id) initWithSimpleTextValue:(NSString*)simpleTextValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:simpleTextValue

@@ -42,6 +42,12 @@
   return [[SGFCNumberPropertyValue alloc] initWithNumberValue:numberValue];
 }
 
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  // TODO Attempt to convert to an SGFCNumber
+  return [self initWithNumberValue:0];
+}
+
 - (id) initWithNumberValue:(SGFCNumber)numberValue
 {
   // Create the actual wrapped object so that we can take the raw value from it.

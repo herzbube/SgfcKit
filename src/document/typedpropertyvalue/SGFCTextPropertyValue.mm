@@ -45,6 +45,11 @@
   return [[SGFCTextPropertyValue alloc] initWithTextValue:textValue];
 }
 
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  return [self initWithTextValue:rawValue];
+}
+
 - (id) initWithTextValue:(NSString*)textValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:textValue

@@ -32,6 +32,8 @@
   std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone> _wrappedGoStone;
 }
 
+- (id) initWithWrappedGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)wrappedGoStone NS_DESIGNATED_INITIALIZER;
+
 @property(nonatomic, strong, readwrite) SGFCGoPoint* location;
 
 @end
@@ -42,18 +44,13 @@
 
 - (id) init
 {
-  // Call designated initializer of superclass (NSObject)
-  self = [super init];
-  if (! self)
-    return nil;
-
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCGoStone.
   [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCGoStone cannot be instantiated from outside of the library"];
 
   // Dummy return to make compiler happy (compiler does not see that an
   // exception is raised)
-  return self;
+  return [self initWithWrappedGoStone:nullptr];
 }
 
 - (id) initWithWrappedGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)wrappedGoStone;

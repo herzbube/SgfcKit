@@ -41,28 +41,34 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStone:(NSString*)stoneValue
-                                                    boardSize:(SGFCBoardSize)boardSize
-                                                        color:(SGFCColor)color
++ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
+                                                         boardSize:(SGFCBoardSize)boardSize
+                                                             color:(SGFCColor)color
 {
-  return [[SGFCGoStonePropertyValue alloc] initWithGoStone:stoneValue
-                                                 boardSize:boardSize
-                                                     color:color];
+  return [[SGFCGoStonePropertyValue alloc] initWithGoStoneValue:stoneValue
+                                                      boardSize:boardSize
+                                                          color:color];
 }
 
-+ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStone:(NSString*)stoneValue
-                                                        color:(SGFCColor)color
++ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
+                                                             color:(SGFCColor)color
 {
-  return [[SGFCGoStonePropertyValue alloc] initWithGoStone:stoneValue
-                                                     color:color];
+  return [[SGFCGoStonePropertyValue alloc] initWithGoStoneValue:stoneValue
+                                                          color:color];
 }
 
-- (id) initWithGoStone:(NSString*)stoneValue
-             boardSize:(SGFCBoardSize)boardSize
-                 color:(SGFCColor)color
+- (id) initWithStoneValue:(NSString*)stoneValue
 {
-  self = [self initWithGoStone:stoneValue
-                         color:color];
+  return [self initWithGoStoneValue:stoneValue
+                              color:SGFCColorBlack];
+}
+
+- (id) initWithGoStoneValue:(NSString*)stoneValue
+                  boardSize:(SGFCBoardSize)boardSize
+                      color:(SGFCColor)color
+{
+  self = [self initWithGoStoneValue:stoneValue
+                              color:color];
 
   _wrappedGoStonePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoStonePropertyValue(
     [SGFCMappingUtility fromSgfcKitString:stoneValue],
@@ -75,8 +81,8 @@
   return self;
 }
 
-- (id) initWithGoStone:(NSString*)stoneValue
-                 color:(SGFCColor)color
+- (id) initWithGoStoneValue:(NSString*)stoneValue
+                      color:(SGFCColor)color
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:stoneValue
                                                  invalidArgumentName:@"stoneValue"];

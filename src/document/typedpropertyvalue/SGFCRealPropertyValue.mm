@@ -42,6 +42,12 @@
   return [[SGFCRealPropertyValue alloc] initWithRealValue:realValue];
 }
 
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  // TODO Attempt to convert to an SGFCReal
+  return [self initWithRealValue:0.0];
+}
+
 - (id) initWithRealValue:(SGFCReal)realValue
 {
   // Create the actual wrapped object so that we can take the raw value from it.

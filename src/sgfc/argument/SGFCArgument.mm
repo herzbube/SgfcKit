@@ -29,6 +29,9 @@
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument> _wrappedArgument;
 }
+
+- (id) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument NS_DESIGNATED_INITIALIZER;
+
 @end
 
 @implementation SGFCArgument
@@ -37,18 +40,13 @@
 
 - (id) init
 {
-  // Call designated initializer of superclass (NSObject)
-  self = [super init];
-  if (! self)
-    return nil;
-
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCArgument.
   [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCArgument cannot be instantiated from outside of the library"];
 
   // Dummy return to make compiler happy (compiler does not see that an
   // exception is raised)
-  return self;
+  return [self initWithWrappedArgument:nullptr];
 }
 
 - (id) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument

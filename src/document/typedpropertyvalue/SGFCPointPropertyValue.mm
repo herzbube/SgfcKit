@@ -46,6 +46,11 @@
   return [[SGFCPointPropertyValue alloc] initWithPointValue:pointValue];
 }
 
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  return [self initWithPointValue:rawValue];
+}
+
 - (id) initWithPointValue:(NSString*)pointValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:pointValue

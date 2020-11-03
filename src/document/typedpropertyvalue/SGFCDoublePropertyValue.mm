@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../../include/SGFCConstants.h"
 #import "../../../include/SGFCDoublePropertyValue.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
@@ -24,6 +25,9 @@
 #import <libsgfcplusplus/ISgfcDoublePropertyValue.h>
 #import <libsgfcplusplus/ISgfcPropertyValueFactory.h>
 #import <libsgfcplusplus/SgfcPlusPlusFactory.h>
+
+// System includes
+#import <Foundation/NSString.h>
 
 #pragma mark - Class extension
 
@@ -40,6 +44,22 @@
 + (SGFCDoublePropertyValue*) doublePropertyValueWithDoubleValue:(SGFCDouble)doubleValue
 {
   return [[SGFCDoublePropertyValue alloc] initWithDoubleValue:doubleValue];
+}
+
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:rawValue
+                                                 invalidArgumentName:@"rawValue"];
+
+  SGFCDouble doubleValue;
+  if ([rawValue isEqualToString:SGFCDoubleNormalString])
+    doubleValue = SGFCDoubleNormal;
+  else if ([rawValue isEqualToString:SGFCDoubleEmphasizedString])
+    doubleValue = SGFCDoubleEmphasized;
+  else
+    doubleValue = SGFCDoubleNormal;
+
+  return [self initWithDoubleValue:doubleValue];
 }
 
 - (id) initWithDoubleValue:(SGFCDouble)doubleValue

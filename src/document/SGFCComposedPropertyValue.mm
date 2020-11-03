@@ -16,6 +16,7 @@
 
 // Project includes
 #import "../../include/SGFCComposedPropertyValue.h"
+#import "../../include/SGFCSinglePropertyValue.h"
 #import "../interface/internal/SGFCComposedPropertyValueInternalAdditions.h"
 #import "../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
@@ -44,6 +45,12 @@
                                                         value2:(SGFCSinglePropertyValue*)value2
 {
   return [[SGFCComposedPropertyValue alloc] initWithValue1:value1 value2:value2];
+}
+
+- (id) init
+{
+  return [self initWithValue1:[SGFCSinglePropertyValue singlePropertyValueWithRawValue:@""]
+                       value2:[SGFCSinglePropertyValue singlePropertyValueWithRawValue:@""]];
 }
 
 - (id) initWithValue1:(SGFCSinglePropertyValue*)value1

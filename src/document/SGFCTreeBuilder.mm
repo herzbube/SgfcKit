@@ -30,6 +30,9 @@
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcTreeBuilder> _wrappedTreeBuilder;
 }
+
+- (id) initWithGame:(SGFCGame*)game NS_DESIGNATED_INITIALIZER;
+
 @end
 
 @implementation SGFCTreeBuilder
@@ -38,18 +41,13 @@
 
 - (id) init
 {
-  // Call designated initializer of superclass (NSObject)
-  self = [super init];
-  if (! self)
-    return nil;
-
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCTreeBuilder.
   [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCTreeBuilder cannot be instantiated from outside of the library"];
 
   // Dummy return to make compiler happy (compiler does not see that an
   // exception is raised)
-  return self;
+  return [self initWithGame:nil];
 }
 
 - (id) initWithGame:(SGFCGame*)game

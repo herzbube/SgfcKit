@@ -300,7 +300,7 @@
 ///
 /// This is the designated initializer of SGFCProperty.
 - (id) initWithPropertyName:(NSString*)propertyName
-                     values:(NSArray*)propertyValues;
+                     values:(NSArray*)propertyValues NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the type of the property. Returns
 /// #SGFCPropertyTypeUnknown if the property is a custom property that is

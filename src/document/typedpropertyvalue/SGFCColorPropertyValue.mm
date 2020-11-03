@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../../include/SGFCConstants.h"
 #import "../../../include/SGFCColorPropertyValue.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
@@ -24,6 +25,9 @@
 #import <libsgfcplusplus/ISgfcColorPropertyValue.h>
 #import <libsgfcplusplus/ISgfcPropertyValueFactory.h>
 #import <libsgfcplusplus/SgfcPlusPlusFactory.h>
+
+// System includes
+#import <Foundation/NSString.h>
 
 #pragma mark - Class extension
 
@@ -40,6 +44,22 @@
 + (SGFCColorPropertyValue*) colorPropertyValueWithColorValue:(SGFCColor)colorValue
 {
   return [[SGFCColorPropertyValue alloc] initWithColorValue:colorValue];
+}
+
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:rawValue
+                                                 invalidArgumentName:@"rawValue"];
+
+  SGFCColor colorValue;
+  if ([rawValue isEqualToString:SGFCColorBlackString])
+    colorValue = SGFCColorBlack;
+  else if ([rawValue isEqualToString:SGFCDoubleEmphasizedString])
+    colorValue = SGFCColorWhite;
+  else
+    colorValue = SGFCColorBlack;
+
+  return [self initWithColorValue:colorValue];
 }
 
 - (id) initWithColorValue:(SGFCColor)colorValue

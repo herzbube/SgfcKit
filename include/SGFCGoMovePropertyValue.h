@@ -59,9 +59,9 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-+ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMove:(NSString*)moveValue
-                                                 boardSize:(SGFCBoardSize)boardSize
-                                                     color:(SGFCColor)color;
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
+                                                      boardSize:(SGFCBoardSize)boardSize
+                                                          color:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move
@@ -75,8 +75,8 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
-+ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMove:(NSString*)moveValue
-                                                     color:(SGFCColor)color;
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
+                                                          color:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move
@@ -106,9 +106,9 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-- (id) initWithGoMove:(NSString*)moveValue
-            boardSize:(SGFCBoardSize)boardSize
-                color:(SGFCColor)color;
+- (id) initWithGoMoveValue:(NSString*)moveValue
+                 boardSize:(SGFCBoardSize)boardSize
+                     color:(SGFCColor)color;
 
 /// @brief Initializes an SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move
@@ -122,15 +122,15 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
-- (id) initWithGoMove:(NSString*)moveValue
-                color:(SGFCColor)color;
+- (id) initWithGoMoveValue:(NSString*)moveValue
+                     color:(SGFCColor)color;
 
 /// @brief Initializes an SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move
 /// specified by @a color. The move is a pass move.
 ///
 /// This is the designated initializer of SGFCPointPropertyValue.
-- (id) initWithColor:(SGFCColor)color;
+- (id) initWithColor:(SGFCColor)color NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns an SGFCGoMove object that contains the property value
 /// data. The SGFCGoMove object does not contain an SGFCGoPoint object

@@ -50,7 +50,7 @@
 /// is @e nil.
 ///
 /// This is the designated initializer of SGFCStonePropertyValue.
-- (id) initWithStoneValue:(NSString*)stoneValue;
+- (id) initWithStoneValue:(NSString*)stoneValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the uninterpreted Stone value. This is the same value
 /// that rawValue() returns.

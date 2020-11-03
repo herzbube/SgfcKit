@@ -41,25 +41,30 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCGoPointPropertyValue*) goPointPropertyValueWithPointValue:(NSString*)pointValue
-                                                       boardSize:(SGFCBoardSize)boardSize
++ (SGFCGoPointPropertyValue*) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
+                                                         boardSize:(SGFCBoardSize)boardSize
 {
-  return [[SGFCGoPointPropertyValue alloc] initWithPointValue:pointValue
-                                                    boardSize:boardSize];
+  return [[SGFCGoPointPropertyValue alloc] initWithGoPointValue:pointValue
+                                                      boardSize:boardSize];
 }
 
-+ (SGFCGoPointPropertyValue*) goPointPropertyValueWithPointValue:(NSString*)pointValue
++ (SGFCGoPointPropertyValue*) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
 {
-  return [[SGFCGoPointPropertyValue alloc] initWithPointValue:pointValue];
+  return [[SGFCGoPointPropertyValue alloc] initWithGoPointValue:pointValue];
 }
 
 - (id) initWithPointValue:(NSString*)pointValue
-                boardSize:(SGFCBoardSize)boardSize
+{
+  return [self initWithGoPointValue:pointValue];
+}
+
+- (id) initWithGoPointValue:(NSString*)pointValue
+                  boardSize:(SGFCBoardSize)boardSize
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:pointValue
                                                  invalidArgumentName:@"pointValue"];
 
-  self = [self initWithPointValue:pointValue];
+  self = [self initWithGoPointValue:pointValue];
 
   _wrappedGoPointPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoPointPropertyValue(
     [SGFCMappingUtility fromSgfcKitString:pointValue],
@@ -71,7 +76,7 @@
   return self;
 }
 
-- (id) initWithPointValue:(NSString*)pointValue
+- (id) initWithGoPointValue:(NSString*)pointValue
 {
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass

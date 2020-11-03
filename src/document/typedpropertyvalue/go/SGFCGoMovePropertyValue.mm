@@ -41,20 +41,20 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMove:(NSString*)moveValue
-                                                 boardSize:(SGFCBoardSize)boardSize
-                                                     color:(SGFCColor)color
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
+                                                      boardSize:(SGFCBoardSize)boardSize
+                                                          color:(SGFCColor)color
 {
-  return [[SGFCGoMovePropertyValue alloc] initWithGoMove:moveValue
-                                               boardSize:boardSize
-                                                   color:color];
+  return [[SGFCGoMovePropertyValue alloc] initWithGoMoveValue:moveValue
+                                                    boardSize:boardSize
+                                                        color:color];
 }
 
-+ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMove:(NSString*)moveValue
-                                                     color:(SGFCColor)color
++ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
+                                                          color:(SGFCColor)color
 {
-  return [[SGFCGoMovePropertyValue alloc] initWithGoMove:moveValue
-                                                   color:color];
+  return [[SGFCGoMovePropertyValue alloc] initWithGoMoveValue:moveValue
+                                                        color:color];
 }
 
 + (SGFCGoMovePropertyValue*) goMovePropertyValueWithColor:(SGFCColor)color
@@ -62,9 +62,15 @@
   return [[SGFCGoMovePropertyValue alloc] initWithColor:color];
 }
 
-- (id) initWithGoMove:(NSString*)moveValue
-            boardSize:(SGFCBoardSize)boardSize
-                color:(SGFCColor)color
+- (id) initWithMoveValue:(NSString*)moveValue
+{
+  return [self initWithGoMoveValue:moveValue
+                             color:SGFCColorBlack];
+}
+
+- (id) initWithGoMoveValue:(NSString*)moveValue
+                 boardSize:(SGFCBoardSize)boardSize
+                     color:(SGFCColor)color
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:moveValue
                                                  invalidArgumentName:@"moveValue"];
@@ -82,8 +88,8 @@
   return self;
 }
 
-- (id) initWithGoMove:(NSString*)moveValue
-                color:(SGFCColor)color
+- (id) initWithGoMoveValue:(NSString*)moveValue
+                     color:(SGFCColor)color
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:moveValue
                                                  invalidArgumentName:@"moveValue"];

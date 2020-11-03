@@ -67,7 +67,7 @@
 /// tree and with game type #SGFCDefaultGameType.
 ///
 /// This is the designated initializer of SGFCGame.
-- (id) initWithRootNode:(SGFCNode*)rootNode;
+- (id) initWithRootNode:(SGFCNode*)rootNode NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the game type found in the root node property of type
 /// #SGFCPropertyTypeGM, as an enumeration value.

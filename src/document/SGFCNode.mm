@@ -48,23 +48,30 @@
 
 - (id) init
 {
-  return [self initPrivateWithWrappedNode:LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateNode()];
-}
-
-- (id) initPrivateWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode
-{
   // Call designated initializer of superclass (NSObject)
   self = [super init];
   if (! self)
     return nil;
 
-  if (wrappedNode == nullptr)
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedNode\" is nullptr"];
-
-  _wrappedNode = wrappedNode;
+  _wrappedNode = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateNode();
   _properties = [NSArray array];
 
   return self;
+
+}
+
+- (id) initPrivateWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode
+{
+  if (wrappedNode == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedNode\" is nullptr"];
+
+  self = [self init];
+  if (! self)
+    return nil;
+
+  _wrappedNode = wrappedNode;
+  // wrappedNode has no properties so we can keep the empty properties array
+  // from the designated initializer
 }
 
 - (void) dealloc

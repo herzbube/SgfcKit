@@ -88,29 +88,29 @@
 + (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue
                                              boardSize:(SGFCBoardSize)boardSize
 {
-  return [SGFCGoPointPropertyValue goPointPropertyValueWithPointValue:pointValue
-                                                            boardSize:boardSize];
+  return [SGFCGoPointPropertyValue goPointPropertyValueWithGoPointValue:pointValue
+                                                              boardSize:boardSize];
 }
 
 + (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue
 {
-  return [SGFCGoPointPropertyValue goPointPropertyValueWithPointValue:pointValue];
+  return [SGFCGoPointPropertyValue goPointPropertyValueWithGoPointValue:pointValue];
 }
 
 + (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
                                            boardSize:(SGFCBoardSize)boardSize
                                                color:(SGFCColor)color
 {
-  return [SGFCGoMovePropertyValue goMovePropertyValueWithGoMove:moveValue
-                                                      boardSize:boardSize
-                                                          color:color];
+  return [SGFCGoMovePropertyValue goMovePropertyValueWithGoMoveValue:moveValue
+                                                           boardSize:boardSize
+                                                               color:color];
 }
 
 + (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
                                                color:(SGFCColor)color
 {
-  return [SGFCGoMovePropertyValue goMovePropertyValueWithGoMove:moveValue
-                                                          color:color];
+  return [SGFCGoMovePropertyValue goMovePropertyValueWithGoMoveValue:moveValue
+                                                               color:color];
 }
 
 + (SGFCGoMovePropertyValue*) propertyValueWithGoMovePlayedByColor:(SGFCColor)color
@@ -122,16 +122,16 @@
                                              boardSize:(SGFCBoardSize)boardSize
                                                  color:(SGFCColor)color
 {
-  return [SGFCGoStonePropertyValue goStonePropertyValueWithGoStone:stoneValue
-                                                         boardSize:boardSize
-                                                             color:color];
+  return [SGFCGoStonePropertyValue goStonePropertyValueWithGoStoneValue:stoneValue
+                                                              boardSize:boardSize
+                                                                  color:color];
 }
 
 + (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
                                                  color:(SGFCColor)color
 {
-  return [SGFCGoStonePropertyValue goStonePropertyValueWithGoStone:stoneValue
-                                                             color:color];
+  return [SGFCGoStonePropertyValue goStonePropertyValueWithGoStoneValue:stoneValue
+                                                                  color:color];
 }
 
 + (SGFCComposedPropertyValue*) composedPropertyValueWithNumber:(SGFCNumber)numberValue1

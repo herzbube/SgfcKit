@@ -55,8 +55,8 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-+ (SGFCGoPointPropertyValue*) goPointPropertyValueWithPointValue:(NSString*)pointValue
-                                                       boardSize:(SGFCBoardSize)boardSize;
++ (SGFCGoPointPropertyValue*) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
+                                                         boardSize:(SGFCBoardSize)boardSize;
 
 /// @brief Returns a newly constructed SGFCGoPointPropertyValue object.
 /// No attempt is made to interpret @a pointValue. As a consequence, the
@@ -64,7 +64,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
 /// is @e nil.
-+ (SGFCGoPointPropertyValue*) goPointPropertyValueWithPointValue:(NSString*)pointValue;
++ (SGFCGoPointPropertyValue*) goPointPropertyValueWithGoPointValue:(NSString*)pointValue;
 
 /// @brief Initializes an SGFCGoPointPropertyValue object. The object
 /// holds an SGFCGoPoint object that refers to the point specified by
@@ -87,8 +87,8 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-- (id) initWithPointValue:(NSString*)pointValue
-                boardSize:(SGFCBoardSize)boardSize;
+- (id) initWithGoPointValue:(NSString*)pointValue
+                  boardSize:(SGFCBoardSize)boardSize;
 
 /// @brief Initializes an SGFCGoPointPropertyValue object.
 /// No attempt is made to interpret @a pointValue. As a consequence, the
@@ -98,7 +98,7 @@
 /// is @e nil.
 ///
 /// This is the designated initializer of SGFCPointPropertyValue.
-- (id) initWithPointValue:(NSString*)pointValue;
+- (id) initWithGoPointValue:(NSString*)pointValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns an SGFCGoPoint object that contains the property value
 /// data and makes it available in various forms and notations. Returns

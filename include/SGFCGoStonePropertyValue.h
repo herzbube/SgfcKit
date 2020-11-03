@@ -58,9 +58,9 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-+ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStone:(NSString*)stoneValue
-                                                    boardSize:(SGFCBoardSize)boardSize
-                                                        color:(SGFCColor)color;
++ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
+                                                         boardSize:(SGFCBoardSize)boardSize
+                                                             color:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoStonePropertyValue object.
 /// The object holds an SGFCGoStone object that refers to the stone
@@ -73,8 +73,8 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
-+ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStone:(NSString*)stoneValue
-                                                        color:(SGFCColor)color;
++ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
+                                                             color:(SGFCColor)color;
 
 /// @brief Initializes an SGFCGoStonePropertyValue object.
 /// The object holds an SGFCGoStone object that refers to the stone
@@ -98,9 +98,9 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-- (id) initWithGoStone:(NSString*)stoneValue
-             boardSize:(SGFCBoardSize)boardSize
-                 color:(SGFCColor)color;
+- (id) initWithGoStoneValue:(NSString*)stoneValue
+                  boardSize:(SGFCBoardSize)boardSize
+                      color:(SGFCColor)color;
 
 /// @brief Initializes an SGFCGoStonePropertyValue object.
 /// The object holds an SGFCGoStone object that refers to the stone
@@ -115,8 +115,8 @@
 /// is @e nil.
 ///
 /// This is the designated initializer of SGFCPointPropertyValue.
-- (id) initWithGoStone:(NSString*)stoneValue
-                 color:(SGFCColor)color;
+- (id) initWithGoStoneValue:(NSString*)stoneValue
+                      color:(SGFCColor)color NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns an SGFCGoStone object that contains the property value
 /// data. The SGFCGoStone object does not contain an SGFCGoPoint object

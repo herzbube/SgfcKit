@@ -46,6 +46,11 @@
   return [[SGFCMovePropertyValue alloc] initWithMoveValue:moveValue];
 }
 
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  return [self initWithMoveValue:rawValue];
+}
+
 - (id) initWithMoveValue:(NSString*)moveValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:moveValue

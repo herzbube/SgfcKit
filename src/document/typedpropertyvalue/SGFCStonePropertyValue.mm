@@ -46,6 +46,11 @@
   return [[SGFCStonePropertyValue alloc] initWithStoneValue:stoneValue];
 }
 
+- (id) initWithRawValue:(NSString*)rawValue
+{
+  return [self initWithStoneValue:rawValue];
+}
+
 - (id) initWithStoneValue:(NSString*)stoneValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:stoneValue

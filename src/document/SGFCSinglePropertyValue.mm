@@ -43,6 +43,11 @@
   return [[SGFCSinglePropertyValue alloc] initWithRawValue:rawValue];
 }
 
+- (id) init
+{
+  return [self initWithRawValue:@""];
+}
+
 - (id) initWithRawValue:(NSString*)rawValue
 {
   // Call designated initializer of superclass (NSObject)
