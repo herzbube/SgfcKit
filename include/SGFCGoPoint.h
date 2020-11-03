@@ -17,8 +17,8 @@
 #pragma once
 
 // Project includes
-#include "SGFCCoordinateSystem.h"
-#include "SGFCGoPointNotation.h"
+#import "SGFCCoordinateSystem.h"
+#import "SGFCGoPointNotation.h"
 
 // System includes
 #import <Foundation/NSObject.h>

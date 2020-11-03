@@ -17,7 +17,7 @@
 #pragma once
 
 // Project includes
-#include "SGFCColor.h"
+#import "SGFCColor.h"
 
 // System includes
 #import <Foundation/NSObject.h>

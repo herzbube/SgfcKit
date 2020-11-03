@@ -17,9 +17,9 @@
 #pragma once
 
 // Project includes
-#include "SGFCBoardSize.h"
-#include "SGFCColor.h"
-#include "SGFCMovePropertyValue.h"
+#import "SGFCBoardSize.h"
+#import "SGFCColor.h"
+#import "SGFCMovePropertyValue.h"
 
 // Forward declarations
 @class NSString;

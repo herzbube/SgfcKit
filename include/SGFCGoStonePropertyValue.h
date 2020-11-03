@@ -17,9 +17,9 @@
 #pragma once
 
 // Project includes
-#include "SGFCBoardSize.h"
-#include "SGFCColor.h"
-#include "SGFCStonePropertyValue.h"
+#import "SGFCBoardSize.h"
+#import "SGFCColor.h"
+#import "SGFCStonePropertyValue.h"
 
 // Forward declarations
 @class NSString;

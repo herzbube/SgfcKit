@@ -17,8 +17,8 @@
 #pragma once
 
 // Project includes
-#include "SGFCBoardSize.h"
-#include "SGFCPointPropertyValue.h"
+#import "SGFCBoardSize.h"
+#import "SGFCPointPropertyValue.h"
 
 // Forward declarations
 @class SGFCGoPoint;
