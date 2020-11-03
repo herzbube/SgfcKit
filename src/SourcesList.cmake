@@ -71,6 +71,7 @@ set (
   ../include/SGFCDocument.h
   ../include/SGFCDouble.h
   ../include/SGFCDoublePropertyValue.h
+  ../include/SGFCExitCode.h
   ../include/SGFCGame.h
   ../include/SGFCGameType.h
   ../include/SGFCGoMove.h
@@ -82,6 +83,7 @@ set (
   ../include/SGFCGoStonePropertyValue.h
   ../include/SGFCMovePropertyValue.h
   ../include/SGFCKitFactory.h
+  ../include/SGFCMessageType.h
   ../include/SGFCNode.h
   ../include/SGFCNumberPropertyValue.h
   ../include/SGFCPointPropertyValue.h

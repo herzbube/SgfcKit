@@ -62,6 +62,14 @@ extern NSDictionary* doubleToSgfcKitMap;
 /// values from the libsgfc++ enumeration SgfcDouble.
 extern NSDictionary* doubleFromSgfcKitMap;
 
+/// @brief Maps values from the libsgfc++ enumeration SgfcExitCode to
+/// values from the SgfcKit enumeration SGFCExitCode.
+extern NSDictionary* exitCodeToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCExitCode to
+/// values from the libsgfc++ enumeration SgfcExitCode.
+extern NSDictionary* exitCodeFromSgfcKitMap;
+
 /// @brief Maps values from the libsgfc++ enumeration SgfcGameType to values
 /// from the SgfcKit enumeration SGFCGameType.
 extern NSDictionary* gameTypeToSgfcKitMap;
@@ -77,6 +85,14 @@ extern NSDictionary* goPointNotationToSgfcKitMap;
 /// @brief Maps values from the SgfcKit enumeration SGFCGoPointNotation to
 /// values from the libsgfc++ enumeration SgfcGoPointNotation.
 extern NSDictionary* goPointNotationFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcMessageType to
+/// values from the SgfcKit enumeration SGFCMessageType.
+extern NSDictionary* messageTypeToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCMessageType to
+/// values from the libsgfc++ enumeration SgfcMessageType.
+extern NSDictionary* messageTypeFromSgfcKitMap;
 
 /// @brief Maps values from the libsgfc++ enumeration SgfcPropertyType to values
 /// from the SgfcKit enumeration SGFCPropertyType.

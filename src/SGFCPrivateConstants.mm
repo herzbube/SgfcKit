@@ -19,8 +19,10 @@
 #import "../include/SGFCColor.h"
 #import "../include/SGFCCoordinateSystem.h"
 #import "../include/SGFCDouble.h"
+#import "../include/SGFCExitCode.h"
 #import "../include/SGFCGameType.h"
 #import "../include/SGFCGoPointNotation.h"
+#import "../include/SGFCMessageType.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
 #import "SGFCPrivateConstants.h"
@@ -30,8 +32,10 @@
 #import <libsgfcplusplus/SgfcColor.h>
 #import <libsgfcplusplus/SgfcCoordinateSystem.h>
 #import <libsgfcplusplus/SgfcDouble.h>
+#import <libsgfcplusplus/SgfcExitCode.h>
 #import <libsgfcplusplus/SgfcGameType.h>
 #import <libsgfcplusplus/SgfcGoPointNotation.h>
+#import <libsgfcplusplus/SgfcMessageType.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
 
@@ -100,6 +104,22 @@ NSDictionary* doubleFromSgfcKitMap =
 @{
   @(SGFCDoubleNormal) : @(static_cast<int>(LibSgfcPlusPlus::SgfcDouble::Normal)),
   @(SGFCDoubleEmphasized) : @(static_cast<int>(LibSgfcPlusPlus::SgfcDouble::Emphasized)),
+};
+
+NSDictionary* exitCodeToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::Ok)) : @(SGFCExitCodeOk),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::Warning)) : @(SGFCExitCodeWarning),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::Error)) : @(SGFCExitCodeError),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::FatalError)) : @(SGFCExitCodeFatalError),
+};
+
+NSDictionary* exitCodeFromSgfcKitMap =
+@{
+  @(SGFCExitCodeOk) : @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::Ok)),
+  @(SGFCExitCodeWarning) : @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::Warning)),
+  @(SGFCExitCodeError) : @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::Error)),
+  @(SGFCExitCodeFatalError) : @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::FatalError)),
 };
 
 NSDictionary* gameTypeToSgfcKitMap =
@@ -190,6 +210,20 @@ NSDictionary* gameTypeFromSgfcKitMap =
   @(SGFCGameTypeGipf) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameType::Gipf)),
   @(SGFCGameTypeKropki) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameType::Kropki)),
   @(SGFCGameTypeUnknown) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameType::Unknown)),
+};
+
+NSDictionary* messageTypeToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::Warning)) : @(SGFCMessageTypeWarning),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::Error)) : @(SGFCMessageTypeError),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::FatalError)) : @(SGFCMessageTypeFatalError),
+};
+
+NSDictionary* messageTypeFromSgfcKitMap =
+@{
+  @(SGFCMessageTypeWarning) : @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::Warning)),
+  @(SGFCMessageTypeError) : @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::Error)),
+  @(SGFCMessageTypeFatalError) : @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::FatalError)),
 };
 
 NSDictionary* propertyTypeToSgfcKitMap =

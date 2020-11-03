@@ -94,6 +94,22 @@
   return static_cast<LibSgfcPlusPlus::SgfcDouble>(mappedValue);
 }
 
++ (SGFCExitCode) toSgfcKitExitCode:(LibSgfcPlusPlus::SgfcExitCode)exitCode
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(exitCode)
+                                                     usingMap:exitCodeToSgfcKitMap
+                                                 withEnumName:@"SgfcExitCode"];
+  return static_cast<SGFCExitCode>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcExitCode) fromSgfcKitExitCode:(SGFCExitCode)exitCode
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:exitCode
+                                                usingMap:exitCodeFromSgfcKitMap
+                                            withEnumName:@"SGFCExitCode"];
+  return static_cast<LibSgfcPlusPlus::SgfcExitCode>(mappedValue);
+}
+
 + (SGFCGameType) toSgfcKitGameType:(LibSgfcPlusPlus::SgfcGameType)gameType
 {
   NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(gameType)
@@ -124,6 +140,22 @@
                                                 usingMap:goPointNotationFromSgfcKitMap
                                             withEnumName:@"SGFCGoPointNotation"];
   return static_cast<LibSgfcPlusPlus::SgfcGoPointNotation>(mappedValue);
+}
+
++ (SGFCMessageType) toSgfcKitMessageType:(LibSgfcPlusPlus::SgfcMessageType)messageType
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(messageType)
+                                                     usingMap:messageTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcMessageType"];
+  return static_cast<SGFCMessageType>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcMessageType) fromSgfcKitMessageType:(SGFCMessageType)messageType
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:messageType
+                                                usingMap:messageTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCMessageType"];
+  return static_cast<LibSgfcPlusPlus::SgfcMessageType>(mappedValue);
 }
 
 + (SGFCPropertyType) toSgfcKitPropertyType:(LibSgfcPlusPlus::SgfcPropertyType)propertyType

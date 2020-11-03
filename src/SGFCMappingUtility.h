@@ -22,8 +22,10 @@
 #import "../include/SGFCColor.h"
 #import "../include/SGFCCoordinateSystem.h"
 #import "../include/SGFCDouble.h"
+#import "../include/SGFCExitCode.h"
 #import "../include/SGFCGameType.h"
 #import "../include/SGFCGoPointNotation.h"
+#import "../include/SGFCMessageType.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
 #import "../include/SGFCTypedefs.h"
@@ -34,8 +36,10 @@
 #import <libsgfcplusplus/SgfcColor.h>
 #import <libsgfcplusplus/SgfcCoordinateSystem.h>
 #import <libsgfcplusplus/SgfcDouble.h>
+#import <libsgfcplusplus/SgfcExitCode.h>
 #import <libsgfcplusplus/SgfcGameType.h>
 #import <libsgfcplusplus/SgfcGoPointNotation.h>
+#import <libsgfcplusplus/SgfcMessageType.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
 #import <libsgfcplusplus/SgfcTypedefs.h>
@@ -177,6 +181,36 @@
 /// #doubleFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcDouble) fromSgfcKitDouble:(SGFCDouble)doubleValue;
 
+/// @brief Maps a value from the SgfcKit enumeration SGFCExitCode to
+/// the corresponding value from the libsgfc++ enumeration
+/// SgfcExitCode.
+///
+/// This is a convenience function that looks up @a exitCode in
+/// #exitCodeToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a exitCode does not appear in
+/// #exitCodeToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcExitCode value was not added to
+/// #exitCodeToSgfcKitMap.
++ (SGFCExitCode) toSgfcKitExitCode:(LibSgfcPlusPlus::SgfcExitCode)exitCode;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcExitCode to
+/// the corresponding value from the the SgfcKit enumeration
+/// SGFCExitCode.
+///
+/// This is a convenience function that looks up @a exitCode in
+/// #exitCodeFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a exitCode does not appear in
+/// #exitCodeFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCExitCode value was not added to
+/// #exitCodeFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcExitCode) fromSgfcKitExitCode:(SGFCExitCode)exitCode;
+
 /// @brief Maps a value from the SgfcKit enumeration SGFCGameType to the
 /// corresponding value from the libsgfc++ enumeration SgfcGameType.
 ///
@@ -234,6 +268,36 @@
 /// SGFCGoPointNotation value was not added to
 /// #goPointNotationFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcGoPointNotation) fromSgfcKitGoPointNotation:(SGFCGoPointNotation)goPointNotation;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCMessageType to
+/// the corresponding value from the libsgfc++ enumeration
+/// SgfcMessageType.
+///
+/// This is a convenience function that looks up @a messageType in
+/// #messageTypeToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a messageType does not appear in
+/// #messageTypeToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcMessageType value was not added to
+/// #messageTypeToSgfcKitMap.
++ (SGFCMessageType) toSgfcKitMessageType:(LibSgfcPlusPlus::SgfcMessageType)messageType;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcMessageType to
+/// the corresponding value from the the SgfcKit enumeration
+/// SGFCMessageType.
+///
+/// This is a convenience function that looks up @a messageType in
+/// #messageTypeFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a messageType does not appear in
+/// #messageTypeFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCMessageType value was not added to
+/// #messageTypeFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcMessageType) fromSgfcKitMessageType:(SGFCMessageType)messageType;
 
 /// @brief Maps a value from the SgfcKit enumeration SGFCPropertyType to the
 /// corresponding value from the libsgfc++ enumeration SgfcPropertyType.
