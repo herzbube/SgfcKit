@@ -28,6 +28,7 @@ set (
   game/SGFCBoardSize.mm
   sgfc/argument/SGFCArgument.mm
   sgfc/argument/SGFCArguments.mm
+  sgfc/message/SGFCMessage.mm
   SGFCConstants.mm
   SGFCExceptionUtility.mm
   SGFCMappingUtility.mm
@@ -44,6 +45,7 @@ set (
   interface/internal/SGFCGoMoveInternalAdditions.h
   interface/internal/SGFCGoPointInternalAdditions.h
   interface/internal/SGFCGoStoneInternalAdditions.h
+  interface/internal/SGFCMessageInternalAdditions.h
   interface/internal/SGFCMovePropertyValueInternalAdditions.h
   interface/internal/SGFCNodeInternalAdditions.h
   interface/internal/SGFCPointPropertyValueInternalAdditions.h
@@ -83,6 +85,7 @@ set (
   ../include/SGFCGoStonePropertyValue.h
   ../include/SGFCMovePropertyValue.h
   ../include/SGFCKitFactory.h
+  ../include/SGFCMessage.h
   ../include/SGFCMessageType.h
   ../include/SGFCNode.h
   ../include/SGFCNumberPropertyValue.h
