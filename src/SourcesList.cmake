@@ -42,19 +42,28 @@ set (
   HEADERS_PRIVATE
   interface/internal/SGFCArgumentInternalAdditions.h
   interface/internal/SGFCArgumentsInternalAdditions.h
+  interface/internal/SGFCColorPropertyValueInternalAdditions.h
   interface/internal/SGFCComposedPropertyValueInternalAdditions.h
+  interface/internal/SGFCDoublePropertyValueInternalAdditions.h
   interface/internal/SGFCGameInternalAdditions.h
   interface/internal/SGFCGoMoveInternalAdditions.h
+  interface/internal/SGFCGoMovePropertyValueInternalAdditions.h
   interface/internal/SGFCGoPointInternalAdditions.h
+  interface/internal/SGFCGoPointPropertyValueInternalAdditions.h
   interface/internal/SGFCGoStoneInternalAdditions.h
+  interface/internal/SGFCGoStonePropertyValueInternalAdditions.h
   interface/internal/SGFCMessageInternalAdditions.h
   interface/internal/SGFCMovePropertyValueInternalAdditions.h
   interface/internal/SGFCNodeInternalAdditions.h
+  interface/internal/SGFCNumberPropertyValueInternalAdditions.h
   interface/internal/SGFCPointPropertyValueInternalAdditions.h
   interface/internal/SGFCPropertyInternalAdditions.h
   interface/internal/SGFCPropertyValueInternal.h
+  interface/internal/SGFCRealPropertyValueInternalAdditions.h
+  interface/internal/SGFCSimpleTextPropertyValueInternalAdditions.h
   interface/internal/SGFCSinglePropertyValueInternalAdditions.h
   interface/internal/SGFCStonePropertyValueInternalAdditions.h
+  interface/internal/SGFCTextPropertyValueInternalAdditions.h
   interface/internal/SGFCTreeBuilderInternalAdditions.h
   SGFCExceptionUtility.h
   SGFCMappingUtility.h

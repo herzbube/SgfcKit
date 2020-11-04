@@ -31,7 +31,9 @@
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue> _wrappedSinglePropertyValue;
 }
+
 @property(nonatomic, getter=isComposedValue) BOOL composedValue;
+
 @end
 
 @implementation SGFCSinglePropertyValue
@@ -61,6 +63,20 @@
   _wrappedSinglePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateCustomPropertyValue(
     [SGFCMappingUtility fromSgfcKitString:rawValue]);
   self.composedValue = false;
+
+  return self;
+}
+
+- (id) initWithWrappedSinglePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>)wrappedSinglePropertyValue
+{
+  if (wrappedSinglePropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedSinglePropertyValue\" is nullptr"];
+
+  self = [self init];
+  if (! self)
+    return nil;
+
+  _wrappedSinglePropertyValue = wrappedSinglePropertyValue;
 
   return self;
 }

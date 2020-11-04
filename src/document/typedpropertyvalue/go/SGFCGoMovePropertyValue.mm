@@ -17,6 +17,7 @@
 // Project includes
 #import "../../../../include/SGFCGoMovePropertyValue.h"
 #import "../../../interface/internal/SGFCGoMoveInternalAdditions.h"
+#import "../../../interface/internal/SGFCGoMovePropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCMovePropertyValueInternalAdditions.h"
 #import "../../../SGFCExceptionUtility.h"
 #import "../../../SGFCMappingUtility.h"
@@ -131,6 +132,23 @@
   return self;
 }
 
+- (id) initWithWrappedGoMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMovePropertyValue>)wrappedGoMovePropertyValue
+{
+  if (wrappedGoMovePropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGoMovePropertyValue\" is nullptr"];
+
+  self = [self initWithColor:SGFCColorBlack];
+  if (! self)
+    return nil;
+
+  _wrappedGoMovePropertyValue = wrappedGoMovePropertyValue;
+
+  self.goMove = [[SGFCGoMove alloc] initWithWrappedGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
+  [self setWrappedMovePropertyValue:_wrappedGoMovePropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedGoMovePropertyValue = nullptr;
@@ -142,6 +160,13 @@
 - (SGFCGoMovePropertyValue*) toGoMoveValue
 {
   return self;
+}
+
+#pragma mark - Internal API - SGFCGoMovePropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMovePropertyValue>) wrappedGoMovePropertyValue
+{
+  return _wrappedGoMovePropertyValue;
 }
 
 @end

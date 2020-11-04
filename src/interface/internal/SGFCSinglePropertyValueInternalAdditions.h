@@ -35,7 +35,14 @@
 /// @ingroup property-value
 @interface SGFCSinglePropertyValue(SGFCSinglePropertyValueInternalAdditions) <SGFCPropertyValueInternal>
 
-/// @brief Returns the wrapped libsgfc++ object.
+//// @brief Initializes an SGFCSinglePropertyValue object. The object wraps
+/// the libsgfc++ object @a wrappedSinglePropertyValue.
+///
+/// @exception NSInvalidArgumentException Is raised if
+/// @a wrappedSinglePropertyValue is  @e nullptr.
+- (id) initWithWrappedSinglePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>)wrappedSinglePropertyValue;
+
+// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>) wrappedSinglePropertyValue;
 
 /// @brief Sets the wrapped libsgfc++ object to @a wrappedSinglePropertyValue.

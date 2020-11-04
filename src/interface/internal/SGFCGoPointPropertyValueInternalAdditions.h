@@ -17,32 +17,30 @@
 #pragma once
 
 // Project includes
-#import "../../../include/SGFCStonePropertyValue.h"
+#import "../../../include/SGFCGoPointPropertyValue.h"
 
 // libsgfc++ includes
-#import <libsgfcplusplus/ISgfcStonePropertyValue.h>
+#import <libsgfcplusplus/ISgfcGoPointPropertyValue.h>
 
 // C++ Standard Library includes
 #include <memory>
 
-/// @brief The SGFCStonePropertyValueInternalAdditions category adds a
-/// library-internal API to the SGFCStonePropertyValue class.
+/// @brief The SGFCGoPointPropertyValueInternalAdditions category adds a
+/// library-internal API to the SGFCGoPointPropertyValue class.
 ///
 /// @ingroup private-api
 /// @ingroup property-value
-@interface SGFCStonePropertyValue(SGFCStonePropertyValueInternalAdditions)
+/// @ingroup go
+@interface SGFCGoPointPropertyValue(SGFCGoPointPropertyValueInternalAdditions)
 
-/// @brief Initializes an SGFCStonePropertyValue object. The object wraps
-/// the libsgfc++ object @a wrappedStonePropertyValue.
+/// @brief Initializes an SGFCGoPointPropertyValue object. The object wraps
+/// the libsgfc++ object @a wrappedGoPointPropertyValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if
-/// @a wrappedStonePropertyValue is  @e nullptr.
-- (id) initWithWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue;
+/// @a wrappedGoPointPropertyValue is  @e nullptr.
+- (id) initWithWrappedGoPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>)wrappedGoPointPropertyValue;
 
-/// @brief Sets the wrapped libsgfc++ object to @a wrappedStonePropertyValue.
-///
-/// @exception NSInvalidArgumentException Is raised if
-/// @a wrappedStonePropertyValue is @e nullptr.
-- (void) setWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue;
+/// @brief Returns the wrapped libsgfc++ object.
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>) wrappedGoPointPropertyValue;
 
 @end

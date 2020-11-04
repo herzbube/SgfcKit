@@ -78,6 +78,22 @@
   return self;
 }
 
+- (id) initWithWrappedPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcPointPropertyValue>)wrappedPointPropertyValue
+{
+  if (wrappedPointPropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedPointPropertyValue\" is nullptr"];
+
+  self = [self initWithPointValue:@""];
+  if (! self)
+    return nil;
+
+  _wrappedPointPropertyValue = wrappedPointPropertyValue;
+
+  [self setWrappedSinglePropertyValue:_wrappedPointPropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedPointPropertyValue = nullptr;
@@ -114,6 +130,11 @@
 }
 
 #pragma mark - Internal API - SGFCPointPropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcPointPropertyValue>) wrappedPointPropertyValue
+{
+  return _wrappedPointPropertyValue;
+}
 
 - (void) setWrappedPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcPointPropertyValue>)wrappedPointPropertyValue
 {

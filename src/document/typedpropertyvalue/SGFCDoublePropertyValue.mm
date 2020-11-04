@@ -17,6 +17,7 @@
 // Project includes
 #import "../../../include/SGFCConstants.h"
 #import "../../../include/SGFCDoublePropertyValue.h"
+#import "../../interface/internal/SGFCDoublePropertyValueInternalAdditions.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
@@ -86,6 +87,22 @@
   return self;
 }
 
+- (id) initWithWrappedDoublePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDoublePropertyValue>)wrappedDoublePropertyValue
+{
+  if (wrappedDoublePropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedDoublePropertyValue\" is nullptr"];
+
+  self = [self initWithDoubleValue:SGFCDoubleNormal];
+  if (! self)
+    return nil;
+
+  _wrappedDoublePropertyValue = wrappedDoublePropertyValue;
+
+  [self setWrappedSinglePropertyValue:_wrappedDoublePropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedDoublePropertyValue = nullptr;
@@ -114,6 +131,13 @@
     // exception is raised)
     return SGFCDoubleNormal;
   }
+}
+
+#pragma mark - Internal API - SGFCDoublePropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcDoublePropertyValue>) wrappedDoublePropertyValue
+{
+  return _wrappedDoublePropertyValue;
 }
 
 @end

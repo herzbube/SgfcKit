@@ -18,6 +18,7 @@
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcMessage.h>
+#import <libsgfcplusplus/ISgfcSinglePropertyValue.h>
 
 // C++ Standard Library includes
 #import <memory>
@@ -28,6 +29,7 @@
 
 // Forward declarations
 @class NSArray;
+@class SGFCSinglePropertyValue;
 
 /// @brief The SGFCWrappingUtility class is a container for various utility
 /// functions related to wrapping libsgfc++ objects into the corresponding
@@ -46,5 +48,9 @@
 /// the libsgfc++ ISgfcMessage objects in @a messagesToWrap. The returned
 /// collection has the same order as the input collection.
 + (NSArray*) wrapMessages:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>>&)messagesToWrap;
+
+/// @brief Returns a newly created SGFCPropertyValue object that
+/// wraps the libsgfc++ ISgfcPropertyValue object @a propertyValueToWrap.
++ (SGFCSinglePropertyValue*) wrapSinglePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>)singlePropertyValueToWrap;
 
 @end

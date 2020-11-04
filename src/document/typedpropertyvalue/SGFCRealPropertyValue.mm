@@ -16,6 +16,7 @@
 
 // Project includes
 #import "../../../include/SGFCRealPropertyValue.h"
+#import "../../interface/internal/SGFCRealPropertyValueInternalAdditions.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
@@ -72,6 +73,22 @@
   return self;
 }
 
+- (id) initWithWrappedRealPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcRealPropertyValue>)wrappedRealPropertyValue
+{
+  if (wrappedRealPropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedRealPropertyValue\" is nullptr"];
+
+  self = [self initWithRealValue:0.0];
+  if (! self)
+    return nil;
+
+  _wrappedRealPropertyValue = wrappedRealPropertyValue;
+
+  [self setWrappedSinglePropertyValue:_wrappedRealPropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedRealPropertyValue = nullptr;
@@ -100,6 +117,13 @@
     // exception is raised)
     return 0.0;
   }
+}
+
+#pragma mark - Internal API - SGFCRealPropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcRealPropertyValue>) wrappedRealPropertyValue
+{
+  return _wrappedRealPropertyValue;
 }
 
 @end

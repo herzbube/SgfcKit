@@ -16,6 +16,7 @@
 
 // Project includes
 #import "../../../include/SGFCNumberPropertyValue.h"
+#import "../../interface/internal/SGFCNumberPropertyValueInternalAdditions.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
@@ -72,6 +73,22 @@
   return self;
 }
 
+- (id) initWithWrappedNumberPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNumberPropertyValue>)wrappedNumberPropertyValue
+{
+  if (wrappedNumberPropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedNumberPropertyValue\" is nullptr"];
+
+  self = [self initWithNumberValue:0];
+  if (! self)
+    return nil;
+
+  _wrappedNumberPropertyValue = wrappedNumberPropertyValue;
+
+  [self setWrappedSinglePropertyValue:_wrappedNumberPropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedNumberPropertyValue = nullptr;
@@ -100,6 +117,13 @@
     // exception is raised)
     return 0;
   }
+}
+
+#pragma mark - Internal API - SGFCNumberPropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcNumberPropertyValue>) wrappedNumberPropertyValue
+{
+  return _wrappedNumberPropertyValue;
 }
 
 @end

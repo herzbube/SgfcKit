@@ -17,6 +17,7 @@
 // Project includes
 #import "../../../../include/SGFCGoStonePropertyValue.h"
 #import "../../../interface/internal/SGFCGoStoneInternalAdditions.h"
+#import "../../../interface/internal/SGFCGoStonePropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCStonePropertyValueInternalAdditions.h"
 #import "../../../SGFCExceptionUtility.h"
 #import "../../../SGFCMappingUtility.h"
@@ -111,6 +112,24 @@
   return self;
 }
 
+- (id) initWithWrappedGoStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStonePropertyValue>)wrappedGoStonePropertyValue
+{
+  if (wrappedGoStonePropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGoStonePropertyValue\" is nullptr"];
+
+  self = [self initWithGoStoneValue:@""
+                              color:SGFCColorBlack];
+  if (! self)
+    return nil;
+
+  _wrappedGoStonePropertyValue = wrappedGoStonePropertyValue;
+
+  self.goStone = [[SGFCGoStone alloc] initWithWrappedGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
+  [self setWrappedStonePropertyValue:_wrappedGoStonePropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedGoStonePropertyValue = nullptr;
@@ -122,6 +141,13 @@
 - (SGFCGoStonePropertyValue*) toGoStoneValue
 {
   return self;
+}
+
+#pragma mark - Internal API - SGFCGoStonePropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStonePropertyValue>) wrappedGoStonePropertyValue
+{
+  return _wrappedGoStonePropertyValue;
 }
 
 @end

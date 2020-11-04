@@ -17,6 +17,7 @@
 // Project includes
 #import "../../../../include/SGFCGoPointPropertyValue.h"
 #import "../../../interface/internal/SGFCGoPointInternalAdditions.h"
+#import "../../../interface/internal/SGFCGoPointPropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCPointPropertyValueInternalAdditions.h"
 #import "../../../SGFCExceptionUtility.h"
 #import "../../../SGFCMappingUtility.h"
@@ -101,6 +102,27 @@
   return self;
 }
 
+- (id) initWithWrappedGoPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>)wrappedGoPointPropertyValue
+{
+  if (wrappedGoPointPropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGoPointPropertyValue\" is nullptr"];
+
+  self = [self initWithGoPointValue:@"aa"];
+  if (! self)
+    return nil;
+
+  _wrappedGoPointPropertyValue = wrappedGoPointPropertyValue;
+
+  auto wrappedGoPoint = _wrappedGoPointPropertyValue->GetGoPoint();
+  if (wrappedGoPoint)
+    self.goPoint = [[SGFCGoPoint alloc] initWithWrappedGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
+  else
+    self.goPoint = nil;
+  [self setWrappedPointPropertyValue:_wrappedGoPointPropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedGoPointPropertyValue = nullptr;
@@ -112,6 +134,13 @@
 - (SGFCGoPointPropertyValue*) toGoPointValue
 {
   return self;
+}
+
+#pragma mark - Internal API - SGFCGoPointPropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>) wrappedGoPointPropertyValue
+{
+  return _wrappedGoPointPropertyValue;
 }
 
 @end

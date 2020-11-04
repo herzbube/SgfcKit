@@ -17,32 +17,29 @@
 #pragma once
 
 // Project includes
-#import "../../../include/SGFCStonePropertyValue.h"
+#import "../../../include/SGFCSimpleTextPropertyValue.h"
 
 // libsgfc++ includes
-#import <libsgfcplusplus/ISgfcStonePropertyValue.h>
+#import <libsgfcplusplus/ISgfcSimpleTextPropertyValue.h>
 
 // C++ Standard Library includes
 #include <memory>
 
-/// @brief The SGFCStonePropertyValueInternalAdditions category adds a
-/// library-internal API to the SGFCStonePropertyValue class.
+/// @brief The SGFCSimpleTextPropertyValueInternalAdditions category adds a
+/// library-internal API to the SGFCSimpleTextPropertyValue class.
 ///
 /// @ingroup private-api
 /// @ingroup property-value
-@interface SGFCStonePropertyValue(SGFCStonePropertyValueInternalAdditions)
+@interface SGFCSimpleTextPropertyValue(SGFCSimpleTextPropertyValueInternalAdditions)
 
-/// @brief Initializes an SGFCStonePropertyValue object. The object wraps
-/// the libsgfc++ object @a wrappedStonePropertyValue.
+/// @brief Initializes an SGFCSimpleTextPropertyValue object. The object wraps
+/// the libsgfc++ object @a wrappedSimpleTextPropertyValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if
-/// @a wrappedStonePropertyValue is  @e nullptr.
-- (id) initWithWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue;
+/// @a wrappedSimpleTextPropertyValue is  @e nullptr.
+- (id) initWithWrappedSimpleTextPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSimpleTextPropertyValue>)wrappedSimpleTextPropertyValue;
 
-/// @brief Sets the wrapped libsgfc++ object to @a wrappedStonePropertyValue.
-///
-/// @exception NSInvalidArgumentException Is raised if
-/// @a wrappedStonePropertyValue is @e nullptr.
-- (void) setWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue;
+/// @brief Returns the wrapped libsgfc++ object.
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcSimpleTextPropertyValue>) wrappedSimpleTextPropertyValue;
 
 @end

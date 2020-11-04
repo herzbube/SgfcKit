@@ -78,6 +78,22 @@
   return self;
 }
 
+- (id) initWithWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue
+{
+  if (wrappedStonePropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedStonePropertyValue\" is nullptr"];
+
+  self = [self initWithStoneValue:@""];
+  if (! self)
+    return nil;
+
+  _wrappedStonePropertyValue = wrappedStonePropertyValue;
+
+  [self setWrappedSinglePropertyValue:_wrappedStonePropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedStonePropertyValue = nullptr;
@@ -114,6 +130,11 @@
 }
 
 #pragma mark - Internal API - SGFCStonePropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>) wrappedStonePropertyValue
+{
+  return _wrappedStonePropertyValue;
+}
 
 - (void) setWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue
 {

@@ -32,6 +32,13 @@
 /// @ingroup property-value
 @interface SGFCMovePropertyValue(SGFCMovePropertyValueInternalAdditions)
 
+/// @brief Initializes an SGFCMovePropertyValue object. The object wraps
+/// the libsgfc++ object @a wrappedMovePropertyValue.
+///
+/// @exception NSInvalidArgumentException Is raised if
+/// @a wrappedMovePropertyValue is  @e nullptr.
+- (id) initWithWrappedMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcMovePropertyValue>)wrappedMovePropertyValue;
+
 /// @brief Sets the wrapped libsgfc++ object to @a wrappedMovePropertyValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if

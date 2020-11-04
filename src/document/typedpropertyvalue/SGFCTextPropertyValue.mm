@@ -17,6 +17,7 @@
 // Project includes
 #import "../../../include/SGFCTextPropertyValue.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
+#import "../../interface/internal/SGFCTextPropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
 
@@ -77,6 +78,22 @@
   return self;
 }
 
+- (id) initWithWrappedTextPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcTextPropertyValue>)wrappedTextPropertyValue
+{
+  if (wrappedTextPropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedTextPropertyValue\" is nullptr"];
+
+  self = [self initWithTextValue:@""];
+  if (! self)
+    return nil;
+
+  _wrappedTextPropertyValue = wrappedTextPropertyValue;
+
+  [self setWrappedSinglePropertyValue:_wrappedTextPropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedTextPropertyValue = nullptr;
@@ -105,6 +122,13 @@
     // exception is raised)
     return nil;
   }
+}
+
+#pragma mark - Internal API - SGFCTextPropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcTextPropertyValue>) wrappedTextPropertyValue
+{
+  return _wrappedTextPropertyValue;
 }
 
 @end

@@ -17,6 +17,7 @@
 // Project includes
 #import "../../../include/SGFCConstants.h"
 #import "../../../include/SGFCColorPropertyValue.h"
+#import "../../interface/internal/SGFCColorPropertyValueInternalAdditions.h"
 #import "../../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
@@ -86,6 +87,22 @@
   return self;
 }
 
+- (id) initWithWrappedColorPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcColorPropertyValue>)wrappedColorPropertyValue
+{
+  if (wrappedColorPropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedColorPropertyValue\" is nullptr"];
+
+  self = [self initWithColorValue:SGFCColorBlack];
+  if (! self)
+    return nil;
+
+  _wrappedColorPropertyValue = wrappedColorPropertyValue;
+
+  [self setWrappedSinglePropertyValue:_wrappedColorPropertyValue];
+
+  return self;
+}
+
 - (void) dealloc
 {
   _wrappedColorPropertyValue = nullptr;
@@ -114,6 +131,13 @@
     // exception is raised)
     return SGFCColorBlack;
   }
+}
+
+#pragma mark - Internal API - SGFCColorPropertyValueInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcColorPropertyValue>) wrappedColorPropertyValue
+{
+  return _wrappedColorPropertyValue;
 }
 
 @end
