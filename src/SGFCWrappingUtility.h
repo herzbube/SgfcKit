@@ -16,14 +16,6 @@
 
 #pragma once
 
-// libsgfc++ includes
-#import <libsgfcplusplus/ISgfcArgument.h>
-#import <libsgfcplusplus/ISgfcGame.h>
-#import <libsgfcplusplus/ISgfcMessage.h>
-#import <libsgfcplusplus/ISgfcProperty.h>
-#import <libsgfcplusplus/ISgfcPropertyValue.h>
-#import <libsgfcplusplus/ISgfcSinglePropertyValue.h>
-
 // C++ Standard Library includes
 #import <memory>
 #import <vector>
@@ -35,6 +27,15 @@
 @class NSArray;
 @class SGFCSinglePropertyValue;
 @protocol SGFCPropertyValue;
+namespace LibSgfcPlusPlus
+{
+  class ISgfcArgument;
+  class ISgfcGame;
+  class ISgfcMessage;
+  class ISgfcProperty;
+  class ISgfcPropertyValue;
+  class ISgfcSinglePropertyValue;
+}
 
 /// @brief The SGFCWrappingUtility class is a container for various utility
 /// functions related to wrapping libsgfc++ objects into the corresponding
