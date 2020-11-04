@@ -16,10 +16,11 @@
 
 // Project includes
 #import "../../../include/SGFCGoMove.h"
+#import "../../../include/SGFCGoStone.h"
 #import "../../interface/internal/SGFCGoMoveInternalAdditions.h"
-#import "../../interface/internal/SGFCGoStoneInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
+#import "../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcGoMove.h>
@@ -69,7 +70,7 @@
   if (wrappedStone == nullptr)
     self.stone = nil;
   else
-    self.stone = [[SGFCGoStone alloc] initWithWrappedGoStone:wrappedStone];
+    self.stone = [SGFCWrappingUtility wrapGoStone:wrappedStone];
 
   return self;
 }

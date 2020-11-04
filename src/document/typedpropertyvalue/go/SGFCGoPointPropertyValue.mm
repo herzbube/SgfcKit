@@ -16,11 +16,11 @@
 
 // Project includes
 #import "../../../../include/SGFCGoPointPropertyValue.h"
-#import "../../../interface/internal/SGFCGoPointInternalAdditions.h"
 #import "../../../interface/internal/SGFCGoPointPropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCPointPropertyValueInternalAdditions.h"
 #import "../../../SGFCExceptionUtility.h"
 #import "../../../SGFCMappingUtility.h"
+#import "../../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcGoPointPropertyValue.h>
@@ -70,7 +70,7 @@
   _wrappedGoPointPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoPointPropertyValue(
     [SGFCMappingUtility fromSgfcKitString:pointValue],
     [SGFCMappingUtility fromSgfcKitBoardSize:boardSize]);
-  self.goPoint = [[SGFCGoPoint alloc] initWithWrappedGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
+  self.goPoint = [SGFCWrappingUtility wrapGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
 
   [self setWrappedPointPropertyValue:_wrappedGoPointPropertyValue];
 
@@ -115,7 +115,7 @@
 
   auto wrappedGoPoint = _wrappedGoPointPropertyValue->GetGoPoint();
   if (wrappedGoPoint)
-    self.goPoint = [[SGFCGoPoint alloc] initWithWrappedGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
+    self.goPoint = [SGFCWrappingUtility wrapGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
   else
     self.goPoint = nil;
   [self setWrappedPointPropertyValue:_wrappedGoPointPropertyValue];

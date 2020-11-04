@@ -16,9 +16,8 @@
 
 // Project includes
 #import "../../../include/SGFCDocumentReader.h"
-#import "../../interface/internal/SGFCArgumentsInternalAdditions.h"
-#import "../../interface/internal/SGFCDocumentReadResultInternalAdditions.h"
 #import "../../SGFCMappingUtility.h"
+#import "../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcDocumentReader.h>
@@ -55,7 +54,7 @@
     return nil;
 
   _wrappedDocumentReader = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocumentReader();
-  self.arguments = [[SGFCArguments alloc] initWithWrappedArguments:_wrappedDocumentReader->GetArguments()];
+  self.arguments = [SGFCWrappingUtility wrapArguments:_wrappedDocumentReader->GetArguments()];
 
   return self;
 }
@@ -72,14 +71,14 @@
 {
   auto wrappedDocumentReadResult = _wrappedDocumentReader->ReadSgfFile(
     [SGFCMappingUtility fromSgfcKitString:sgfFilePath]);
-  return [[SGFCDocumentReadResult alloc] initWithWrappedDocumentReadResult:wrappedDocumentReadResult];
+  return [SGFCWrappingUtility wrapDocumentReadResult:wrappedDocumentReadResult];
 }
 
 - (SGFCDocumentReadResult*) readSgfContentFromString:(NSString*)sgfContent
 {
   auto wrappedDocumentReadResult = _wrappedDocumentReader->ReadSgfContent(
     [SGFCMappingUtility fromSgfcKitString:sgfContent]);
-  return [[SGFCDocumentReadResult alloc] initWithWrappedDocumentReadResult:wrappedDocumentReadResult];
+  return [SGFCWrappingUtility wrapDocumentReadResult:wrappedDocumentReadResult];
 }
 
 @end

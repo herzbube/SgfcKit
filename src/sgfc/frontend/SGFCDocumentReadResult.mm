@@ -16,7 +16,6 @@
 
 // Project includes
 #import "../../../include/SGFCDocumentReadResult.h"
-#import "../../interface/internal/SGFCDocumentInternalAdditions.h"
 #import "../../interface/internal/SGFCDocumentReadResultInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
@@ -112,7 +111,7 @@
   }
   else
   {
-    self.document = [[SGFCDocument alloc] initWithWrappedDocument:_wrappedDocumentReadResult->GetDocument()];
+    self.document = [SGFCWrappingUtility wrapDocument:_wrappedDocumentReadResult->GetDocument()];
   }
 
   return self.document;

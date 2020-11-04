@@ -25,13 +25,31 @@
 
 // Forward declarations
 @class NSArray;
+@class SGFCArgument;
+@class SGFCArguments;
+@class SGFCDocument;
+@class SGFCDocumentReadResult;
+@class SGFCDocumentWriteResult;
+@class SGFCGoMove;
+@class SGFCGoPoint;
+@class SGFCGoStone;
+@class SGFCMessage;
+@class SGFCNode;
 @class SGFCSinglePropertyValue;
 @protocol SGFCPropertyValue;
 namespace LibSgfcPlusPlus
 {
   class ISgfcArgument;
+  class ISgfcArguments;
+  class ISgfcDocument;
+  class ISgfcDocumentReadResult;
+  class ISgfcDocumentWriteResult;
   class ISgfcGame;
+  class ISgfcGoMove;
+  class ISgfcGoPoint;
+  class ISgfcGoStone;
   class ISgfcMessage;
+  class ISgfcNode;
   class ISgfcProperty;
   class ISgfcPropertyValue;
   class ISgfcSinglePropertyValue;
@@ -50,20 +68,62 @@ namespace LibSgfcPlusPlus
 {
 }
 
+/// @brief Returns a newly created SGFCArgument object that
+/// wraps the libsgfc++ ISgfcArgument object @a argumentToWrap.
++ (SGFCArgument*) wrapArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)argumentToWrap;
+
 /// @brief Returns a collection of newly created SGFCArgument objects that wrap
-/// the libsgfc++ ISgfcArgument objects in @a argumentsToWrap. The returned
+/// the libsgfc++ ISgfcArgument objects in @a argumentCollectionToWrap. The returned
 /// collection has the same order as the input collection.
-+ (NSArray*) wrapArguments:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>>&)argumentsToWrap;
++ (NSArray*) wrapArgumentCollection:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>>&)argumentCollectionToWrap;
+
+/// @brief Returns a newly created SGFCArgument object that
+/// wraps the libsgfc++ ISgfcArgument object @a argumentToWrap.
++ (SGFCArguments*) wrapArguments:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>)argumentsToWrap;
+
+/// @brief Returns a newly created SGFCDocument object that
+/// wraps the libsgfc++ ISgfcDocument object @a documentToWrap.
++ (SGFCDocument*) wrapDocument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>)documentToWrap;
+
+/// @brief Returns a newly created SGFCDocumentReadResult object that
+/// wraps the libsgfc++ ISgfcDocumentReadResult object
+/// @a documentReadResultToWrap.
++ (SGFCDocumentReadResult*) wrapDocumentReadResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentReadResult>)documentReadResultToWrap;
+
+/// @brief Returns a newly created SGFCDocumentWriteResult object that
+/// wraps the libsgfc++ ISgfcDocumentWriteResult object
+/// @a documentWriteResultToWrap.
++ (SGFCDocumentWriteResult*) wrapDocumentWriteResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentWriteResult>)documentWriteResultToWrap;
 
 /// @brief Returns a collection of newly created SGFCGame objects that wrap
 /// the libsgfc++ ISgfcGame objects in @a gamesToWrap. The returned
 /// collection has the same order as the input collection.
 + (NSArray*) wrapGames:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>>&)gamesToWrap;
 
+/// @brief Returns a newly created SGFCGoMove object that
+/// wraps the libsgfc++ ISgfcGoMove object @a goMoveToWrap.
++ (SGFCGoMove*) wrapGoMove:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMove>)goMoveToWrap;
+
+/// @brief Returns a newly created SGFCGoPoint object that
+/// wraps the libsgfc++ ISgfcGoPoint object @a goPointToWrap.
++ (SGFCGoPoint*) wrapGoPoint:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPoint>)goPointToWrap;
+
+/// @brief Returns a newly created SGFCGoStone object that
+/// wraps the libsgfc++ ISgfcGoStone object @a goStoneToWrap.
++ (SGFCGoStone*) wrapGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)goStoneToWrap;
+
+/// @brief Returns a newly created SGFCMessage object that
+/// wraps the libsgfc++ ISgfcMessage object @a messageToWrap.
++ (SGFCMessage*) wrapMessage:(std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>)messageToWrap;
+
 /// @brief Returns a collection of newly created SGFCMessage objects that wrap
 /// the libsgfc++ ISgfcMessage objects in @a messagesToWrap. The returned
 /// collection has the same order as the input collection.
 + (NSArray*) wrapMessages:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>>&)messagesToWrap;
+
+/// @brief Returns a newly created SGFCNode object that
+/// wraps the libsgfc++ ISgfcNode object @a nodeToWrap.
++ (SGFCNode*) wrapNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)nodeToWrap;
 
 /// @brief Returns a collection of newly created SGFCProperty objects that wrap
 /// the libsgfc++ ISgfcProperty objects in @a propertiesToWrap. The returned

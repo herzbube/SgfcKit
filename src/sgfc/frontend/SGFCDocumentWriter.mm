@@ -17,11 +17,10 @@
 // Project includes
 #import "../../../include/SGFCArguments.h"
 #import "../../../include/SGFCDocumentWriter.h"
-#import "../../interface/internal/SGFCArgumentsInternalAdditions.h"
 #import "../../interface/internal/SGFCDocumentInternalAdditions.h"
-#import "../../interface/internal/SGFCDocumentWriteResultInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
+#import "../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcDocumentWriter.h>
@@ -58,7 +57,7 @@
     return nil;
 
   _wrappedDocumentWriter = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocumentWriter();
-  self.arguments = [[SGFCArguments alloc] initWithWrappedArguments:_wrappedDocumentWriter->GetArguments()];
+  self.arguments = [SGFCWrappingUtility wrapArguments:_wrappedDocumentWriter->GetArguments()];
 
   return self;
 }
@@ -79,7 +78,7 @@
     auto wrappedDocumentWriteResult = _wrappedDocumentWriter->WriteSgfFile(
       [document wrappedDocument],
       [SGFCMappingUtility fromSgfcKitString:sgfFilePath]);
-    return [[SGFCDocumentWriteResult alloc] initWithWrappedDocumentWriteResult:wrappedDocumentWriteResult];
+    return [SGFCWrappingUtility wrapDocumentWriteResult:wrappedDocumentWriteResult];
   }
   catch (std::logic_error& exception)
   {
@@ -104,7 +103,7 @@
 
     *sgfContent = [SGFCMappingUtility toSgfcKitString:wrappedSgfContent];
 
-    return [[SGFCDocumentWriteResult alloc] initWithWrappedDocumentWriteResult:wrappedDocumentWriteResult];
+    return [SGFCWrappingUtility wrapDocumentWriteResult:wrappedDocumentWriteResult];
   }
   catch (std::logic_error& exception)
   {

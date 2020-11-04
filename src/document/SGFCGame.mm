@@ -22,6 +22,7 @@
 #import "../interface/internal/SGFCTreeBuilderInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
 #import "../SGFCMappingUtility.h"
+#import "../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcGame.h>
@@ -88,7 +89,7 @@
 
   auto wrappedRootNode = _wrappedGame->GetRootNode();
   if (wrappedRootNode)
-    _rootNode = [[SGFCNode alloc] initWithWrappedNode:_wrappedGame->GetRootNode()];
+    _rootNode = [SGFCWrappingUtility wrapNode:_wrappedGame->GetRootNode()];
   else
     _rootNode = nil;
   self.treeBuilder = [[SGFCTreeBuilder alloc] initWithGame:self];

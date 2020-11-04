@@ -240,7 +240,7 @@
   if (wrappedNode == nullptr)
     return nil;
   else
-    return [[SGFCNode alloc] initWithWrappedNode:wrappedNode];
+    return [SGFCWrappingUtility wrapNode:wrappedNode];
 }
 
 @end

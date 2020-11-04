@@ -16,14 +16,22 @@
 
 // Project includes
 #import "interface/internal/SGFCArgumentInternalAdditions.h"
+#import "interface/internal/SGFCArgumentsInternalAdditions.h"
 #import "interface/internal/SGFCColorPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCComposedPropertyValueInternalAdditions.h"
+#import "interface/internal/SGFCDocumentInternalAdditions.h"
+#import "interface/internal/SGFCDocumentReadResultInternalAdditions.h"
+#import "interface/internal/SGFCDocumentWriteResultInternalAdditions.h"
 #import "interface/internal/SGFCDoublePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCGameInternalAdditions.h"
+#import "interface/internal/SGFCGoMoveInternalAdditions.h"
 #import "interface/internal/SGFCGoMovePropertyValueInternalAdditions.h"
+#import "interface/internal/SGFCGoPointInternalAdditions.h"
 #import "interface/internal/SGFCGoPointPropertyValueInternalAdditions.h"
+#import "interface/internal/SGFCGoStoneInternalAdditions.h"
 #import "interface/internal/SGFCGoStonePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCMessageInternalAdditions.h"
+#import "interface/internal/SGFCNodeInternalAdditions.h"
 #import "interface/internal/SGFCMovePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCNumberPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCPointPropertyValueInternalAdditions.h"
@@ -44,16 +52,42 @@
 
 #pragma mark - Public API
 
-+ (NSArray*) wrapArguments:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>>&)argumentsToWrap
++ (SGFCArgument*) wrapArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)argumentToWrap
 {
-  NSMutableArray* arguments = [NSMutableArray arrayWithCapacity:0];
+  return [[SGFCArgument alloc] initWithWrappedArgument:argumentToWrap];
+}
 
-  for (auto argumentToWrap : argumentsToWrap)
++ (NSArray*) wrapArgumentCollection:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>>&)argumentCollectionToWrap
+{
+  NSMutableArray* argumentCollection = [NSMutableArray arrayWithCapacity:0];
+
+  for (auto argumentToWrap : argumentCollectionToWrap)
   {
-    [arguments addObject:[[SGFCArgument alloc] initWithWrappedArgument:argumentToWrap]];
+    SGFCArgument* argument = [SGFCWrappingUtility wrapArgument:argumentToWrap];
+    [argumentCollection addObject:argument];
   }
 
-  return arguments;
+  return argumentCollection;
+}
+
++ (SGFCArguments*) wrapArguments:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>)argumentsToWrap
+{
+  return [[SGFCArguments alloc] initWithWrappedArguments:argumentsToWrap];
+}
+
++ (SGFCDocument*) wrapDocument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>)documentToWrap
+{
+  return [[SGFCDocument alloc] initWithWrappedDocument:documentToWrap];
+}
+
++ (SGFCDocumentReadResult*) wrapDocumentReadResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentReadResult>)documentReadResultToWrap
+{
+  return [[SGFCDocumentReadResult alloc] initWithWrappedDocumentReadResult:documentReadResultToWrap];
+}
+
++ (SGFCDocumentWriteResult*) wrapDocumentWriteResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentWriteResult>)documentWriteResultToWrap
+{
+  return [[SGFCDocumentWriteResult alloc] initWithWrappedDocumentWriteResult:documentWriteResultToWrap];
 }
 
 + (NSArray*) wrapGames:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>>&)gamesToWrap
@@ -68,16 +102,42 @@
   return games;
 }
 
++ (SGFCGoMove*) wrapGoMove:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMove>)goMoveToWrap
+{
+  return [[SGFCGoMove alloc] initWithWrappedGoMove:goMoveToWrap];
+}
+
++ (SGFCGoPoint*) wrapGoPoint:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPoint>)goPointToWrap
+{
+  return [[SGFCGoPoint alloc] initWithWrappedGoPoint:goPointToWrap];
+}
+
++ (SGFCGoStone*) wrapGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)goStoneToWrap
+{
+  return [[SGFCGoStone alloc] initWithWrappedGoStone:goStoneToWrap];
+}
+
++ (SGFCMessage*) wrapMessage:(std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>)messageToWrap
+{
+  return [[SGFCMessage alloc] initWithWrappedMessage:messageToWrap];
+}
+
 + (NSArray*) wrapMessages:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>>&)messagesToWrap
 {
   NSMutableArray* messages = [NSMutableArray arrayWithCapacity:0];
 
   for (auto messageToWrap : messagesToWrap)
   {
-    [messages addObject:[[SGFCMessage alloc] initWithWrappedMessage:messageToWrap]];
+    SGFCMessage* message = [SGFCWrappingUtility wrapMessage:messageToWrap];
+    [messages addObject:message];
   }
 
   return messages;
+}
+
++ (SGFCNode*) wrapNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)nodeToWrap
+{
+  return [[SGFCNode alloc] initWithWrappedNode:nodeToWrap];
 }
 
 + (NSArray*) wrapProperties:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>>&)propertiesToWrap

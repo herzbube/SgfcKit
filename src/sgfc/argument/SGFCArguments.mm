@@ -15,9 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
-#import "../../../include/SGFCArgument.h"
 #import "../../../include/SGFCArguments.h"
-#import "../../interface/internal/SGFCArgumentInternalAdditions.h"
 #import "../../interface/internal/SGFCArgumentsInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
@@ -73,7 +71,7 @@
     return nil;
 
   _wrappedArguments = wrappedArguments;
-  self.arguments = [SGFCWrappingUtility wrapArguments:_wrappedArguments->GetArguments()];
+  self.arguments = [SGFCWrappingUtility wrapArgumentCollection:_wrappedArguments->GetArguments()];
 
   return self;
 }
@@ -161,7 +159,7 @@
 - (void) addWrapperForNewlyAddedArgument
 {
   auto wrappedArgument = _wrappedArguments->GetArguments().back();
-  SGFCArgument* argument = [[SGFCArgument alloc] initWithWrappedArgument:wrappedArgument];
+  SGFCArgument* argument = [SGFCWrappingUtility wrapArgument:wrappedArgument];
   [(NSMutableArray*)_arguments addObject:argument];
 }
 

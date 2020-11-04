@@ -16,11 +16,11 @@
 
 // Project includes
 #import "../../../../include/SGFCGoMovePropertyValue.h"
-#import "../../../interface/internal/SGFCGoMoveInternalAdditions.h"
 #import "../../../interface/internal/SGFCGoMovePropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCMovePropertyValueInternalAdditions.h"
 #import "../../../SGFCExceptionUtility.h"
 #import "../../../SGFCMappingUtility.h"
+#import "../../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcGoMovePropertyValue.h>
@@ -82,7 +82,7 @@
     [SGFCMappingUtility fromSgfcKitString:moveValue],
     [SGFCMappingUtility fromSgfcKitBoardSize:boardSize],
     [SGFCMappingUtility fromSgfcKitColor:color]);
-  self.goMove = [[SGFCGoMove alloc] initWithWrappedGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
+  self.goMove = [SGFCWrappingUtility wrapGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
 
   [self setWrappedMovePropertyValue:_wrappedGoMovePropertyValue];
 
@@ -100,7 +100,7 @@
   _wrappedGoMovePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoMovePropertyValue(
     [SGFCMappingUtility fromSgfcKitString:moveValue],
     [SGFCMappingUtility fromSgfcKitColor:color]);
-  self.goMove = [[SGFCGoMove alloc] initWithWrappedGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
+  self.goMove = [SGFCWrappingUtility wrapGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
 
   [self setWrappedMovePropertyValue:_wrappedGoMovePropertyValue];
 
@@ -123,7 +123,7 @@
     return nil;
 
   _wrappedGoMovePropertyValue = wrappedGoMovePropertyValue;
-  self.goMove = [[SGFCGoMove alloc] initWithWrappedGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
+  self.goMove = [SGFCWrappingUtility wrapGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
 
   // Overwrite the useless wrapped object that the superclass
   // initializer created with the real wrapped object.
@@ -143,7 +143,7 @@
 
   _wrappedGoMovePropertyValue = wrappedGoMovePropertyValue;
 
-  self.goMove = [[SGFCGoMove alloc] initWithWrappedGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
+  self.goMove = [SGFCWrappingUtility wrapGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
   [self setWrappedMovePropertyValue:_wrappedGoMovePropertyValue];
 
   return self;

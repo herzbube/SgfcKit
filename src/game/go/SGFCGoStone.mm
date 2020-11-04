@@ -16,10 +16,10 @@
 
 // Project includes
 #import "../../../include/SGFCGoStone.h"
-#import "../../interface/internal/SGFCGoPointInternalAdditions.h"
 #import "../../interface/internal/SGFCGoStoneInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
+#import "../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcGoStone.h>
@@ -69,7 +69,7 @@
   if (wrappedLocation == nullptr)
     self.location = nil;
   else
-    self.location = [[SGFCGoPoint alloc] initWithWrappedGoPoint:wrappedLocation];
+    self.location = [SGFCWrappingUtility wrapGoPoint:wrappedLocation];
 
   return self;
 }

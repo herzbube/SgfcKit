@@ -16,11 +16,11 @@
 
 // Project includes
 #import "../../../../include/SGFCGoStonePropertyValue.h"
-#import "../../../interface/internal/SGFCGoStoneInternalAdditions.h"
 #import "../../../interface/internal/SGFCGoStonePropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCStonePropertyValueInternalAdditions.h"
 #import "../../../SGFCExceptionUtility.h"
 #import "../../../SGFCMappingUtility.h"
+#import "../../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcGoStonePropertyValue.h>
@@ -75,7 +75,7 @@
     [SGFCMappingUtility fromSgfcKitString:stoneValue],
     [SGFCMappingUtility fromSgfcKitBoardSize:boardSize],
     [SGFCMappingUtility fromSgfcKitColor:color]);
-  self.goStone = [[SGFCGoStone alloc] initWithWrappedGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
+  self.goStone = [SGFCWrappingUtility wrapGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
 
   [self setWrappedStonePropertyValue:_wrappedGoStonePropertyValue];
 
@@ -103,7 +103,7 @@
     return nil;
 
   _wrappedGoStonePropertyValue = wrappedGoStonePropertyValue;
-  self.goStone = [[SGFCGoStone alloc] initWithWrappedGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
+  self.goStone = [SGFCWrappingUtility wrapGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
 
   // Overwrite the useless wrapped object that the superclass
   // initializer created with the real wrapped object.
@@ -124,7 +124,7 @@
 
   _wrappedGoStonePropertyValue = wrappedGoStonePropertyValue;
 
-  self.goStone = [[SGFCGoStone alloc] initWithWrappedGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
+  self.goStone = [SGFCWrappingUtility wrapGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
   [self setWrappedStonePropertyValue:_wrappedGoStonePropertyValue];
 
   return self;

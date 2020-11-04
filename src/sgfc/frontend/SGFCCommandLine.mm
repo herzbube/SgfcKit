@@ -16,9 +16,7 @@
 
 // Project includes
 #import "../../../include/SGFCCommandLine.h"
-#import "../../interface/internal/SGFCArgumentInternalAdditions.h"
 #import "../../interface/internal/SGFCArgumentsInternalAdditions.h"
-#import "../../interface/internal/SGFCMessageInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
 #import "../../SGFCWrappingUtility.h"
@@ -76,12 +74,7 @@
   // libsgfc++ made a copy of the arguments, so we can't just use the wrapper
   // objects that we received in the SGFCArguments parameter. Instead we have
   // to create new wrapper objects.
-  NSMutableArray* argumentsArray = [NSMutableArray arrayWithCapacity:0];
-  for (auto wrappedArgument : _wrappedCommandLine->GetArguments())
-  {
-    [argumentsArray addObject:[[SGFCArgument alloc] initWithWrappedArgument:wrappedArgument]];
-  }
-  self.arguments = argumentsArray;
+  self.arguments = [SGFCWrappingUtility wrapArgumentCollection:_wrappedCommandLine->GetArguments()];
 
   return self;
 }
@@ -126,7 +119,7 @@
     try
     {
       auto wrappedMessage = _wrappedCommandLine->GetInvalidCommandLineReason();
-      self.invalidCommandLineReason = [[SGFCMessage alloc] initWithWrappedMessage:wrappedMessage];
+      self.invalidCommandLineReason = [SGFCWrappingUtility wrapMessage:wrappedMessage];
     }
     catch (std::logic_error& exception)
     {
