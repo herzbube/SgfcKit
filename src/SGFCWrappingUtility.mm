@@ -16,6 +16,7 @@
 
 // Project includes
 #import "interface/internal/SGFCColorPropertyValueInternalAdditions.h"
+#import "interface/internal/SGFCComposedPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCDoublePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCGoMovePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCGoPointPropertyValueInternalAdditions.h"
@@ -50,6 +51,32 @@
   }
 
   return messages;
+}
+
++ (id<SGFCPropertyValue>) wrapPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>)propertyValueToWrap
+{
+  id<SGFCPropertyValue> propertyValue = nil;
+
+  // std::dynamic_pointer_cast performs a downcast and packages the
+  // result into a shared_ptr, all in one go. Note: We can't use
+  // std::static_pointer_cast because of multiple inheritance.
+
+  if (propertyValueToWrap->IsComposedValue())
+  {
+    std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue> composedPropertyValueToWrap =
+      std::dynamic_pointer_cast<LibSgfcPlusPlus::ISgfcComposedPropertyValue>(propertyValueToWrap);
+
+    propertyValue = [[SGFCComposedPropertyValue alloc] initWithWrappedComposedPropertyValue:composedPropertyValueToWrap];
+  }
+  else
+  {
+    std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue> singlePropertyValueToWrap =
+      std::dynamic_pointer_cast<LibSgfcPlusPlus::ISgfcSinglePropertyValue>(propertyValueToWrap);
+
+    propertyValue = [SGFCWrappingUtility wrapSinglePropertyValue:singlePropertyValueToWrap];
+  }
+
+  return propertyValue;
 }
 
 + (SGFCSinglePropertyValue*) wrapSinglePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>)singlePropertyValueToWrap
@@ -172,6 +199,19 @@
     }
 
   return singlePropertyValue;
+}
+
++ (NSArray*) wrapPropertyValues:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>>&)propertyValuesToWrap
+{
+  NSMutableArray* propertyValues = [NSMutableArray arrayWithCapacity:0];
+
+  for (auto propertyValueToWrap : propertyValuesToWrap)
+  {
+    id<SGFCPropertyValue> propertyValue = [SGFCWrappingUtility wrapPropertyValue:propertyValueToWrap];
+    [propertyValues addObject:propertyValue];
+  }
+
+  return propertyValues;
 }
 
 @end

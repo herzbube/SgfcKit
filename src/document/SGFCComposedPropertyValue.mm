@@ -20,6 +20,7 @@
 #import "../interface/internal/SGFCComposedPropertyValueInternalAdditions.h"
 #import "../interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
+#import "../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcPropertyValueFactory.h>
@@ -32,9 +33,11 @@
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue> _wrappedComposedPropertyValue;
 }
+
 @property(nonatomic, getter=isComposedValue) BOOL composedValue;
 @property(nonatomic, strong, readwrite) SGFCSinglePropertyValue* value1;
 @property(nonatomic, strong, readwrite) SGFCSinglePropertyValue* value2;
+
 @end
 
 @implementation SGFCComposedPropertyValue
@@ -72,6 +75,22 @@
   self.composedValue = true;
   self.value1 = value1;
   self.value1 = value2;
+
+  return self;
+}
+
+- (id) initWithWrappedComposedPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue>)wrappedComposedPropertyValue
+{
+  if (wrappedComposedPropertyValue == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedComposedPropertyValue\" is nullptr"];
+
+  self = [self init];
+  if (! self)
+    return nil;
+
+  _wrappedComposedPropertyValue = wrappedComposedPropertyValue;
+  self.value1 = [SGFCWrappingUtility wrapSinglePropertyValue:_wrappedComposedPropertyValue->GetValue1()];
+  self.value2 = [SGFCWrappingUtility wrapSinglePropertyValue:_wrappedComposedPropertyValue->GetValue2()];
 
   return self;
 }

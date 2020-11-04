@@ -35,6 +35,13 @@
 /// @ingroup property-value
 @interface SGFCComposedPropertyValue(SGFCComposedPropertyValueInternalAdditions) <SGFCPropertyValueInternal>
 
+/// @brief Initializes an SGFCComposedPropertyValue object. The object wraps
+/// the libsgfc++ object @a wrappedComposedPropertyValue.
+///
+/// @exception NSInvalidArgumentException Is raised if
+/// @a wrappedComposedPropertyValue is  @e nullptr.
+- (id) initWithWrappedComposedPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue>)wrappedComposedPropertyValue;
+
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue>) wrappedComposedPropertyValue;
 
