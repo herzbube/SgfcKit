@@ -21,6 +21,7 @@
 #import "../../interface/internal/SGFCMessageInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
+#import "../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcCommandLine.h>
@@ -207,7 +208,7 @@
   {
     try
     {
-      self.parseResult = [self wrapWrappedMessages:_wrappedCommandLine->GetParseResult()];
+      self.parseResult = [SGFCWrappingUtility wrapMessages:_wrappedCommandLine->GetParseResult()];
     }
     catch (std::logic_error& exception)
     {
@@ -291,7 +292,7 @@
   {
     try
     {
-      self.saveResult = [self wrapWrappedMessages:_wrappedCommandLine->GetSaveResult()];
+      self.saveResult = [SGFCWrappingUtility wrapMessages:_wrappedCommandLine->GetSaveResult()];
     }
     catch (std::logic_error& exception)
     {
@@ -300,20 +301,6 @@
   }
 
   return self.saveResult;
-}
-
-# pragma mark - Private API
-
-- (NSArray*) wrapWrappedMessages:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>>&)wrappedMessages
-{
-  NSMutableArray* messagesArray = [NSMutableArray arrayWithCapacity:0];
-
-  for (auto wrappedMessage : wrappedMessages)
-  {
-    [messagesArray addObject:[[SGFCMessage alloc] initWithWrappedMessage:wrappedMessage]];
-  }
-
-  return messagesArray;
 }
 
 - (void) invalidateCacheOnLoadOperation

@@ -34,6 +34,7 @@ set (
   SGFCExceptionUtility.mm
   SGFCMappingUtility.mm
   SGFCPrivateConstants.mm
+  SGFCWrappingUtility.mm
   ${SOURCES_LIST_FILE_NAME}
 )
 
@@ -58,6 +59,7 @@ set (
   SGFCExceptionUtility.h
   SGFCMappingUtility.h
   SGFCPrivateConstants.h
+  SGFCWrappingUtility.h
 )
 
 set (
