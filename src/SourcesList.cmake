@@ -28,6 +28,7 @@ set (
   game/SGFCBoardSize.mm
   sgfc/argument/SGFCArgument.mm
   sgfc/argument/SGFCArguments.mm
+  sgfc/frontend/SGFCCommandLine.mm
   sgfc/message/SGFCMessage.mm
   SGFCConstants.mm
   SGFCExceptionUtility.mm
@@ -67,6 +68,7 @@ set (
   ../include/SGFCBoardSize.h
   ../include/SGFCColor.h
   ../include/SGFCColorPropertyValue.h
+  ../include/SGFCCommandLine.h
   ../include/SGFCComposedPropertyValue.h
   ../include/SGFCConstants.h
   ../include/SGFCCoordinateSystem.h

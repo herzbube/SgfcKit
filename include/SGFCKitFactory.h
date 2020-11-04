@@ -55,6 +55,8 @@
 /// @note The content of @a arguments is copied, so if you change the
 /// content it will not affect the SGFCCommandLine object returned from
 /// this method.
+///
+/// @exception NSInvalidArgumentException Is raised if @a arguments is @e nil.
 + (SGFCCommandLine*) commandLineWithArguments:(SGFCArguments*)arguments;
 
 /// @brief Returns a newly constructed SGFCCommandLine object that passes

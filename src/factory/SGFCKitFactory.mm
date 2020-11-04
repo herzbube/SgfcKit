@@ -16,6 +16,7 @@
 
 // Project includes
 #import "../../include/SGFCArguments.h"
+#import "../../include/SGFCCommandLine.h"
 #import "../../include/SGFCDocument.h"
 #import "../../include/SGFCGame.h"
 #import "../../include/SGFCNode.h"
@@ -33,14 +34,12 @@
 
 + (SGFCCommandLine*) commandLineWithArguments:(SGFCArguments*)arguments
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"commandLineWithArguments"];
-  return nil;
+  return [SGFCCommandLine commandLineWithArguments:arguments];
 }
 
 + (SGFCCommandLine*) commandLineWithNoArguments
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"commandLineWithNoArguments"];
-  return nil;
+  return [SGFCCommandLine commandLineWithNoArguments];
 }
 
 + (SGFCDocumentReader*) documentReader
