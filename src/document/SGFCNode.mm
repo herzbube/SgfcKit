@@ -72,6 +72,8 @@
   _wrappedNode = wrappedNode;
   // wrappedNode has no properties so we can keep the empty properties array
   // from the designated initializer
+
+  return self;
 }
 
 - (void) dealloc
