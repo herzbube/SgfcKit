@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "interface/internal/SGFCArgumentInternalAdditions.h"
 #import "interface/internal/SGFCColorPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCComposedPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCDoublePropertyValueInternalAdditions.h"
@@ -42,6 +43,18 @@
 @implementation SGFCWrappingUtility
 
 #pragma mark - Public API
+
++ (NSArray*) wrapArguments:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>>&)argumentsToWrap
+{
+  NSMutableArray* arguments = [NSMutableArray arrayWithCapacity:0];
+
+  for (auto argumentToWrap : argumentsToWrap)
+  {
+    [arguments addObject:[[SGFCArgument alloc] initWithWrappedArgument:argumentToWrap]];
+  }
+
+  return arguments;
+}
 
 + (NSArray*) wrapGames:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>>&)gamesToWrap
 {

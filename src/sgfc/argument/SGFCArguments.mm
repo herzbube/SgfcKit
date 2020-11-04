@@ -21,6 +21,7 @@
 #import "../../interface/internal/SGFCArgumentsInternalAdditions.h"
 #import "../../SGFCExceptionUtility.h"
 #import "../../SGFCMappingUtility.h"
+#import "../../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcArguments.h>
@@ -58,6 +59,21 @@
 
   _wrappedArguments = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateSgfcArguments();
   self.arguments = [NSMutableArray arrayWithCapacity:0];
+
+  return self;
+}
+
+- (id) initWithWrappedArguments:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>)wrappedArguments
+{
+  if (wrappedArguments == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedArguments\" is nullptr"];
+
+  self = [self init];
+  if (! self)
+    return nil;
+
+  _wrappedArguments = wrappedArguments;
+  self.arguments = [SGFCWrappingUtility wrapArguments:_wrappedArguments->GetArguments()];
 
   return self;
 }

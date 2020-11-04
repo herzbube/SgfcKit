@@ -18,6 +18,7 @@
 #import "../../include/SGFCArguments.h"
 #import "../../include/SGFCCommandLine.h"
 #import "../../include/SGFCDocument.h"
+#import "../../include/SGFCDocumentReader.h"
 #import "../../include/SGFCGame.h"
 #import "../../include/SGFCNode.h"
 #import "../../include/SGFCKitFactory.h"
@@ -44,8 +45,7 @@
 
 + (SGFCDocumentReader*) documentReader
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"documentReader"];
-  return nil;
+  return [SGFCDocumentReader documentReader];
 }
 
 + (SGFCDocumentWriter*) documentWriter

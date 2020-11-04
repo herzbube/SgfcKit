@@ -17,6 +17,7 @@
 #pragma once
 
 // libsgfc++ includes
+#import <libsgfcplusplus/ISgfcArgument.h>
 #import <libsgfcplusplus/ISgfcGame.h>
 #import <libsgfcplusplus/ISgfcMessage.h>
 #import <libsgfcplusplus/ISgfcProperty.h>
@@ -47,6 +48,11 @@
 @interface SGFCWrappingUtility : NSObject
 {
 }
+
+/// @brief Returns a collection of newly created SGFCArgument objects that wrap
+/// the libsgfc++ ISgfcArgument objects in @a argumentsToWrap. The returned
+/// collection has the same order as the input collection.
++ (NSArray*) wrapArguments:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>>&)argumentsToWrap;
 
 /// @brief Returns a collection of newly created SGFCGame objects that wrap
 /// the libsgfc++ ISgfcGame objects in @a gamesToWrap. The returned

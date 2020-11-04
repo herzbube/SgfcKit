@@ -29,6 +29,7 @@ set (
   sgfc/argument/SGFCArgument.mm
   sgfc/argument/SGFCArguments.mm
   sgfc/frontend/SGFCCommandLine.mm
+  sgfc/frontend/SGFCDocumentReader.mm
   sgfc/frontend/SGFCDocumentReadResult.mm
   sgfc/message/SGFCMessage.mm
   SGFCConstants.mm
@@ -87,6 +88,7 @@ set (
   ../include/SGFCConstants.h
   ../include/SGFCCoordinateSystem.h
   ../include/SGFCDocument.h
+  ../include/SGFCDocumentReader.h
   ../include/SGFCDocumentReadResult.h
   ../include/SGFCDouble.h
   ../include/SGFCDoublePropertyValue.h
