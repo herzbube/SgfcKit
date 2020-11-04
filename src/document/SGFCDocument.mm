@@ -16,9 +16,11 @@
 
 // Project includes
 #import "../../include/SGFCDocument.h"
+#import "../interface/internal/SGFCDocumentInternalAdditions.h"
 #import "../interface/internal/SGFCGameInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
 #import "../SGFCMappingUtility.h"
+#import "../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcDocument.h>
@@ -71,6 +73,21 @@
     _wrappedDocument = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateDocument([game wrappedGame]);
     self.games = [NSMutableArray arrayWithObject:game];
   }
+
+  return self;
+}
+
+- (id) initWithWrappedDocument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>)wrappedDocument
+{
+  if (wrappedDocument == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedDocument\" is nullptr"];
+
+  self = [self initWithGame:nil];
+  if (! self)
+    return nil;
+
+  _wrappedDocument = wrappedDocument;
+  _games = [SGFCWrappingUtility wrapGames:_wrappedDocument->GetGames()];
 
   return self;
 }
@@ -162,6 +179,13 @@
 - (void) debugPrintToConsole
 {
   _wrappedDocument->DebugPrintToConsole();
+}
+
+#pragma mark - Internal API - SGFCDocumentInternalAdditions overrides
+
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>) wrappedDocument
+{
+  return _wrappedDocument;
 }
 
 @end

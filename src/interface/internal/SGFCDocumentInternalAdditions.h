@@ -17,29 +17,31 @@
 #pragma once
 
 // Project includes
-#import "../../../include/SGFCGame.h"
+#import "../../../include/SGFCDocument.h"
 
 // libsgfc++ includes
-#import <libsgfcplusplus/ISgfcGame.h>
+#import <libsgfcplusplus/ISgfcDocument.h>
 
 // C++ Standard Library includes
 #include <memory>
 
-/// @brief The SGFCGameInternalAdditions category adds a library-internal API to
-/// the SGFCGame class.
+/// @brief The SGFCDocumentInternalAdditions category adds a library-internal
+/// API to the SGFCDocument class.
 ///
 /// @ingroup private-api
-/// @ingroup game-tree
-@interface SGFCGame(SGFCGameInternalAdditions)
+/// @ingroup document
+@interface SGFCDocument(SGFCDocumentInternalAdditions)
 
-/// @brief Initializes an SGFCGame object. The object wraps the libsgfc++
-/// object @a wrappedGame.
+/// @brief Initializes an SGFCDocument object. The object wraps the libsgfc++
+/// object @a wrappedDocument.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a wrappedGame is
+/// This is the designated initializer of SGFCDocument.
+///
+/// @exception NSInvalidArgumentException Is raised if @a wrappedDocument is
 /// @e nullptr.
-- (id) initWithWrappedGame:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>)wrappedGame;
+- (id) initWithWrappedDocument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>)wrappedDocument;
 
 /// @brief Returns the wrapped libsgfc++ object.
-- (std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>) wrappedGame;
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>) wrappedDocument;
 
 @end

@@ -32,6 +32,13 @@
 /// @ingroup property
 @interface SGFCProperty(SGFCPropertyInternalAdditions)
 
+/// @brief Initializes an SGFCProperty object. The object wraps the libsgfc++
+/// object @a wrappedProperty.
+///
+/// @exception NSInvalidArgumentException Is raised if @a wrappedProperty is
+/// @e nullptr.
+- (id) initWithWrappedProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)wrappedProperty;
+
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>) wrappedProperty;
 

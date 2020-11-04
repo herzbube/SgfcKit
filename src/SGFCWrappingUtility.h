@@ -17,7 +17,9 @@
 #pragma once
 
 // libsgfc++ includes
+#import <libsgfcplusplus/ISgfcGame.h>
 #import <libsgfcplusplus/ISgfcMessage.h>
+#import <libsgfcplusplus/ISgfcProperty.h>
 #import <libsgfcplusplus/ISgfcPropertyValue.h>
 #import <libsgfcplusplus/ISgfcSinglePropertyValue.h>
 
@@ -46,10 +48,20 @@
 {
 }
 
+/// @brief Returns a collection of newly created SGFCGame objects that wrap
+/// the libsgfc++ ISgfcGame objects in @a gamesToWrap. The returned
+/// collection has the same order as the input collection.
++ (NSArray*) wrapGames:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>>&)gamesToWrap;
+
 /// @brief Returns a collection of newly created SGFCMessage objects that wrap
 /// the libsgfc++ ISgfcMessage objects in @a messagesToWrap. The returned
 /// collection has the same order as the input collection.
 + (NSArray*) wrapMessages:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>>&)messagesToWrap;
+
+/// @brief Returns a collection of newly created SGFCProperty objects that wrap
+/// the libsgfc++ ISgfcProperty objects in @a propertiesToWrap. The returned
+/// collection has the same order as the input collection.
++ (NSArray*) wrapProperties:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>>&)propertiesToWrap;
 
 /// @brief Returns a newly created SGFCPropertyValue object that
 /// wraps the libsgfc++ ISgfcPropertyValue object @a propertyValueToWrap.

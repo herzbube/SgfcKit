@@ -20,6 +20,7 @@
 #import "../interface/internal/SGFCPropertyValueInternal.h"
 #import "../SGFCExceptionUtility.h"
 #import "../SGFCMappingUtility.h"
+#import "../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcProperty.h>
@@ -158,6 +159,21 @@
 
     _propertyValues = propertyValues;
   }
+
+  return self;
+}
+
+- (id) initWithWrappedProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)wrappedProperty
+{
+  if (wrappedProperty == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedProperty\" is nullptr"];
+
+  self = [self init];
+  if (! self)
+    return nil;
+
+  _wrappedProperty = wrappedProperty;
+  _propertyValues = [SGFCWrappingUtility wrapPropertyValues:_wrappedProperty->GetPropertyValues()];
 
   return self;
 }

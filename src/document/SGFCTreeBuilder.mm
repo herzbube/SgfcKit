@@ -33,6 +33,8 @@
 
 - (id) initWithGame:(SGFCGame*)game NS_DESIGNATED_INITIALIZER;
 
+@property(nonatomic, weak, readwrite) SGFCGame* game;
+
 @end
 
 @implementation SGFCTreeBuilder
@@ -61,7 +63,7 @@
                                                  invalidArgumentName:@"game"];
 
   _wrappedTreeBuilder = [game wrappedGame]->GetTreeBuilder();
-  _game = game;
+  self.game = game;
 
   return self;
 }
@@ -69,7 +71,7 @@
 - (void) dealloc
 {
   _wrappedTreeBuilder = nullptr;
-  _game = nil;
+  self.game = nil;
 }
 
 #pragma mark - Public API

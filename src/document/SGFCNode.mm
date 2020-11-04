@@ -20,6 +20,7 @@
 #import "../interface/internal/SGFCPropertyInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
 #import "../SGFCMappingUtility.h"
+#import "../SGFCWrappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcNode.h>
@@ -57,10 +58,9 @@
   _properties = [NSArray array];
 
   return self;
-
 }
 
-- (id) initPrivateWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode
+- (id) initWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode
 {
   if (wrappedNode == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedNode\" is nullptr"];
@@ -70,8 +70,7 @@
     return nil;
 
   _wrappedNode = wrappedNode;
-  // wrappedNode has no properties so we can keep the empty properties array
-  // from the designated initializer
+  _properties = [SGFCWrappingUtility wrapProperties:_wrappedNode->GetProperties()];
 
   return self;
 }
@@ -241,7 +240,7 @@
   if (wrappedNode == nullptr)
     return nil;
   else
-    return [[SGFCNode alloc] initPrivateWithWrappedNode:wrappedNode];
+    return [[SGFCNode alloc] initWithWrappedNode:wrappedNode];
 }
 
 @end

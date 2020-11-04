@@ -17,29 +17,32 @@
 #pragma once
 
 // Project includes
-#import "../../../include/SGFCGame.h"
+#import "../../../include/SGFCDocumentReadResult.h"
 
 // libsgfc++ includes
-#import <libsgfcplusplus/ISgfcGame.h>
+#import <libsgfcplusplus/ISgfcDocumentReadResult.h>
 
 // C++ Standard Library includes
 #include <memory>
 
-/// @brief The SGFCGameInternalAdditions category adds a library-internal API to
-/// the SGFCGame class.
+/// @brief The SGFCDocumentReadResultInternalAdditions category adds a
+/// library-internal API to the SGFCDocumentReadResult class.
 ///
 /// @ingroup private-api
-/// @ingroup game-tree
-@interface SGFCGame(SGFCGameInternalAdditions)
+/// @ingroup sgfc-frontend
+/// @ingroup document
+@interface SGFCDocumentReadResult(SGFCDocumentReadResultInternalAdditions)
 
-/// @brief Initializes an SGFCGame object. The object wraps the libsgfc++
-/// object @a wrappedGame.
+/// @brief Initializes an SGFCDocumentReadResult object. The object wraps the
+/// libsgfc++ object @a wrappedDocumentReadResult.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a wrappedGame is
-/// @e nullptr.
-- (id) initWithWrappedGame:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>)wrappedGame;
+/// This is the designated initializer of SGFCDocumentReadResult.
+///
+/// @exception NSInvalidArgumentException Is raised if
+/// @a wrappedDocumentReadResult is @e nullptr.
+- (id) initWithWrappedDocumentReadResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentReadResult>)wrappedDocumentReadResult;
 
 /// @brief Returns the wrapped libsgfc++ object.
-- (std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>) wrappedGame;
+- (std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentReadResult>) wrappedDocumentReadResult;
 
 @end

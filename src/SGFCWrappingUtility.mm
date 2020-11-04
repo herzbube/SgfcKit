@@ -18,6 +18,7 @@
 #import "interface/internal/SGFCColorPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCComposedPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCDoublePropertyValueInternalAdditions.h"
+#import "interface/internal/SGFCGameInternalAdditions.h"
 #import "interface/internal/SGFCGoMovePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCGoPointPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCGoStonePropertyValueInternalAdditions.h"
@@ -25,6 +26,7 @@
 #import "interface/internal/SGFCMovePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCNumberPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCPointPropertyValueInternalAdditions.h"
+#import "interface/internal/SGFCPropertyInternalAdditions.h"
 #import "interface/internal/SGFCRealPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCSimpleTextPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCSinglePropertyValueInternalAdditions.h"
@@ -41,6 +43,18 @@
 
 #pragma mark - Public API
 
++ (NSArray*) wrapGames:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>>&)gamesToWrap
+{
+  NSMutableArray* games = [NSMutableArray arrayWithCapacity:0];
+
+  for (auto gameToWrap : gamesToWrap)
+  {
+    [games addObject:[[SGFCGame alloc] initWithWrappedGame:gameToWrap]];
+  }
+
+  return games;
+}
+
 + (NSArray*) wrapMessages:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>>&)messagesToWrap
 {
   NSMutableArray* messages = [NSMutableArray arrayWithCapacity:0];
@@ -51,6 +65,18 @@
   }
 
   return messages;
+}
+
++ (NSArray*) wrapProperties:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>>&)propertiesToWrap
+{
+  NSMutableArray* properties = [NSMutableArray arrayWithCapacity:0];
+
+  for (auto propertyToWrap : propertiesToWrap)
+  {
+    [properties addObject:[[SGFCProperty alloc] initWithWrappedProperty:propertyToWrap]];
+  }
+
+  return properties;
 }
 
 + (id<SGFCPropertyValue>) wrapPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>)propertyValueToWrap

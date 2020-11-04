@@ -32,6 +32,13 @@
 /// @ingroup game-tree
 @interface SGFCNode(SGFCNodeInternalAdditions)
 
+/// @brief Initializes an SGFCNode object. The object wraps the libsgfc++
+/// object @a wrappedNode.
+///
+/// @exception NSInvalidArgumentException Is raised if @a wrappedNode is
+/// @e nullptr.
+- (id) initWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode;
+
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>) wrappedNode;
 

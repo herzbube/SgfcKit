@@ -69,7 +69,28 @@
   else
     _wrappedGame = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreateGame([rootNode wrappedNode]);
 
-  self.rootNode = rootNode;
+  _rootNode = rootNode;
+  self.treeBuilder = [[SGFCTreeBuilder alloc] initWithGame:self];
+
+  return self;
+}
+
+- (id) initWithWrappedGame:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>)wrappedGame
+{
+  if (wrappedGame == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGame\" is nullptr"];
+
+  self = [self initWithRootNode:nil];
+  if (! self)
+    return nil;
+
+  _wrappedGame = wrappedGame;
+
+  auto wrappedRootNode = _wrappedGame->GetRootNode();
+  if (wrappedRootNode)
+    _rootNode = [[SGFCNode alloc] initWithWrappedNode:_wrappedGame->GetRootNode()];
+  else
+    _rootNode = nil;
   self.treeBuilder = [[SGFCTreeBuilder alloc] initWithGame:self];
 
   return self;
