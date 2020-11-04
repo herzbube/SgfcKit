@@ -31,6 +31,8 @@ set (
   sgfc/frontend/SGFCCommandLine.mm
   sgfc/frontend/SGFCDocumentReader.mm
   sgfc/frontend/SGFCDocumentReadResult.mm
+  sgfc/frontend/SGFCDocumentWriter.mm
+  sgfc/frontend/SGFCDocumentWriteResult.mm
   sgfc/message/SGFCMessage.mm
   SGFCConstants.mm
   SGFCExceptionUtility.mm
@@ -48,6 +50,7 @@ set (
   interface/internal/SGFCComposedPropertyValueInternalAdditions.h
   interface/internal/SGFCDocumentInternalAdditions.h
   interface/internal/SGFCDocumentReadResultInternalAdditions.h
+  interface/internal/SGFCDocumentWriteResultInternalAdditions.h
   interface/internal/SGFCDoublePropertyValueInternalAdditions.h
   interface/internal/SGFCGameInternalAdditions.h
   interface/internal/SGFCGoMoveInternalAdditions.h
@@ -90,6 +93,8 @@ set (
   ../include/SGFCDocument.h
   ../include/SGFCDocumentReader.h
   ../include/SGFCDocumentReadResult.h
+  ../include/SGFCDocumentWriter.h
+  ../include/SGFCDocumentWriteResult.h
   ../include/SGFCDouble.h
   ../include/SGFCDoublePropertyValue.h
   ../include/SGFCExitCode.h

@@ -19,6 +19,7 @@
 #import "../../include/SGFCCommandLine.h"
 #import "../../include/SGFCDocument.h"
 #import "../../include/SGFCDocumentReader.h"
+#import "../../include/SGFCDocumentWriter.h"
 #import "../../include/SGFCGame.h"
 #import "../../include/SGFCNode.h"
 #import "../../include/SGFCKitFactory.h"
@@ -50,8 +51,7 @@
 
 + (SGFCDocumentWriter*) documentWriter
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"documentWriter"];
-  return nil;
+  return [SGFCDocumentWriter documentWriter];
 }
 
 + (SGFCDocument*) document

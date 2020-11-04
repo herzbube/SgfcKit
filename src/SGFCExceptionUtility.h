@@ -69,6 +69,14 @@
 /// reason. @a reason is assumed to have UTF-8 encoding.
 + (void) raiseInternalInconsistencyExceptionWithCStringReason:(const char*)reason;
 
+/// @brief Raises an #SGFCDocumentStructureException using @a reason as the
+/// reason.
++ (void) raiseDocumentStructureExceptionWithReason:(NSString*)reason;
+
+/// @brief Raises an #SGFCDocumentStructureException using @a reason as the
+/// reason. @a reason is assumed to have UTF-8 encoding.
++ (void) raiseDocumentStructureExceptionWithCStringReason:(const char*)reason;
+
 /// @brief Raises an #SGFCNotImplementedException using @a what as the reason.
 /// @a what should be the name of a method, with the intent to explain what
 /// has not been implemented.

@@ -82,6 +82,19 @@
   [self raiseInternalInconsistencyExceptionWithReason:[NSString stringWithUTF8String:reason]];
 }
 
++ (void) raiseDocumentStructureExceptionWithReason:(NSString*)reason
+{
+  NSException* exception = [NSException exceptionWithName:SGFCDocumentStructureException
+                                                   reason:reason
+                                                 userInfo:nil];
+  @throw exception;
+}
+
++ (void) raiseDocumentStructureExceptionWithCStringReason:(const char*)reason
+{
+  [self raiseDocumentStructureExceptionWithReason:[NSString stringWithUTF8String:reason]];
+}
+
 + (void) raiseNotImplementedExceptionWithReason:(NSString*)what
 {
   NSException* exception = [NSException exceptionWithName:SGFCNotImplementedException

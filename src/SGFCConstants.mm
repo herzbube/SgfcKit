@@ -359,6 +359,7 @@ const SGFCBoardSize SGFCBoardSizeDefaultGo = SGFCBoardSizeMake(19, 19);
 const SGFCBoardSize SGFCBoardSizeDefaultChess = SGFCBoardSizeMake(8, 8);
 
 NSExceptionName const SGFCInvalidOperationException = @"SGFCInvalidOperationException";
+NSExceptionName const SGFCDocumentStructureException = @"SGFCDocumentStructureException";
 NSExceptionName const SGFCNotImplementedException = @"SGFCNotImplementedException";
 
 const SGFCBoardSize SGFCBoardSizeNone = SGFCBoardSizeMake(-1, -1);

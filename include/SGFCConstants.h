@@ -167,6 +167,10 @@ extern const SGFCBoardSize SGFCBoardSizeDefaultChess;
 /// invalid for the receiver's current state.
 extern NSExceptionName const SGFCInvalidOperationException;
 
+/// @brief Exception that is raised when SgfcKit encounters an error in the
+/// way how an SGFCDocument is structured.
+extern NSExceptionName const SGFCDocumentStructureException;
+
 /// @brief Exception that is raised when a requested method or operation is not
 /// implemented.
 extern NSExceptionName const SGFCNotImplementedException;
