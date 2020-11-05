@@ -16,11 +16,13 @@
 
 #pragma once
 
+#import <Foundation/NSObjCRuntime.h>
+
 /// @brief The SGFCNumber type represents the Number value type defined by
 /// the SGF standard. Values are signed integer numbers.
 ///
 /// @ingroup public-api
-typedef long SGFCNumber;
+typedef NSInteger SGFCNumber;
 
 /// @brief The SGFCReal type represents the Real value type defined by
 /// the SGF standard. Values are signed floating point numbers.

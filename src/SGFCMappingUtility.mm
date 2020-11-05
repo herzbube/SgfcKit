@@ -268,14 +268,38 @@
 
 + (SGFCNumber) toSgfcKitNumber:(LibSgfcPlusPlus::SgfcNumber)numberValue
 {
-  // The typedefs in libsgfc++ and SgfcKit have the same underlying type
-  return static_cast<SGFCNumber>(numberValue);
+  if (numberValue >= std::numeric_limits<SGFCNumber>::min() &&
+      numberValue <= std::numeric_limits<SGFCNumber>::max())
+  {
+    return static_cast<SGFCNumber>(numberValue);
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"LibSgfcPlusPlus::SgfcNumber value cannot be mapped to SGFCNumber: %@", @(numberValue)];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
 }
 
 + (LibSgfcPlusPlus::SgfcNumber) fromSgfcKitNumber:(SGFCNumber)numberValue
 {
-  // The typedefs in libsgfc++ and SgfcKit have the same underlying type
-  return static_cast<LibSgfcPlusPlus::SgfcNumber>(numberValue);
+  if (numberValue >= std::numeric_limits<LibSgfcPlusPlus::SgfcNumber>::min() &&
+      numberValue <= std::numeric_limits<LibSgfcPlusPlus::SgfcNumber>::max())
+  {
+    return static_cast<LibSgfcPlusPlus::SgfcNumber>(numberValue);
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"SGFCNumber value cannot be mapped to LibSgfcPlusPlus::SgfcNumber: %@", @(numberValue)];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
 }
 
 + (SGFCReal) toSgfcKitReal:(LibSgfcPlusPlus::SgfcReal)realValue
