@@ -63,15 +63,15 @@
   return [[SGFCGoMovePropertyValue alloc] initWithColor:color];
 }
 
-- (id) initWithMoveValue:(NSString*)moveValue
+- (instancetype) initWithMoveValue:(NSString*)moveValue
 {
   return [self initWithGoMoveValue:moveValue
                              color:SGFCColorBlack];
 }
 
-- (id) initWithGoMoveValue:(NSString*)moveValue
-                 boardSize:(SGFCBoardSize)boardSize
-                     color:(SGFCColor)color
+- (instancetype) initWithGoMoveValue:(NSString*)moveValue
+                           boardSize:(SGFCBoardSize)boardSize
+                               color:(SGFCColor)color
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:moveValue
                                                  invalidArgumentName:@"moveValue"];
@@ -89,8 +89,8 @@
   return self;
 }
 
-- (id) initWithGoMoveValue:(NSString*)moveValue
-                     color:(SGFCColor)color
+- (instancetype) initWithGoMoveValue:(NSString*)moveValue
+                               color:(SGFCColor)color
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:moveValue
                                                  invalidArgumentName:@"moveValue"];
@@ -107,7 +107,7 @@
   return self;
 }
 
-- (id) initWithColor:(SGFCColor)color
+- (instancetype) initWithColor:(SGFCColor)color
 {
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
@@ -132,7 +132,7 @@
   return self;
 }
 
-- (id) initWithWrappedGoMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMovePropertyValue>)wrappedGoMovePropertyValue
+- (instancetype) initWithWrappedGoMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMovePropertyValue>)wrappedGoMovePropertyValue
 {
   if (wrappedGoMovePropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGoMovePropertyValue\" is nullptr"];

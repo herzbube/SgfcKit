@@ -53,12 +53,12 @@
   return [[SGFCGame alloc] initWithRootNode:rootNode];
 }
 
-- (id) init
+- (instancetype) init
 {
   return [self initWithRootNode:nil];
 }
 
-- (id) initWithRootNode:(SGFCNode*)rootNode
+- (instancetype) initWithRootNode:(SGFCNode*)rootNode
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
@@ -76,7 +76,7 @@
   return self;
 }
 
-- (id) initWithWrappedGame:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>)wrappedGame
+- (instancetype) initWithWrappedGame:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>)wrappedGame
 {
   if (wrappedGame == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGame\" is nullptr"];

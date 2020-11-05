@@ -38,7 +38,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if
 /// @a wrappedGoStonePropertyValue is  @e nullptr.
-- (id) initWithWrappedGoStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStonePropertyValue>)wrappedGoStonePropertyValue;
+- (instancetype) initWithWrappedGoStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStonePropertyValue>)wrappedGoStonePropertyValue;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStonePropertyValue>) wrappedGoStonePropertyValue;

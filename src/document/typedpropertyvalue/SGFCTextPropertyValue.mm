@@ -46,12 +46,12 @@
   return [[SGFCTextPropertyValue alloc] initWithTextValue:textValue];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   return [self initWithTextValue:rawValue];
 }
 
-- (id) initWithTextValue:(NSString*)textValue
+- (instancetype) initWithTextValue:(NSString*)textValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:textValue
                                                  invalidArgumentName:@"textValue"];
@@ -78,7 +78,7 @@
   return self;
 }
 
-- (id) initWithWrappedTextPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcTextPropertyValue>)wrappedTextPropertyValue
+- (instancetype) initWithWrappedTextPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcTextPropertyValue>)wrappedTextPropertyValue
 {
   if (wrappedTextPropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedTextPropertyValue\" is nullptr"];

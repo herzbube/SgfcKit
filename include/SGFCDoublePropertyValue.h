@@ -41,7 +41,7 @@
 /// The object holds the Double value @a doubleValue.
 ///
 /// This is the designated initializer of SGFCDoublePropertyValue.
-- (id) initWithDoubleValue:(SGFCDouble)doubleValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithDoubleValue:(SGFCDouble)doubleValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as an SGFCDouble value.
 ///

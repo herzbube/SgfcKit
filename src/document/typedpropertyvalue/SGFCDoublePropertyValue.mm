@@ -47,7 +47,7 @@
   return [[SGFCDoublePropertyValue alloc] initWithDoubleValue:doubleValue];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:rawValue
                                                  invalidArgumentName:@"rawValue"];
@@ -63,7 +63,7 @@
   return [self initWithDoubleValue:doubleValue];
 }
 
-- (id) initWithDoubleValue:(SGFCDouble)doubleValue
+- (instancetype) initWithDoubleValue:(SGFCDouble)doubleValue
 {
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
@@ -87,7 +87,7 @@
   return self;
 }
 
-- (id) initWithWrappedDoublePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDoublePropertyValue>)wrappedDoublePropertyValue
+- (instancetype) initWithWrappedDoublePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDoublePropertyValue>)wrappedDoublePropertyValue
 {
   if (wrappedDoublePropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedDoublePropertyValue\" is nullptr"];

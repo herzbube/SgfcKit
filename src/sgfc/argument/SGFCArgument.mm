@@ -30,7 +30,7 @@
   std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument> _wrappedArgument;
 }
 
-- (id) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument NS_DESIGNATED_INITIALIZER;
 
 @end
 
@@ -38,7 +38,7 @@
 
 #pragma mark - Initialization and deallocation
 
-- (id) init
+- (instancetype) init
 {
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCArgument.
@@ -49,7 +49,7 @@
   return [self initWithWrappedArgument:nullptr];
 }
 
-- (id) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument
+- (instancetype) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];

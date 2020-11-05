@@ -44,7 +44,7 @@
 /// @brief Initializes an SGFCArguments object that contains no arguments.
 ///
 /// This is the designated initializer of SGFCArguments.
-- (id) init NS_DESIGNATED_INITIALIZER;
+- (instancetype) init NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns YES if the SGFCArguments object contains one or more
 /// arguments. Returns NO if the SGFCArguments object contains no

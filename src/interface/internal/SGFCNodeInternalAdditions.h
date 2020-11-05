@@ -37,7 +37,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a wrappedNode is
 /// @e nullptr.
-- (id) initWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode;
+- (instancetype) initWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>) wrappedNode;

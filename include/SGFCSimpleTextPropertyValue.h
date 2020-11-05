@@ -49,7 +49,7 @@
 /// is @e nil.
 ///
 /// This is the designated initializer of SGFCSimpleTextPropertyValue.
-- (id) initWithSimpleTextValue:(NSString*)simpleTextValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithSimpleTextValue:(NSString*)simpleTextValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as a SimpleText string.
 ///

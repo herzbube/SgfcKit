@@ -48,7 +48,7 @@
   return [[SGFCArguments alloc] init];
 }
 
-- (id) init
+- (instancetype) init
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
@@ -61,7 +61,7 @@
   return self;
 }
 
-- (id) initWithWrappedArguments:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>)wrappedArguments
+- (instancetype) initWithWrappedArguments:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>)wrappedArguments
 {
   if (wrappedArguments == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedArguments\" is nullptr"];

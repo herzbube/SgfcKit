@@ -49,7 +49,7 @@
 ///
 /// @exception SGFCInvalidOperationException Is raised whenever this initializer
 /// is invoked.
-- (id) init;
+- (instancetype) init;
 
 /// @brief Returns YES if the move is a pass move. Returns NO if the
 /// move is not a pass move.

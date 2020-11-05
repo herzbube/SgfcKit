@@ -58,15 +58,15 @@
                                                           color:color];
 }
 
-- (id) initWithStoneValue:(NSString*)stoneValue
+- (instancetype) initWithStoneValue:(NSString*)stoneValue
 {
   return [self initWithGoStoneValue:stoneValue
                               color:SGFCColorBlack];
 }
 
-- (id) initWithGoStoneValue:(NSString*)stoneValue
-                  boardSize:(SGFCBoardSize)boardSize
-                      color:(SGFCColor)color
+- (instancetype) initWithGoStoneValue:(NSString*)stoneValue
+                            boardSize:(SGFCBoardSize)boardSize
+                                color:(SGFCColor)color
 {
   self = [self initWithGoStoneValue:stoneValue
                               color:color];
@@ -82,8 +82,8 @@
   return self;
 }
 
-- (id) initWithGoStoneValue:(NSString*)stoneValue
-                      color:(SGFCColor)color
+- (instancetype) initWithGoStoneValue:(NSString*)stoneValue
+                                color:(SGFCColor)color
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:stoneValue
                                                  invalidArgumentName:@"stoneValue"];
@@ -112,7 +112,7 @@
   return self;
 }
 
-- (id) initWithWrappedGoStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStonePropertyValue>)wrappedGoStonePropertyValue
+- (instancetype) initWithWrappedGoStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStonePropertyValue>)wrappedGoStonePropertyValue
 {
   if (wrappedGoStonePropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGoStonePropertyValue\" is nullptr"];

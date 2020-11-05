@@ -54,13 +54,13 @@
   return [[SGFCGoPointPropertyValue alloc] initWithGoPointValue:pointValue];
 }
 
-- (id) initWithPointValue:(NSString*)pointValue
+- (instancetype) initWithPointValue:(NSString*)pointValue
 {
   return [self initWithGoPointValue:pointValue];
 }
 
-- (id) initWithGoPointValue:(NSString*)pointValue
-                  boardSize:(SGFCBoardSize)boardSize
+- (instancetype) initWithGoPointValue:(NSString*)pointValue
+                            boardSize:(SGFCBoardSize)boardSize
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:pointValue
                                                  invalidArgumentName:@"pointValue"];
@@ -77,7 +77,7 @@
   return self;
 }
 
-- (id) initWithGoPointValue:(NSString*)pointValue
+- (instancetype) initWithGoPointValue:(NSString*)pointValue
 {
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
@@ -102,7 +102,7 @@
   return self;
 }
 
-- (id) initWithWrappedGoPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>)wrappedGoPointPropertyValue
+- (instancetype) initWithWrappedGoPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>)wrappedGoPointPropertyValue
 {
   if (wrappedGoPointPropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGoPointPropertyValue\" is nullptr"];

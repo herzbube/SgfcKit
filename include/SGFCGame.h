@@ -56,7 +56,7 @@
 /// @brief Initializes an SGFCGame object. The game type is
 /// #SGFCDefaultGameType. The game is not associated with any
 /// document. The game has no game tree.
-- (id) init;
+- (instancetype) init;
 
 /// @brief Initializes an SGFCGame object. The game tree's
 /// root node is @a rootNode. The game type depends on the content of the
@@ -67,7 +67,7 @@
 /// tree and with game type #SGFCDefaultGameType.
 ///
 /// This is the designated initializer of SGFCGame.
-- (id) initWithRootNode:(SGFCNode*)rootNode NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithRootNode:(SGFCNode*)rootNode NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the game type found in the root node property of type
 /// #SGFCPropertyTypeGM, as an enumeration value.

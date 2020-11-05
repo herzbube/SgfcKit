@@ -67,7 +67,7 @@
 /// child or sibling and is not associated with any game.
 ///
 /// This is the designated initializer of SGFCNode.
-- (id) init NS_DESIGNATED_INITIALIZER;
+- (instancetype) init NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns a Boolean value that indicates whether the receiver and a
 /// given SGFCNode object are equal.

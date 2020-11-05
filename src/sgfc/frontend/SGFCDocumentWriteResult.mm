@@ -32,7 +32,7 @@
   NSArray* _parseResult;
 }
 
-- (id) initWithWrappedDocumentWriteResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentWriteResult>)wrappedDocumentWriteResult NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithWrappedDocumentWriteResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentWriteResult>)wrappedDocumentWriteResult NS_DESIGNATED_INITIALIZER;
 
 @end
 
@@ -40,7 +40,7 @@
 
 #pragma mark - Initialization and deallocation
 
-- (id) init
+- (instancetype) init
 {
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCDocumentWriteResult.
@@ -51,7 +51,7 @@
   return [self initWithWrappedDocumentWriteResult:nullptr];
 }
 
-- (id) initWithWrappedDocumentWriteResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentWriteResult>)wrappedDocumentWriteResult
+- (instancetype) initWithWrappedDocumentWriteResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentWriteResult>)wrappedDocumentWriteResult
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];

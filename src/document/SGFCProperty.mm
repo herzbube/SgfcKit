@@ -81,38 +81,38 @@
                                              values:propertyValues];
 }
 
-- (id) init
+- (instancetype) init
 {
   return [self initWithPropertyType:SGFCPropertyTypeC];
 }
 
-- (id) initWithPropertyType:(SGFCPropertyType)propertyType
+- (instancetype) initWithPropertyType:(SGFCPropertyType)propertyType
 {
   return [self initWithPropertyName:[SGFCProperty propertyNameForPropertyType:propertyType]];
 }
 
-- (id) initWithPropertyType:(SGFCPropertyType)propertyType
-                      value:(id<SGFCPropertyValue>)propertyValue
+- (instancetype) initWithPropertyType:(SGFCPropertyType)propertyType
+                                value:(id<SGFCPropertyValue>)propertyValue
 {
   return [self initWithPropertyName:[SGFCProperty propertyNameForPropertyType:propertyType]
                               value:propertyValue];
 }
 
-- (id) initWithPropertyType:(SGFCPropertyType)propertyType
-                     values:(NSArray*)propertyValues
+- (instancetype) initWithPropertyType:(SGFCPropertyType)propertyType
+                               values:(NSArray*)propertyValues
 {
   return [self initWithPropertyName:[SGFCProperty propertyNameForPropertyType:propertyType]
                              values:propertyValues];
 }
 
-- (id) initWithPropertyName:(NSString*)propertyName;
+- (instancetype) initWithPropertyName:(NSString*)propertyName;
 {
   return [self initWithPropertyName:propertyName
                              values:nil];
 }
 
-- (id) initWithPropertyName:(NSString*)propertyName
-                      value:(id<SGFCPropertyValue>)propertyValue
+- (instancetype) initWithPropertyName:(NSString*)propertyName
+                                value:(id<SGFCPropertyValue>)propertyValue
 {
   if (propertyValue)
   {
@@ -126,8 +126,8 @@
   }
 }
 
-- (id) initWithPropertyName:(NSString*)propertyName
-                     values:(NSArray*)propertyValues
+- (instancetype) initWithPropertyName:(NSString*)propertyName
+                               values:(NSArray*)propertyValues
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
@@ -163,7 +163,7 @@
   return self;
 }
 
-- (id) initWithWrappedProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)wrappedProperty
+- (instancetype) initWithWrappedProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)wrappedProperty
 {
   if (wrappedProperty == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedProperty\" is nullptr"];

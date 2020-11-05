@@ -46,12 +46,12 @@
   return [[SGFCMovePropertyValue alloc] initWithMoveValue:moveValue];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   return [self initWithMoveValue:rawValue];
 }
 
-- (id) initWithMoveValue:(NSString*)moveValue
+- (instancetype) initWithMoveValue:(NSString*)moveValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:moveValue
                                                  invalidArgumentName:@"moveValue"];
@@ -78,7 +78,7 @@
   return self;
 }
 
-- (id) initWithWrappedMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcMovePropertyValue>)wrappedMovePropertyValue
+- (instancetype) initWithWrappedMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcMovePropertyValue>)wrappedMovePropertyValue
 {
   if (wrappedMovePropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedMovePropertyValue\" is nullptr"];

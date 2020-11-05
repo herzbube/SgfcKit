@@ -38,7 +38,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if
 /// @a wrappedGoMovePropertyValue is  @e nullptr.
-- (id) initWithWrappedGoMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMovePropertyValue>)wrappedGoMovePropertyValue;
+- (instancetype) initWithWrappedGoMovePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMovePropertyValue>)wrappedGoMovePropertyValue;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcGoMovePropertyValue>) wrappedGoMovePropertyValue;

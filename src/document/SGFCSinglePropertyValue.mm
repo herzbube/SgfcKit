@@ -45,12 +45,12 @@
   return [[SGFCSinglePropertyValue alloc] initWithRawValue:rawValue];
 }
 
-- (id) init
+- (instancetype) init
 {
   return [self initWithRawValue:@""];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
@@ -67,7 +67,7 @@
   return self;
 }
 
-- (id) initWithWrappedSinglePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>)wrappedSinglePropertyValue
+- (instancetype) initWithWrappedSinglePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcSinglePropertyValue>)wrappedSinglePropertyValue
 {
   if (wrappedSinglePropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedSinglePropertyValue\" is nullptr"];

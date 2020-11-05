@@ -69,7 +69,7 @@
 /// @exception NSInvalidArgumentException Is raised if @a rawValue is @e nil.
 ///
 /// This is the designated initializer of SGFCSinglePropertyValue.
-- (id) initWithRawValue:(NSString*)rawValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithRawValue:(NSString*)rawValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the concrete type of the property value object. Depending
 /// on the value returned, a caller then knows which one of the convenience

@@ -47,7 +47,7 @@
 
 /// @brief Initializes an SGFCDocument object. The SGFCDocument is empty and
 /// contains no games.
-- (id) init;
+- (instancetype) init;
 
 /// @brief Initializes an SGFCDocument object. The SGFCDocument
 /// content consists of the specified game @a game. The SGFCDocument object
@@ -56,7 +56,7 @@
 /// If @a game is @e nil the SGFCDocument object is initialized with no games.
 ///
 /// This is the designated initializer of SGFCDocument.
-- (id) initWithGame:(SGFCGame*)game NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithGame:(SGFCGame*)game NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns YES if the document has no content. Returns NO if
 /// the document has some content.

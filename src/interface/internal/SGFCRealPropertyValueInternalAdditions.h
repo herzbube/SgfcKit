@@ -37,7 +37,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if
 /// @a wrappedRealPropertyValue is  @e nullptr.
-- (id) initWithWrappedRealPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcRealPropertyValue>)wrappedRealPropertyValue;
+- (instancetype) initWithWrappedRealPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcRealPropertyValue>)wrappedRealPropertyValue;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcRealPropertyValue>) wrappedRealPropertyValue;

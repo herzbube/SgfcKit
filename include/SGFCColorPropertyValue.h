@@ -41,7 +41,7 @@
 /// The object holds the Color value @a colorValue.
 ///
 /// This is the designated initializer of SGFCColorPropertyValue.
-- (id) initWithColorValue:(SGFCColor)colorValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithColorValue:(SGFCColor)colorValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as an SGFCColor value.
 ///

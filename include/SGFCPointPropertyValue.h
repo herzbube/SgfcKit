@@ -50,7 +50,7 @@
 /// is @e nil.
 ///
 /// This is the designated initializer of SGFCPointPropertyValue.
-- (id) initWithPointValue:(NSString*)pointValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithPointValue:(NSString*)pointValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the uninterpreted Point value. This is the same value
 /// that rawValue() returns.

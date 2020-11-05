@@ -46,7 +46,7 @@
   return [[SGFCDocumentReader alloc] init];
 }
 
-- (id) init
+- (instancetype) init
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];

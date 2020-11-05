@@ -50,7 +50,7 @@
 ///
 /// @exception SGFCInvalidOperationException Is raised whenever this initializer
 /// is invoked.
-- (id) init;
+- (instancetype) init;
 
 /// @brief Returns the color of the stone.
 @property(nonatomic, readonly) SGFCColor color;

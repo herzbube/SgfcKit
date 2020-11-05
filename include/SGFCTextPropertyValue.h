@@ -49,7 +49,7 @@
 /// is @e nil.
 ///
 /// This is the designated initializer of SGFCTextPropertyValue.
-- (id) initWithTextValue:(NSString*)textValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithTextValue:(NSString*)textValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as a Text string.
 ///

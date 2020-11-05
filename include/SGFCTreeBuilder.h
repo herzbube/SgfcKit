@@ -41,7 +41,7 @@
 ///
 /// @exception SGFCInvalidOperationException Is raised whenever this initializer
 /// is invoked.
-- (id) init;
+- (instancetype) init;
 
 /// @brief Returns the SGFCGame object whose game tree the methods in the
 /// SGFCTreeBuilder operate on.

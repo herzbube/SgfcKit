@@ -39,7 +39,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a wrappedDocument is
 /// @e nullptr.
-- (id) initWithWrappedDocument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>)wrappedDocument;
+- (instancetype) initWithWrappedDocument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>)wrappedDocument;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>) wrappedDocument;

@@ -43,7 +43,7 @@
 ///
 /// @exception SGFCInvalidOperationException Is raised whenever this initializer
 /// is invoked.
-- (id) init;
+- (instancetype) init;
 
 /// @brief Returns the argument type.
 @property(nonatomic, readonly) SGFCArgumentType argumentType;

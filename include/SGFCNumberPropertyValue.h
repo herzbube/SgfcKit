@@ -41,7 +41,7 @@
 /// The object holds the Number value @a numberValue.
 ///
 /// This is the designated initializer of SGFCNumberPropertyValue.
-- (id) initWithNumberValue:(SGFCNumber)numberValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithNumberValue:(SGFCNumber)numberValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as an SGFCNumber value.
 ///

@@ -32,6 +32,6 @@
 /// This is the designated initializer of SGFCTreeBuilder.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a game is @e nil.
-- (id) initWithGame:(SGFCGame*)game;
+- (instancetype) initWithGame:(SGFCGame*)game;
 
 @end

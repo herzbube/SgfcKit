@@ -43,7 +43,7 @@
 /// @brief Initializes an SGFCDocumentReader object.
 ///
 /// This is the designated initializer of SGFCArguments.
-- (id) init NS_DESIGNATED_INITIALIZER;
+- (instancetype) init NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns an object with the collection of arguments that
 /// SGFCDocumentReader passes on to SGFC whenever it performs a read

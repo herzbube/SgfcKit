@@ -39,6 +39,6 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a wrappedArgument is
 /// @e nullptr.
-- (id) initWithWrappedGoPoint:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPoint>)wrappedGoPoint;
+- (instancetype) initWithWrappedGoPoint:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPoint>)wrappedGoPoint;
 
 @end

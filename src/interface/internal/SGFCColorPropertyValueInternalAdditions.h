@@ -37,7 +37,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if
 /// @a wrappedColorPropertyValue is  @e nullptr.
-- (id) initWithWrappedColorPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcColorPropertyValue>)wrappedColorPropertyValue;
+- (instancetype) initWithWrappedColorPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcColorPropertyValue>)wrappedColorPropertyValue;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcColorPropertyValue>) wrappedColorPropertyValue;

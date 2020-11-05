@@ -51,12 +51,12 @@
   return [[SGFCDocument alloc] initWithGame:game];
 }
 
-- (id) init
+- (instancetype) init
 {
   return [self initWithGame:nil];
 }
 
-- (id) initWithGame:(SGFCGame*)game
+- (instancetype) initWithGame:(SGFCGame*)game
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
@@ -77,7 +77,7 @@
   return self;
 }
 
-- (id) initWithWrappedDocument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>)wrappedDocument
+- (instancetype) initWithWrappedDocument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocument>)wrappedDocument
 {
   if (wrappedDocument == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedDocument\" is nullptr"];

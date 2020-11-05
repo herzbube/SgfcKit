@@ -31,7 +31,7 @@
   std::shared_ptr<LibSgfcPlusPlus::ISgfcTreeBuilder> _wrappedTreeBuilder;
 }
 
-- (id) initWithGame:(SGFCGame*)game NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithGame:(SGFCGame*)game NS_DESIGNATED_INITIALIZER;
 
 @property(nonatomic, weak, readwrite) SGFCGame* game;
 
@@ -41,7 +41,7 @@
 
 #pragma mark - Initialization and deallocation
 
-- (id) init
+- (instancetype) init
 {
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCTreeBuilder.
@@ -52,7 +52,7 @@
   return [self initWithGame:nil];
 }
 
-- (id) initWithGame:(SGFCGame*)game
+- (instancetype) initWithGame:(SGFCGame*)game
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];

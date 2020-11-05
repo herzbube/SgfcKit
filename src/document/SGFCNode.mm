@@ -47,7 +47,7 @@
   return [[SGFCNode alloc] init];
 }
 
-- (id) init
+- (instancetype) init
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
@@ -60,7 +60,7 @@
   return self;
 }
 
-- (id) initWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode
+- (instancetype) initWithWrappedNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)wrappedNode
 {
   if (wrappedNode == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedNode\" is nullptr"];

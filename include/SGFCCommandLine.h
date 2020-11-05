@@ -95,13 +95,13 @@
 /// this method.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a arguments is @e nil.
-- (id) initWithArguments:(SGFCArguments*)arguments;
+- (instancetype) initWithArguments:(SGFCArguments*)arguments;
 
 /// @brief Initializes an SGFCCommandLine object that passes
 /// no command line arguments to SGFC.
 ///
 /// This is the designated initializer of SGFCArguments.
-- (id) initWithNoArguments NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithNoArguments NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the SGFC command line arguments that were used to
 /// construct the SGFCCommandLine object. The collection that is returned

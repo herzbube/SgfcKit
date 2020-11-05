@@ -38,7 +38,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if
 /// @a wrappedGoPointPropertyValue is  @e nullptr.
-- (id) initWithWrappedGoPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>)wrappedGoPointPropertyValue;
+- (instancetype) initWithWrappedGoPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>)wrappedGoPointPropertyValue;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcGoPointPropertyValue>) wrappedGoPointPropertyValue;

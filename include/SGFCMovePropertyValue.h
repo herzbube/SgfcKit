@@ -50,7 +50,7 @@
 /// is @e nil.
 ///
 /// This is the designated initializer of SGFCMovePropertyValue.
-- (id) initWithMoveValue:(NSString*)moveValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithMoveValue:(NSString*)moveValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the uninterpreted Move value. This is the same value
 /// that rawValue() returns.

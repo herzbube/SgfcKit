@@ -47,7 +47,7 @@
 ///
 /// @exception SGFCInvalidOperationException Is raised whenever this initializer
 /// is invoked.
-- (id) init;
+- (instancetype) init;
 
 
 /// @brief Returns an SGFCExitCode value that best fits the result of the

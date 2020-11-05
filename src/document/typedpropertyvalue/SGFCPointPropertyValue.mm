@@ -46,12 +46,12 @@
   return [[SGFCPointPropertyValue alloc] initWithPointValue:pointValue];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   return [self initWithPointValue:rawValue];
 }
 
-- (id) initWithPointValue:(NSString*)pointValue
+- (instancetype) initWithPointValue:(NSString*)pointValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:pointValue
                                                  invalidArgumentName:@"pointValue"];
@@ -78,7 +78,7 @@
   return self;
 }
 
-- (id) initWithWrappedPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcPointPropertyValue>)wrappedPointPropertyValue
+- (instancetype) initWithWrappedPointPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcPointPropertyValue>)wrappedPointPropertyValue
 {
   if (wrappedPointPropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedPointPropertyValue\" is nullptr"];

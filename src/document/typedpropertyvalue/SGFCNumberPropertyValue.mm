@@ -43,13 +43,13 @@
   return [[SGFCNumberPropertyValue alloc] initWithNumberValue:numberValue];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   // TODO Attempt to convert to an SGFCNumber
   return [self initWithNumberValue:0];
 }
 
-- (id) initWithNumberValue:(SGFCNumber)numberValue
+- (instancetype) initWithNumberValue:(SGFCNumber)numberValue
 {
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
@@ -73,7 +73,7 @@
   return self;
 }
 
-- (id) initWithWrappedNumberPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNumberPropertyValue>)wrappedNumberPropertyValue
+- (instancetype) initWithWrappedNumberPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNumberPropertyValue>)wrappedNumberPropertyValue
 {
   if (wrappedNumberPropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedNumberPropertyValue\" is nullptr"];

@@ -87,8 +87,8 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-- (id) initWithGoPointValue:(NSString*)pointValue
-                  boardSize:(SGFCBoardSize)boardSize;
+- (instancetype) initWithGoPointValue:(NSString*)pointValue
+                            boardSize:(SGFCBoardSize)boardSize;
 
 /// @brief Initializes an SGFCGoPointPropertyValue object.
 /// No attempt is made to interpret @a pointValue. As a consequence, the
@@ -98,7 +98,7 @@
 /// is @e nil.
 ///
 /// This is the designated initializer of SGFCPointPropertyValue.
-- (id) initWithGoPointValue:(NSString*)pointValue NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithGoPointValue:(NSString*)pointValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns an SGFCGoPoint object that contains the property value
 /// data and makes it available in various forms and notations. Returns

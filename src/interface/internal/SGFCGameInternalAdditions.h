@@ -37,7 +37,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a wrappedGame is
 /// @e nullptr.
-- (id) initWithWrappedGame:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>)wrappedGame;
+- (instancetype) initWithWrappedGame:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>)wrappedGame;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcGame>) wrappedGame;

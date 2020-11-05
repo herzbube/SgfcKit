@@ -43,13 +43,13 @@
   return [[SGFCRealPropertyValue alloc] initWithRealValue:realValue];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   // TODO Attempt to convert to an SGFCReal
   return [self initWithRealValue:0.0];
 }
 
-- (id) initWithRealValue:(SGFCReal)realValue
+- (instancetype) initWithRealValue:(SGFCReal)realValue
 {
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
@@ -73,7 +73,7 @@
   return self;
 }
 
-- (id) initWithWrappedRealPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcRealPropertyValue>)wrappedRealPropertyValue
+- (instancetype) initWithWrappedRealPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcRealPropertyValue>)wrappedRealPropertyValue
 {
   if (wrappedRealPropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedRealPropertyValue\" is nullptr"];

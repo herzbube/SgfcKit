@@ -44,7 +44,7 @@
 /// @brief Initializes an SGFCDocumentWriter object.
 ///
 /// This is the designated initializer of SGFCArguments.
-- (id) init NS_DESIGNATED_INITIALIZER;
+- (instancetype) init NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns an object with the collection of arguments that
 /// SGFCDocumentWriter passes on to SGFC whenever it performs a write

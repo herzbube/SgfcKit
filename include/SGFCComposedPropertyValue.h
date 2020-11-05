@@ -55,8 +55,8 @@
 /// if @a value2 is @e nil.
 ///
 /// This is the designated initializer of SGFCComposedPropertyValue.
-- (id) initWithValue1:(SGFCSinglePropertyValue*)value1
-               value2:(SGFCSinglePropertyValue*)value2 NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithValue1:(SGFCSinglePropertyValue*)value1
+                         value2:(SGFCSinglePropertyValue*)value2 NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the first property value.
 @property(nonatomic, strong, readonly) SGFCSinglePropertyValue* value1;

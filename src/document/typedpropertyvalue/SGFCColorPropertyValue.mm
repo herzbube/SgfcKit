@@ -47,7 +47,7 @@
   return [[SGFCColorPropertyValue alloc] initWithColorValue:colorValue];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:rawValue
                                                  invalidArgumentName:@"rawValue"];
@@ -63,7 +63,7 @@
   return [self initWithColorValue:colorValue];
 }
 
-- (id) initWithColorValue:(SGFCColor)colorValue
+- (instancetype) initWithColorValue:(SGFCColor)colorValue
 {
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
@@ -87,7 +87,7 @@
   return self;
 }
 
-- (id) initWithWrappedColorPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcColorPropertyValue>)wrappedColorPropertyValue
+- (instancetype) initWithWrappedColorPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcColorPropertyValue>)wrappedColorPropertyValue
 {
   if (wrappedColorPropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedColorPropertyValue\" is nullptr"];

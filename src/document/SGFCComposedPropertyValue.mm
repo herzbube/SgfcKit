@@ -50,14 +50,14 @@
   return [[SGFCComposedPropertyValue alloc] initWithValue1:value1 value2:value2];
 }
 
-- (id) init
+- (instancetype) init
 {
   return [self initWithValue1:[SGFCSinglePropertyValue singlePropertyValueWithRawValue:@""]
                        value2:[SGFCSinglePropertyValue singlePropertyValueWithRawValue:@""]];
 }
 
-- (id) initWithValue1:(SGFCSinglePropertyValue*)value1
-               value2:(SGFCSinglePropertyValue*)value2
+- (instancetype) initWithValue1:(SGFCSinglePropertyValue*)value1
+                         value2:(SGFCSinglePropertyValue*)value2
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];
@@ -79,7 +79,7 @@
   return self;
 }
 
-- (id) initWithWrappedComposedPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue>)wrappedComposedPropertyValue
+- (instancetype) initWithWrappedComposedPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue>)wrappedComposedPropertyValue
 {
   if (wrappedComposedPropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedComposedPropertyValue\" is nullptr"];

@@ -56,12 +56,12 @@
   return [[SGFCCommandLine alloc] initWithNoArguments];
 }
 
-- (id) init
+- (instancetype) init
 {
   return [self initWithNoArguments];
 }
 
-- (id) initWithArguments:(SGFCArguments*)arguments
+- (instancetype) initWithArguments:(SGFCArguments*)arguments
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:arguments
                                                  invalidArgumentName:@"arguments"];
@@ -79,7 +79,7 @@
   return self;
 }
 
-- (id) initWithNoArguments
+- (instancetype) initWithNoArguments
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];

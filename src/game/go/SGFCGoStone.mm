@@ -32,7 +32,7 @@
   std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone> _wrappedGoStone;
 }
 
-- (id) initWithWrappedGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)wrappedGoStone NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithWrappedGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)wrappedGoStone NS_DESIGNATED_INITIALIZER;
 
 @property(nonatomic, strong, readwrite) SGFCGoPoint* location;
 
@@ -42,7 +42,7 @@
 
 #pragma mark - Initialization and deallocation
 
-- (id) init
+- (instancetype) init
 {
   // Always raising an exception is intended. This guards against the library
   // client attempting to manually allocate/initialize an SGFCGoStone.
@@ -53,7 +53,7 @@
   return [self initWithWrappedGoStone:nullptr];
 }
 
-- (id) initWithWrappedGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)wrappedGoStone;
+- (instancetype) initWithWrappedGoStone:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoStone>)wrappedGoStone;
 {
   // Call designated initializer of superclass (NSObject)
   self = [super init];

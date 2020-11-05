@@ -46,12 +46,12 @@
   return [[SGFCStonePropertyValue alloc] initWithStoneValue:stoneValue];
 }
 
-- (id) initWithRawValue:(NSString*)rawValue
+- (instancetype) initWithRawValue:(NSString*)rawValue
 {
   return [self initWithStoneValue:rawValue];
 }
 
-- (id) initWithStoneValue:(NSString*)stoneValue
+- (instancetype) initWithStoneValue:(NSString*)stoneValue
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:stoneValue
                                                  invalidArgumentName:@"stoneValue"];
@@ -78,7 +78,7 @@
   return self;
 }
 
-- (id) initWithWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue
+- (instancetype) initWithWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue
 {
   if (wrappedStonePropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedStonePropertyValue\" is nullptr"];

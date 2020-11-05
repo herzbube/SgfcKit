@@ -37,7 +37,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a wrappedArguments is
 /// @e nullptr.
-- (id) initWithWrappedArguments:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>)wrappedArguments;
+- (instancetype) initWithWrappedArguments:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>)wrappedArguments;
 
 /// @brief Returns the wrapped libsgfc++ object.
 - (std::shared_ptr<LibSgfcPlusPlus::ISgfcArguments>) wrappedArguments;
