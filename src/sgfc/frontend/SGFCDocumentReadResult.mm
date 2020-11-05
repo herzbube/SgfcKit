@@ -29,12 +29,11 @@
 @interface SGFCDocumentReadResult()
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentReadResult> _wrappedDocumentReadResult;
+  NSArray* _parseResult;
+  SGFCDocument* _document;
 }
 
 - (id) initWithWrappedDocumentReadResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentReadResult>)wrappedDocumentReadResult NS_DESIGNATED_INITIALIZER;
-
-@property(nonatomic, strong, readwrite) NSArray* parseResult;
-@property(nonatomic, strong, readwrite) SGFCDocument* document;
 
 @end
 
@@ -64,8 +63,8 @@
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedDocumentReadResult\" is nullptr"];
 
   _wrappedDocumentReadResult = wrappedDocumentReadResult;
-  self.parseResult = nil;
-  self.document = nil;
+  _parseResult = nil;
+  _document = nil;
 
   return self;
 }
@@ -73,8 +72,8 @@
 - (void) dealloc
 {
   _wrappedDocumentReadResult = nullptr;
-  self.parseResult = nil;
-  self.document = nil;
+  _parseResult = nil;
+  _document = nil;
 }
 
 #pragma mark - Public API
@@ -91,30 +90,30 @@
 
 - (NSArray*) parseResult
 {
-  if (self.parseResult)
+  if (_parseResult)
   {
     // Reuse a previously created array to provide stable wrapper objects.
   }
   else
   {
-    self.parseResult = [SGFCWrappingUtility wrapMessages:_wrappedDocumentReadResult->GetParseResult()];
+    _parseResult = [SGFCWrappingUtility wrapMessages:_wrappedDocumentReadResult->GetParseResult()];
   }
 
-  return self.parseResult;
+  return _parseResult;
 }
 
 - (SGFCDocument*) document
 {
-  if (self.document)
+  if (_document)
   {
     // Reuse a previously created wrapper to provide stable wrapper objects.
   }
   else
   {
-    self.document = [SGFCWrappingUtility wrapDocument:_wrappedDocumentReadResult->GetDocument()];
+    _document = [SGFCWrappingUtility wrapDocument:_wrappedDocumentReadResult->GetDocument()];
   }
 
-  return self.document;
+  return _document;
 }
 
 - (void) debugPrintToConsole

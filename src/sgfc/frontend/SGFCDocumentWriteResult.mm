@@ -29,11 +29,10 @@
 @interface SGFCDocumentWriteResult()
 {
   std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentWriteResult> _wrappedDocumentWriteResult;
+  NSArray* _parseResult;
 }
 
 - (id) initWithWrappedDocumentWriteResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentWriteResult>)wrappedDocumentWriteResult NS_DESIGNATED_INITIALIZER;
-
-@property(nonatomic, strong, readwrite) NSArray* parseResult;
 
 @end
 
@@ -63,7 +62,7 @@
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedDocumentWriteResult\" is nullptr"];
 
   _wrappedDocumentWriteResult = wrappedDocumentWriteResult;
-  self.parseResult = nil;
+  _parseResult = nil;
 
   return self;
 }
@@ -71,7 +70,7 @@
 - (void) dealloc
 {
   _wrappedDocumentWriteResult = nullptr;
-  self.parseResult = nil;
+  _parseResult = nil;
 }
 
 #pragma mark - Public API
@@ -83,16 +82,16 @@
 
 - (NSArray*) parseResult
 {
-  if (self.parseResult)
+  if (_parseResult)
   {
     // Reuse a previously created array to provide stable wrapper objects.
   }
   else
   {
-    self.parseResult = [SGFCWrappingUtility wrapMessages:_wrappedDocumentWriteResult->GetParseResult()];
+    _parseResult = [SGFCWrappingUtility wrapMessages:_wrappedDocumentWriteResult->GetParseResult()];
   }
 
-  return self.parseResult;
+  return _parseResult;
 }
 
 - (void) debugPrintToConsole
