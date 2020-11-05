@@ -24,7 +24,7 @@
 #import <libsgfcplusplus/ISgfcComposedPropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCComposedPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCComposedPropertyValue class, first by

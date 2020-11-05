@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcDoublePropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCDoublePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCDoublePropertyValue class.

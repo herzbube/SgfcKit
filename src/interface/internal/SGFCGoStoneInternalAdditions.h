@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcGoStone.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCGoStoneInternalAdditions category adds a library-internal
 /// API to the SGFCGoStone class.

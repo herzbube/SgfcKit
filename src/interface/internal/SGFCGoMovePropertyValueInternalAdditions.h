@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcGoMovePropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCGoMovePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCGoMovePropertyValue class.

@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcSimpleTextPropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCSimpleTextPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCSimpleTextPropertyValue class.

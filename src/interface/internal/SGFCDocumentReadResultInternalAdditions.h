@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcDocumentReadResult.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCDocumentReadResultInternalAdditions category adds a
 /// library-internal API to the SGFCDocumentReadResult class.

@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcPropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCPropertyValueInternal protocol extends the SGFCPropertyValue
 /// protocol with a library-internal API. Library classes must adopt

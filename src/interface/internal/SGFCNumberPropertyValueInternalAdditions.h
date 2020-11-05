@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcNumberPropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCNumberPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCNumberPropertyValue class.

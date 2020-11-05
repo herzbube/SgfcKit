@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcStonePropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCStonePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCStonePropertyValue class.

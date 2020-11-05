@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcGoMove.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCGoMoveInternalAdditions category adds a library-internal
 /// API to the SGFCGoMove class.

@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcGoPoint.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCGoPointInternalAdditions category adds a library-internal
 /// API to the SGFCGoPoint class.

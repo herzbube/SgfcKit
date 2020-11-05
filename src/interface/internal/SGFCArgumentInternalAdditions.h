@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcArgument.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCArgumentInternalAdditions category adds a library-internal
 /// API to the SGFCArgument class.

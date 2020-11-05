@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcDocumentWriteResult.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCDocumentWriteResultInternalAdditions category adds a
 /// library-internal API to the SGFCDocumentWriteResult class.

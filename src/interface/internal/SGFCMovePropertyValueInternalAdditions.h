@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcMovePropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCMovePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCMovePropertyValue class.

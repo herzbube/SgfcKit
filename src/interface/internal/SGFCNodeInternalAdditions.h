@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcNode.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCNodeInternalAdditions category adds a library-internal API to
 /// the SGFCNode class.

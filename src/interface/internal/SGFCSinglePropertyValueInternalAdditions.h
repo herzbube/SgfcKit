@@ -24,7 +24,7 @@
 #import <libsgfcplusplus/ISgfcSinglePropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCSinglePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCSinglePropertyValue class, first by

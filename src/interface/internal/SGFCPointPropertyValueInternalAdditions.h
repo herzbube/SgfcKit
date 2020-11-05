@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcPointPropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCPointPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCPointPropertyValue class.

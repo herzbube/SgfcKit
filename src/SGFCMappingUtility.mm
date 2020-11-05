@@ -20,7 +20,7 @@
 #import "SGFCPrivateConstants.h"
 
 // C++ Standard Library includes
-#include <limits>
+#import <limits>
 
 // System includes
 #import <Foundation/NSString.h>

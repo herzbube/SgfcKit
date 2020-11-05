@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcMessage.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCMessageInternalAdditions category adds a library-internal
 /// API to the SGFCMessage class.

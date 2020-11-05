@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcColorPropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCColorPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCColorPropertyValue class.

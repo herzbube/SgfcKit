@@ -23,7 +23,7 @@
 #import <libsgfcplusplus/ISgfcRealPropertyValue.h>
 
 // C++ Standard Library includes
-#include <memory>
+#import <memory>
 
 /// @brief The SGFCRealPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCRealPropertyValue class.
