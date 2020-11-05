@@ -41,9 +41,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCSimpleTextPropertyValue*) simpleTextPropertyValueWithSimpleTextValue:(NSString*)simpleTextValue
++ (instancetype) simpleTextPropertyValueWithSimpleTextValue:(NSString*)simpleTextValue
 {
-  return [[SGFCSimpleTextPropertyValue alloc] initWithSimpleTextValue:simpleTextValue];
+  return [[self alloc] initWithSimpleTextValue:simpleTextValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

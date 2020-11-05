@@ -41,14 +41,14 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCDocument*) document
++ (instancetype) document
 {
-  return [[SGFCDocument alloc] init];
+  return [[self alloc] init];
 }
 
-+ (SGFCDocument*) documentWithGame:(SGFCGame*)game
++ (instancetype) documentWithGame:(SGFCGame*)game
 {
-  return [[SGFCDocument alloc] initWithGame:game];
+  return [[self alloc] initWithGame:game];
 }
 
 - (instancetype) init

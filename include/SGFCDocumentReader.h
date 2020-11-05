@@ -38,7 +38,7 @@
 }
 
 /// @brief Returns a newly constructed SGFCDocumentReader object.
-+ (SGFCDocumentReader*) documentReader;
++ (instancetype) documentReader;
 
 /// @brief Initializes an SGFCDocumentReader object.
 ///

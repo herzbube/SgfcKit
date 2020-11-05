@@ -55,8 +55,8 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-+ (SGFCGoPointPropertyValue*) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
-                                                         boardSize:(SGFCBoardSize)boardSize;
++ (instancetype) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
+                                            boardSize:(SGFCBoardSize)boardSize;
 
 /// @brief Returns a newly constructed SGFCGoPointPropertyValue object.
 /// No attempt is made to interpret @a pointValue. As a consequence, the
@@ -64,7 +64,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
 /// is @e nil.
-+ (SGFCGoPointPropertyValue*) goPointPropertyValueWithGoPointValue:(NSString*)pointValue;
++ (instancetype) goPointPropertyValueWithGoPointValue:(NSString*)pointValue;
 
 /// @brief Initializes an SGFCGoPointPropertyValue object. The object
 /// holds an SGFCGoPoint object that refers to the point specified by

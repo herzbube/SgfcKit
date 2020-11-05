@@ -48,7 +48,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a propertyType is
 /// #SGFCPropertyTypeUnknown.
-+ (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType;
++ (instancetype) propertyWithType:(SGFCPropertyType)propertyType;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property type @a propertyType and the specified property
@@ -68,8 +68,8 @@
 /// #SGFCPropertyTypeSZ or #SGFCPropertyTypeGM, if @a propertyValue does
 /// not meet the requirements of these property types. See the documentation
 /// of SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
-+ (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
-                             value:(id<SGFCPropertyValue>)propertyValue;
++ (instancetype) propertyWithType:(SGFCPropertyType)propertyType
+                            value:(id<SGFCPropertyValue>)propertyValue;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property type @a propertyType and the specified property
@@ -90,8 +90,8 @@
 /// contains more than one value or the value does not meet the requirements
 /// of these property types. See the documentation of
 /// SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
-+ (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
-                            values:(NSArray*)propertyValues;
++ (instancetype) propertyWithType:(SGFCPropertyType)propertyType
+                           values:(NSArray*)propertyValues;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property name @a propertyName. The property type is inferred
@@ -110,7 +110,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a propertyName is
 /// @e nil.
-+ (SGFCProperty*) propertyWithName:(NSString*)propertyName;
++ (instancetype) propertyWithName:(NSString*)propertyName;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property name @a propertyName and the specified property
@@ -137,8 +137,8 @@
 /// #SGFCPropertyTypeGM and @a propertyValue does not meet the requirements of
 /// these property types. See the documentation of SGFCBoardSizeProperty or
 /// SGFCGameTypeProperty for details.
-+ (SGFCProperty*) propertyWithName:(NSString*)propertyName
-                             value:(id<SGFCPropertyValue>)propertyValue;
++ (instancetype) propertyWithName:(NSString*)propertyName
+                            value:(id<SGFCPropertyValue>)propertyValue;
 
 /// @brief Returns a newly constructed SGFCProperty object that has the
 /// specified property name @a propertyName and the specified property
@@ -166,8 +166,8 @@
 /// the value does not meet the requirements of these property types. See the
 /// documentation of SGFCBoardSizeProperty or SGFCGameTypeProperty
 /// for details.
-+ (SGFCProperty*) propertyWithName:(NSString*)propertyName
-                            values:(NSArray*)propertyValues;
++ (instancetype) propertyWithName:(NSString*)propertyName
+                           values:(NSArray*)propertyValues;
 
 /// @brief Initializes an SGFCProperty object. The object has the
 /// specified property type @a propertyType. The property has no values.

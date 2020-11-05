@@ -39,7 +39,7 @@
 /// @brief Returns a newly constructed SGFCArguments object that initially
 /// contains no arguments. Use the SGFCArguments object's add methods to
 /// populate it with arguments.
-+ (SGFCArguments*) emptyArguments;
++ (instancetype) emptyArguments;
 
 /// @brief Initializes an SGFCArguments object that contains no arguments.
 ///

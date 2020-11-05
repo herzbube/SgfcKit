@@ -35,7 +35,7 @@
 
 /// @brief Returns a newly constructed SGFCNumberPropertyValue object.
 /// The object holds the Number value @a numberValue.
-+ (SGFCNumberPropertyValue*) numberPropertyValueWithNumberValue:(SGFCNumber)numberValue;
++ (instancetype) numberPropertyValueWithNumberValue:(SGFCNumber)numberValue;
 
 /// @brief Initializes an SGFCNumberPropertyValue object.
 /// The object holds the Number value @a numberValue.

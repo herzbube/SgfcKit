@@ -40,7 +40,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a simpleTextValue
 /// is @e nil.
-+ (SGFCSimpleTextPropertyValue*) simpleTextPropertyValueWithSimpleTextValue:(NSString*)simpleTextValue;
++ (instancetype) simpleTextPropertyValueWithSimpleTextValue:(NSString*)simpleTextValue;
 
 /// @brief Initializes an SGFCSimpleTextPropertyValue object.
 /// The object holds the SimpleText value @a simpleTextValue.

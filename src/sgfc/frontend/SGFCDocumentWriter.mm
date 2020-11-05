@@ -44,9 +44,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCDocumentWriter*) documentWriter
++ (instancetype) documentWriter
 {
-  return [[SGFCDocumentWriter alloc] init];
+  return [[self alloc] init];
 }
 
 - (instancetype) init

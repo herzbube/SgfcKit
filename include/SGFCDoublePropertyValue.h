@@ -35,7 +35,7 @@
 
 /// @brief Returns a newly constructed SGFCDoublePropertyValue object.
 /// The object holds the Double value @a doubleValue.
-+ (SGFCDoublePropertyValue*) doublePropertyValueWithDoubleValue:(SGFCDouble)doubleValue;
++ (instancetype) doublePropertyValueWithDoubleValue:(SGFCDouble)doubleValue;
 
 /// @brief Initializes an SGFCDoublePropertyValue object.
 /// The object holds the Double value @a doubleValue.

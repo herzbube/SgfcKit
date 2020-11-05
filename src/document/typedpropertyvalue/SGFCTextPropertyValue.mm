@@ -41,9 +41,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCTextPropertyValue*) textPropertyValueWithTextValue:(NSString*)textValue
++ (instancetype) textPropertyValueWithTextValue:(NSString*)textValue
 {
-  return [[SGFCTextPropertyValue alloc] initWithTextValue:textValue];
+  return [[self alloc] initWithTextValue:textValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

@@ -77,11 +77,11 @@
 /// this method.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a arguments is @e nil.
-+ (SGFCCommandLine*) commandLineWithArguments:(SGFCArguments*)arguments;
++ (instancetype) commandLineWithArguments:(SGFCArguments*)arguments;
 
 /// @brief Returns a newly constructed SGFCCommandLine object that passes
 /// no command line arguments to SGFC.
-+ (SGFCCommandLine*) commandLineWithNoArguments;
++ (instancetype) commandLineWithNoArguments;
 
 /// @brief Initializes an SGFCCommandLine object that passes
 /// the specified command line arguments to SGFC.

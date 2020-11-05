@@ -41,9 +41,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCStonePropertyValue*) stonePropertyValueWithStoneValue:(NSString*)stoneValue
++ (instancetype) stonePropertyValueWithStoneValue:(NSString*)stoneValue
 {
-  return [[SGFCStonePropertyValue alloc] initWithStoneValue:stoneValue];
+  return [[self alloc] initWithStoneValue:stoneValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

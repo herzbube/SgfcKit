@@ -43,9 +43,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCArguments*) emptyArguments
++ (instancetype) emptyArguments
 {
-  return [[SGFCArguments alloc] init];
+  return [[self alloc] init];
 }
 
 - (instancetype) init

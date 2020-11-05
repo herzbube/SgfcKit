@@ -42,7 +42,7 @@
 /// @brief Returns a newly constructed SGFCGame object. The game type is
 /// #SGFCDefaultGameType. The game is not associated with any
 /// document. The game has no game tree.
-+ (SGFCGame*) game;
++ (instancetype) game;
 
 /// @brief Returns a newly constructed SGFCGame object. The game tree's
 /// root node is @a rootNode. The game type depends on the content of the
@@ -51,7 +51,7 @@
 ///
 /// If @a rootNode is @e nil the returned SGFCGame object has no game tree and
 /// its game type is #SGFCDefaultGameType.
-+ (SGFCGame*) gameWithRootNode:(SGFCNode*)rootNode;
++ (instancetype) gameWithRootNode:(SGFCNode*)rootNode;
 
 /// @brief Initializes an SGFCGame object. The game type is
 /// #SGFCDefaultGameType. The game is not associated with any

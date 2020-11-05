@@ -46,14 +46,14 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCCommandLine*) commandLineWithArguments:(SGFCArguments*)arguments
++ (instancetype) commandLineWithArguments:(SGFCArguments*)arguments
 {
-  return [[SGFCCommandLine alloc] initWithArguments:arguments];
+  return [[self alloc] initWithArguments:arguments];
 }
 
-+ (SGFCCommandLine*) commandLineWithNoArguments
++ (instancetype) commandLineWithNoArguments
 {
-  return [[SGFCCommandLine alloc] initWithNoArguments];
+  return [[self alloc] initWithNoArguments];
 }
 
 - (instancetype) init

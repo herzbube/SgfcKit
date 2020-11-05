@@ -41,9 +41,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCDocumentReader*) documentReader
++ (instancetype) documentReader
 {
-  return [[SGFCDocumentReader alloc] init];
+  return [[self alloc] init];
 }
 
 - (instancetype) init

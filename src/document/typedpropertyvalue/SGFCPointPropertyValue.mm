@@ -41,9 +41,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCPointPropertyValue*) pointPropertyValueWithPointValue:(NSString*)pointValue
++ (instancetype) pointPropertyValueWithPointValue:(NSString*)pointValue
 {
-  return [[SGFCPointPropertyValue alloc] initWithPointValue:pointValue];
+  return [[self alloc] initWithPointValue:pointValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

@@ -42,9 +42,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCDoublePropertyValue*) doublePropertyValueWithDoubleValue:(SGFCDouble)doubleValue
++ (instancetype) doublePropertyValueWithDoubleValue:(SGFCDouble)doubleValue
 {
-  return [[SGFCDoublePropertyValue alloc] initWithDoubleValue:doubleValue];
+  return [[self alloc] initWithDoubleValue:doubleValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

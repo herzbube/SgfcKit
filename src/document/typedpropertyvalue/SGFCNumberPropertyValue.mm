@@ -38,9 +38,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCNumberPropertyValue*) numberPropertyValueWithNumberValue:(SGFCNumber)numberValue
++ (instancetype) numberPropertyValueWithNumberValue:(SGFCNumber)numberValue
 {
-  return [[SGFCNumberPropertyValue alloc] initWithNumberValue:numberValue];
+  return [[self alloc] initWithNumberValue:numberValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

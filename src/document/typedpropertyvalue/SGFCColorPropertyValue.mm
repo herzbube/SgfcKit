@@ -42,9 +42,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCColorPropertyValue*) colorPropertyValueWithColorValue:(SGFCColor)colorValue
++ (instancetype) colorPropertyValueWithColorValue:(SGFCColor)colorValue
 {
-  return [[SGFCColorPropertyValue alloc] initWithColorValue:colorValue];
+  return [[self alloc] initWithColorValue:colorValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

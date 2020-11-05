@@ -40,9 +40,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCSinglePropertyValue*) singlePropertyValueWithRawValue:(NSString*)rawValue
++ (instancetype) singlePropertyValueWithRawValue:(NSString*)rawValue
 {
-  return [[SGFCSinglePropertyValue alloc] initWithRawValue:rawValue];
+  return [[self alloc] initWithRawValue:rawValue];
 }
 
 - (instancetype) init

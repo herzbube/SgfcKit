@@ -41,7 +41,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a moveValue
 /// is @e nil.
-+ (SGFCMovePropertyValue*) movePropertyValueWithMoveValue:(NSString*)moveValue;
++ (instancetype) movePropertyValueWithMoveValue:(NSString*)moveValue;
 
 /// @brief Initializes an SGFCMovePropertyValue object.
 /// The object holds the Move value @a moveValue.

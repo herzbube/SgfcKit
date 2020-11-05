@@ -44,9 +44,8 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a value1 is @e nil or
 /// if @a value2 is @e nil.
-+ (SGFCComposedPropertyValue*) composedPropertyValueWithValue1:(SGFCSinglePropertyValue*)value1
-                                                        value2:(SGFCSinglePropertyValue*)value2;
-
++ (instancetype) composedPropertyValueWithValue1:(SGFCSinglePropertyValue*)value1
+                                          value2:(SGFCSinglePropertyValue*)value2;
 
 /// @brief Initializes an SGFCComposedPropertyValue object that consists of the
 /// two values @a value1 and @a value2.

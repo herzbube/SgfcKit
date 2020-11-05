@@ -40,7 +40,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a textValue
 /// is @e nil.
-+ (SGFCTextPropertyValue*) textPropertyValueWithTextValue:(NSString*)textValue;
++ (instancetype) textPropertyValueWithTextValue:(NSString*)textValue;
 
 /// @brief Initializes an SGFCTextPropertyValue object.
 /// The object holds the Text value @a textValue.

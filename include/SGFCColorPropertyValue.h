@@ -35,7 +35,7 @@
 
 /// @brief Returns a newly constructed SGFCColorPropertyValue object.
 /// The object holds the Color value @a colorValue.
-+ (SGFCColorPropertyValue*) colorPropertyValueWithColorValue:(SGFCColor)colorValue;
++ (instancetype) colorPropertyValueWithColorValue:(SGFCColor)colorValue;
 
 /// @brief Initializes an SGFCColorPropertyValue object.
 /// The object holds the Color value @a colorValue.

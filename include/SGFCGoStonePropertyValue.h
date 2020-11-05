@@ -58,9 +58,9 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-+ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
-                                                         boardSize:(SGFCBoardSize)boardSize
-                                                             color:(SGFCColor)color;
++ (instancetype) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
+                                            boardSize:(SGFCBoardSize)boardSize
+                                                color:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoStonePropertyValue object.
 /// The object holds an SGFCGoStone object that refers to the stone
@@ -73,8 +73,8 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
-+ (SGFCGoStonePropertyValue*) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
-                                                             color:(SGFCColor)color;
++ (instancetype) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
+                                                color:(SGFCColor)color;
 
 /// @brief Initializes an SGFCGoStonePropertyValue object.
 /// The object holds an SGFCGoStone object that refers to the stone

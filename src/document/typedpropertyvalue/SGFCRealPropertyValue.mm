@@ -38,9 +38,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCRealPropertyValue*) realPropertyValueWithRealValue:(SGFCReal)realValue
++ (instancetype) realPropertyValueWithRealValue:(SGFCReal)realValue
 {
-  return [[SGFCRealPropertyValue alloc] initWithRealValue:realValue];
+  return [[self alloc] initWithRealValue:realValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

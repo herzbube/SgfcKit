@@ -35,7 +35,7 @@
 
 /// @brief Returns a newly constructed SGFCRealPropertyValue object.
 /// The object holds the Real value @a realValue.
-+ (SGFCRealPropertyValue*) realPropertyValueWithRealValue:(SGFCReal)realValue;
++ (instancetype) realPropertyValueWithRealValue:(SGFCReal)realValue;
 
 /// @brief Initializes an SGFCRealPropertyValue object.
 /// The object holds the Real value @a realValue.

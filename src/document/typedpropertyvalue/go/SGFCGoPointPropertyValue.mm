@@ -42,16 +42,16 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCGoPointPropertyValue*) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
-                                                         boardSize:(SGFCBoardSize)boardSize
++ (instancetype) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
+                                            boardSize:(SGFCBoardSize)boardSize
 {
-  return [[SGFCGoPointPropertyValue alloc] initWithGoPointValue:pointValue
-                                                      boardSize:boardSize];
+  return [[self alloc] initWithGoPointValue:pointValue
+                                  boardSize:boardSize];
 }
 
-+ (SGFCGoPointPropertyValue*) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
++ (instancetype) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
 {
-  return [[SGFCGoPointPropertyValue alloc] initWithGoPointValue:pointValue];
+  return [[self alloc] initWithGoPointValue:pointValue];
 }
 
 - (instancetype) initWithPointValue:(NSString*)pointValue

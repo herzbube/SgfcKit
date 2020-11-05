@@ -42,9 +42,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCNode*) node
++ (instancetype) node
 {
-  return [[SGFCNode alloc] init];
+  return [[self alloc] init];
 }
 
 - (instancetype) init

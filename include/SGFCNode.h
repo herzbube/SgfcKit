@@ -61,7 +61,7 @@
 
 /// @brief Returns a newly constructed SGFCNode object that has no parent,
 /// child or sibling and is not associated with any game.
-+ (SGFCNode*) node;
++ (instancetype) node;
 
 /// @brief Initializes an SGFCNode object that has no parent,
 /// child or sibling and is not associated with any game.

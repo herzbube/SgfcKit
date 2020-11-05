@@ -44,10 +44,10 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCComposedPropertyValue*) composedPropertyValueWithValue1:(SGFCSinglePropertyValue*)value1
-                                                        value2:(SGFCSinglePropertyValue*)value2
++ (instancetype) composedPropertyValueWithValue1:(SGFCSinglePropertyValue*)value1
+                                          value2:(SGFCSinglePropertyValue*)value2
 {
-  return [[SGFCComposedPropertyValue alloc] initWithValue1:value1 value2:value2];
+  return [[self alloc] initWithValue1:value1 value2:value2];
 }
 
 - (instancetype) init

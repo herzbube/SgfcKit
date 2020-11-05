@@ -42,25 +42,25 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
-                                                      boardSize:(SGFCBoardSize)boardSize
-                                                          color:(SGFCColor)color
++ (instancetype) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
+                                          boardSize:(SGFCBoardSize)boardSize
+                                              color:(SGFCColor)color
 {
-  return [[SGFCGoMovePropertyValue alloc] initWithGoMoveValue:moveValue
-                                                    boardSize:boardSize
-                                                        color:color];
+  return [[self alloc] initWithGoMoveValue:moveValue
+                                 boardSize:boardSize
+                                     color:color];
 }
 
-+ (SGFCGoMovePropertyValue*) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
-                                                          color:(SGFCColor)color
++ (instancetype) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
+                                              color:(SGFCColor)color
 {
-  return [[SGFCGoMovePropertyValue alloc] initWithGoMoveValue:moveValue
-                                                        color:color];
+  return [[self alloc] initWithGoMoveValue:moveValue
+                                     color:color];
 }
 
-+ (SGFCGoMovePropertyValue*) goMovePropertyValueWithColor:(SGFCColor)color
++ (instancetype) goMovePropertyValueWithColor:(SGFCColor)color
 {
-  return [[SGFCGoMovePropertyValue alloc] initWithColor:color];
+  return [[self alloc] initWithColor:color];
 }
 
 - (instancetype) initWithMoveValue:(NSString*)moveValue

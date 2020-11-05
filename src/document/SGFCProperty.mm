@@ -43,42 +43,42 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
++ (instancetype) propertyWithType:(SGFCPropertyType)propertyType
 {
-  return [[SGFCProperty alloc] initWithPropertyType:propertyType];
+  return [[self alloc] initWithPropertyType:propertyType];
 }
 
-+ (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
-                             value:(id<SGFCPropertyValue>)propertyValue
++ (instancetype) propertyWithType:(SGFCPropertyType)propertyType
+                            value:(id<SGFCPropertyValue>)propertyValue
 {
-  return [[SGFCProperty alloc] initWithPropertyType:propertyType
-                                              value:propertyValue];
+  return [[self alloc] initWithPropertyType:propertyType
+                                      value:propertyValue];
 }
 
-+ (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
-                            values:(NSArray*)propertyValues
++ (instancetype) propertyWithType:(SGFCPropertyType)propertyType
+                           values:(NSArray*)propertyValues
 {
-  return [[SGFCProperty alloc] initWithPropertyType:propertyType
-                                             values:propertyValues];
+  return [[self alloc] initWithPropertyType:propertyType
+                                     values:propertyValues];
 }
 
-+ (SGFCProperty*) propertyWithName:(NSString*)propertyName
++ (instancetype) propertyWithName:(NSString*)propertyName
 {
-  return [[SGFCProperty alloc] initWithPropertyName:propertyName];
+  return [[self alloc] initWithPropertyName:propertyName];
 }
 
-+ (SGFCProperty*) propertyWithName:(NSString*)propertyName
-                             value:(id<SGFCPropertyValue>)propertyValue
++ (instancetype) propertyWithName:(NSString*)propertyName
+                            value:(id<SGFCPropertyValue>)propertyValue
 {
-  return [[SGFCProperty alloc] initWithPropertyName:propertyName
-                                              value:propertyValue];
+  return [[self alloc] initWithPropertyName:propertyName
+                                      value:propertyValue];
 }
 
-+ (SGFCProperty*) propertyWithName:(NSString*)propertyName
-                            values:(NSArray*)propertyValues
++ (instancetype) propertyWithName:(NSString*)propertyName
+                           values:(NSArray*)propertyValues
 {
-  return [[SGFCProperty alloc] initWithPropertyName:propertyName
-                                             values:propertyValues];
+  return [[self alloc] initWithPropertyName:propertyName
+                                     values:propertyValues];
 }
 
 - (instancetype) init

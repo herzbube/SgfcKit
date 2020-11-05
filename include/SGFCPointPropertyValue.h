@@ -41,7 +41,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
 /// is @e nil.
-+ (SGFCPointPropertyValue*) pointPropertyValueWithPointValue:(NSString*)pointValue;
++ (instancetype) pointPropertyValueWithPointValue:(NSString*)pointValue;
 
 /// @brief Initializes an SGFCPointPropertyValue object.
 /// The object holds the Point value @a pointValue.

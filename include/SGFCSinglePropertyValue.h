@@ -59,7 +59,7 @@
 /// typeConversionErrorMessage() returns an empty string.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a rawValue is @e nil.
-+ (SGFCSinglePropertyValue*) singlePropertyValueWithRawValue:(NSString*)rawValue;
++ (instancetype) singlePropertyValueWithRawValue:(NSString*)rawValue;
 
 /// @brief Initializes an SGFCSinglePropertyValue object with value type
 /// #SGFCPropertyValueTypeUnknown and the raw property string value @a rawValue.

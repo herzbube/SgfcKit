@@ -41,9 +41,9 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCMovePropertyValue*) movePropertyValueWithMoveValue:(NSString*)moveValue
++ (instancetype) movePropertyValueWithMoveValue:(NSString*)moveValue
 {
-  return [[SGFCMovePropertyValue alloc] initWithMoveValue:moveValue];
+  return [[self alloc] initWithMoveValue:moveValue];
 }
 
 - (instancetype) initWithRawValue:(NSString*)rawValue

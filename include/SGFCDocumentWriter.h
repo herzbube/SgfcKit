@@ -39,7 +39,7 @@
 }
 
 /// @brief Returns a newly constructed SGFCDocumentWriter object.
-+ (SGFCDocumentWriter*) documentWriter;
++ (instancetype) documentWriter;
 
 /// @brief Initializes an SGFCDocumentWriter object.
 ///

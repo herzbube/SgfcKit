@@ -35,7 +35,7 @@
 
 /// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument is
 /// empty and contains no games.
-+ (SGFCDocument*) document;
++ (instancetype) document;
 
 /// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument
 /// content consists of the specified game @a game. The SGFCDocument object
@@ -43,7 +43,7 @@
 ///
 /// If @a game is @e nil the returned SGFCDocument object is empty and contains
 /// no games.
-+ (SGFCDocument*) documentWithGame:(SGFCGame*)game;
++ (instancetype) documentWithGame:(SGFCGame*)game;
 
 /// @brief Initializes an SGFCDocument object. The SGFCDocument is empty and
 /// contains no games.

@@ -43,14 +43,14 @@
 
 #pragma mark - Initialization and deallocation
 
-+ (SGFCGame*) game
++ (instancetype) game
 {
-  return [[SGFCGame alloc] init];
+  return [[self alloc] init];
 }
 
-+ (SGFCGame*) gameWithRootNode:(SGFCNode*)rootNode
++ (instancetype) gameWithRootNode:(SGFCNode*)rootNode
 {
-  return [[SGFCGame alloc] initWithRootNode:rootNode];
+  return [[self alloc] initWithRootNode:rootNode];
 }
 
 - (instancetype) init

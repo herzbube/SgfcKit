@@ -41,7 +41,7 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
-+ (SGFCStonePropertyValue*) stonePropertyValueWithStoneValue:(NSString*)stoneValue;
++ (instancetype) stonePropertyValueWithStoneValue:(NSString*)stoneValue;
 
 /// @brief Initializes an SGFCStonePropertyValue object.
 /// The object holds the Stone value @a stoneValue.
