@@ -1,0 +1,69 @@
+# The name should be a single word because the name is shown by the build
+# status badge we display in the README.
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build, test and dummy-install
+
+    # Build matrix notes:
+    # - Objective-C is mainly an Apple thing, so at the moment we are focusing
+    #   on macOS builds.
+    # - The project attempts to remain platform independent, so in the future
+    #   it should hopefully be possible to also build on at least Ubuntu/Linux.
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
+
+    steps:
+    - name: Checking out the sources
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: Building libsgfc++
+      run: |
+        cd libsgfcplusplus
+        ./script/build.sh
+        cd build
+        cmake --install . --prefix install
+        cd ../..
+
+    - name: Generate build system
+      run: |
+        mkdir build
+        cd build
+        # Specify the configuration for single-configuration build systems.
+        # We don't want to rely on Xcode for the build, to make at least a
+        # token effort to remain platform independent.
+        cmake -DCMAKE_BUILD_TYPE=Release ..
+
+    - name: Generat build system (Windows)
+      run: |
+        mkdir build
+        cd build
+        # Setting CMAKE_SYSTEM_VERSION defines the Windows SDK that CMake should
+        # use for the build. We have to do this in order to override the
+        # Windows SDK that CMake would select on its own. The default Windows SDK
+        # on the windows-latest runner is currently 10.0.17763.0, and for unknown
+        # reasons that SDK version breaks the build. The symptoms are many C5105
+        # warnings, and eventually also some compiler errors. Windows SDK
+        # 10.0.18362.0 is a version that is known to work and that is also known
+        # to be installed on the windows-latest runner.
+        cmake -DCMAKE_SYSTEM_VERSION="10.0.18362.0" ..
+      if: matrix.os == 'windows-latest'
+
+    - name: Build the project
+      run: |
+        cd build
+        cmake --build .
+
+    - name: Install the build
+      run: |
+        cd build
+        # Perform a dummy deploy to test the CMake install routine.
+        # See comment above re: use of --config option.
+        cmake --install . --prefix install

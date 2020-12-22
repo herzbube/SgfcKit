@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/herzbube/sgfckit.svg?branch=master)](https://travis-ci.com/herzbube/sgfckit)
+[![Build Status](https://github.com/herzbube/sgfckit/workflows/build/badge.svg)](https://github.com/herzbube/sgfckit/actions?query=workflow%3Abuild)
 [![Github Releases](https://img.shields.io/github/release/herzbube/sgfckit.svg)](https://github.com/herzbube/sgfckit/releases)
 [![Github Releases](https://img.shields.io/github/license/herzbube/sgfckit.svg)](https://github.com/herzbube/sgfckit/blob/master/LICENSE)
 
