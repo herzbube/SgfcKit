@@ -41,7 +41,7 @@
 
 /// @brief Returns a newly constructed SGFCGame object. The game type is
 /// #SGFCDefaultGameType. The game is not associated with any
-/// document. The game has no game tree.
+/// document. The game has a game tree that consists of an empty root node.
 + (instancetype) game;
 
 /// @brief Returns a newly constructed SGFCGame object. The game tree's
@@ -55,7 +55,7 @@
 
 /// @brief Initializes an SGFCGame object. The game type is
 /// #SGFCDefaultGameType. The game is not associated with any
-/// document. The game has no game tree.
+/// document. The game has a game tree that consists of an empty root node.
 - (instancetype) init;
 
 /// @brief Initializes an SGFCGame object. The game tree's

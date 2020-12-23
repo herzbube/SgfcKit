@@ -55,7 +55,8 @@
 
 - (instancetype) init
 {
-  return [self initWithRootNode:nil];
+  SGFCNode* node = [SGFCNode node];
+  return [self initWithRootNode:node];
 }
 
 - (instancetype) initWithRootNode:(SGFCNode*)rootNode

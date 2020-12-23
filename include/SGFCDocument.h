@@ -33,8 +33,8 @@
 {
 }
 
-/// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument is
-/// empty and contains no games.
+/// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument
+/// content consists of a single SGFCGame object with an empty root node.
 + (instancetype) document;
 
 /// @brief Returns a newly constructed SGFCDocument object. The SGFCDocument
@@ -45,8 +45,8 @@
 /// no games.
 + (instancetype) documentWithGame:(SGFCGame*)game;
 
-/// @brief Initializes an SGFCDocument object. The SGFCDocument is empty and
-/// contains no games.
+/// @brief Initializes an SGFCDocument object. The SGFCDocument content
+/// consists of a single SGFCGame object with an empty root node.
 - (instancetype) init;
 
 /// @brief Initializes an SGFCDocument object. The SGFCDocument

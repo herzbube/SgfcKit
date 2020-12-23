@@ -70,7 +70,8 @@
 + (SGFCDocumentWriter*) documentWriter;
 
 /// @brief Returns a newly constructed SGFCDocument object. The
-/// SGFCDocument is empty and contains no games.
+/// SGFCDocument content consists of a single SGFCGame object with an
+/// empty root node.
 + (SGFCDocument*) document;
 
 /// @brief Returns a newly constructed SGFCDocument object. The
@@ -83,7 +84,7 @@
 
 /// @brief Returns a newly constructed SGFCGame object. The game type is
 /// #SGFCDefaultGameType. The game is not associated with any
-/// document. The game has no game tree.
+/// document. The game has a game tree that consists of an empty root node.
 + (SGFCGame*) game;
 
 /// @brief Returns a newly constructed SGFCGame object. The game tree's

@@ -53,7 +53,8 @@
 
 - (instancetype) init
 {
-  return [self initWithGame:nil];
+  SGFCGame* game = [SGFCGame game];
+  return [self initWithGame:game];
 }
 
 - (instancetype) initWithGame:(SGFCGame*)game
