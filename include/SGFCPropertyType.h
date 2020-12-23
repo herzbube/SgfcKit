@@ -369,59 +369,8 @@ typedef NS_ENUM(NSUInteger, SGFCPropertyType)
   SGFCPropertyTypeTW,
 
   // ----------------------------------------------------------------------
-  // Standard properties from FF4 for the game of Backgammon (GM[6])
-  // ----------------------------------------------------------------------
-  SGFCPropertyTypeCO,
-  SGFCPropertyTypeCV,
-  SGFCPropertyTypeDI,
-  SGFCPropertyTypeMI,
-
-  // ----------------------------------------------------------------------
-  // Standard properties from FF4 for the game of Lines of Action (GM[9])
-  // ----------------------------------------------------------------------
-  SGFCPropertyTypeIY,
-  SGFCPropertyTypeSU,
-
-  // ----------------------------------------------------------------------
-  // Standard properties from FF4 for the game of Hex (GM[11])
-  // ----------------------------------------------------------------------
-  SGFCPropertyTypeIS,
-
-  // ----------------------------------------------------------------------
-  // Standard properties from FF4 for the game of Amazons (GM[18])
-  // ----------------------------------------------------------------------
-  SGFCPropertyTypeAA,
-
-  // ----------------------------------------------------------------------
-  // Standard properties from FF4 for the game of Octi (GM[19])
-  // ----------------------------------------------------------------------
-  SGFCPropertyTypeBO,
-  SGFCPropertyTypeWO,
-  SGFCPropertyTypeNP,
-  SGFCPropertyTypeNR,
-  SGFCPropertyTypeNS,
-  SGFCPropertyTypeCS,
-  SGFCPropertyTypeMS,
-  SGFCPropertyTypeSS,
-  SGFCPropertyTypeTS,
-  SGFCPropertyTypeRP,
-
-  // ----------------------------------------------------------------------
-  // Standard properties from FF4 for more than one game
-  // ----------------------------------------------------------------------
-  // Lines of Action (GM[9]) and Octi (GM[19])
-  SGFCPropertyTypeAS,
-  // Lines of Action (GM[9]) and Hex (GM[11])
-  SGFCPropertyTypeIP,
-
-  // ----------------------------------------------------------------------
   // Non-standard properties
   // ----------------------------------------------------------------------
-
-  /// @brief A private property of the "Smart Game Board" application (SGB),
-  /// meaning "integer komi". SGFC converts this to the regular KM property.
-  /// Property value type: Number.
-  SGFCPropertyTypeKI,
 
   /// @brief The property type is unknown, i.e. the property is a custom
   /// property not defined by the SGF standard.
