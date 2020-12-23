@@ -64,10 +64,11 @@
 /// values.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a propertyType is
-/// #SGFCPropertyTypeUnknown, or, in case @a propertyType is
-/// #SGFCPropertyTypeSZ or #SGFCPropertyTypeGM, if @a propertyValue does
-/// not meet the requirements of these property types. See the documentation
-/// of SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
+/// #SGFCPropertyTypeUnknown, or if @a propertyValue is @e nil. Is
+/// also raised if @a propertyType is #SGFCPropertyTypeSZ or
+/// #SGFCPropertyTypeGM and @a propertyValue does not meet the requirements
+/// of these property types. See the documentation of
+/// SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
 + (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
                              value:(id<SGFCPropertyValue>)propertyValue;
 
@@ -85,11 +86,13 @@
 /// values.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a propertyType is
-/// #SGFCPropertyTypeUnknown, or, in case @a propertyType is
-/// #SGFCPropertyTypeSZ or #SGFCPropertyTypeGM, if @a propertyValues
-/// contains more than one value or the value does not meet the requirements
-/// of these property types. See the documentation of
-/// SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
+/// #SGFCPropertyTypeUnknown, or if @a propertyValues contains a @e nil
+/// element, or if @a propertyValues contains duplicate elements. Is also
+/// raised if @a propertyType is #SGFCPropertyTypeSZ or
+/// #SGFCPropertyTypeGM and @a propertyValues contains more than one value
+/// or the value does not meet the requirements of these property types.
+/// See the documentation of SGFCBoardSizeProperty or
+/// SGFCGameTypeProperty for details.
 + (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
                             values:(NSArray*)propertyValues;
 
@@ -133,10 +136,11 @@
 /// values.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a propertyName is
-/// @e nil, or if the mapped SGFCPropertyType value is #SGFCPropertyTypeSZ or
-/// #SGFCPropertyTypeGM and @a propertyValue does not meet the requirements of
-/// these property types. See the documentation of SGFCBoardSizeProperty or
-/// SGFCGameTypeProperty for details.
+/// @e nil or if @a propertyValue is @e nil. Is also raised if the mapped
+/// SGFCPropertyType value is #SGFCPropertyTypeSZ or #SGFCPropertyTypeGM and
+/// @a propertyValue does not meet the requirements of these property types.
+/// See the documentation of SGFCBoardSizeProperty or SGFCGameTypeProperty
+/// for details.
 + (SGFCProperty*) propertyWithName:(NSString*)propertyName
                              value:(id<SGFCPropertyValue>)propertyValue;
 
@@ -161,11 +165,13 @@
 /// values.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a propertyName is
-/// @e nil, or if the mapped SGFCPropertyType value is #SGFCPropertyTypeSZ or
-/// #SGFCPropertyTypeGM and @a propertyValues contains more than one value or
-/// the value does not meet the requirements of these property types. See the
-/// documentation of SGFCBoardSizeProperty or SGFCGameTypeProperty
-/// for details.
+/// @e nil or if @a propertyValues is @e nil. Is also raised if
+/// @a propertyValues contains a @e nil element, or if @a propertyValues
+/// contains duplicate elements. Is also raised if the mapped SGFCPropertyType
+/// value is #SGFCPropertyTypeSZ or #SGFCPropertyTypeGM and
+/// @a propertyValues contains more than one value or the value does not meet
+/// the requirements of these property types. See the documentation of
+/// SGFCBoardSizeProperty or SGFCGameTypeProperty for details.
 + (SGFCProperty*) propertyWithName:(NSString*)propertyName
                             values:(NSArray*)propertyValues;
 
