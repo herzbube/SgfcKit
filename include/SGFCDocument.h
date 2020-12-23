@@ -73,6 +73,14 @@
 /// @e nil values or duplicates.
 @property(nonatomic, strong) NSArray* games;
 
+/// @brief Returns the first game from the collection of games that
+/// games() returns. Returns @e nil if games() returns an empty
+/// collection.
+///
+/// This is a convenience method which simplifies the majority of cases
+/// where a document only contains a single game.
+@property(nonatomic, readonly, strong) SGFCGame* game;
+
 /// @brief Adds @a game as the last game to the collection of games that
 /// together make up the document. @a game may not be @e nil.
 ///

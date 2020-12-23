@@ -137,6 +137,11 @@
   _games = [NSMutableArray arrayWithArray:games];
 }
 
+- (SGFCGame*) game
+{
+  return _games.firstObject;
+}
+
 - (void) appendGame:(SGFCGame*)game
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:game
