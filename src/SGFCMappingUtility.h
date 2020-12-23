@@ -427,6 +427,46 @@
 /// (used in libsgfc++).
 + (std::string) fromSgfcKitString:(NSString*)stringValue;
 
+/// @brief Maps an SgfcSimpleText value (used in libsgfc++) to an NSString value
+/// (used in SgfcKit).
++ (NSString*) toSgfcKitSimpleText:(const LibSgfcPlusPlus::SgfcSimpleText&)simpleTextValue;
+
+/// @brief Maps an NSString value (used in SgfcKit) to an SgfcSimpleText value
+/// (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcSimpleText) fromSgfcKitSimpleText:(NSString*)simpleTextValue;
+
+/// @brief Maps an SgfcText value (used in libsgfc++) to an NSString value
+/// (used in SgfcKit).
++ (NSString*) toSgfcKitText:(const LibSgfcPlusPlus::SgfcText&)textValue;
+
+/// @brief Maps an NSString value (used in SgfcKit) to an SgfcText value
+/// (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcText) fromSgfcKitText:(NSString*)textValue;
+
+/// @brief Maps an SgfcMove value (used in libsgfc++) to an NSString value
+/// (used in SgfcKit).
++ (NSString*) toSgfcKitMove:(const LibSgfcPlusPlus::SgfcMove&)moveValue;
+
+/// @brief Maps an NSString value (used in SgfcKit) to an SgfcMove value
+/// (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcMove) fromSgfcKitMove:(NSString*)moveValue;
+
+/// @brief Maps an SgfcPoint value (used in libsgfc++) to an NSString value
+/// (used in SgfcKit).
++ (NSString*) toSgfcKitPoint:(const LibSgfcPlusPlus::SgfcPoint&)pointValue;
+
+/// @brief Maps an NSString value (used in SgfcKit) to an SgfcPoint value
+/// (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcPoint) fromSgfcKitPoint:(NSString*)pointValue;
+
+/// @brief Maps an SgfcStone value (used in libsgfc++) to an NSString value
+/// (used in SgfcKit).
++ (NSString*) toSgfcKitStone:(const LibSgfcPlusPlus::SgfcStone&)stoneValue;
+
+/// @brief Maps an NSString value (used in SgfcKit) to an SgfcStone value
+/// (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcStone) fromSgfcKitStone:(NSString*)stoneValue;
+
 /// @brief Maps an SgfcNumber value (used in libsgfc++) to an SGFCNumber value
 /// (used in SgfcKit).
 + (SGFCNumber) toSgfcKitNumber:(LibSgfcPlusPlus::SgfcNumber)numberValue;

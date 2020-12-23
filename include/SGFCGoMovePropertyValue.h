@@ -65,21 +65,6 @@
 
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move
-/// specified by @a moveValue and @a color. The move is not a pass move. No
-/// attempt is made to interpret @a moveValue. As a consequence, the
-/// SGFCGoMovePropertyValue object contains an SGFCGoMove object that does
-/// not hold an SGFCGoPoint object.
-///
-/// @a moveValue refers to the location (a Go point) of the stone that is
-/// placed by the move on the board.
-///
-/// @exception NSInvalidArgumentException Is raised if @a stoneValue
-/// is @e nil.
-+ (instancetype) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
-                                              color:(SGFCColor)color;
-
-/// @brief Returns a newly constructed SGFCGoMovePropertyValue object.
-/// The object holds an SGFCGoMove object that refers to the move
 /// specified by @a color. The move is a pass move.
 + (instancetype) goMovePropertyValueWithColor:(SGFCColor)color;
 
@@ -112,29 +97,13 @@
 
 /// @brief Initializes an SGFCGoMovePropertyValue object.
 /// The object holds an SGFCGoMove object that refers to the move
-/// specified by @a moveValue and @a color. The move is not a pass move. No
-/// attempt is made to interpret @a moveValue. As a consequence, the
-/// SGFCGoMovePropertyValue object contains an SGFCGoMove object that does
-/// not hold an SGFCGoPoint object.
-///
-/// @a moveValue refers to the location (a Go point) of the stone that is
-/// placed by the move on the board.
-///
-/// @exception NSInvalidArgumentException Is raised if @a stoneValue
-/// is @e nil.
-- (instancetype) initWithGoMoveValue:(NSString*)moveValue
-                               color:(SGFCColor)color;
-
-/// @brief Initializes an SGFCGoMovePropertyValue object.
-/// The object holds an SGFCGoMove object that refers to the move
 /// specified by @a color. The move is a pass move.
 ///
 /// This is the designated initializer of SGFCPointPropertyValue.
 - (instancetype) initWithColor:(SGFCColor)color NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns an SGFCGoMove object that contains the property value
-/// data. The SGFCGoMove object does not contain an SGFCGoPoint object
-/// if interpretation of the property value data is not possible.
+/// data.
 @property(nonatomic, strong, readonly) SGFCGoMove* goMove;
 
 @end

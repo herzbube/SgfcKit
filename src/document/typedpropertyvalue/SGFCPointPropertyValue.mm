@@ -60,7 +60,7 @@
   // Don't assign it to the member variable yet in case the superclass
   // initializer has a problem.
   auto wrappedPointPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreatePointPropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:pointValue]);
+    [SGFCMappingUtility fromSgfcKitPoint:pointValue]);
 
   // Call designated initializer of superclass (SGFCSinglePropertyValue).
   // The superclass creates a useless wrapped object which we are going to
@@ -112,7 +112,7 @@
 {
   try
   {
-    return [SGFCMappingUtility toSgfcKitString:_wrappedPointPropertyValue->GetRawPointValue()];
+    return [SGFCMappingUtility toSgfcKitPoint:_wrappedPointPropertyValue->GetPointValue()];
   }
   catch (std::logic_error& exception)
   {

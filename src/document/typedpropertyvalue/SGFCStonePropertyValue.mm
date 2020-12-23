@@ -60,7 +60,7 @@
   // Don't assign it to the member variable yet in case the superclass
   // initializer has a problem.
   auto wrappedStonePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateStonePropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:stoneValue]);
+    [SGFCMappingUtility fromSgfcKitStone:stoneValue]);
 
   // Call designated initializer of superclass (SGFCSinglePropertyValue).
   // The superclass creates a useless wrapped object which we are going to
@@ -112,7 +112,7 @@
 {
   try
   {
-    return [SGFCMappingUtility toSgfcKitString:_wrappedStonePropertyValue->GetRawStoneValue()];
+    return [SGFCMappingUtility toSgfcKitStone:_wrappedStonePropertyValue->GetStoneValue()];
   }
   catch (std::logic_error& exception)
   {

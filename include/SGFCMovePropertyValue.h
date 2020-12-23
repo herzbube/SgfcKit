@@ -52,16 +52,11 @@
 /// This is the designated initializer of SGFCMovePropertyValue.
 - (instancetype) initWithMoveValue:(NSString*)moveValue NS_DESIGNATED_INITIALIZER;
 
-/// @brief Returns the uninterpreted Move value. This is the same value
-/// that rawValue() returns.
-///
-/// The SGF standard does not provide a universal definition of how a Move
-/// value should look like. Instead it says that the interpretation of
-/// Move values is game specific.
+/// @brief Returns the property value interpreted as a Move value.
 @property(nonatomic, strong, readonly) NSString* moveValue;
 
-/// @brief Returns an SGFCGoMovePropertyValue object if the game tree that
-/// this property value is associated with has #SGFCGameTypeGo. Returns
+/// @brief Returns an SGFCGoMovePropertyValue object if the property
+/// value object was created specifically for #SGFCGameTypeGo. Returns
 /// @e nil otherwise. The caller is not the owner of the returned
 /// object.
 - (SGFCGoMovePropertyValue*) toGoMoveValue;

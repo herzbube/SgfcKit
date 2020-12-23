@@ -87,9 +87,4 @@
   return [SGFCMappingUtility toSgfcKitColor:_wrappedGoStone->GetColor()];
 }
 
-- (BOOL) hasLocation
-{
-  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedGoStone->HasLocation()];
-}
-
 @end

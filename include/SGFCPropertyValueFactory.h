@@ -72,35 +72,35 @@
 + (SGFCColorPropertyValue*) propertyValueWithColor:(SGFCColor)colorValue;
 
 /// @brief Returns a newly constructed SGFCSimpleTextPropertyValue object
-/// that has the string value @a simpleTextValue.
+/// that has the SimpleText value @a simpleTextValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a simpleTextValue
 /// is @e nil.
 + (SGFCSimpleTextPropertyValue*) propertyValueWithSimpleText:(NSString*)simpleTextValue;
 
 /// @brief Returns a newly constructed SGFCTextPropertyValue object
-/// that has the string value @a textValue.
+/// that has the Text value @a textValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a textValue
 /// is @e nil.
 + (SGFCTextPropertyValue*) propertyValueWithText:(NSString*)textValue;
 
 /// @brief Returns a newly constructed SGFCPointPropertyValue object
-/// that has the string value @a pointValue.
+/// that has the Point value @a pointValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
 /// is @e nil.
 + (SGFCPointPropertyValue*) propertyValueWithPoint:(NSString*)pointValue;
 
 /// @brief Returns a newly constructed SGFCMovePropertyValue object
-/// that has the string value @a moveValue.
+/// that has the Move value @a moveValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a moveValue
 /// is @e nil.
 + (SGFCMovePropertyValue*) propertyValueWithMove:(NSString*)moveValue;
 
 /// @brief Returns a newly constructed SGFCStonePropertyValue object
-/// that has the string value @a stoneValue.
+/// that has the Stone value @a stoneValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
@@ -118,15 +118,19 @@
 /// @name Single property values - Go game value types
 //@{
 /// @brief Returns a newly constructed SGFCGoPointPropertyValue object
-/// that has the string value @a pointValue. @a boardSize indicates the size
-/// of the Go board that the Go point is located on.
+/// that has the Point value @a pointValue. @a boardSize indicates the
+/// size of the Go board that the Go point is located on.
 ///
 /// @a pointValue can be given in any one of the notations enumerated in
 /// SGFCGoPointNotation.
 ///
+/// Regardless of the notation in which @a pointValue is given, the
+/// resulting SGFCGoPointPropertyValue object uses the SGF notation as
+/// the raw property value.
+///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue is @e nil.
 /// Is also raised if @a boardSize refers to
-/// a board that is not square, a board with size smaller than the minimum
+/// a board with size smaller than the minimum
 /// required by the SGF standard (#SGFCBoardSizeMinimum), or a
 /// board with size larger than the maximum allowed by the SGF standard
 /// (#SGFCBoardSizeMaximumGo). Is also raised if @a pointValue is
@@ -140,17 +144,8 @@
 + (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue
                                              boardSize:(SGFCBoardSize)boardSize;
 
-/// @brief Returns a newly constructed SGFCGoPointPropertyValue object
-/// that has the string value @a pointValue. No attempt is made to interpret
-/// @a pointValue. As a consequence, the resulting SGFCGoPointPropertyValue
-/// object does not hold an SGFCGoPoint object.
-///
-/// @exception NSInvalidArgumentException Is raised if @a pointValue
-/// is @e nil.
-+ (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue;
-
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object
-/// that has the string value @a moveValue. @a color is the color of the
+/// that has the Move value @a moveValue. @a color is the color of the
 /// player who made the move. The move is not a pass move. @a boardSize
 /// indicates the size of the Go board that the Go move is played on.
 ///
@@ -158,9 +153,13 @@
 /// placed by the move on the board. @a moveValue can be given in any one of
 /// the notations enumerated in SGFCGoPointNotation.
 ///
+/// Regardless of the notation in which @a moveValue is given, the
+/// resulting SGFCGoMovePropertyValue object uses the SGF notation as
+/// the raw property value.
+///
 /// @exception NSInvalidArgumentException Is raised if @a moveValue is @e nil.
 /// Is also raised if @a boardSize refers to
-/// a board that is not square, a board with size smaller than the minimum
+/// a board with size smaller than the minimum
 /// required by the SGF standard (#SGFCBoardSizeMinimum), or a
 /// board with size larger than the maximum allowed by the SGF standard
 /// (#SGFCBoardSizeMaximumGo). Is also raised if @a moveValue is
@@ -176,27 +175,15 @@
                                                color:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoMovePropertyValue object
-/// that has the string value @a moveValue. @a color is the color of the
-/// player who made the move. The move is not a pass move. No attempt is
-/// made to interpret @a moveValue. As a consequence, the resulting
-/// SGFCGoMovePropertyValue object contains an SGFCGoMove object that does
-/// not hold an SGFCGoPoint object.
-///
-/// @a moveValue refers to the location (a Go point) of the stone that is
-/// placed by the move on the board.
-///
-/// @exception NSInvalidArgumentException Is raised if @a moveValue
-/// is @e nil.
-+ (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
-                                               color:(SGFCColor)color;
-
-/// @brief Returns a newly constructed SGFCGoMovePropertyValue object
 /// that has no value. @a color is the color of the player who made the
 /// move. The move is a pass move.
+///
+/// The resulting SGFCGoMovePropertyValue object uses
+/// #SGFCGoMovePassString as the raw property value.
 + (SGFCGoMovePropertyValue*) propertyValueWithGoMovePlayedByColor:(SGFCColor)color;
 
 /// @brief Returns a newly constructed SGFCGoStonePropertyValue object
-/// that has the string value @a stoneValue. @a color is the color of the
+/// that has the Stone value @a stoneValue. @a color is the color of the
 /// stone. @a boardSize indicates the size of the Go board that the Go
 /// stone is located on.
 ///
@@ -204,9 +191,13 @@
 /// @a stoneValue can be given in any one of the notations enumerated in
 /// SGFCGoPointNotation.
 ///
+/// Regardless of the notation in which @a stoneValue is given, the
+/// resulting SGFCGoStonePropertyValue object uses the SGF notation as
+/// the raw property value.
+///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue is @e nil.
 /// Is also raised if @a boardSize refers to
-/// a board that is not square, a board with size smaller than the minimum
+/// a board with size smaller than the minimum
 /// required by the SGF standard (#SGFCBoardSizeMinimum), or a
 /// board with size larger than the maximum allowed by the SGF standard
 /// (#SGFCBoardSizeMaximumGo). Is also raised if @a stoneValue is
@@ -220,19 +211,6 @@
 + (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
                                              boardSize:(SGFCBoardSize)boardSize
                                                  color:(SGFCColor)color;
-
-/// @brief Returns a newly constructed SGFCGoStonePropertyValue object
-/// that has the string value @a stoneValue. @a color is the color of the
-/// stone. No attempt is made to interpret @a stoneValue. As a consequence,
-/// the resulting SGFCGoStonePropertyValue object contains an SGFCGoStone
-/// object that does not hold an SGFCGoPoint object.
-///
-/// @a stoneValue refers to the Go point on which the stone is located.
-///
-/// @exception NSInvalidArgumentException Is raised if @a stoneValue
-/// is @e nil.
-+ (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
-                                                 color:(SGFCColor)color;
 //@}
 
 /// @name Composed property values - Basic value types
@@ -245,7 +223,7 @@
 
 /// @brief Returns a newly constructed SGFCComposedPropertyValue object
 /// that consists of two SGFCSimpleTextPropertyValue objects, which have
-/// the string values @a simpleTextValue1 and @a simpleTextValue2.
+/// the SimpleText values @a simpleTextValue1 and @a simpleTextValue2.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a simpleTextValue1
 /// is @e nil or if @a simpleTextValue2 is @e nil.
@@ -255,7 +233,7 @@
 /// @brief Returns a newly constructed SGFCComposedPropertyValue object
 /// that consists of an SGFCNumberPropertyValue object and an
 /// SGFCSimpleTextPropertyValue object, which have the SGFCNumber and
-/// string values @a numberValue and @a simpleTextValue, respectively.
+/// SimpleText values @a numberValue and @a simpleTextValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a simpleTextValue
 /// is @e nil.
@@ -264,7 +242,7 @@
 
 /// @brief Returns a newly constructed SGFCComposedPropertyValue object
 /// that consists of two SGFCPointPropertyValue objects, which have the
-/// string values @a pointValue1 and @a pointValue2, respectively.
+/// Point values @a pointValue1 and @a pointValue2, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue1
 /// is @e nil or if @a pointValue2 is @e nil.
@@ -273,8 +251,8 @@
 
 /// @brief Returns a newly constructed SGFCComposedPropertyValue object
 /// that consists of an SGFCPointPropertyValue object and an
-/// SGFCSimpleTextPropertyValue object, which have the string values
-/// @a pointValue and @a simpleTextValue, respectively.
+/// SGFCSimpleTextPropertyValue object, which have the Point and SimpleText
+/// values @a pointValue and @a simpleTextValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
 /// is @e nil or if @a simpleTextValue is @e nil.
@@ -283,7 +261,7 @@
 
 /// @brief Returns a newly constructed SGFCComposedPropertyValue object
 /// that consists of an SGFCStonePropertyValue object and an
-/// SGFCPointPropertyValue object, which have the string values
+/// SGFCPointPropertyValue object, which have the Stone and Point values
 /// @a stoneValue and @a pointValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
@@ -305,7 +283,7 @@
 //@{
 /// @brief Returns a newly constructed SGFCComposedPropertyValue object
 /// that consists of two SGFCGoPointPropertyValue objects, which have the
-/// string values @a pointValue1 and @a pointValue2, respectively.
+/// Point values @a pointValue1 and @a pointValue2, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue1
 /// is @e nil or if @a pointValue2 is @e nil.
@@ -315,8 +293,8 @@
 
 /// @brief Returns a newly constructed SGFCComposedPropertyValue object
 /// that consists of an SGFCGoPointPropertyValue object and an
-/// SGFCSimpleTextPropertyValue object, which have the string values
-/// @a pointValue and @a simpleTextValue, respectively.
+/// SGFCSimpleTextPropertyValue object, which have the Point and SimpleText
+/// values @a pointValue and @a simpleTextValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a pointValue
 /// is @e nil or if @a simpleTextValue is @e nil.
@@ -326,7 +304,7 @@
 
 /// @brief Returns a newly constructed SGFCComposedPropertyValue object
 /// that consists of an SGFCGoStonePropertyValue object and an
-/// SGFCGoPointPropertyValue object, which have the string values
+/// SGFCGoPointPropertyValue object, which have the Stone and Point values
 /// @a stoneValue and @a pointValue, respectively.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue

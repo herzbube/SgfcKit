@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../../../include/SGFCConstants.h"
 #import "../../../../include/SGFCGoStonePropertyValue.h"
 #import "../../../interface/internal/SGFCGoStonePropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCStonePropertyValueInternalAdditions.h"
@@ -51,38 +52,19 @@
                                       color:color];
 }
 
-+ (instancetype) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
-                                                color:(SGFCColor)color
-{
-  return [[self alloc] initWithGoStoneValue:stoneValue
-                                      color:color];
-}
-
 - (instancetype) initWithStoneValue:(NSString*)stoneValue
 {
+  // We assume that stoneValue is at least given in one of the allowed
+  // notations. The maximum board size is the only choice we have to avoid an
+  // exception being raised because the stone refers to an invalid location
+  // on the board.
   return [self initWithGoStoneValue:stoneValue
+                          boardSize:SGFCBoardSizeMaximumGo
                               color:SGFCColorBlack];
 }
 
 - (instancetype) initWithGoStoneValue:(NSString*)stoneValue
                             boardSize:(SGFCBoardSize)boardSize
-                                color:(SGFCColor)color
-{
-  self = [self initWithGoStoneValue:stoneValue
-                              color:color];
-
-  _wrappedGoStonePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoStonePropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:stoneValue],
-    [SGFCMappingUtility fromSgfcKitBoardSize:boardSize],
-    [SGFCMappingUtility fromSgfcKitColor:color]);
-  self.goStone = [SGFCWrappingUtility wrapGoStone:_wrappedGoStonePropertyValue->GetGoStone()];
-
-  [self setWrappedStonePropertyValue:_wrappedGoStonePropertyValue];
-
-  return self;
-}
-
-- (instancetype) initWithGoStoneValue:(NSString*)stoneValue
                                 color:(SGFCColor)color
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:stoneValue
@@ -92,13 +74,14 @@
   // Don't assign it to the member variable yet in case the superclass
   // initializer has a problem.
   auto wrappedGoStonePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoStonePropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:stoneValue],
+    [SGFCMappingUtility fromSgfcKitStone:stoneValue],
+    [SGFCMappingUtility fromSgfcKitBoardSize:boardSize],
     [SGFCMappingUtility fromSgfcKitColor:color]);
 
   // Call designated initializer of superclass (SGFCStonePropertyValue).
   // The superclass creates a useless wrapped object which we are going to
   // overwrite in a moment.
-  self = [super initWithStoneValue:[SGFCMappingUtility toSgfcKitString:wrappedGoStonePropertyValue->GetRawStoneValue()]];
+  self = [super initWithStoneValue:[SGFCMappingUtility toSgfcKitStone:wrappedGoStonePropertyValue->GetStoneValue()]];
   if (! self)
     return nil;
 
@@ -117,7 +100,8 @@
   if (wrappedGoStonePropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGoStonePropertyValue\" is nullptr"];
 
-  self = [self initWithGoStoneValue:@""
+  self = [self initWithGoStoneValue:@"aa"
+                          boardSize:SGFCBoardSizeMaximumGo
                               color:SGFCColorBlack];
   if (! self)
     return nil;

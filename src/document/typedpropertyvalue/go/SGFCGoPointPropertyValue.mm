@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../../../include/SGFCConstants.h"
 #import "../../../../include/SGFCGoPointPropertyValue.h"
 #import "../../../interface/internal/SGFCGoPointPropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCPointPropertyValueInternalAdditions.h"
@@ -49,14 +50,14 @@
                                   boardSize:boardSize];
 }
 
-+ (instancetype) goPointPropertyValueWithGoPointValue:(NSString*)pointValue
-{
-  return [[self alloc] initWithGoPointValue:pointValue];
-}
-
 - (instancetype) initWithPointValue:(NSString*)pointValue
 {
-  return [self initWithGoPointValue:pointValue];
+  // We assume that pointValue is at least given in one of the allowed
+  // notations. The maximum board size is the only choice we have to avoid an
+  // exception being raised because the point refers to an invalid location
+  // on the board.
+  return [self initWithGoPointValue:pointValue
+                          boardSize:SGFCBoardSizeMaximumGo];
 }
 
 - (instancetype) initWithGoPointValue:(NSString*)pointValue
@@ -65,35 +66,22 @@
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:pointValue
                                                  invalidArgumentName:@"pointValue"];
 
-  self = [self initWithGoPointValue:pointValue];
-
-  _wrappedGoPointPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoPointPropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:pointValue],
-    [SGFCMappingUtility fromSgfcKitBoardSize:boardSize]);
-  self.goPoint = [SGFCWrappingUtility wrapGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
-
-  [self setWrappedPointPropertyValue:_wrappedGoPointPropertyValue];
-
-  return self;
-}
-
-- (instancetype) initWithGoPointValue:(NSString*)pointValue
-{
   // Create the actual wrapped object so that we can take the raw value from it.
   // Don't assign it to the member variable yet in case the superclass
   // initializer has a problem.
   auto wrappedGoPointPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoPointPropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:pointValue]);
+    [SGFCMappingUtility fromSgfcKitPoint:pointValue],
+    [SGFCMappingUtility fromSgfcKitBoardSize:boardSize]);
 
   // Call designated initializer of superclass (SGFCPointPropertyValue).
   // The superclass creates a useless wrapped object which we are going to
   // overwrite in a moment.
-  self = [super initWithPointValue:[SGFCMappingUtility toSgfcKitString:wrappedGoPointPropertyValue->GetRawPointValue()]];
+  self = [super initWithPointValue:[SGFCMappingUtility toSgfcKitPoint:wrappedGoPointPropertyValue->GetPointValue()]];
   if (! self)
     return nil;
 
   _wrappedGoPointPropertyValue = wrappedGoPointPropertyValue;
-  self.goPoint = nil;
+  self.goPoint = [SGFCWrappingUtility wrapGoPoint:_wrappedGoPointPropertyValue->GetGoPoint()];
 
   // Overwrite the useless wrapped object that the superclass
   // initializer created with the real wrapped object.
@@ -107,7 +95,8 @@
   if (wrappedGoPointPropertyValue == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGoPointPropertyValue\" is nullptr"];
 
-  self = [self initWithGoPointValue:@"aa"];
+  self = [self initWithGoPointValue:@"aa"
+                          boardSize:SGFCBoardSizeMaximumGo];
   if (! self)
     return nil;
 

@@ -282,6 +282,56 @@
   return [stringValue UTF8String];
 }
 
++ (NSString*) toSgfcKitSimpleText:(const LibSgfcPlusPlus::SgfcSimpleText&)simpleTextValue
+{
+  return [NSString stringWithUTF8String:simpleTextValue.c_str()];
+}
+
++ (LibSgfcPlusPlus::SgfcSimpleText) fromSgfcKitSimpleText:(NSString*)simpleTextValue
+{
+  return [simpleTextValue UTF8String];
+}
+
++ (NSString*) toSgfcKitText:(const LibSgfcPlusPlus::SgfcText&)textValue
+{
+  return [NSString stringWithUTF8String:textValue.c_str()];
+}
+
++ (LibSgfcPlusPlus::SgfcText) fromSgfcKitText:(NSString*)textValue
+{
+  return [textValue UTF8String];
+}
+
++ (NSString*) toSgfcKitMove:(const LibSgfcPlusPlus::SgfcMove&)moveValue
+{
+  return [NSString stringWithUTF8String:moveValue.c_str()];
+}
+
++ (LibSgfcPlusPlus::SgfcMove) fromSgfcKitMove:(NSString*)moveValue
+{
+  return [moveValue UTF8String];
+}
+
++ (NSString*) toSgfcKitPoint:(const LibSgfcPlusPlus::SgfcPoint&)pointValue
+{
+  return [NSString stringWithUTF8String:pointValue.c_str()];
+}
+
++ (LibSgfcPlusPlus::SgfcPoint) fromSgfcKitPoint:(NSString*)pointValue
+{
+  return [pointValue UTF8String];
+}
+
++ (NSString*) toSgfcKitStone:(const LibSgfcPlusPlus::SgfcStone&)stoneValue
+{
+  return [NSString stringWithUTF8String:stoneValue.c_str()];
+}
+
++ (LibSgfcPlusPlus::SgfcStone) fromSgfcKitStone:(NSString*)stoneValue
+{
+  return [stoneValue UTF8String];
+}
+
 + (SGFCNumber) toSgfcKitNumber:(LibSgfcPlusPlus::SgfcNumber)numberValue
 {
   if (numberValue >= std::numeric_limits<SGFCNumber>::min() &&

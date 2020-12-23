@@ -37,7 +37,7 @@
 }
 
 /// @brief Returns a newly constructed SGFCStonePropertyValue object.
-/// The object holds the Stone value @a moveValue.
+/// The object holds the Stone value @a stoneValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a stoneValue
 /// is @e nil.
@@ -52,16 +52,11 @@
 /// This is the designated initializer of SGFCStonePropertyValue.
 - (instancetype) initWithStoneValue:(NSString*)stoneValue NS_DESIGNATED_INITIALIZER;
 
-/// @brief Returns the uninterpreted Stone value. This is the same value
-/// that rawValue() returns.
-///
-/// The SGF standard does not provide a universal definition of how a Stone
-/// value should look like. Instead it says that the interpretation of
-/// Stone values is game specific.
+/// @brief Returns the property value interpreted as a Stone value.
 @property(nonatomic, strong, readonly) NSString* stoneValue;
 
-/// @brief Returns an SGFCGoStonePropertyValue object if the game tree that
-/// this property value is associated with has #SGFCGameTypeGo. Returns
+/// @brief Returns an SGFCGoStonePropertyValue object if the property
+/// value object was created specifically for #SGFCGameTypeGo. Returns
 /// @e nil otherwise. The caller is not the owner of the returned
 /// object.
 - (SGFCGoStonePropertyValue*) toGoStoneValue;

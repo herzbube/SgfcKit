@@ -92,24 +92,12 @@
                                                               boardSize:boardSize];
 }
 
-+ (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue
-{
-  return [SGFCGoPointPropertyValue goPointPropertyValueWithGoPointValue:pointValue];
-}
-
 + (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
                                            boardSize:(SGFCBoardSize)boardSize
                                                color:(SGFCColor)color
 {
   return [SGFCGoMovePropertyValue goMovePropertyValueWithGoMoveValue:moveValue
                                                            boardSize:boardSize
-                                                               color:color];
-}
-
-+ (SGFCGoMovePropertyValue*) propertyValueWithGoMove:(NSString*)moveValue
-                                               color:(SGFCColor)color
-{
-  return [SGFCGoMovePropertyValue goMovePropertyValueWithGoMoveValue:moveValue
                                                                color:color];
 }
 
@@ -124,13 +112,6 @@
 {
   return [SGFCGoStonePropertyValue goStonePropertyValueWithGoStoneValue:stoneValue
                                                               boardSize:boardSize
-                                                                  color:color];
-}
-
-+ (SGFCGoStonePropertyValue*) propertyValueWithGoStone:(NSString*)stoneValue
-                                                 color:(SGFCColor)color
-{
-  return [SGFCGoStonePropertyValue goStonePropertyValueWithGoStoneValue:stoneValue
                                                                   color:color];
 }
 

@@ -34,10 +34,6 @@
 /// the Go board. SGFCGoStone stores an SGFCColor value and a reference to an
 /// SGFCGoPoint object to record these two pieces of information.
 ///
-/// A Go stone for which the location on the Go board is not known, or that
-/// is not located on the board at all, does not store a reference to an
-/// SGFCGoPoint object.
-///
 /// Do @b NOT attempt to create an SGFCGoStone object yourself, instead
 /// always use the SGFCGoStone object provided by other library objects (e.g.
 /// an SGFCGoStonePropertyValue instance).
@@ -55,16 +51,7 @@
 /// @brief Returns the color of the stone.
 @property(nonatomic, readonly) SGFCColor color;
 
-/// @brief Returns YES if the stone is located on the board and its
-/// location is known (location() does not return @e nil). Returns
-/// NO if the location of the stone on the Go board is not known,
-/// or if the stone is not located on the board at all (location()
-/// returns @e nil).
-@property(nonatomic, readonly) BOOL hasLocation;
-
-/// @brief Returns the location of the stone on the Go board. Returns
-/// @e nil if the location of the stone on the Go board is not known,
-/// or if the stone is not located on the board at all.
+/// @brief Returns the location of the stone on the Go board.
 @property(nonatomic, strong, readonly) SGFCGoPoint* location;
 
 @end

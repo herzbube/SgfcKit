@@ -60,7 +60,7 @@
   // Don't assign it to the member variable yet in case the superclass
   // initializer has a problem.
   auto wrappedMovePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateMovePropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:moveValue]);
+    [SGFCMappingUtility fromSgfcKitMove:moveValue]);
 
   // Call designated initializer of superclass (SGFCSinglePropertyValue).
   // The superclass creates a useless wrapped object which we are going to
@@ -112,7 +112,7 @@
 {
   try
   {
-    return [SGFCMappingUtility toSgfcKitString:_wrappedMovePropertyValue->GetRawMoveValue()];
+    return [SGFCMappingUtility toSgfcKitMove:_wrappedMovePropertyValue->GetMoveValue()];
   }
   catch (std::logic_error& exception)
   {

@@ -60,7 +60,7 @@
   // Don't assign it to the member variable yet in case the superclass
   // initializer has a problem.
   auto wrappedSimpleTextPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateSimpleTextPropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:simpleTextValue]);
+    [SGFCMappingUtility fromSgfcKitSimpleText:simpleTextValue]);
 
   // Call designated initializer of superclass (SGFCSinglePropertyValue).
   // The superclass creates a useless wrapped object which we are going to
@@ -112,7 +112,7 @@
 {
   try
   {
-    return [SGFCMappingUtility toSgfcKitString:_wrappedSimpleTextPropertyValue->GetSimpleTextValue()];
+    return [SGFCMappingUtility toSgfcKitSimpleText:_wrappedSimpleTextPropertyValue->GetSimpleTextValue()];
   }
   catch (std::logic_error& exception)
   {

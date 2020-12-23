@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../../../include/SGFCConstants.h"
 #import "../../../../include/SGFCGoMovePropertyValue.h"
 #import "../../../interface/internal/SGFCGoMovePropertyValueInternalAdditions.h"
 #import "../../../interface/internal/SGFCMovePropertyValueInternalAdditions.h"
@@ -51,13 +52,6 @@
                                      color:color];
 }
 
-+ (instancetype) goMovePropertyValueWithGoMoveValue:(NSString*)moveValue
-                                              color:(SGFCColor)color
-{
-  return [[self alloc] initWithGoMoveValue:moveValue
-                                     color:color];
-}
-
 + (instancetype) goMovePropertyValueWithColor:(SGFCColor)color
 {
   return [[self alloc] initWithColor:color];
@@ -65,7 +59,12 @@
 
 - (instancetype) initWithMoveValue:(NSString*)moveValue
 {
+  // We assume that moveValue is at least given in one of the allowed
+  // notations. The maximum board size is the only choice we have to avoid an
+  // exception being raised because the move refers to an invalid location
+  // on the board.
   return [self initWithGoMoveValue:moveValue
+                         boardSize:SGFCBoardSizeMaximumGo
                              color:SGFCColorBlack];
 }
 
@@ -79,26 +78,8 @@
   self = [self initWithColor:color];
 
   _wrappedGoMovePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoMovePropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:moveValue],
+    [SGFCMappingUtility fromSgfcKitMove:moveValue],
     [SGFCMappingUtility fromSgfcKitBoardSize:boardSize],
-    [SGFCMappingUtility fromSgfcKitColor:color]);
-  self.goMove = [SGFCWrappingUtility wrapGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
-
-  [self setWrappedMovePropertyValue:_wrappedGoMovePropertyValue];
-
-  return self;
-}
-
-- (instancetype) initWithGoMoveValue:(NSString*)moveValue
-                               color:(SGFCColor)color
-{
-  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:moveValue
-                                                 invalidArgumentName:@"moveValue"];
-
-  self = [self initWithColor:color];
-
-  _wrappedGoMovePropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGoMovePropertyValue(
-    [SGFCMappingUtility fromSgfcKitString:moveValue],
     [SGFCMappingUtility fromSgfcKitColor:color]);
   self.goMove = [SGFCWrappingUtility wrapGoMove:_wrappedGoMovePropertyValue->GetGoMove()];
 
@@ -118,7 +99,7 @@
   // Call designated initializer of superclass (SGFCMovePropertyValue).
   // The superclass creates a useless wrapped object which we are going to
   // overwrite in a moment.
-  self = [super initWithMoveValue:[SGFCMappingUtility toSgfcKitString:wrappedGoMovePropertyValue->GetRawMoveValue()]];
+  self = [super initWithMoveValue:[SGFCMappingUtility toSgfcKitMove:wrappedGoMovePropertyValue->GetMoveValue()]];
   if (! self)
     return nil;
 

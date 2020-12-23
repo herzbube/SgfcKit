@@ -62,20 +62,6 @@
                                             boardSize:(SGFCBoardSize)boardSize
                                                 color:(SGFCColor)color;
 
-/// @brief Returns a newly constructed SGFCGoStonePropertyValue object.
-/// The object holds an SGFCGoStone object that refers to the stone
-/// specified by @a stoneValue and @a color. No attempt is made to interpret
-/// @a stoneValue. As a consequence, the SGFCGoStonePropertyValue object
-/// contains an SGFCGoStone object that does not hold an SGFCGoPoint
-/// object.
-///
-/// @a stoneValue refers to the Go point on which the stone is located.
-///
-/// @exception NSInvalidArgumentException Is raised if @a stoneValue
-/// is @e nil.
-+ (instancetype) goStonePropertyValueWithGoStoneValue:(NSString*)stoneValue
-                                                color:(SGFCColor)color;
-
 /// @brief Initializes an SGFCGoStonePropertyValue object.
 /// The object holds an SGFCGoStone object that refers to the stone
 /// specified by @a stoneValue and @a color. @a boardSize indicates the size
@@ -98,29 +84,14 @@
 /// invalid location on the board (e.g. an x-axis or y-axis location that
 /// exceeds the board size specified by @a boardSize, or a compound < 1 when
 /// #SGFCGoPointNotationFigure is used).
-- (instancetype) initWithGoStoneValue:(NSString*)stoneValue
-                            boardSize:(SGFCBoardSize)boardSize
-                                color:(SGFCColor)color;
-
-/// @brief Initializes an SGFCGoStonePropertyValue object.
-/// The object holds an SGFCGoStone object that refers to the stone
-/// specified by @a stoneValue and @a color. No attempt is made to interpret
-/// @a stoneValue. As a consequence, the SGFCGoStonePropertyValue object
-/// contains an SGFCGoStone object that does not hold an SGFCGoPoint
-/// object.
-///
-/// @a stoneValue refers to the Go point on which the stone is located.
-///
-/// @exception NSInvalidArgumentException Is raised if @a stoneValue
-/// is @e nil.
 ///
 /// This is the designated initializer of SGFCPointPropertyValue.
 - (instancetype) initWithGoStoneValue:(NSString*)stoneValue
+                            boardSize:(SGFCBoardSize)boardSize
                                 color:(SGFCColor)color NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns an SGFCGoStone object that contains the property value
-/// data. The SGFCGoStone object does not contain an SGFCGoPoint object
-/// if interpretation of the property value data is not possible.
+/// data.
 @property(nonatomic, strong, readonly) SGFCGoStone* goStone;
 
 @end
