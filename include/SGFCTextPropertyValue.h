@@ -51,10 +51,7 @@
 /// This is the designated initializer of SGFCTextPropertyValue.
 - (instancetype) initWithTextValue:(NSString*)textValue NS_DESIGNATED_INITIALIZER;
 
-/// @brief Returns the property value interpreted as a Text string.
-///
-/// @exception #SGFCInvalidOperationException Is raised if hasTypedValue()
-/// returns NO.
+/// @brief Returns the property value interpreted as a Text value.
 @property(nonatomic, strong, readonly) NSString* textValue;
 
 @end

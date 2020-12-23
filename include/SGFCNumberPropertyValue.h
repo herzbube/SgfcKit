@@ -44,9 +44,6 @@
 - (instancetype) initWithNumberValue:(SGFCNumber)numberValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as an SGFCNumber value.
-///
-/// @exception #SGFCInvalidOperationException Is raised if hasTypedValue()
-/// returns NO.
 @property(nonatomic, readonly) SGFCNumber numberValue;
 
 @end

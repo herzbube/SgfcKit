@@ -45,7 +45,15 @@
 /// SGFCSinglePropertyValue contains a number of convenience methods that
 /// help casting an SGFCSinglePropertyValue object to a concrete type (e.g.
 /// toNumberValue()). The property @e valueType() provides the
-/// information which casting method to use.
+/// information which casting method to use (but check hasTypedValue() first).
+///
+/// Property value objects are created either programmatically by the library
+/// client by invoking a factory method, or they are created internally by
+/// SgfcKit as part of parsing SGF content. In the latter case parsing of
+/// raw string values might fail, which is why the methods hasTypedValue(),
+/// typeConversionErrorMessage() and rawValue() exist. Carefully read
+/// each method documentation to understand how they differ for the two
+/// creation scenarios.
 ///
 /// SGFCSinglePropertyValue is immutable, i.e. once the
 /// SGFCSinglePropertyValue object is constructed it cannot be changed.
@@ -55,7 +63,7 @@
 
 /// @brief Returns a newly constructed SGFCSinglePropertyValue object
 /// that has the value type #SGFCPropertyValueTypeUnknown and the raw property
-/// string value @a rawValue. hasTypedValue() returns false and
+/// string value @a rawValue. hasTypedValue() returns NO and
 /// typeConversionErrorMessage() returns an empty string.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a rawValue is @e nil.
@@ -63,7 +71,7 @@
 
 /// @brief Initializes an SGFCSinglePropertyValue object with value type
 /// #SGFCPropertyValueTypeUnknown and the raw property string value @a rawValue.
-/// The object's hasTypedValue() property returns false and the
+/// The object's hasTypedValue() property returns NO and the
 /// typeConversionErrorMessage() property returns an empty string.
 ///
 /// @exception NSInvalidArgumentException Is raised if @a rawValue is @e nil.
@@ -75,18 +83,23 @@
 /// on the value returned, a caller then knows which one of the convenience
 /// casting methods to use.
 ///
-/// valueType() returns the value type that is defined in the SGF
-/// standard. If the actual SGF content does not conform to the SGF
-/// standard, then SgfcKit will be unable to parse the raw property string
-/// value. hasTypedValue() returns NO to indicate such cases. See the
-/// documentation of hasTypedValue() for more details.
+/// If the property value object was created internally by SgfcKit as
+/// part of parsing SGF content, then the outcome is as follows:
+/// - valueType() returns a well-defined value type (i.e. one that is not
+///   #SGFCPropertyValueTypeUnknown) for values of properties that are
+///   defined in the SGF standard. hasTypedValue() might still return NO
+///   if SgfcKit was unable to interpret the SGF content. See the
+///   documentation of hasTypedValue() for more details.
+/// - valueType() returns #SGFCPropertyValueTypeUnknown for values of
+///   properties that are not defined in the SGF standard (aka
+///   "custom properties"). hasTypedValue() always returns NO in that
+///   case.
 ///
-/// valueType() returns #SGFCPropertyValueTypeUnknown for values of
-/// properties that are not defined in the SGF standard. In that case the
-/// SGFCSinglePropertyValue object cannot be cast to any concrete type,
-/// i.e. all of the convenience casting methods will return @e nil.
-/// The interpretation of the raw property string value returned by
-/// rawValue() is left to the caller.
+/// If the property value object was created programmatically by the
+/// library client by invoking a factory method, then valueType() returns
+/// whichever SGFCPropertyValueType was requested by the library client.
+/// hasTypeValue() always returns YES, unless the library client explicitly
+/// requested an untyped property value for a custom property.
 ///
 /// @note valueType() never returns #SGFCPropertyValueTypeNone.
 @property(nonatomic, readonly) SGFCPropertyValueType valueType;
@@ -103,32 +116,61 @@
 /// retrieve the signed integer number that corresponds to the raw string
 /// value that rawValue() returns.
 ///
-/// When SgfcKit parses SGF content it attempts to interpret the raw
-/// property string value according to the value type defined for the
-/// property in the SGF standard. If that interpretation fails
-/// valueType() will return the value type according to the SGF standard
-/// definition, but hasTypedValue() will return NO.
+/// "Not available as a typed value" (i.e. hasTypedValue() returns NO)
+/// means that the SGFCSinglePropertyValue object cannot be cast to any
+/// concrete type, i.e. all of the convenience casting methods return
+/// @e nil. The interpretation of the raw property string value
+/// returned by rawValue() is left to the library client.
+///
+/// If the property value object was created internally by SgfcKit as
+/// part of parsing SGF content, then the outcome is as follows:
+/// - For values of properties that are defined in the SGF standard
+///   SgfcKit attempts to interpret the raw property string value
+///   according to the value type defined property in the SGF standard.
+///   hasTypedValue() returns YES if that interpretation succeeds,
+///   otherwwise it returns NO and typeConversionErrorMessage()
+///   returns a description of why the interpretation failed.
+/// - hasTypedValue() always returns NO for values of properties that
+///   are not defined in the SGF standard (aka "custom properties").
+///   typeConversionErrorMessage() returns an empty string in that case
+///   because SgfcKit did not attempt an interpretation.
+///
+/// If the property value object was created programmatically by the
+/// library client by invoking a factory method, then hasTypedValue()
+/// returns YES unless the library client explicitly requested an untyped
+/// property value for a custom property.
 @property(nonatomic, readonly) BOOL hasTypedValue;
 
 /// @brief Returns an error message that describes why the raw string value
 /// returned by rawValue() could not be converted to the typed value
 /// returned by valueType().
 ///
-/// Invoking this method makes sense only if valueType() returns a value
-/// other than #SGFCPropertyValueTypeUnknown, because only in this case
-/// does SgfcKit attempt a conversion. In addition, hasTypedValue()
-/// obviously must return NO to indicate that a type conversion error
-/// occurred.
+/// Returns an empty string if hasTypedValue() returns YES, or if it
+/// returns NO but valueType() returns #SGFCPropertyValueTypeUnknown.
 ///
-/// Returns an empty string if valueType() returns
-/// #SGFCPropertyValueTypeUnknown or if hasTypedValue() returns NO.
+/// This method is intended for when the property value object was created
+/// internally by SgfcKit as part of parsing SGF content, but there was
+/// an error converting the raw string value to the expected value type.
+///
+/// If the property value object was created programmatically by the
+/// library client by invoking a factory method, then
+/// typeConversionErrorMessage() always returns an empty string because
+/// the library client is not allowed to specify untyped property values.
 @property(nonatomic, strong, readonly) NSString* typeConversionErrorMessage;
 
 /// @brief Returns the property value as a raw string, i.e. as close as
 /// possible as it appears in the original SGF content.
 ///
-/// The following processing is applied to the original SGF content before
-/// it is made available from this property as raw string:
+/// If the property value object was created programmatically by the
+/// library client by invoking a factory method, then rawValue()
+/// returns a properly stringified version of the typed property value.
+/// Color and Double values are converted to the string value as defined
+/// by the SGF standard.
+///
+/// If the property value object was created internally by SgfcKit as
+/// part of parsing SGF content, then the following processing is applied
+/// to the original SGF content before it is made available from this property
+/// as raw string:
 /// - The escape character ("\") is stripped from SimpleText and Text
 ///   values (unless it was escaped itself).
 /// - Values that are not SimpleText or Text are trimmed of leading and
@@ -139,11 +181,6 @@
 /// - In Text values, whitespace characters other than line breaks are
 ///   converted to space. In addition, escaped line breaks are removed
 ///   entirely.
-/// - In SimpleText and Text values, all unnecessary escape characters
-///   are removed. E.g. escaping the "a" character is not necessary, so
-///   "\a" appears as simply "a" in the raw string. Necessary escape
-///   characters are preserved, though, and appear in the raw string
-///   (e.g. "\\" or "\]").
 /// - In Move values, if the game type is Go and the board size is <= 19x19,
 ///   the value "tt" is converted to an empty string. This is in accord with
 ///   the SGF standard that defines an empty string and value "tt" both

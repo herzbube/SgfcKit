@@ -44,9 +44,6 @@
 - (instancetype) initWithColorValue:(SGFCColor)colorValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as an SGFCColor value.
-///
-/// @exception #SGFCInvalidOperationException Is raised if hasTypedValue()
-/// returns NO.
 @property(nonatomic, readonly) SGFCColor colorValue;
 
 @end

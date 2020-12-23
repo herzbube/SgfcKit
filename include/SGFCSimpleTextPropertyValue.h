@@ -51,10 +51,7 @@
 /// This is the designated initializer of SGFCSimpleTextPropertyValue.
 - (instancetype) initWithSimpleTextValue:(NSString*)simpleTextValue NS_DESIGNATED_INITIALIZER;
 
-/// @brief Returns the property value interpreted as a SimpleText string.
-///
-/// @exception #SGFCInvalidOperationException Is raised if hasTypedValue()
-/// returns NO.
+/// @brief Returns the property value interpreted as a SimpleText value.
 @property(nonatomic, strong, readonly) NSString* simpleTextValue;
 
 @end

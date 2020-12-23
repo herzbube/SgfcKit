@@ -44,9 +44,6 @@
 - (instancetype) initWithDoubleValue:(SGFCDouble)doubleValue NS_DESIGNATED_INITIALIZER;
 
 /// @brief Returns the property value interpreted as an SGFCDouble value.
-///
-/// @exception #SGFCInvalidOperationException Is raised if hasTypedValue()
-/// returns NO.
 @property(nonatomic, readonly) SGFCDouble doubleValue;
 
 @end
