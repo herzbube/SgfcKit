@@ -75,27 +75,22 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// 1, 2 or 3.
   SGFCArgumentTypeBeginningOfSgfData,
 
-  /// @brief Disable a given message number. This argument requires a numeric
-  /// parameter value, the value denotes the number of the message to disable.
-  /// This argument can be specified multiple times. The corresponding SGFC
-  /// command line option is -dn.
+  /// @brief Disable a given message ID. This argument requires an
+  /// SGFCMessageID parameter value, the value denotes the ID of the message
+  /// to disable. This argument can be specified multiple times.
+  /// The corresponding SGFC command line option is -dn.
   ///
   /// If you feel that the SGFC syntax checking is too pedantic and generates
   /// too many messages, then you can use this argument to reduce the number
   /// of messages. You cannot use this argument to disable fatal error
   /// messages.
   ///
-  /// The argumentis invalid if you specify a message number outside the range
-  /// known to SGFC. Refer to the SGFC documentation (README) for a list of
-  /// all messages and their numbers.
-  ///
-  /// The SGFC documentation suggests that you may wish to disable the
-  /// following non-critical warnings:
-  /// - Warning 24: removed empty value (e.g. "C[]")
-  /// - Warning 29: deleted property <x> (when specifying -o or -yXX)
-  /// - Warning 40: property not part of FF[x] (e.g. FF[3] file without
-  ///   FF[] property)
-  SGFCArgumentTypeDisableMessageNumber,
+  /// Hints for a few non-critical warnings that you may wish to disable are
+  /// #SGFCMessageIDEmptyValueDeleted,
+  /// #SGFCMessageIDRequestedPropertyDeleted (since these messages are
+  /// generated in response to an explicit request by the library client) and
+  /// #SGFCMessageIDPropertyNotDefinedInFF.
+  SGFCArgumentTypeDisableMessageID,
 
   /// @brief Disable @b all warning messages. The corresponding SGFC command
   /// line option is -w.
@@ -193,7 +188,8 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// of the current move.
   ///
   /// @note When a markup property is deleted because of this argument type,
-  /// this results in an error type message with ID 38. Example:
+  /// this results in an error type message with
+  /// #SGFCMessageIDPositionNotUnique. Example:
   /// "Markup <CR> position not unique ([partially] deleted)".
   SGFCArgumentTypeDeleteMarkupOnCurrentMove,
 
@@ -205,8 +201,8 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// - A node which has siblings and has more than one child.
   ///
   /// @note When an empty node is deleted because of this argument type,
-  /// this results in a warning type message with ID 55. Example:
-  /// "empty node deleted".
+  /// this results in a warning type message with
+  /// #SGFCMessageIDEmptyNodeDeleted. Example: "empty node deleted".
   SGFCArgumentTypeDeleteEmptyNodes,
 
   /// @brief Delete obsolete properties, i.e. properties that are not part of
@@ -220,10 +216,12 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// - "M" is converted to an FF4 counterpart, either "MA" or "TR".
   ///
   /// @note When an obsolete property is deleted because of this argument
-  /// type, this results in a warning type message with ID 29. Example:
+  /// type, this results in a warning type message with
+  /// #SGFCMessageIDRequestedPropertyDeleted. Example:
   /// "obsolete property <EL> deleted". Regardless of whether this argument
-  /// type is used or not, SGFC generates a warning type message with ID 40
-  /// when it encounters an obsolete property. Example:
+  /// type is used or not, SGFC generates a warning type message with
+  /// #SGFCMessageIDPropertyNotDefinedInFF when it encounters an obsolete
+  /// property. Example:
   /// "property <EL> is not defined in FF[4] (parsing done anyway)".
   SGFCArgumentTypeDeleteObsoleteProperties,
 
@@ -241,7 +239,8 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   ///   counterpart "KM".
   ///
   /// @note When an unknown property is deleted because of this argument
-  /// type, this results in a warning type message with ID 35. Example:
+  /// type, this results in a warning type message with
+  /// #SGFCMessageIDUnknownPropertyDeleted. Example:
   /// "unknown property <XX> deleted".
   SGFCArgumentTypeDeleteUnknownProperties,
 
@@ -263,7 +262,8 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// property type that is not known by SGFC.
   ///
   /// @note When a property is deleted because of this argument type, this
-  /// results in a warning type message with ID 29. Example:
+  /// results in a warning type message with
+  /// #SGFCMessageIDRequestedPropertyDeleted. Example:
   /// "property <FF> deleted".
   SGFCArgumentTypeDeletePropertyType,
 
@@ -320,7 +320,9 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// Correct: >>(;GM[1]GC[good style];B[aa]C[first move not in root node])<<
   ///
   /// @note Variation fixes and root move fixes made because of this argument
-  /// type result in warning type messages with IDs 57 and 24, respectively.
+  /// type result in warning type messages with
+  /// #SGFCMessageIDVariationLevelCorrected and
+  /// #SGFCMessageIDMoveInRootNodeSplit, respectively.
   /// Examples: "variation level corrected" and "move in root node found
   /// (splitted node into two)".
   SGFCArgumentTypeCorrectVariationLevelAndRootMoves,

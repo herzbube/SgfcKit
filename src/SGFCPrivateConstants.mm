@@ -47,7 +47,7 @@
 NSDictionary* argumentTypeToSgfcKitMap =
 @{
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::BeginningOfSgfData)) : @(SGFCArgumentTypeBeginningOfSgfData),
-  @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DisableMessageNumber)) : @(SGFCArgumentTypeDisableMessageNumber),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DisableMessageID)) : @(SGFCArgumentTypeDisableMessageID),
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DisableWarningMessages)) : @(SGFCArgumentTypeDisableWarningMessages),
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::HardLineBreakMode)) : @(SGFCArgumentTypeHardLineBreakMode),
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::LineBreakAtEndOfNode)) : @(SGFCArgumentTypeLineBreakAtEndOfNode),
@@ -67,7 +67,7 @@ NSDictionary* argumentTypeToSgfcKitMap =
 NSDictionary* argumentTypeFromSgfcKitMap =
 @{
   @(SGFCArgumentTypeBeginningOfSgfData) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::BeginningOfSgfData)),
-  @(SGFCArgumentTypeDisableMessageNumber) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DisableMessageNumber)),
+  @(SGFCArgumentTypeDisableMessageID) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DisableMessageID)),
   @(SGFCArgumentTypeDisableWarningMessages) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DisableWarningMessages)),
   @(SGFCArgumentTypeHardLineBreakMode) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::HardLineBreakMode)),
   @(SGFCArgumentTypeLineBreakAtEndOfNode) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::LineBreakAtEndOfNode)),

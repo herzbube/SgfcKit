@@ -26,7 +26,7 @@
 typedef NS_ENUM(NSUInteger, SGFCExitCode)
 {
   /// @brief The SGFC operation did not generate any warning or error
-  /// messages. If the #SGFCArgumentTypeDisableMessageNumber argument was
+  /// messages. If the #SGFCArgumentTypeDisableMessageID argument was
   /// passed to SGFC some messages may have been ignored.
   SGFCExitCodeOk = 0,
 
