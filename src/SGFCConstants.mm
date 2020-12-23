@@ -31,6 +31,7 @@ NSString* SGFCSgfcVersion = @"1.18";
 // SGFC.
 //const int SGFCInvalidLineNumber = -1;
 //const int SGFCInvalidColumnNumber = -1;
+//const int SGFCLibraryErrorNumberNoError = 0;
 
 //NSString* SGFCNoneValueString = SgfcPrivateConstants::EmptyString;
 NSString* SGFCDoubleNormalString = @"1";

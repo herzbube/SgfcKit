@@ -71,9 +71,9 @@
 
 #pragma mark - Public API
 
-- (NSInteger) messageID
+- (SGFCMessageID) messageID
 {
-  return [SGFCMappingUtility toSgfcKitInteger:_wrappedMessage->GetMessageID()];
+  return [SGFCMappingUtility toSgfcKitMessageID:_wrappedMessage->GetMessageID()];
 }
 
 - (SGFCMessageType) messageType
@@ -96,14 +96,19 @@
   return [SGFCMappingUtility toSgfcKitBoolean:_wrappedMessage->IsCriticalMessage()];
 }
 
+- (NSInteger) libraryErrorNumber
+{
+  return [SGFCMappingUtility toSgfcKitInteger:_wrappedMessage->GetLibraryErrorNumber()];
+}
+
 - (NSString*) messageText
 {
   return [SGFCMappingUtility toSgfcKitString:_wrappedMessage->GetMessageText()];
 }
 
-- (NSString*) rawMessageText
+- (NSString*) formattedMessageText
 {
-  return [SGFCMappingUtility toSgfcKitString:_wrappedMessage->GetRawMessageText()];
+  return [SGFCMappingUtility toSgfcKitString:_wrappedMessage->GetFormattedMessageText()];
 }
 
 #pragma mark - Internal API - SGFCMessageInternalAdditions overrides
