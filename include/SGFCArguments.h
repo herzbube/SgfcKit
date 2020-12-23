@@ -18,10 +18,12 @@
 
 // Project includes
 #import "SGFCArgumentType.h"
+#import "SGFCMessageID.h"
 #import "SGFCPropertyType.h"
 
 // System includes
 #import <Foundation/NSObject.h>
+#import <Foundation/NSString.h>
 
 // Forward declarations
 @class NSArray;
@@ -84,6 +86,22 @@
             withIntParameter:(NSInteger)parameter;
 
 /// @brief Adds an argument to the end of the collection of arguments that
+/// make up the content of the ISgfcArguments object.
+///
+/// @param argumentType The argument type.
+/// @param parameter The argument's string type parameter.
+///
+/// @exception NSInvalidArgumentException Is raised if @a argumentType does not
+/// require a string type parameter, or if @a argumentType does not
+/// support multiple specifications but the collection already contains an
+/// argument with the same type as @a argumentType, or if @a argumentType
+/// supports multiple specifications but the collection already contains an
+/// argument with an argument type / parameter combination that is equal to
+/// @a argumentType and @a parameter.
+- (void) addArgumentWithType:(SGFCArgumentType)argumentType
+         withStringParameter:(NSString*)parameter;
+
+/// @brief Adds an argument to the end of the collection of arguments that
 /// make up the content of the SGFCArguments object.
 ///
 /// @param argumentType The argument type.
@@ -98,6 +116,22 @@
 /// @a argumentType and @a parameter.
 - (void) addArgumentWithType:(SGFCArgumentType)argumentType
    withPropertyTypeParameter:(SGFCPropertyType)parameter;
+
+/// @brief Adds an argument to the end of the collection of arguments that
+/// make up the content of the ISgfcArguments object.
+///
+/// @param argumentType The argument type.
+/// @param parameter The argument's SGFCMessageID parameter.
+///
+/// @exception NSInvalidArgumentException Is raised if @a argumentType does not
+/// require an SGFCMessageID parameter, or if @a argumentType does not
+/// support multiple specifications but the collection already contains an
+/// argument with the same type as @a argumentType, or if @a argumentType
+/// supports multiple specifications but the collection already contains an
+/// argument with an argument type / parameter combination that is equal to
+/// @a argumentType and @a parameter.
+- (void) addArgumentWithType:(SGFCArgumentType)argumentType
+      withMessageIDParameter:(SGFCMessageID)parameter;
 
 /// @brief Removes all arguments from the collection of arguments that make
 /// up the content of the SGFCArguments object.

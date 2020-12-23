@@ -18,10 +18,12 @@
 
 // Project includes
 #import "SGFCArgumentType.h"
+#import "SGFCMessageID.h"
 #import "SGFCPropertyType.h"
 
 // System includes
 #import <Foundation/NSObject.h>
+#import <Foundation/NSString.h>
 
 /// @brief The SGFCArgument class represents a single argument to be
 /// passed on to SGFC when it reads or writes SGF content. Depending on the
@@ -55,12 +57,26 @@
 /// value is undefined if hasIntegerTypeParameter() returns NO.
 @property(nonatomic, readonly) NSInteger integerTypeParameter;
 
+/// @brief Returns YES if the argument has a string type parameter.
+@property(nonatomic, readonly) BOOL hasStringTypeParameter;
+
+/// @brief Returns the argument's string type parameter value. The return
+/// value is undefined if hasStringTypeParameter() returns NO.
+@property(nonatomic, readonly) NSString* stringTypeParameter;
+
 /// @brief Returns YES if the argument has an SGFCPropertyType parameter.
 @property(nonatomic, readonly) BOOL hasPropertyTypeParameter;
 
 /// @brief Returns the argument's SGFCPropertyType parameter value. The
 /// return value is undefined if hasPropertyTypeParameter() returns NO.
 @property(nonatomic, readonly) SGFCPropertyType propertyTypeParameter;
+
+/// @brief Returns YES if the argument has an SGFCMessageID parameter.
+@property(nonatomic, readonly) BOOL hasMessageIDParameter;
+
+/// @brief Returns the argument's SGFCMessageID parameter value. The
+/// return value is undefined if hasMessageIDParameter() returns NO.
+@property(nonatomic, readonly) SGFCMessageID messageIDParameter;
 
 /// @brief Returns the argument as a string, exactly as it would be
 /// specified on the SGFC command line. Examples: -n, -b1, -yMA.

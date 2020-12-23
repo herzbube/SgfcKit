@@ -86,6 +86,16 @@
   return [SGFCMappingUtility toSgfcKitInteger:_wrappedArgument->GetIntegerTypeParameter()];
 }
 
+- (BOOL) hasStringTypeParameter
+{
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedArgument->HasStringTypeParameter()];
+}
+
+- (NSString*) stringTypeParameter
+{
+  return [SGFCMappingUtility toSgfcKitString:_wrappedArgument->GetStringTypeParameter()];
+}
+
 - (BOOL) hasPropertyTypeParameter
 {
   return [SGFCMappingUtility toSgfcKitBoolean:_wrappedArgument->HasPropertyTypeParameter()];
@@ -94,6 +104,16 @@
 - (SGFCPropertyType) propertyTypeParameter
 {
   return [SGFCMappingUtility toSgfcKitPropertyType:_wrappedArgument->GetPropertyTypeParameter()];
+}
+
+- (BOOL) hasMessageIDParameter
+{
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedArgument->HasMessageIDParameter()];
+}
+
+- (SGFCMessageID) messageIDParameter
+{
+  return [SGFCMappingUtility toSgfcKitMessageID:_wrappedArgument->GetMessageIDParameter()];
 }
 
 - (NSString*) toString

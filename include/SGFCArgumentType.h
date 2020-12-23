@@ -53,11 +53,16 @@
 ///   results and take appropriate steps when it encounters critical errors.
 /// - Options -i, -h and --help. The library does not support these options
 ///   because they are useful only for an interactive command line program.
+/// - Option -U. The library client can achieve the same by specifying
+///   #SGFCArgumentTypeDefaultEncoding with parameter "UTF-8".
 typedef NS_ENUM(NSUInteger, SGFCArgumentType)
 {
   /// @brief Select how to search for the beginning of SGF data. This argument
   /// requires a numeric parameter value 1, 2 or 3. The corresponding SGFC
   /// command line option is -bx.
+  ///
+  /// The argument is invalid if you specify a parameter value that is not
+  /// 1, 2 or 3.
   ///
   /// The parameter values 1-3 have the following meaning:
   /// - 1 = Advanced search algorithm (default)
@@ -70,9 +75,6 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// with "(". To detect such files SGFC uses a more sophisticated search.
   /// In rare cases this might go wrong, so if you find yourself in that
   /// position you may wish to use the algorithm 2 or 3.
-  ///
-  /// The argument is invalid if you specify a parameter value that is not
-  /// 1, 2 or 3.
   SGFCArgumentTypeBeginningOfSgfData,
 
   /// @brief Disable a given message ID. This argument requires an
@@ -110,6 +112,9 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// reading. When SGFC writes SGF content the output is always in FF4
   /// format.
   ///
+  /// The argument is invalid if you specify a parameter value that is not
+  /// 1, 2, 3 or 4.
+  ///
   /// The parameter values 1-4 have the following meaning:
   /// - 1 = A line break preceded by a backslash ("\") character is treated
   ///       as a soft line break. All other line breaks are treated as a hard
@@ -130,9 +135,6 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   ///       line break is preserved on writing. The SGFC documentation
   ///       characterizes this line break behaviour as "paragraph style
   ///       (ISHI format, MFGO)".
-  ///
-  /// The argument is invalid if you specify a parameter value that is not
-  /// 1, 2, 3 or 4.
   ///
   /// @todo Find out more about parameter value 4. What does "paragraph style"
   /// mean? What is the ISHI format? MFGO is likely the abbreviation for the
@@ -165,8 +167,8 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   ///   If that length were to be exceeded SGFC inserts a line break before it
   ///   writes out the next property. In case of a Text property SGFC inserts
   ///   a soft line break in the middle of the property value.
-  /// - When this argument is specified, SGFC never inserts soft line breaks in
-  ///   the middle of a Text property value.
+  /// - When this argument is specified, SGFC never inserts soft line breaks
+  ///   in the middle of a Text property value.
   ///
   /// Old SGF handling applications that pre-date FF4 cannot deal with soft
   /// line breaks. If you are concerned about compatibility to old
@@ -362,5 +364,95 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// compressed format. If you are concerned about compatibility to old
   /// applications you should specify this argument to avoid compressed point
   /// lists.
+  ///
+  /// @note After reading in SGF content point lists are always made
+  /// available to the library client in uncompressed form in the document
+  /// object tree.
   SGFCArgumentTypeExpandCompressedPointLists,
-};
+
+  /// @brief Select how to determine the character encoding(s) used to decode
+  /// SGF content. This argument requires a numeric parameter value 1, 2
+  /// or 3. The corresponding SGFC command line option is -Ex.
+  ///
+  /// The argument is invalid if you specify a parameter value that is not
+  /// 1, 2 or 3.
+  ///
+  /// The parameter values 1-3 have the following meaning:
+  /// - Mode 1 (the default mode): A single encoding is used to decode the
+  ///   @b entire SGF content. The encoding to use is detected by probing the
+  ///   SGF content. If a Unicode BOM marker is found then the encoding
+  ///   defined by that marker is used, but the first CA property in the
+  ///   decoded SGF content must match the encoding detected from the BOM.
+  ///   If no Unicode BOM marker is found then the SGF content is probed for
+  ///   CA properties, and the first CA property value found is used as the
+  ///   encoding. If no CA property is found the default encoding ISO-8859-1
+  ///   is used. Note that only this mode allows the wide-character encodings
+  ///   UTF-16 and UTF-32 to be processed (via BOM detection).
+  /// - Mode 2 (specification conformant): A separate encoding is used to
+  ///   decode each game tree in the SGF content. The encoding is defined by
+  ///   the CA property value of that game tree. If a game tree has no CA
+  ///   property the default encoding ISO-8859-1 is used. Only SimpleText and
+  ///   Text property values are decoded! The SGF formatting skeleton as well
+  ///   as property values that are not SimpleText or Text are parsed using
+  ///   ASCII/ISO-8859-1.
+  /// - Mode 3: No decoding takes place.
+  ///
+  /// @note Mode 2 is the behaviour as designed by the SGF standard. This is
+  /// somewhat antiquated as it not only allows SGF content to be partially
+  /// encoded, it even allows different encodings to be used within the same
+  /// piece of SGF content. It also breaks the notion of SGF as text files.
+  /// Mode 1, even though it does not conform to the SGF standard, is what
+  /// most likely can be expected from modern-day applications that encode an
+  /// entire file and use the same encoding for the entire file.
+  ///
+  /// @attention When mode 1 is used decoding occurs before parsing, when
+  /// mode 2 is used decoding occurs after parsing. This can be important
+  /// when SGF content is encoded with a multi-byte encoding, and one or
+  /// more multi-byte characters contain bytes that correspond to ASCII
+  /// characters that are relevant for the SGF format (escape character,
+  /// property closing character).
+  ///
+  /// When mode 1 or 2 are used for reading, the SGF content is decoded and
+  /// made available to the library client as UTF-8. Accordingly each decoded
+  /// game tree's root node is populated with a CA property value "UTF-8".
+  /// When mode 3 is used no decoding takes place and the library client
+  /// receives the SGF content as-is.
+  ///
+  /// When node 1 or 2 are used for @b writing, the SGF content in the
+  /// object tree is internally decoded according to the rules documented
+  /// above before it is actually written out. This allows library clients to
+  /// provide content in encodings that are not UTF-8. Care must be taken not
+  /// to mix encodings in the same  object tree! For instance a library client
+  /// might first read SGF content from some source using encoding mode 1 or
+  /// 2, which produces an object tree in UTF-8, then it could modify the
+  /// object tree with values in an encoding that is @b not UTF-8. Writing
+  /// out such an object tree that contains values in mixed encodings is
+  /// likely to produce invalid results.
+  ///
+  /// @see SgfcArgumentType::DefaultEncoding
+  /// @see SgfcArgumentType::ForcedEncoding
+  EncodingMode,
+
+  /// @brief Select the default encoding to be used if the SGF content does
+  /// not contain a CA property. This argument requires a string parameter
+  /// value. The corresponding SGFC command line option is --default-encoding.
+  ///
+  /// The default value is ISO-8859-1. Valid values depend on the iconv
+  /// implementation used by SgfcKit. Invoke "iconv --list" on the command
+  /// line to see a list of supported encodings.
+  ///
+  /// @see SgfcArgumentType::EncodingMode
+  /// @see SgfcArgumentType::ForcedEncoding
+  DefaultEncoding,
+
+  /// @brief Select the encoding to be used. This overrides even a CA property
+  /// found in the SGF content. This argument requires a string parameter
+  /// value. The corresponding SGFC command line option is --encoding.
+  ///
+  /// The argument has no default value. Valid values depend on the iconv
+  /// implementation used by SgfcKit. Invoke "iconv --list" on the command
+  /// line to see a list of supported encodings.
+  ///
+  /// @see SgfcArgumentType::EncodingMode
+  /// @see SgfcArgumentType::DefaultEncoding
+  ForcedEncoding,};

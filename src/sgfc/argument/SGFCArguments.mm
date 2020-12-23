@@ -124,10 +124,46 @@
 }
 
 - (void) addArgumentWithType:(SGFCArgumentType)argumentType
+         withStringParameter:(NSString*)parameter
+{
+  auto mappedArgumentType = [SGFCMappingUtility fromSgfcKitArgumentType:argumentType];
+  auto mappedParameter = [SGFCMappingUtility fromSgfcKitString:parameter];
+
+  try
+  {
+    _wrappedArguments->AddArgument(mappedArgumentType, mappedParameter);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  [self addWrapperForNewlyAddedArgument];
+}
+
+- (void) addArgumentWithType:(SGFCArgumentType)argumentType
    withPropertyTypeParameter:(SGFCPropertyType)parameter
 {
   auto mappedArgumentType = [SGFCMappingUtility fromSgfcKitArgumentType:argumentType];
   auto mappedParameter = [SGFCMappingUtility fromSgfcKitPropertyType:parameter];
+
+  try
+  {
+    _wrappedArguments->AddArgument(mappedArgumentType, mappedParameter);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  [self addWrapperForNewlyAddedArgument];
+}
+
+- (void) addArgumentWithType:(SGFCArgumentType)argumentType
+      withMessageIDParameter:(SGFCMessageID)parameter
+{
+  auto mappedArgumentType = [SGFCMappingUtility fromSgfcKitArgumentType:argumentType];
+  auto mappedParameter = [SGFCMappingUtility fromSgfcKitMessageID:parameter];
 
   try
   {
