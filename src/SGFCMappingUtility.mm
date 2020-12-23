@@ -142,6 +142,22 @@
   return static_cast<LibSgfcPlusPlus::SgfcGoPointNotation>(mappedValue);
 }
 
++ (SGFCMessageID) toSgfcKitMessageID:(LibSgfcPlusPlus::SgfcMessageID)messageID
+{
+  NSInteger mappedValue = [SGFCMappingUtility toSgfcKitSignedValue:static_cast<int>(messageID)
+                                                          usingMap:messageIDToSgfcKitMap
+                                                      withEnumName:@"SgfcMessageID"];
+  return static_cast<SGFCMessageID>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcMessageID) fromSgfcKitMessageID:(SGFCMessageID)messageID
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitSignedValue:messageID
+                                                      usingMap:messageIDFromSgfcKitMap
+                                                  withEnumName:@"SGFCMessageID"];
+  return static_cast<LibSgfcPlusPlus::SgfcMessageID>(mappedValue);
+}
+
 + (SGFCMessageType) toSgfcKitMessageType:(LibSgfcPlusPlus::SgfcMessageType)messageType
 {
   NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(messageType)
@@ -343,6 +359,49 @@
             withEnumName:(NSString*)enumName
 {
   NSNumber* fromValueAsNumber = @(fromValueAsUnsignedInteger);
+  NSNumber* mappedValueAsNumber = map[fromValueAsNumber];
+  if (mappedValueAsNumber)
+  {
+    // All libsgfc++ enumerations are treated as int
+    return [mappedValueAsNumber intValue];
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"%@ value not mapped: %@", enumName, fromValueAsNumber];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
+}
+
++ (NSInteger) toSgfcKitSignedValue:(int)fromValueAsInt
+                          usingMap:(NSDictionary*)map
+                      withEnumName:(NSString*)enumName
+{
+  NSNumber* fromValueAsNumber = @(fromValueAsInt);
+  NSNumber* mappedValueAsNumber = map[fromValueAsNumber];
+  if (mappedValueAsNumber)
+  {
+    return [mappedValueAsNumber integerValue];
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"LibSgfcPlusPlus::%@ value not mapped: %@", enumName, fromValueAsNumber];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
+}
+
++ (int) fromSgfcKitSignedValue:(NSInteger)fromValueAsSignedInteger
+                      usingMap:(NSDictionary*)map
+                  withEnumName:(NSString*)enumName
+{
+  NSNumber* fromValueAsNumber = @(fromValueAsSignedInteger);
   NSNumber* mappedValueAsNumber = map[fromValueAsNumber];
   if (mappedValueAsNumber)
   {

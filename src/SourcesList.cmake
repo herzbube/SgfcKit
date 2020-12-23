@@ -110,6 +110,7 @@ set (
   ../include/SGFCMovePropertyValue.h
   ../include/SGFCKitFactory.h
   ../include/SGFCMessage.h
+  ../include/SGFCMessageID.h
   ../include/SGFCMessageType.h
   ../include/SGFCNode.h
   ../include/SGFCNumberPropertyValue.h

@@ -86,6 +86,14 @@ extern NSDictionary* goPointNotationToSgfcKitMap;
 /// values from the libsgfc++ enumeration SgfcGoPointNotation.
 extern NSDictionary* goPointNotationFromSgfcKitMap;
 
+/// @brief Maps values from the libsgfc++ enumeration SgfcMessageID to
+/// values from the SgfcKit enumeration SGFCMessageID.
+extern NSDictionary* messageIDToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCMessageID to
+/// values from the libsgfc++ enumeration SgfcMessageID.
+extern NSDictionary* messageIDFromSgfcKitMap;
+
 /// @brief Maps values from the libsgfc++ enumeration SgfcMessageType to
 /// values from the SgfcKit enumeration SGFCMessageType.
 extern NSDictionary* messageTypeToSgfcKitMap;

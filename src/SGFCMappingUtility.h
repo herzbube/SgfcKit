@@ -25,6 +25,7 @@
 #import "../include/SGFCExitCode.h"
 #import "../include/SGFCGameType.h"
 #import "../include/SGFCGoPointNotation.h"
+#import "../include/SGFCMessageID.h"
 #import "../include/SGFCMessageType.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
@@ -39,6 +40,7 @@
 #import <libsgfcplusplus/SgfcExitCode.h>
 #import <libsgfcplusplus/SgfcGameType.h>
 #import <libsgfcplusplus/SgfcGoPointNotation.h>
+#import <libsgfcplusplus/SgfcMessageID.h>
 #import <libsgfcplusplus/SgfcMessageType.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
@@ -268,6 +270,36 @@
 /// SGFCGoPointNotation value was not added to
 /// #goPointNotationFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcGoPointNotation) fromSgfcKitGoPointNotation:(SGFCGoPointNotation)goPointNotation;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCMessageID to
+/// the corresponding value from the libsgfc++ enumeration
+/// SgfcMessageID.
+///
+/// This is a convenience function that looks up @a messageID in
+/// #messageIDToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a messageID does not appear in
+/// #messageIDToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcMessageID value was not added to
+/// #messageIDToSgfcKitMap.
++ (SGFCMessageID) toSgfcKitMessageID:(LibSgfcPlusPlus::SgfcMessageID)messageID;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcMessageID to
+/// the corresponding value from the the SgfcKit enumeration
+/// SGFCMessageID.
+///
+/// This is a convenience function that looks up @a messageID in
+/// #messageIDFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a messageID does not appear in
+/// #messageIDFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCMessageID value was not added to
+/// #messageIDFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcMessageID) fromSgfcKitMessageID:(SGFCMessageID)messageID;
 
 /// @brief Maps a value from the SgfcKit enumeration SGFCMessageType to
 /// the corresponding value from the libsgfc++ enumeration
