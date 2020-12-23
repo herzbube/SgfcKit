@@ -115,6 +115,24 @@
   }
 }
 
+- (SGFCDocumentWriteResult*) validateDocument:(SGFCDocument*)document
+{
+  try
+  {
+    auto wrappedDocumentWriteResult = _wrappedDocumentWriter->ValidateDocument(
+      [document wrappedDocument]);
+    return [SGFCWrappingUtility wrapDocumentWriteResult:wrappedDocumentWriteResult];
+  }
+  catch (std::logic_error& exception)
+  {
+    [SGFCExceptionUtility raiseDocumentStructureExceptionWithCStringReason:exception.what()];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return nil;
+  }
+}
+
 - (void) debugPrintToConsole:(SGFCDocument*)document
 {
   _wrappedDocumentWriter->DebugPrintToConsole([document wrappedDocument]);
