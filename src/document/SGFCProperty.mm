@@ -197,6 +197,27 @@
   return [SGFCMappingUtility toSgfcKitString:_wrappedProperty->GetPropertyName()];
 }
 
+- (SGFCPropertyCategory) propertyCategory
+{
+  return [SGFCMappingUtility toSgfcKitPropertyCategory:_wrappedProperty->GetPropertyCategory()];
+}
+
+- (SGFCPropertyTraits) traits
+{
+  return [SGFCMappingUtility toSgfcKitPropertyTraits:_wrappedProperty->GetTraits()];
+}
+
+- (BOOL) hasTrait:(SGFCPropertyTrait)trait
+{
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedProperty->HasTrait(
+    [SGFCMappingUtility fromSgfcKitPropertyTrait:trait])];
+}
+
+- (BOOL) hasPropertyValues
+{
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedProperty->HasPropertyValues()];
+}
+
 - (void) setPropertyValues:(NSArray*)propertyValues
 {
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:propertyValues
@@ -213,6 +234,47 @@
   }
 
   _propertyValues = propertyValues;
+}
+
+- (void) appendPropertyValue:(id<SGFCPropertyValue>)propertyValue
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:propertyValue
+                                                 invalidArgumentName:@"propertyValue"];
+
+  try
+  {
+    _wrappedProperty->AppendPropertyValue([SGFCProperty wrappedPropertyValueFromObject:propertyValue]);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  _propertyValues = [SGFCWrappingUtility wrapPropertyValues:_wrappedProperty->GetPropertyValues()];
+}
+
+- (void) removePropertyValue:(id<SGFCPropertyValue>)propertyValue
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:propertyValue
+                                                 invalidArgumentName:@"propertyValue"];
+
+  try
+  {
+    _wrappedProperty->RemovePropertyValue([SGFCProperty wrappedPropertyValueFromObject:propertyValue]);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  _propertyValues = [SGFCWrappingUtility wrapPropertyValues:_wrappedProperty->GetPropertyValues()];
+}
+
+- (void) removeAllPropertyValues
+{
+  _wrappedProperty->RemoveAllPropertyValues();
+
+  _propertyValues = [NSArray array];
 }
 
 - (id<SGFCPropertyValue>) propertyValue
@@ -256,6 +318,19 @@
   auto dummyWrappedProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateProperty(
     [SGFCMappingUtility fromSgfcKitPropertyType:propertyType]);
   return [SGFCMappingUtility toSgfcKitString:dummyWrappedProperty->GetPropertyName()];
+}
+
++ (std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>) wrappedPropertyValueFromObject:(id<SGFCPropertyValue>)propertyValue
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:propertyValue
+                                                 invalidArgumentName:@"propertyValue"];
+
+  id propertyValueObject = propertyValue;
+  if (! [propertyValueObject conformsToProtocol:@protocol(SGFCPropertyValueInternal)])
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValueObject\" is an object that does not conform to protocol SGFCPropertyValueInternal"];
+
+  id<SGFCPropertyValueInternal> propertyValueInternal = propertyValueObject;
+  return [propertyValueInternal wrappedPropertyValue];
 }
 
 + (std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>>) wrappedPropertyValuesFromArray:(NSArray*)propertyValues

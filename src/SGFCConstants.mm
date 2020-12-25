@@ -20,6 +20,9 @@
 #import "../include/SGFCConstants.h"
 //#import "SgfcPrivateConstants.h"
 
+// C++ Standard Library includes
+#include <limits>
+
 // System includes
 #import <Foundation/NSString.h>
 
@@ -258,6 +261,199 @@ NSString* SGFCColorWhiteString = @"W";
 //  { SGFCPropertyTypeKI, "KI" },
 //};
 
+//const std::map<SgfcPropertyType, SgfcPropertyCategory> SgfcConstants::PropertyTypeToPropertyCategoryMap =
+//{
+//  // Standard properties from FF4
+//  { SgfcPropertyType::B, SgfcPropertyCategory::Move },
+//  { SgfcPropertyType::KO, SgfcPropertyCategory::Move },
+//  { SgfcPropertyType::MN, SgfcPropertyCategory::Move },
+//  { SgfcPropertyType::W, SgfcPropertyCategory::Move },
+//  { SgfcPropertyType::AB, SgfcPropertyCategory::Setup },
+//  { SgfcPropertyType::AE, SgfcPropertyCategory::Setup },
+//  { SgfcPropertyType::AW, SgfcPropertyCategory::Setup },
+//  { SgfcPropertyType::PL, SgfcPropertyCategory::Setup },
+//  { SgfcPropertyType::C, SgfcPropertyCategory::NodeAnnotation },
+//  { SgfcPropertyType::DM, SgfcPropertyCategory::NodeAnnotation },
+//  { SgfcPropertyType::GB, SgfcPropertyCategory::NodeAnnotation },
+//  { SgfcPropertyType::GW, SgfcPropertyCategory::NodeAnnotation },
+//  { SgfcPropertyType::HO, SgfcPropertyCategory::NodeAnnotation },
+//  { SgfcPropertyType::N, SgfcPropertyCategory::NodeAnnotation },
+//  { SgfcPropertyType::UC, SgfcPropertyCategory::NodeAnnotation },
+//  { SgfcPropertyType::V, SgfcPropertyCategory::NodeAnnotation },
+//  { SgfcPropertyType::BM, SgfcPropertyCategory::MoveAnnotation },
+//  { SgfcPropertyType::DO, SgfcPropertyCategory::MoveAnnotation },
+//  { SgfcPropertyType::IT, SgfcPropertyCategory::MoveAnnotation },
+//  { SgfcPropertyType::TE, SgfcPropertyCategory::MoveAnnotation },
+//  { SgfcPropertyType::AR, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::CR, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::DD, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::LB, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::LN, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::MA, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::SL, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::SQ, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::TR, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::AP, SgfcPropertyCategory::Root },
+//  { SgfcPropertyType::CA, SgfcPropertyCategory::Root },
+//  { SgfcPropertyType::FF, SgfcPropertyCategory::Root },
+//  { SgfcPropertyType::GM, SgfcPropertyCategory::Root },
+//  { SgfcPropertyType::ST, SgfcPropertyCategory::Root },
+//  { SgfcPropertyType::SZ, SgfcPropertyCategory::Root },
+//  { SgfcPropertyType::AN, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::BR, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::BT, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::CP, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::DT, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::EV, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::GN, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::GC, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::ON, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::OT, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::PB, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::PC, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::PW, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::RE, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::RO, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::RU, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::SO, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::TM, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::US, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::WR, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::WT, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::BL, SgfcPropertyCategory::Timing },
+//  { SgfcPropertyType::OB, SgfcPropertyCategory::Timing },
+//  { SgfcPropertyType::OW, SgfcPropertyCategory::Timing },
+//  { SgfcPropertyType::WL, SgfcPropertyCategory::Timing },
+//  { SgfcPropertyType::FG, SgfcPropertyCategory::Miscellaneous },
+//  { SgfcPropertyType::PM, SgfcPropertyCategory::Miscellaneous },
+//  { SgfcPropertyType::VW, SgfcPropertyCategory::Miscellaneous },
+//
+//  // Standard properties from FF1-3                               // Index page       FF3 specs page    FF1 specs page
+//  { SgfcPropertyType::BS, SgfcPropertyCategory::GameInfo },       // GameInfo         Root              Root
+//  { SgfcPropertyType::CH, SgfcPropertyCategory::MoveAnnotation }, // -                MoveAnnotation    -
+//  { SgfcPropertyType::EL, SgfcPropertyCategory::Miscellaneous },  // -                n/a               -
+//  { SgfcPropertyType::EX, SgfcPropertyCategory::Miscellaneous },  // -                n/a               -
+//  { SgfcPropertyType::ID, SgfcPropertyCategory::GameInfo },       // GameInfo         GameInfo          n/a
+//  { SgfcPropertyType::L, SgfcPropertyCategory::Markup },          // -                n/a               Superseded by LB
+//  { SgfcPropertyType::LT, SgfcPropertyCategory::Root },           // -                Root              n/a
+//  { SgfcPropertyType::M, SgfcPropertyCategory::Markup },          // -                n/a               "Marked points"
+//  { SgfcPropertyType::OM, SgfcPropertyCategory::Timing },         // -                Timing            n/a
+//  { SgfcPropertyType::OP, SgfcPropertyCategory::Timing },         // -                Timing            n/a
+//  { SgfcPropertyType::OV, SgfcPropertyCategory::Timing },         // -                Timing            n/a
+//  { SgfcPropertyType::RG, SgfcPropertyCategory::Markup },         // -                "Sets of points can be marked [...]"
+//  { SgfcPropertyType::SC, SgfcPropertyCategory::Markup },         // -                "Sets of points can be marked [...]"
+//  { SgfcPropertyType::SE, SgfcPropertyCategory::Miscellaneous },  // -                 -                n/a
+//                                                                  // SE in Lines of Action is a Markup property
+//  { SgfcPropertyType::SI, SgfcPropertyCategory::MoveAnnotation }, // -                 MoveAnnotation   n/a
+//  { SgfcPropertyType::TC, SgfcPropertyCategory::Miscellaneous },  // -                 -                n/a
+//  { SgfcPropertyType::WS, SgfcPropertyCategory::GameInfo },       // GameInfo          Root             Root
+//
+//  // Game of Go properties
+//  { SgfcPropertyType::HA, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::KM, SgfcPropertyCategory::GameInfo },
+//  { SgfcPropertyType::TB, SgfcPropertyCategory::Markup },
+//  { SgfcPropertyType::TW, SgfcPropertyCategory::Markup },
+//
+//  // Non-standard properties
+//  { SgfcPropertyType::Unknown, SgfcPropertyCategory::Miscellaneous },
+//};
+//
+//const std::map<SgfcPropertyType, SgfcPropertyTraits> SgfcConstants::PropertyTypeToPropertyTraitsMap =
+//{
+//  // Standard properties from FF4
+//  { SgfcPropertyType::B, 0 },
+//  { SgfcPropertyType::KO, 0 },
+//  { SgfcPropertyType::MN, 0 },
+//  { SgfcPropertyType::W, 0 },
+//  { SgfcPropertyType::AB, 0 },
+//  { SgfcPropertyType::AE, 0 },
+//  { SgfcPropertyType::AW, 0 },
+//  { SgfcPropertyType::PL, 0 },
+//  { SgfcPropertyType::C, 0 },
+//  { SgfcPropertyType::DM, 0 },
+//  { SgfcPropertyType::GB, 0 },
+//  { SgfcPropertyType::GW, 0 },
+//  { SgfcPropertyType::HO, 0 },
+//  { SgfcPropertyType::N, 0 },
+//  { SgfcPropertyType::UC, 0 },
+//  { SgfcPropertyType::V, 0 },
+//  { SgfcPropertyType::BM, 0 },
+//  { SgfcPropertyType::DO, 0 },
+//  { SgfcPropertyType::IT, 0 },
+//  { SgfcPropertyType::TE, 0 },
+//  { SgfcPropertyType::AR, 0 },
+//  { SgfcPropertyType::CR, 0 },
+//  { SgfcPropertyType::DD, static_cast<SgfcPropertyTraits>(SgfcPropertyTrait::Inheritable) },
+//  { SgfcPropertyType::LB, 0 },
+//  { SgfcPropertyType::LN, 0 },
+//  { SgfcPropertyType::MA, 0 },
+//  { SgfcPropertyType::SL, 0 },
+//  { SgfcPropertyType::SQ, 0 },
+//  { SgfcPropertyType::TR, 0 },
+//  { SgfcPropertyType::AP, 0 },
+//  { SgfcPropertyType::CA, 0 },
+//  { SgfcPropertyType::FF, 0 },
+//  { SgfcPropertyType::GM, 0 },
+//  { SgfcPropertyType::ST, 0 },
+//  { SgfcPropertyType::SZ, 0 },
+//  { SgfcPropertyType::AN, 0 },
+//  { SgfcPropertyType::BR, 0 },
+//  { SgfcPropertyType::BT, 0 },
+//  { SgfcPropertyType::CP, 0 },
+//  { SgfcPropertyType::DT, 0 },
+//  { SgfcPropertyType::EV, 0 },
+//  { SgfcPropertyType::GN, 0 },
+//  { SgfcPropertyType::GC, 0 },
+//  { SgfcPropertyType::ON, 0 },
+//  { SgfcPropertyType::OT, 0 },
+//  { SgfcPropertyType::PB, 0 },
+//  { SgfcPropertyType::PC, 0 },
+//  { SgfcPropertyType::PW, 0 },
+//  { SgfcPropertyType::RE, 0 },
+//  { SgfcPropertyType::RO, 0 },
+//  { SgfcPropertyType::RU, 0 },
+//  { SgfcPropertyType::SO, 0 },
+//  { SgfcPropertyType::TM, 0 },
+//  { SgfcPropertyType::US, 0 },
+//  { SgfcPropertyType::WR, 0 },
+//  { SgfcPropertyType::WT, 0 },
+//  { SgfcPropertyType::BL, 0 },
+//  { SgfcPropertyType::OB, 0 },
+//  { SgfcPropertyType::OW, 0 },
+//  { SgfcPropertyType::WL, 0 },
+//  { SgfcPropertyType::FG, 0 },
+//  { SgfcPropertyType::PM, static_cast<SgfcPropertyTraits>(SgfcPropertyTrait::Inheritable) },
+//  { SgfcPropertyType::VW, static_cast<SgfcPropertyTraits>(SgfcPropertyTrait::Inheritable) },
+//
+//  // Standard properties from FF1-3
+//  { SgfcPropertyType::BS, 0 },
+//  { SgfcPropertyType::CH, 0 },
+//  { SgfcPropertyType::EL, 0 },
+//  { SgfcPropertyType::EX, 0 },
+//  { SgfcPropertyType::ID, 0 },
+//  { SgfcPropertyType::L, 0 },
+//  { SgfcPropertyType::LT, 0 },
+//  { SgfcPropertyType::M, 0 },
+//  { SgfcPropertyType::OM, 0 },
+//  { SgfcPropertyType::OP, 0 },
+//  { SgfcPropertyType::OV, 0 },
+//  { SgfcPropertyType::RG, 0 },
+//  { SgfcPropertyType::SC, 0 },
+//  { SgfcPropertyType::SE, 0 },
+//  { SgfcPropertyType::SI, 0 },
+//  { SgfcPropertyType::TC, 0 },
+//  { SgfcPropertyType::WS, 0 },
+//
+//  // Game of Go properties
+//  { SgfcPropertyType::HA, 0 },
+//  { SgfcPropertyType::KM, 0 },
+//  { SgfcPropertyType::TB, 0 },
+//  { SgfcPropertyType::TW, 0 },
+//
+//  // Non-standard properties
+//  { SgfcPropertyType::Unknown, 0 },
+//};
+
 //const std::map<SGFCNumber, SGFCGameType> SGFCGameTypeAsNumberToGameTypeMap =
 //{
 //  { 1, SGFCGameTypeGo },
@@ -347,6 +543,7 @@ NSString* SGFCColorWhiteString = @"W";
 //};
 
 const SGFCGameType SGFCDefaultGameType = SGFCGameTypeGo;
+const SGFCNumber SGFCGameTypeNaN = std::numeric_limits<SGFCNumber>::min();
 const SGFCBoardSize SGFCBoardSizeMinimum =  SGFCBoardSizeMake(1, 1);
 const SGFCBoardSize SGFCBoardSizeMaximumGo = SGFCBoardSizeMake(52, 52);
 const SGFCBoardSize SGFCBoardSizeDefaultGo = SGFCBoardSizeMake(19, 19);
@@ -358,3 +555,8 @@ NSExceptionName const SGFCNotImplementedException = @"SGFCNotImplementedExceptio
 
 const SGFCBoardSize SGFCBoardSizeNone = SGFCBoardSizeMake(-1, -1);
 const SGFCBoardSize SGFCBoardSizeInvalid = SGFCBoardSizeMake(-2, -2);
+
+const SGFCNodeTraits NodeTraitsNone = 0;
+const SGFCNodeTraits NodeTraitsAll = std::numeric_limits<SGFCNodeTraits>::max();
+const SGFCPropertyTraits PropertyTraitsNone = 0;
+const SGFCPropertyTraits PropertyTraitsAll = std::numeric_limits<SGFCPropertyTraits>::max();

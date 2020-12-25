@@ -140,6 +140,23 @@
   return [[SGFCNode alloc] initWithWrappedNode:nodeToWrap];
 }
 
++ (NSArray*) wrapNodes:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>>&)nodesToWrap
+{
+  NSMutableArray* nodes = [NSMutableArray arrayWithCapacity:0];
+
+  for (auto nodeToWrap : nodesToWrap)
+  {
+    [nodes addObject:[[SGFCNode alloc] initWithWrappedNode:nodeToWrap]];
+  }
+
+  return nodes;
+}
+
++ (SGFCProperty*) wrapProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)propertyToWrap
+{
+  return [[SGFCProperty alloc] initWithWrappedProperty:propertyToWrap];
+}
+
 + (NSArray*) wrapProperties:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>>&)propertiesToWrap
 {
   NSMutableArray* properties = [NSMutableArray arrayWithCapacity:0];

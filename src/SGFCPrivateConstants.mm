@@ -24,6 +24,9 @@
 #import "../include/SGFCGoPointNotation.h"
 #import "../include/SGFCMessageID.h"
 #import "../include/SGFCMessageType.h"
+#import "../include/SGFCNodeTraits.h"
+#import "../include/SGFCPropertyCategory.h"
+#import "../include/SGFCPropertyTraits.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
 #import "SGFCPrivateConstants.h"
@@ -38,6 +41,9 @@
 #import <libsgfcplusplus/SgfcGoPointNotation.h>
 #import <libsgfcplusplus/SgfcMessageID.h>
 #import <libsgfcplusplus/SgfcMessageType.h>
+#import <libsgfcplusplus/SgfcNodeTraits.h>
+#import <libsgfcplusplus/SgfcPropertyCategory.h>
+#import <libsgfcplusplus/SgfcPropertyTraits.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
 
@@ -402,6 +408,68 @@ NSDictionary* messageTypeFromSgfcKitMap =
   @(SGFCMessageTypeWarning) : @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::Warning)),
   @(SGFCMessageTypeError) : @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::Error)),
   @(SGFCMessageTypeFatalError) : @(static_cast<int>(LibSgfcPlusPlus::SgfcMessageType::FatalError)),
+};
+
+NSDictionary* nodeTraitToSgfcKitMap =
+@{
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Root)) : @(SGFCNodeTraitRoot),
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::GameInfo)) : @(SGFCNodeTraitGameInfo),
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Move)) : @(SGFCNodeTraitMove),
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Setup)) : @(SGFCNodeTraitSetup),
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::NodeAnnotation)) : @(SGFCNodeTraitNodeAnnotation),
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::MoveAnnotation)) : @(SGFCNodeTraitMoveAnnotation),
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Markup)) : @(SGFCNodeTraitMarkup),
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Timing)) : @(SGFCNodeTraitTiming),
+  @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Inheritable)) : @(SGFCNodeTraitInheritable),
+};
+
+NSDictionary* nodeTraitFromSgfcKitMap =
+@{
+  @(SGFCNodeTraitRoot) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Root)),
+  @(SGFCNodeTraitGameInfo) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::GameInfo)),
+  @(SGFCNodeTraitMove) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Move)),
+  @(SGFCNodeTraitSetup) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Setup)),
+  @(SGFCNodeTraitNodeAnnotation) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::NodeAnnotation)),
+  @(SGFCNodeTraitMoveAnnotation) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::MoveAnnotation)),
+  @(SGFCNodeTraitMarkup) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Markup)),
+  @(SGFCNodeTraitTiming) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Timing)),
+  @(SGFCNodeTraitInheritable) : @(static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(LibSgfcPlusPlus::SgfcNodeTrait::Inheritable)),
+};
+
+NSDictionary* propertyCategoryToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Root)) : @(SGFCPropertyCategoryRoot),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::GameInfo)) : @(SGFCPropertyCategoryGameInfo),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Move)) : @(SGFCPropertyCategoryMove),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Setup)) : @(SGFCPropertyCategorySetup),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::NodeAnnotation)) : @(SGFCPropertyCategoryNodeAnnotation),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::MoveAnnotation)) : @(SGFCPropertyCategoryMoveAnnotation),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Markup)) : @(SGFCPropertyCategoryMarkup),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Timing)) : @(SGFCPropertyCategoryTiming),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Miscellaneous)) : @(SGFCPropertyCategoryMiscellaneous),
+};
+
+NSDictionary* propertyCategoryFromSgfcKitMap =
+@{
+  @(SGFCPropertyCategoryRoot) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Root)),
+  @(SGFCPropertyCategoryGameInfo) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::GameInfo)),
+  @(SGFCPropertyCategoryMove) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Move)),
+  @(SGFCPropertyCategorySetup) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Setup)),
+  @(SGFCPropertyCategoryNodeAnnotation) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::NodeAnnotation)),
+  @(SGFCPropertyCategoryMoveAnnotation) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::MoveAnnotation)),
+  @(SGFCPropertyCategoryMarkup) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Markup)),
+  @(SGFCPropertyCategoryTiming) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Timing)),
+  @(SGFCPropertyCategoryMiscellaneous) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyCategory::Miscellaneous)),
+};
+
+NSDictionary* propertyTraitToSgfcKitMap =
+@{
+  @(static_cast<LibSgfcPlusPlus::SgfcPropertyTraits>(LibSgfcPlusPlus::SgfcPropertyTrait::Inheritable)) : @(SGFCPropertyTraitInheritable),
+};
+
+NSDictionary* propertyTraitFromSgfcKitMap =
+@{
+  @(SGFCPropertyTraitInheritable) : @(static_cast<LibSgfcPlusPlus::SgfcPropertyTraits>(LibSgfcPlusPlus::SgfcPropertyTrait::Inheritable)),
 };
 
 NSDictionary* propertyTypeToSgfcKitMap =

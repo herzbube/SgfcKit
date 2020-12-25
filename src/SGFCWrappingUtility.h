@@ -35,8 +35,10 @@
 @class SGFCGoStone;
 @class SGFCMessage;
 @class SGFCNode;
+@class SGFCProperty;
 @class SGFCSinglePropertyValue;
 @protocol SGFCPropertyValue;
+
 namespace LibSgfcPlusPlus
 {
   class ISgfcArgument;
@@ -124,6 +126,15 @@ namespace LibSgfcPlusPlus
 /// @brief Returns a newly created SGFCNode object that
 /// wraps the libsgfc++ ISgfcNode object @a nodeToWrap.
 + (SGFCNode*) wrapNode:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>)nodeToWrap;
+
+/// @brief Returns a collection of newly created SGFCNode objects that wrap
+/// the libsgfc++ ISgfcNode objects in @a nodesToWrap. The returned
+/// collection has the same order as the input collection.
++ (NSArray*) wrapNodes:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcNode>>&)nodesToWrap;
+
+/// @brief Returns a newly created SGFCProperty object that
+/// wraps the libsgfc++ ISgfcProperty object @a propertyToWrap.
++ (SGFCProperty*) wrapProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)propertyToWrap;
 
 /// @brief Returns a collection of newly created SGFCProperty objects that wrap
 /// the libsgfc++ ISgfcProperty objects in @a propertiesToWrap. The returned

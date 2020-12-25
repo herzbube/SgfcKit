@@ -17,6 +17,8 @@
 #pragma once
 
 // Project includes
+#import "SGFCPropertyCategory.h"
+#import "SGFCPropertyTraits.h"
 #import "SGFCPropertyType.h"
 
 // System includes
@@ -321,10 +323,33 @@
 /// advises against this).
 @property(nonatomic, strong, readonly) NSString* propertyName;
 
+/// @brief Returns the category that the property is classified as. Returns
+/// #SGFCPropertyCategoryMiscellaneous if the property is a custom property
+/// that is not defined in the SGF standard.
+@property(nonatomic, readonly) SGFCPropertyCategory propertyCategory;
+
+/// @brief Returns the property's traits.
+///
+/// Returns #SGFCPropertyTraitsNone if the property has no traits.
+///
+/// @see SGFCPropertyTraits
+@property(nonatomic, readonly) SGFCPropertyTraits traits;
+
+/// @brief Returns YES if the property has the trait @a trait. Returns
+/// NO if the property does not have the trait @a trait.
+///
+/// @see SGFCPropertyTrait
+- (BOOL) hasTrait:(SGFCPropertyTrait)trait;
+
+/// @brief Returns YES if the property has one or more values. Returns
+/// NO if the property has no values.
+@property(nonatomic, readonly) BOOL hasPropertyValues;
+
 /// @brief A collection with the values of the property. The
 /// collection is empty if the property has no values. The order in which
 /// values appear in the collection matches the order in which values were
-/// specified when the SGFCProperty was constructed.
+/// specified when the SGFCProperty was constructed. The collection does not
+/// contain @e nil. The collection does not contain duplicates.
 ///
 /// The EBNF in the SGF standard says that at least one value must be
 /// present. This can be a value that has the value type "None", which is
@@ -332,7 +357,7 @@
 /// clear: Something like XY[] is possible. In the library's object model,
 /// however, a "None" value is translated to an empty collection.
 ///
-/// The setter makes no attempt to check the validity of the property
+/// /// The setter makes no attempt to check the validity of the property
 /// values. A last-ditch attempt at validation is made by SGFC later when
 /// the game tree is written to an SGF file or to an SGF content string, but
 /// this is unlikely to catch all mistakes. It is ultimately the
@@ -343,8 +368,42 @@
 ///
 /// @exception NSInvalidArgumentException Is raised if the property is set with
 /// a @e nil value, or if the property is set with a collection that contains
-/// @e nil values.
+/// @e nil values, or if the property is set with a collection that contains
+/// duplicate elements.
 @property(nonatomic, strong) NSArray* propertyValues;
+
+/// @brief Adds @a propertyValue as the last value to the property's
+/// collection of values. @a propertyValue may not be @e nil.
+///
+/// This setter makes no attempt to check the validity of the property's
+/// collection of values after adding @a propertyValue.
+///
+/// @see setPropertyValues:()
+///
+/// @exception NSInvalidArgumentException Is raised if @a propertyValue is
+/// @e nil or if @a propertyValue is already in the property's
+/// collection of values.
+- (void) appendPropertyValue:(id<SGFCPropertyValue>)propertyValue;
+
+/// @brief Removes @a propertyValue from the property's collection of
+/// values.
+///
+/// This setter makes no attempt to check the validity of the property's
+/// collection of values after removing @a propertyValue.
+///
+/// @see setPropertyValues:()
+///
+/// @exception NSInvalidArgumentException Is raised if @a propertyValue is not
+/// part of the property's collection of values.
+- (void) removePropertyValue:(id<SGFCPropertyValue>)propertyValue;
+
+/// @brief Removes all values from the property's collection of values.
+///
+/// This setter makes no attempt to check the validity of the property's
+/// collection of values after removing all values.
+///
+/// @see setPropertyValues:()
+- (void) removeAllPropertyValues;
 
 /// @brief Returns the property's first value if the property has any
 /// values. Returns @e nil if the property has no values.

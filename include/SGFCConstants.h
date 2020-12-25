@@ -21,6 +21,8 @@
 // Project includes
 #import "SGFCBoardSize.h"
 #import "SGFCGameType.h"
+#import "SGFCNodeTraits.h"
+#import "SGFCPropertyTraits.h"
 #import "SGFCPropertyType.h"
 #import "SGFCTypedefs.h"
 
@@ -100,6 +102,14 @@ extern NSString* SGFCColorWhiteString;
 ///// names as defined by the SGF standard. #SGFCPropertyTypeUnknown does
 ///// not appear in the map.
 //extern const std::map<SGFCPropertyType, NSString*> SGFCPropertyTypeToPropertyNameMap;
+
+///// @brief Maps values from the enumeration SgfcPropertyType to values from
+///// the enumeration SgfcPropertyCategory.
+//static const std::map<SgfcPropertyType, SgfcPropertyCategory> PropertyTypeToPropertyCategoryMap;
+///// @brief Maps values from the enumeration SgfcPropertyType to
+///// SGFCPropertyTraits values.
+//static const std::map<SgfcPropertyType, SGFCPropertyTraits> PropertyTypeToPropertyTraitsMap;
+
 ///// @brief Maps game type Number values as defined by the SGF standard to
 ///// values from the enumeration SGFCGameType.
 //extern const std::map<SgfcNumber, SGFCGameType> SGFCGameTypeAsNumberToGameTypeMap;
@@ -116,6 +126,21 @@ extern NSString* SGFCColorWhiteString;
 ///
 /// The SGF standard defines this to be #SGFCGameTypeGo.
 extern const SGFCGameType SGFCDefaultGameType;
+
+/// @brief An SGFCNumber value that denotes a game type that is
+/// "not a number".
+///
+/// SGFCGame and SGFCGameTypeProperty both provide a gameTypeAsNumber()
+/// property to obtain the raw SGFCNumber value of an #SGFCPropertyTypeGM
+/// property. If the raw SGFCNumber value cannot be determined because it
+/// has multiple property values, or a single property value that cannot be
+/// converted to an SGFCNumber value, then the gameTypeAsNumber() properties
+/// return this constant.
+///
+/// The constant has an underlying numeric value, but one that is extremely
+/// unlikely to occur in real SGF content. Do not rely on the actual
+/// constant's numeric value.
+extern const SGFCNumber SGFCGameTypeNaN;
 
 /// @brief The minimum board size that is required for #SGFCPropertyTypeSZ.
 ///
@@ -177,4 +202,27 @@ extern const SGFCBoardSize SGFCBoardSizeNone;
 /// #SGFCPropertyTypeSZ property is present in a game's root node but has
 /// an invalid size.
 extern const SGFCBoardSize SGFCBoardSizeInvalid;
+
+/// @brief An SGFCNodeTraits value that denotes a node that has no traits.
+extern const SGFCNodeTraits NodeTraitsNone;
+
+/// @brief An SGFCNodeTraits value that denotes a node that has all traits.
+/// It makes no sense for a node to actually have all traits, this is merely
+/// a convenience constant for working with flags.
+///
+/// This constant is set up to have all bits set in the underlying primitive
+/// numeric type, so you should not rely on any particular numeric value.
+extern const SGFCNodeTraits NodeTraitsAll;
+
+/// @brief An SGFCPropertyTraits value that denotes a property that has no
+/// traits.
+extern const SGFCPropertyTraits PropertyTraitsNone;
+
+/// @brief An SGFCPropertyTraits value that denotes a property that has all
+/// traits. It makes no sense for a property to actually have all traits,
+/// this is merely a convenience constant for working with flags.
+///
+/// This constant is set up to have all bits set in the underlying primitive
+/// numeric type, so you should not rely on any particular numeric value.
+extern const SGFCPropertyTraits PropertyTraitsAll;
 //@}

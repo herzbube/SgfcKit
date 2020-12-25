@@ -174,6 +174,54 @@
   return static_cast<LibSgfcPlusPlus::SgfcMessageType>(mappedValue);
 }
 
++ (SGFCNodeTrait) toSgfcKitNodeTrait:(LibSgfcPlusPlus::SgfcNodeTrait)nodeTrait
+{
+  unsigned long long mappedValue = [SGFCMappingUtility toSgfcKitUnsignedLongLongValue:static_cast<unsigned long long>(nodeTrait)
+                                                                             usingMap:nodeTraitToSgfcKitMap
+                                                                         withEnumName:@"SgfcNodeTrait"];
+  return static_cast<SGFCNodeTrait>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcNodeTrait) fromSgfcKitNodeTrait:(SGFCNodeTrait)nodeTrait
+{
+  unsigned long long mappedValue = [SGFCMappingUtility fromSgfcKitUnsignedLongLongValue:nodeTrait
+                                                                               usingMap:nodeTraitFromSgfcKitMap
+                                                                           withEnumName:@"SGFCNodeTrait"];
+  return static_cast<LibSgfcPlusPlus::SgfcNodeTrait>(mappedValue);
+}
+
++ (SGFCPropertyCategory) toSgfcKitPropertyCategory:(LibSgfcPlusPlus::SgfcPropertyCategory)propertyCategory
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(propertyCategory)
+                                                     usingMap:propertyCategoryToSgfcKitMap
+                                                 withEnumName:@"SgfcPropertyCategory"];
+  return static_cast<SGFCPropertyCategory>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcPropertyCategory) fromSgfcKitPropertyCategory:(SGFCPropertyCategory)propertyCategory
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:propertyCategory
+                                                usingMap:propertyCategoryFromSgfcKitMap
+                                            withEnumName:@"SGFCPropertyCategory"];
+  return static_cast<LibSgfcPlusPlus::SgfcPropertyCategory>(mappedValue);
+}
+
++ (SGFCPropertyTrait) toSgfcKitPropertyTrait:(LibSgfcPlusPlus::SgfcPropertyTrait)propertyTrait
+{
+  unsigned long long mappedValue = [SGFCMappingUtility toSgfcKitUnsignedLongLongValue:static_cast<unsigned long long>(propertyTrait)
+                                                                             usingMap:propertyTraitToSgfcKitMap
+                                                                         withEnumName:@"SgfcPropertyTrait"];
+  return static_cast<SGFCPropertyTrait>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcPropertyTrait) fromSgfcKitPropertyTrait:(SGFCPropertyTrait)propertyTrait
+{
+  unsigned long long mappedValue = [SGFCMappingUtility fromSgfcKitUnsignedLongLongValue:propertyTrait
+                                                                               usingMap:propertyTraitFromSgfcKitMap
+                                                                           withEnumName:@"SGFCPropertyTrait"];
+  return static_cast<LibSgfcPlusPlus::SgfcPropertyTrait>(mappedValue);
+}
+
 + (SGFCPropertyType) toSgfcKitPropertyType:(LibSgfcPlusPlus::SgfcPropertyType)propertyType
 {
   NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(propertyType)
@@ -380,6 +428,34 @@
   return static_cast<LibSgfcPlusPlus::SgfcReal>(realValue);
 }
 
++ (SGFCNodeTraits) toSgfcKitNodeTraits:(LibSgfcPlusPlus::SgfcNodeTraits)nodeTraits
+{
+  unsigned long long mappedValue = [SGFCMappingUtility mapFlagValue:static_cast<unsigned long long>(nodeTraits)
+                                                           usingMap:nodeTraitToSgfcKitMap];
+  return static_cast<SGFCNodeTraits>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcNodeTraits) fromSgfcKitNodeTraits:(SGFCNodeTraits)nodeTraits
+{
+  unsigned long long mappedValue = [SGFCMappingUtility mapFlagValue:static_cast<unsigned long long>(nodeTraits)
+                                                           usingMap:nodeTraitFromSgfcKitMap];
+  return static_cast<LibSgfcPlusPlus::SgfcNodeTraits>(mappedValue);
+}
+
++ (SGFCPropertyTraits) toSgfcKitPropertyTraits:(LibSgfcPlusPlus::SgfcPropertyTraits)propertyTraits
+{
+  unsigned long long mappedValue = [SGFCMappingUtility mapFlagValue:static_cast<unsigned long long>(propertyTraits)
+                                                           usingMap:propertyTraitToSgfcKitMap];
+  return static_cast<SGFCPropertyTraits>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcPropertyTraits) fromSgfcKitPropertyTraits:(SGFCPropertyTraits)propertyTraits
+{
+  unsigned long long mappedValue = [SGFCMappingUtility mapFlagValue:static_cast<unsigned long long>(propertyTraits)
+                                                           usingMap:propertyTraitFromSgfcKitMap];
+  return static_cast<LibSgfcPlusPlus::SgfcPropertyTraits>(mappedValue);
+}
+
 #pragma mark - Private API
 
 + (NSUInteger) toSgfcKitValue:(int)fromValueAsInt
@@ -467,6 +543,81 @@
     // exception is raised)
     return 0;
   }
+}
+
++ (unsigned long long) toSgfcKitUnsignedLongLongValue:(unsigned long long)fromValueAsUnsignedLongLong
+                                             usingMap:(NSDictionary*)map
+                                         withEnumName:(NSString*)enumName
+{
+  NSNumber* fromValueAsNumber = @(fromValueAsUnsignedLongLong);
+  NSNumber* mappedValueAsNumber = map[fromValueAsNumber];
+  if (mappedValueAsNumber)
+  {
+    return [mappedValueAsNumber unsignedLongLongValue];
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"LibSgfcPlusPlus::%@ value not mapped: %@", enumName, fromValueAsNumber];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
+}
+
++ (unsigned long long) fromSgfcKitUnsignedLongLongValue:(unsigned long long)fromValueAsUnsignedLongLong
+                                               usingMap:(NSDictionary*)map
+                                           withEnumName:(NSString*)enumName
+{
+  NSNumber* fromValueAsNumber = @(fromValueAsUnsignedLongLong);
+  NSNumber* mappedValueAsNumber = map[fromValueAsNumber];
+  if (mappedValueAsNumber)
+  {
+    // All flag-based libsgfc++ enumerations are treated as int
+    return [mappedValueAsNumber unsignedLongLongValue];
+  }
+  else
+  {
+    NSString* reason = [NSString stringWithFormat:@"%@ value not mapped: %@", enumName, fromValueAsNumber];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+
+    // Dummy return to make compiler happy (compiler does not see that an
+    // exception is raised)
+    return 0;
+  }
+}
+
+// The same function can be used both
+// - to map from a libsgfc++ value to an SgfcKit value, and
+// - to map from an SgfcKit value to a libsgfc++ value
+// Reason: In both libraries flags are typedef'ed to the underlying
+// unsigned long long, so the input parameter and return value are the same
+// for both mapping directions.
++ (unsigned long long) mapFlagValue:(unsigned long long)fromValueAsUnsignedLongLong
+                           usingMap:(NSDictionary*)map
+{
+  __block unsigned long long toValueAsUnsignedLongLong = 0;
+  if (fromValueAsUnsignedLongLong == 0)
+    return toValueAsUnsignedLongLong;
+
+  __block unsigned long long fromValueAsUnsignedLongLongModifieableCopy = fromValueAsUnsignedLongLong;
+
+  [map enumerateKeysAndObjectsUsingBlock:^(NSNumber* keyAsNumber, NSNumber* mappedValueAsNumber, BOOL* stop)
+  {
+    unsigned long long keyValue = [keyAsNumber unsignedLongLongValue];
+    if (fromValueAsUnsignedLongLongModifieableCopy & keyValue)
+    {
+      unsigned long long mappedValue = [mappedValueAsNumber unsignedLongLongValue];
+      toValueAsUnsignedLongLong |= mappedValue;
+
+      fromValueAsUnsignedLongLongModifieableCopy &= ~keyValue;
+      if (fromValueAsUnsignedLongLongModifieableCopy == 0)
+        *stop = YES;
+    }
+  }];
+
+  return toValueAsUnsignedLongLong;
 }
 
 + (SGFCBoardSize) toSgfcKitBoardSize:(LibSgfcPlusPlus::SgfcBoardSize)boardSizeValue

@@ -110,66 +110,22 @@
 
 - (SGFCGameType) gameType
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitGameType:_wrappedGame->GetGameType()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return SGFCGameTypeGo;
-  }
+  return [SGFCMappingUtility toSgfcKitGameType:_wrappedGame->GetGameType()];
 }
 
 - (SGFCNumber) gameTypeAsNumber
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitNumber:_wrappedGame->GetGameTypeAsNumber()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return 0;
-  }
+  return [SGFCMappingUtility toSgfcKitNumber:_wrappedGame->GetGameTypeAsNumber()];
 }
 
 - (BOOL) hasBoardSize
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitBoolean:_wrappedGame->HasBoardSize()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return NO;
-  }
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedGame->HasBoardSize()];
 }
 
 - (SGFCBoardSize) boardSize
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitBoardSize:_wrappedGame->GetBoardSize()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return SGFCBoardSizeMinimum;
-  }
+  return [SGFCMappingUtility toSgfcKitBoardSize:_wrappedGame->GetBoardSize()];
 }
 
 - (BOOL) hasRootNode
@@ -185,6 +141,11 @@
     _wrappedGame->SetRootNode(nullptr);
 
   _rootNode = rootNode;
+}
+
+- (NSArray*) gameInfoNodes
+{
+  return [SGFCWrappingUtility wrapNodes:_wrappedGame->GetGameInfoNodes()];
 }
 
 #pragma mark - Internal API - SGFCGameInternalAdditions overrides

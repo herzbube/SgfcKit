@@ -27,6 +27,9 @@
 #import "../include/SGFCGoPointNotation.h"
 #import "../include/SGFCMessageID.h"
 #import "../include/SGFCMessageType.h"
+#import "../include/SGFCNodeTraits.h"
+#import "../include/SGFCPropertyCategory.h"
+#import "../include/SGFCPropertyTraits.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
 #import "../include/SGFCTypedefs.h"
@@ -42,6 +45,9 @@
 #import <libsgfcplusplus/SgfcGoPointNotation.h>
 #import <libsgfcplusplus/SgfcMessageID.h>
 #import <libsgfcplusplus/SgfcMessageType.h>
+#import <libsgfcplusplus/SgfcNodeTraits.h>
+#import <libsgfcplusplus/SgfcPropertyCategory.h>
+#import <libsgfcplusplus/SgfcPropertyTraits.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
 #import <libsgfcplusplus/SgfcTypedefs.h>
@@ -331,6 +337,91 @@
 /// #messageTypeFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcMessageType) fromSgfcKitMessageType:(SGFCMessageType)messageType;
 
+/// @brief Maps a value from the SgfcKit enumeration SGFCNodeTrait to the
+/// corresponding value from the libsgfc++ enumeration SgfcNodeTrait.
+///
+/// This is a convenience function that looks up @a nodeTrait in
+/// #nodeTraitToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a nodeTrait does not appear in
+/// #nodeTraitToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcNodeTrait value was not added to
+/// #nodeTraitToSgfcKitMap.
++ (SGFCNodeTrait) toSgfcKitNodeTrait:(LibSgfcPlusPlus::SgfcNodeTrait)nodeTrait;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcNodeTrait to the
+/// corresponding value from the the SgfcKit enumeration SGFCNodeTrait.
+///
+/// This is a convenience function that looks up @a nodeTrait in
+/// #nodeTraitFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a nodeTrait does not appear in
+/// #nodeTraitFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCNodeTrait value was not added to
+/// #nodeTraitFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcNodeTrait) fromSgfcKitNodeTrait:(SGFCNodeTrait)nodeTrait;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCPropertyCategory to the
+/// corresponding value from the libsgfc++ enumeration SgfcPropertyCategory.
+///
+/// This is a convenience function that looks up @a propertyCategory in
+/// #propertyCategoryToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a propertyCategory does not appear in
+/// #propertyCategoryToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcPropertyCategory value was not added to
+/// #propertyCategoryToSgfcKitMap.
++ (SGFCPropertyCategory) toSgfcKitPropertyCategory:(LibSgfcPlusPlus::SgfcPropertyCategory)propertyCategory;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcPropertyCategory to
+/// theh corresponding value from the the SgfcKit enumeration
+/// SGFCPropertyCategory.
+///
+/// This is a convenience function that looks up @a propertyCategory in
+/// #propertyCategoryFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a propertyCategory does not appear in
+/// #propertyCategoryFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCPropertyCategory value was not added to
+/// #propertyCategoryFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcPropertyCategory) fromSgfcKitPropertyCategory:(SGFCPropertyCategory)propertyCategory;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCPropertyTrait to the
+/// corresponding value from the libsgfc++ enumeration SgfcPropertyTrait.
+///
+/// This is a convenience function that looks up @a propertyTrait in
+/// #propertyTraitToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a propertyTrait does not appear in
+/// #propertyTraitToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcPropertyTrait value was not added to
+/// #propertyTraitToSgfcKitMap.
++ (SGFCPropertyTrait) toSgfcKitPropertyTrait:(LibSgfcPlusPlus::SgfcPropertyTrait)propertyTrait;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcPropertyTrait to the
+/// corresponding value from the the SgfcKit enumeration SGFCPropertyTrait.
+///
+/// This is a convenience function that looks up @a propertyTrait in
+/// #propertyTraitFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a propertyTrait does not appear in
+/// #propertyTraitFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCPropertyTrait value was not added to
+/// #propertyTraitFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcPropertyTrait) fromSgfcKitPropertyTrait:(SGFCPropertyTrait)propertyTrait;
+
 /// @brief Maps a value from the SgfcKit enumeration SGFCPropertyType to the
 /// corresponding value from the libsgfc++ enumeration SgfcPropertyType.
 ///
@@ -340,7 +431,7 @@
 /// @exception NSInternalInconsistencyException Is raised if there is no
 /// mapping, i.e. if @a propertyType does not appear in
 /// #propertyTypeToSgfcKitMap. In practice this should never occur. If it
-/// occurs it indicates a programming error in the library, i.e. an$
+/// occurs it indicates a programming error in the library, i.e. an
 /// LibSgfcPlusPlus::SgfcPropertyType value was not added to
 /// #propertyTypeToSgfcKitMap.
 + (SGFCPropertyType) toSgfcKitPropertyType:(LibSgfcPlusPlus::SgfcPropertyType)propertyType;
@@ -490,5 +581,21 @@
 /// @brief Maps an SGFCBoardSize value (used in SgfcKit) to an SgfcBoardSize
 /// value (used in libsgfc++).
 + (LibSgfcPlusPlus::SgfcBoardSize) fromSgfcKitBoardSize:(SGFCBoardSize)boardSizeValue;
+
+/// @brief Maps an SgfcNodeTraits value (used in libsgfc++) to an
+/// SGFCNodeTraits value (used in SgfcKit).
++ (SGFCNodeTraits) toSgfcKitNodeTraits:(LibSgfcPlusPlus::SgfcNodeTraits)nodeTraits;
+
+/// @brief Maps an SGFCNodeTraits value (used in SgfcKit) to an
+/// SgfcNodeTraits value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcNodeTraits) fromSgfcKitNodeTraits:(SGFCNodeTraits)nodeTraits;
+
+/// @brief Maps an SgfcPropertyTraits value (used in libsgfc++) to an
+/// SGFCPropertyTraits value (used in SgfcKit).
++ (SGFCPropertyTraits) toSgfcKitPropertyTraits:(LibSgfcPlusPlus::SgfcPropertyTraits)propertyTraits;
+
+/// @brief Maps an SGFCPropertyTraits value (used in SgfcKit) to an
+/// SgfcPropertyTraits value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcPropertyTraits) fromSgfcKitPropertyTraits:(SGFCPropertyTraits)propertyTraits;
 
 @end

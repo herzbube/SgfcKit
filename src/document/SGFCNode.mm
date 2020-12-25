@@ -111,7 +111,7 @@
   return reinterpret_cast<NSUInteger>(_wrappedNode.get());
 }
 
-#pragma mark - Public API
+#pragma mark - Public API - Game tree navigation
 
 - (SGFCNode*) firstChild
 {
@@ -180,14 +180,46 @@
   return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->IsAncestorOf([node wrappedNode])];
 }
 
-- (SGFCNode*) root
-{
-  return [self nodeOrNil:_wrappedNode->GetRoot()];
-}
-
 - (BOOL) isRoot
 {
   return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->IsRoot()];
+}
+
+#pragma mark - Public API - Node traits
+
+- (SGFCNodeTraits) traits
+{
+  return [SGFCMappingUtility toSgfcKitNodeTraits:_wrappedNode->GetTraits()];
+}
+
+- (BOOL) hasTrait:(SGFCNodeTrait)trait
+{
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->HasTrait(
+    [SGFCMappingUtility fromSgfcKitNodeTrait:trait])];
+}
+
+#pragma mark - Public API - Game tree search
+
+- (SGFCNode*) root
+{
+  return [SGFCWrappingUtility wrapNode:_wrappedNode->GetRoot()];
+}
+
+- (SGFCNode*) gameInfoNode
+{
+  return [self nodeOrNil:_wrappedNode->GetGameInfoNode()];
+}
+
+- (NSArray*) mainVariationNodes
+{
+  return [SGFCWrappingUtility wrapNodes:_wrappedNode->GetMainVariationNodes()];
+}
+
+#pragma mark - Public API - Property access
+
+- (BOOL) hasProperties
+{
+  return [SGFCMappingUtility toSgfcKitBoolean:_wrappedNode->HasProperties()];
 }
 
 - (void) setProperties:(NSArray*)properties
@@ -220,10 +252,87 @@
   _properties = properties;
 }
 
+- (void) setProperty:(SGFCProperty*)property
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:property
+                                                 invalidArgumentName:@"property"];
+
+  _wrappedNode->SetProperty([property wrappedProperty]);
+  _properties = [SGFCWrappingUtility wrapProperties:_wrappedNode->GetProperties()];
+}
+
+- (void) appendProperty:(SGFCProperty*)property
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:property
+                                                 invalidArgumentName:@"property"];
+
+  try
+  {
+    _wrappedNode->SetProperty([property wrappedProperty]);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  _properties = [SGFCWrappingUtility wrapProperties:_wrappedNode->GetProperties()];
+}
+
+- (void) removeProperty:(SGFCProperty*)property
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:property
+                                                 invalidArgumentName:@"property"];
+
+  try
+  {
+    _wrappedNode->RemoveProperty([property wrappedProperty]);
+  }
+  catch (std::invalid_argument& exception)
+  {
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
+  }
+
+  _properties = [SGFCWrappingUtility wrapProperties:_wrappedNode->GetProperties()];
+}
+
+- (void) removeAllProperties
+{
+  _wrappedNode->RemoveAllProperties();
+  _properties = [SGFCWrappingUtility wrapProperties:_wrappedNode->GetProperties()];
+}
+
 - (SGFCProperty*) propertyWithType:(SGFCPropertyType)propertyType
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyWithType"];
-  return nil;
+  auto propertyWithType = _wrappedNode->GetProperty(
+    [SGFCMappingUtility fromSgfcKitPropertyType:propertyType]);
+
+  return [SGFCWrappingUtility wrapProperty:propertyWithType];
+}
+
+- (SGFCProperty*) propertyWithName:(NSString*)propertyName
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:propertyName
+                                                 invalidArgumentName:@"propertyName"];
+
+  auto propertyWithName = _wrappedNode->GetProperty(
+    [SGFCMappingUtility fromSgfcKitString:propertyName]);
+
+  return [SGFCWrappingUtility wrapProperty:propertyWithName];
+}
+
+- (NSArray*) propertiesWithCategory:(SGFCPropertyCategory)propertyCategory
+{
+  auto propertiesWithCategory = _wrappedNode->GetProperties(
+    [SGFCMappingUtility fromSgfcKitPropertyCategory:propertyCategory]);
+
+  return [SGFCWrappingUtility wrapProperties:propertiesWithCategory];
+}
+
+- (NSArray*) inheritedProperties
+{
+  auto inheritedProperties = _wrappedNode->GetInheritedProperties();
+
+  return [SGFCWrappingUtility wrapProperties:inheritedProperties];
 }
 
 #pragma mark - Internal API - SGFCNodeInternalAdditions overrides

@@ -16,7 +16,9 @@ set (
   document/SGFCDocument.mm
   document/SGFCGame.mm
   document/SGFCNode.mm
+  document/SGFCNodeTraits.mm
   document/SGFCProperty.mm
+  document/SGFCPropertyTraits.mm
   document/SGFCSinglePropertyValue.mm
   document/SGFCTreeBuilder.mm
   factory/SGFCKitFactory.mm
@@ -113,10 +115,13 @@ set (
   ../include/SGFCMessageID.h
   ../include/SGFCMessageType.h
   ../include/SGFCNode.h
+  ../include/SGFCNodeTraits.h
   ../include/SGFCNumberPropertyValue.h
   ../include/SGFCPointPropertyValue.h
   ../include/SGFCProperty.h
+  ../include/SGFCPropertyCategory.h
   ../include/SGFCPropertyFactory.h
+  ../include/SGFCPropertyTraits.h
   ../include/SGFCPropertyType.h
   ../include/SGFCPropertyValue.h
   ../include/SGFCPropertyValueFactory.h

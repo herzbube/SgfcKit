@@ -102,6 +102,30 @@ extern NSDictionary* messageTypeToSgfcKitMap;
 /// values from the libsgfc++ enumeration SgfcMessageType.
 extern NSDictionary* messageTypeFromSgfcKitMap;
 
+/// @brief Maps values from the libsgfc++ enumeration SgfcNodeTrait to values
+/// from the SgfcKit enumeration SGFCNodeTrait.
+extern NSDictionary* nodeTraitToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCNodeTrait to values
+/// from the libsgfc++ enumeration SgfcNodeTrait.
+extern NSDictionary* nodeTraitFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcPropertyCategory to
+/// values from the SgfcKit enumeration SGFCPropertyCategory.
+extern NSDictionary* propertyCategoryToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCPropertyCategory to
+/// values from the libsgfc++ enumeration SgfcPropertyCategory.
+extern NSDictionary* propertyCategoryFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcPropertyTrait to
+/// values from the SgfcKit enumeration SGFCPropertyTrait.
+extern NSDictionary* propertyTraitToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCPropertyTrait to
+/// values from the libsgfc++ enumeration SgfcPropertyTrait.
+extern NSDictionary* propertyTraitFromSgfcKitMap;
+
 /// @brief Maps values from the libsgfc++ enumeration SgfcPropertyType to values
 /// from the SgfcKit enumeration SGFCPropertyType.
 extern NSDictionary* propertyTypeToSgfcKitMap;
