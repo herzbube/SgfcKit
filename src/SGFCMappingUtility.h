@@ -21,13 +21,17 @@
 #import "../include/SGFCBoardSize.h"
 #import "../include/SGFCColor.h"
 #import "../include/SGFCCoordinateSystem.h"
+#import "../include/SGFCDate.h"
 #import "../include/SGFCDouble.h"
 #import "../include/SGFCExitCode.h"
+#import "../include/SGFCGameResult.h"
 #import "../include/SGFCGameResultType.h"
 #import "../include/SGFCGameType.h"
+#import "../include/SGFCGoPlayerRank.h"
 #import "../include/SGFCGoPlayerRankType.h"
 #import "../include/SGFCGoPlayerRatingType.h"
 #import "../include/SGFCGoPointNotation.h"
+#import "../include/SGFCGoRuleset.h"
 #import "../include/SGFCGoRulesetType.h"
 #import "../include/SGFCMessageID.h"
 #import "../include/SGFCMessageType.h"
@@ -36,6 +40,7 @@
 #import "../include/SGFCPropertyTraits.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
+#import "../include/SGFCRoundInformation.h"
 #import "../include/SGFCTypedefs.h"
 #import "../include/SGFCWinType.h"
 
@@ -44,13 +49,17 @@
 #import <libsgfcplusplus/SgfcBoardSize.h>
 #import <libsgfcplusplus/SgfcColor.h>
 #import <libsgfcplusplus/SgfcCoordinateSystem.h>
+#import <libsgfcplusplus/SgfcDate.h>
 #import <libsgfcplusplus/SgfcDouble.h>
 #import <libsgfcplusplus/SgfcExitCode.h>
+#import <libsgfcplusplus/SgfcGameResult.h>
 #import <libsgfcplusplus/SgfcGameResultType.h>
 #import <libsgfcplusplus/SgfcGameType.h>
+#import <libsgfcplusplus/SgfcGoPlayerRank.h>
 #import <libsgfcplusplus/SgfcGoPlayerRankType.h>
 #import <libsgfcplusplus/SgfcGoPlayerRatingType.h>
 #import <libsgfcplusplus/SgfcGoPointNotation.h>
+#import <libsgfcplusplus/SgfcGoRuleset.h>
 #import <libsgfcplusplus/SgfcGoRulesetType.h>
 #import <libsgfcplusplus/SgfcMessageID.h>
 #import <libsgfcplusplus/SgfcMessageType.h>
@@ -59,6 +68,7 @@
 #import <libsgfcplusplus/SgfcPropertyTraits.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
+#import <libsgfcplusplus/SgfcRoundInformation.h>
 #import <libsgfcplusplus/SgfcTypedefs.h>
 #import <libsgfcplusplus/SgfcWinType.h>
 
@@ -749,5 +759,57 @@
 /// @brief Maps an SGFCPropertyTraits value (used in SgfcKit) to an
 /// SgfcPropertyTraits value (used in libsgfc++).
 + (LibSgfcPlusPlus::SgfcPropertyTraits) fromSgfcKitPropertyTraits:(SGFCPropertyTraits)propertyTraits;
+
+/// @brief Maps a collection of SgfcDate values (used in libsgfc++) to a
+/// collection of SGFCDate values (used in SgfcKit).
+///
+/// The returned NSArray contains NSValue objects, each of which stores the
+/// data of one SGFCDate. Use the property
+/// NSValueAdditionsSGFCDate::sgfcDateValue() to retrieve the SGFCDate from the
+/// NSValue object. The category is defined in the header file
+/// NSValue+SGFCDate.h.
++ (NSArray*) toSgfcKitDates:(const std::vector<LibSgfcPlusPlus::SgfcDate>&)dates;
+
+/// @brief Maps a collection of SGFCDate values (used in SgfcKit) to a
+/// collection of SgfcDate values (used in libsgfc++).
+///
+/// The elements of @a dates must be NSValue objects each of which stores
+/// the data of one SGFCDate. Use the factory method
+/// NSValueAdditionsSGFCDate::valueWithSGFCDate:() to store the SGFCDate in an
+/// NSValue object. The category is defined in the header file
+/// NSValue+SGFCDate.h.
++ (std::vector<LibSgfcPlusPlus::SgfcDate>) fromSgfcKitDates:(NSArray*)dates;
+
+/// @brief Maps an SgfcGameResult value (used in libsgfc++) to an
+/// SGFCGameResult value (used in SgfcKit).
++ (SGFCGameResult) toSgfcKitGameResult:(LibSgfcPlusPlus::SgfcGameResult)gameResult;
+
+/// @brief Maps an SGFCGameResult value (used in SgfcKit) to an
+/// SgfcGameResult value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcGameResult) fromSgfcKitGameResult:(SGFCGameResult)gameResult;
+
+/// @brief Maps an SgfcRoundInformation value (used in libsgfc++) to an
+/// SGFCRoundInformation value (used in SgfcKit).
++ (SGFCRoundInformation) toSgfcKitRoundInformation:(LibSgfcPlusPlus::SgfcRoundInformation)roundInformation;
+
+/// @brief Maps an SGFCRoundInformation value (used in SgfcKit) to an
+/// SgfcRoundInformation value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcRoundInformation) fromSgfcKitRoundInformation:(SGFCRoundInformation)roundInformation;
+
+/// @brief Maps an SgfcGoRuleset value (used in libsgfc++) to an
+/// SGFCGoRuleset value (used in SgfcKit).
++ (SGFCGoRuleset) toSgfcKitGoRuleset:(LibSgfcPlusPlus::SgfcGoRuleset)goRuleset;
+
+/// @brief Maps an SGFCGoRuleset value (used in SgfcKit) to an
+/// SgfcGoRuleset value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcGoRuleset) fromSgfcKitGoRuleset:(SGFCGoRuleset)goRuleset;
+
+/// @brief Maps an SgfcGoPlayerRank value (used in libsgfc++) to an
+/// SGFCGoPlayerRank value (used in SgfcKit).
++ (SGFCGoPlayerRank) toSgfcKitGoPlayerRank:(LibSgfcPlusPlus::SgfcGoPlayerRank)goPlayerRank;
+
+/// @brief Maps an SGFCGoPlayerRank value (used in SgfcKit) to an
+/// SgfcGoPlayerRank value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcGoPlayerRank) fromSgfcKitGoPlayerRank:(SGFCGoPlayerRank)goPlayerRank;
 
 @end

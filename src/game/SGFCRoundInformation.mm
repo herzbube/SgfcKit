@@ -34,23 +34,16 @@ SGFCRoundInformation SGFCRoundInformationMake(NSString* roundNumber, NSString* r
 
 SGFCRoundInformation SGFCRoundInformationFromPropertyValue(NSString* propertyValue)
 {
-  auto mappedRoundInformation = LibSgfcPlusPlus::SgfcRoundInformation::FromPropertyValue(
+  auto roundInformation = LibSgfcPlusPlus::SgfcRoundInformation::FromPropertyValue(
     [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return SGFCRoundInformationMake(
-    [SGFCMappingUtility toSgfcKitString:mappedRoundInformation.RoundNumber],
-    [SGFCMappingUtility toSgfcKitString:mappedRoundInformation.RoundType],
-    [SGFCMappingUtility toSgfcKitBoolean:mappedRoundInformation.IsValid]);
+  return [SGFCMappingUtility toSgfcKitRoundInformation:roundInformation];
 }
 
 NSString* SGFCRoundInformationToPropertyValue(SGFCRoundInformation roundInformation)
 {
   LibSgfcPlusPlus::SgfcRoundInformation mappedRoundInformation =
-  {
-    [SGFCMappingUtility fromSgfcKitString:roundInformation.RoundNumber],
-    [SGFCMappingUtility fromSgfcKitString:roundInformation.RoundType],
-    [SGFCMappingUtility fromSgfcKitBoolean:roundInformation.IsValid],
-  };
+    [SGFCMappingUtility fromSgfcKitRoundInformation:roundInformation];
 
   return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcRoundInformation::ToPropertyValue(mappedRoundInformation)];
 }

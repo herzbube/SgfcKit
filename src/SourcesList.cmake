@@ -24,12 +24,14 @@ set (
   factory/SGFCKitFactory.mm
   factory/SGFCPropertyFactory.mm
   factory/SGFCPropertyValueFactory.mm
+  game/go/SGFCGoGameInfo.mm
   game/go/SGFCGoMove.mm
   game/go/SGFCGoPoint.mm
   game/go/SGFCGoStone.mm
   game/NSValue+SGFCDate.mm
   game/SGFCBoardSize.mm
   game/SGFCDate.mm
+  game/SGFCGameInfo.mm
   game/SGFCGameResult.mm
   game/SGFCGoPlayerRank.mm
   game/SGFCGoRuleset.mm
@@ -60,7 +62,9 @@ set (
   interface/internal/SGFCDocumentReadResultInternalAdditions.h
   interface/internal/SGFCDocumentWriteResultInternalAdditions.h
   interface/internal/SGFCDoublePropertyValueInternalAdditions.h
+  interface/internal/SGFCGameInfoInternalAdditions.h
   interface/internal/SGFCGameInternalAdditions.h
+  interface/internal/SGFCGoGameInfoInternalAdditions.h
   interface/internal/SGFCGoMoveInternalAdditions.h
   interface/internal/SGFCGoMovePropertyValueInternalAdditions.h
   interface/internal/SGFCGoPointInternalAdditions.h
@@ -109,9 +113,11 @@ set (
   ../include/SGFCDoublePropertyValue.h
   ../include/SGFCExitCode.h
   ../include/SGFCGame.h
+  ../include/SGFCGameInfo.h
   ../include/SGFCGameResult.h
   ../include/SGFCGameResultType.h
   ../include/SGFCGameType.h
+  ../include/SGFCGoGameInfo.h
   ../include/SGFCGoMove.h
   ../include/SGFCGoMovePropertyValue.h
   ../include/SGFCGoPlayerRank.h

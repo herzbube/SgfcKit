@@ -33,21 +33,15 @@ SGFCGoRuleset SGFCGoRulesetMake(SGFCGoRulesetType goRulesetType, BOOL isValid)
 
 SGFCGoRuleset SGFCGoRulesetFromPropertyValue(NSString* propertyValue)
 {
-  auto mappedGoRuleset = LibSgfcPlusPlus::SgfcGoRuleset::FromPropertyValue(
+  auto goRuleset = LibSgfcPlusPlus::SgfcGoRuleset::FromPropertyValue(
     [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return SGFCGoRulesetMake(
-    [SGFCMappingUtility toSgfcKitGoRulesetType:mappedGoRuleset.GoRulesetType],
-    [SGFCMappingUtility toSgfcKitBoolean:mappedGoRuleset.IsValid]);
+  return [SGFCMappingUtility toSgfcKitGoRuleset:goRuleset];
 }
 
 NSString* SGFCGoRulesetToPropertyValue(SGFCGoRuleset goRuleset)
 {
-  LibSgfcPlusPlus::SgfcGoRuleset mappedGoRuleset =
-  {
-    [SGFCMappingUtility fromSgfcKitGoRulesetType:goRuleset.GoRulesetType],
-    [SGFCMappingUtility fromSgfcKitBoolean:goRuleset.IsValid],
-  };
+  LibSgfcPlusPlus::SgfcGoRuleset mappedGoRuleset = [SGFCMappingUtility fromSgfcKitGoRuleset:goRuleset];
 
   return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGoRuleset::ToPropertyValue(mappedGoRuleset)];
 }

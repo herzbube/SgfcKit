@@ -15,6 +15,7 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../include/NSValue+SGFCDate.h"
 #import "SGFCExceptionUtility.h"
 #import "SGFCMappingUtility.h"
 #import "SGFCPrivateConstants.h"
@@ -536,6 +537,40 @@
   return static_cast<LibSgfcPlusPlus::SgfcPropertyTraits>(mappedValue);
 }
 
++ (NSArray*) toSgfcKitDates:(const std::vector<LibSgfcPlusPlus::SgfcDate>&)dates
+{
+  NSMutableArray* array = [NSMutableArray array];
+
+  for (auto date : dates)
+  {
+    SGFCDate mappedDate = SGFCDateMake(
+      [SGFCMappingUtility toSgfcKitNumber:date.Year],
+      [SGFCMappingUtility toSgfcKitNumber:date.Month],
+      [SGFCMappingUtility toSgfcKitNumber:date.Day]);
+    [array addObject:[NSValue valueWithSGFCDate:mappedDate]];
+  }
+
+  return array;
+}
+
++ (std::vector<LibSgfcPlusPlus::SgfcDate>) fromSgfcKitDates:(NSArray*)dates
+{
+  std::vector<LibSgfcPlusPlus::SgfcDate> mappedGameDates;
+
+  for (NSValue* value in dates)
+  {
+    SGFCDate date = value.sgfcDateValue;
+    mappedGameDates.push_back(
+    {
+      [SGFCMappingUtility fromSgfcKitNumber:date.Year],
+      [SGFCMappingUtility fromSgfcKitNumber:date.Month],
+      [SGFCMappingUtility fromSgfcKitNumber:date.Day],
+    });
+  }
+
+  return mappedGameDates;
+}
+
 #pragma mark - Private API
 
 + (NSUInteger) toSgfcKitValue:(int)fromValueAsInt
@@ -716,6 +751,80 @@
     [SGFCMappingUtility fromSgfcKitNumber:boardSizeValue.Rows]
   };
   return mappedBoardSize;
+}
+
++ (SGFCGameResult) toSgfcKitGameResult:(LibSgfcPlusPlus::SgfcGameResult)gameResult
+{
+  return SGFCGameResultMake(
+    [SGFCMappingUtility toSgfcKitGameResultType:gameResult.GameResultType],
+    [SGFCMappingUtility toSgfcKitWinType:gameResult.WinType],
+    [SGFCMappingUtility toSgfcKitReal:gameResult.Score],
+    [SGFCMappingUtility toSgfcKitBoolean:gameResult.IsValid]);
+}
+
++ (LibSgfcPlusPlus::SgfcGameResult) fromSgfcKitGameResult:(SGFCGameResult)gameResult
+{
+  return LibSgfcPlusPlus::SgfcGameResult
+  {
+    [SGFCMappingUtility fromSgfcKitGameResultType:gameResult.GameResultType],
+    [SGFCMappingUtility fromSgfcKitWinType:gameResult.WinType],
+    [SGFCMappingUtility fromSgfcKitReal:gameResult.Score],
+    [SGFCMappingUtility fromSgfcKitBoolean:gameResult.IsValid],
+  };
+}
+
++ (SGFCRoundInformation) toSgfcKitRoundInformation:(LibSgfcPlusPlus::SgfcRoundInformation)roundInformation
+{
+  return SGFCRoundInformationMake(
+    [SGFCMappingUtility toSgfcKitString:roundInformation.RoundNumber],
+    [SGFCMappingUtility toSgfcKitString:roundInformation.RoundType],
+    [SGFCMappingUtility toSgfcKitBoolean:roundInformation.IsValid]);
+}
+
++ (LibSgfcPlusPlus::SgfcRoundInformation) fromSgfcKitRoundInformation:(SGFCRoundInformation)roundInformation
+{
+  return LibSgfcPlusPlus::SgfcRoundInformation
+  {
+    [SGFCMappingUtility fromSgfcKitString:roundInformation.RoundNumber],
+    [SGFCMappingUtility fromSgfcKitString:roundInformation.RoundType],
+    [SGFCMappingUtility fromSgfcKitBoolean:roundInformation.IsValid],
+  };
+}
+
++ (SGFCGoRuleset) toSgfcKitGoRuleset:(LibSgfcPlusPlus::SgfcGoRuleset)goRuleset
+{
+  return SGFCGoRulesetMake(
+    [SGFCMappingUtility toSgfcKitGoRulesetType:goRuleset.GoRulesetType],
+    [SGFCMappingUtility toSgfcKitBoolean:goRuleset.IsValid]);
+}
+
++ (LibSgfcPlusPlus::SgfcGoRuleset) fromSgfcKitGoRuleset:(SGFCGoRuleset)goRuleset
+{
+  return LibSgfcPlusPlus::SgfcGoRuleset
+  {
+    [SGFCMappingUtility fromSgfcKitGoRulesetType:goRuleset.GoRulesetType],
+    [SGFCMappingUtility fromSgfcKitBoolean:goRuleset.IsValid],
+  };
+}
+
++ (SGFCGoPlayerRank) toSgfcKitGoPlayerRank:(LibSgfcPlusPlus::SgfcGoPlayerRank)goPlayerRank
+{
+  return SGFCGoPlayerRankMake(
+    [SGFCMappingUtility toSgfcKitNumber:goPlayerRank.Rank],
+    [SGFCMappingUtility toSgfcKitGoPlayerRankType:goPlayerRank.RankType],
+    [SGFCMappingUtility toSgfcKitGoPlayerRatingType:goPlayerRank.RatingType],
+    [SGFCMappingUtility toSgfcKitBoolean:goPlayerRank.IsValid]);
+}
+
++ (LibSgfcPlusPlus::SgfcGoPlayerRank) fromSgfcKitGoPlayerRank:(SGFCGoPlayerRank)goPlayerRank
+{
+  return LibSgfcPlusPlus::SgfcGoPlayerRank
+  {
+    [SGFCMappingUtility fromSgfcKitNumber:goPlayerRank.Rank],
+    [SGFCMappingUtility fromSgfcKitGoPlayerRankType:goPlayerRank.RankType],
+    [SGFCMappingUtility fromSgfcKitGoPlayerRatingType:goPlayerRank.RatingType],
+    [SGFCMappingUtility fromSgfcKitBoolean:goPlayerRank.IsValid],
+  };
 }
 
 @end

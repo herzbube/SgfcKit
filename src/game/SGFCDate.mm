@@ -71,37 +71,15 @@ BOOL SGFCDateIsValidSgfDate(SGFCDate date)
 
 NSArray* SGFCDateFromPropertyValue(NSString* propertyValue)
 {
-  auto mappedDates = LibSgfcPlusPlus::SgfcDate::FromPropertyValue(
+  auto dates = LibSgfcPlusPlus::SgfcDate::FromPropertyValue(
     [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  NSMutableArray* array = [NSMutableArray array];
-
-  for (auto mappedDate : mappedDates)
-  {
-    SGFCDate date = SGFCDateMake(
-      [SGFCMappingUtility toSgfcKitNumber:mappedDate.Year],
-      [SGFCMappingUtility toSgfcKitNumber:mappedDate.Month],
-      [SGFCMappingUtility toSgfcKitNumber:mappedDate.Day]);
-    [array addObject:[NSValue valueWithSGFCDate:date]];
-  }
-
-  return array;
+  return [SGFCMappingUtility toSgfcKitDates:dates];
 }
 
 NSString* SGFCDateToPropertyValue(NSArray* gameDates)
 {
-  std::vector<LibSgfcPlusPlus::SgfcDate> mappedGameDates;
-
-  for (NSValue* value in gameDates)
-  {
-    SGFCDate gameDate = value.sgfcDateValue;
-    mappedGameDates.push_back(
-    {
-      [SGFCMappingUtility fromSgfcKitNumber:gameDate.Year],
-      [SGFCMappingUtility fromSgfcKitNumber:gameDate.Month],
-      [SGFCMappingUtility fromSgfcKitNumber:gameDate.Day],
-    });
-  }
+  auto mappedGameDates = [SGFCMappingUtility fromSgfcKitDates:gameDates];
 
   return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcDate::ToPropertyValue(mappedGameDates)];
 }

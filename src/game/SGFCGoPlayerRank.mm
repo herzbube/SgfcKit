@@ -35,25 +35,15 @@ SGFCGoPlayerRank SGFCGoPlayerRankMake(SGFCNumber rank, SGFCGoPlayerRankType rank
 
 SGFCGoPlayerRank SGFCGoPlayerRankFromPropertyValue(NSString* propertyValue)
 {
-  auto mappedGoPlayerRank = LibSgfcPlusPlus::SgfcGoPlayerRank::FromPropertyValue(
+  auto goPlayerRank = LibSgfcPlusPlus::SgfcGoPlayerRank::FromPropertyValue(
     [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return SGFCGoPlayerRankMake(
-    [SGFCMappingUtility toSgfcKitNumber:mappedGoPlayerRank.Rank],
-    [SGFCMappingUtility toSgfcKitGoPlayerRankType:mappedGoPlayerRank.RankType],
-    [SGFCMappingUtility toSgfcKitGoPlayerRatingType:mappedGoPlayerRank.RatingType],
-    [SGFCMappingUtility toSgfcKitBoolean:mappedGoPlayerRank.IsValid]);
+  return [SGFCMappingUtility toSgfcKitGoPlayerRank:goPlayerRank];
 }
 
 NSString* SGFCGoPlayerRankToPropertyValue(SGFCGoPlayerRank goPlayerRank)
 {
-  LibSgfcPlusPlus::SgfcGoPlayerRank mappedGoPlayerRank =
-  {
-    [SGFCMappingUtility fromSgfcKitNumber:goPlayerRank.Rank],
-    [SGFCMappingUtility fromSgfcKitGoPlayerRankType:goPlayerRank.RankType],
-    [SGFCMappingUtility fromSgfcKitGoPlayerRatingType:goPlayerRank.RatingType],
-    [SGFCMappingUtility fromSgfcKitBoolean:goPlayerRank.IsValid],
-  };
+  LibSgfcPlusPlus::SgfcGoPlayerRank mappedGoPlayerRank = [SGFCMappingUtility fromSgfcKitGoPlayerRank:goPlayerRank];
 
   return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGoPlayerRank::ToPropertyValue(mappedGoPlayerRank)];
 }

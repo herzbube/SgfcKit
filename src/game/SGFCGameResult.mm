@@ -35,25 +35,16 @@ SGFCGameResult SGFCGameResultMake(SGFCGameResultType gameResultType, SGFCWinType
 
 SGFCGameResult SGFCGameResultFromPropertyValue(NSString* propertyValue)
 {
-  auto mappedGameResult = LibSgfcPlusPlus::SgfcGameResult::FromPropertyValue(
+  auto gameResult = LibSgfcPlusPlus::SgfcGameResult::FromPropertyValue(
     [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return SGFCGameResultMake(
-    [SGFCMappingUtility toSgfcKitGameResultType:mappedGameResult.GameResultType],
-    [SGFCMappingUtility toSgfcKitWinType:mappedGameResult.WinType],
-    [SGFCMappingUtility toSgfcKitReal:mappedGameResult.Score],
-    [SGFCMappingUtility toSgfcKitBoolean:mappedGameResult.IsValid]);
+  return [SGFCMappingUtility toSgfcKitGameResult:gameResult];
 }
 
 NSString* SGFCGameResultToPropertyValue(SGFCGameResult gameResult)
 {
   LibSgfcPlusPlus::SgfcGameResult mappedGameResult =
-  {
-    [SGFCMappingUtility fromSgfcKitGameResultType:gameResult.GameResultType],
-    [SGFCMappingUtility fromSgfcKitWinType:gameResult.WinType],
-    [SGFCMappingUtility fromSgfcKitReal:gameResult.Score],
-    [SGFCMappingUtility fromSgfcKitBoolean:gameResult.IsValid],
-  };
+    [SGFCMappingUtility fromSgfcKitGameResult:gameResult];
 
   return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGameResult::ToPropertyValue(mappedGameResult)];
 }
