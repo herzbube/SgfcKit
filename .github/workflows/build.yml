@@ -22,7 +22,7 @@ jobs:
     - name: Checking out the sources
       uses: actions/checkout@v2
       with:
-        submodules: true
+        submodules: recursive
 
     - name: Building libsgfc++
       run: |
