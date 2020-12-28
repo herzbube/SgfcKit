@@ -21,6 +21,7 @@
 #import "../../include/SGFCDocumentReader.h"
 #import "../../include/SGFCDocumentWriter.h"
 #import "../../include/SGFCGame.h"
+#import "../../include/SGFCGoGameInfo.h"
 #import "../../include/SGFCNode.h"
 #import "../../include/SGFCKitFactory.h"
 #import "../SGFCExceptionUtility.h"
@@ -77,6 +78,23 @@
 + (SGFCNode*) node
 {
   return [SGFCNode node];
+}
+
++ (SGFCGoGameInfo*) goGameInfo
+{
+  return [SGFCGoGameInfo goGameInfo];
+}
+
++ (SGFCGameInfo*) gameInfoWithRootNode:(SGFCNode*)rootNode
+{
+  return [SGFCGameInfo gameInfoWithRootNode:rootNode];
+}
+
++ (SGFCGameInfo*) gameInfoWithRootNode:(SGFCNode*)rootNode
+                          gameInfoNode:(SGFCNode*)gameInfoNode
+{
+  return [SGFCGameInfo gameInfoWithRootNode:rootNode
+                               gameInfoNode:gameInfoNode];
 }
 
 + (SGFCPropertyFactory*) propertyFactory

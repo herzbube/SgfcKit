@@ -24,6 +24,8 @@
 #import "interface/internal/SGFCDocumentWriteResultInternalAdditions.h"
 #import "interface/internal/SGFCDoublePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCGameInternalAdditions.h"
+#import "interface/internal/SGFCGameInfoInternalAdditions.h"
+#import "interface/internal/SGFCGoGameInfoInternalAdditions.h"
 #import "interface/internal/SGFCGoMoveInternalAdditions.h"
 #import "interface/internal/SGFCGoMovePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCGoPointInternalAdditions.h"
@@ -328,6 +330,19 @@
   }
 
   return propertyValues;
+}
+
++ (SGFCGameInfo*) wrapGameInfo:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGameInfo>)gameInfoToWrap
+{
+  if (gameInfoToWrap->ToGoGameInfo() == nullptr)
+  {
+    return [[SGFCGameInfo alloc] initWithWrappedGameInfo:gameInfoToWrap];
+  }
+  else
+  {
+    auto goGameInfoToWrap = std::dynamic_pointer_cast<LibSgfcPlusPlus::ISgfcGoGameInfo>(gameInfoToWrap);
+    return [[SGFCGoGameInfo alloc] initWithWrappedGoGameInfo:goGameInfoToWrap];
+  }
 }
 
 @end

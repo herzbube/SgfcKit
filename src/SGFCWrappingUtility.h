@@ -30,6 +30,7 @@
 @class SGFCDocument;
 @class SGFCDocumentReadResult;
 @class SGFCDocumentWriteResult;
+@class SGFCGameInfo;
 @class SGFCGoMove;
 @class SGFCGoPoint;
 @class SGFCGoStone;
@@ -47,6 +48,7 @@ namespace LibSgfcPlusPlus
   class ISgfcDocumentReadResult;
   class ISgfcDocumentWriteResult;
   class ISgfcGame;
+  class ISgfcGameInfo;
   class ISgfcGoMove;
   class ISgfcGoPoint;
   class ISgfcGoStone;
@@ -153,5 +155,9 @@ namespace LibSgfcPlusPlus
 /// wrap the libsgfc++ ISgfcPropertyValue objects in @a propertiesToWrap. The
 /// returned collection has the same order as the input collection.
 + (NSArray*) wrapPropertyValues:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>>&)propertyValuesToWrap;
+
+/// @brief Returns a newly created SGFCGameInfo object that
+/// wraps the libsgfc++ ISgfcGameInfo object @a gameInfoToWrap.
++ (SGFCGameInfo*) wrapGameInfo:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGameInfo>)gameInfoToWrap;
 
 @end

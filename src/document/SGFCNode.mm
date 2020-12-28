@@ -16,6 +16,7 @@
 
 // Project includes
 #import "../../include/SGFCNode.h"
+#import "../interface/internal/SGFCGameInfoInternalAdditions.h"
 #import "../interface/internal/SGFCNodeInternalAdditions.h"
 #import "../interface/internal/SGFCPropertyInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
@@ -213,6 +214,21 @@
 - (NSArray*) mainVariationNodes
 {
   return [SGFCWrappingUtility wrapNodes:_wrappedNode->GetMainVariationNodes()];
+}
+
+#pragma mark - Public API - Game info access
+
+- (SGFCGameInfo*) createGameInfo
+{
+  return [SGFCWrappingUtility wrapGameInfo:_wrappedNode->CreateGameInfo()];
+}
+
+- (void) writeGameInfo:(SGFCGameInfo*)gameInfo
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:gameInfo
+                                                 invalidArgumentName:@"gameInfo"];
+
+  _wrappedNode->WriteGameInfo(gameInfo.wrappedGameInfo);
 }
 
 #pragma mark - Public API - Property access

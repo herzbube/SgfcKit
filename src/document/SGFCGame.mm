@@ -18,6 +18,7 @@
 #import "../../include/SGFCConstants.h"
 #import "../../include/SGFCGame.h"
 #import "../interface/internal/SGFCGameInternalAdditions.h"
+#import "../interface/internal/SGFCGameInfoInternalAdditions.h"
 #import "../interface/internal/SGFCNodeInternalAdditions.h"
 #import "../interface/internal/SGFCTreeBuilderInternalAdditions.h"
 #import "../SGFCExceptionUtility.h"
@@ -26,6 +27,7 @@
 
 // libsgfc++ includes
 #import <libsgfcplusplus/ISgfcGame.h>
+#import <libsgfcplusplus/ISgfcGoGameInfo.h>
 #import <libsgfcplusplus/SgfcPlusPlusFactory.h>
 
 #pragma mark - Class extension
@@ -146,6 +148,19 @@
 - (NSArray*) gameInfoNodes
 {
   return [SGFCWrappingUtility wrapNodes:_wrappedGame->GetGameInfoNodes()];
+}
+
+- (SGFCGameInfo*) createGameInfo
+{
+  return [SGFCWrappingUtility wrapGameInfo:_wrappedGame->CreateGameInfo()];
+}
+
+- (void) writeGameInfo:(SGFCGameInfo*)gameInfo
+{
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:gameInfo
+                                                 invalidArgumentName:@"gameInfo"];
+
+  _wrappedGame->WriteGameInfo(gameInfo.wrappedGameInfo);
 }
 
 #pragma mark - Internal API - SGFCGameInternalAdditions overrides

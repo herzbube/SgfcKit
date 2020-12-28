@@ -26,6 +26,8 @@
 @class SGFCDocumentReader;
 @class SGFCDocumentWriter;
 @class SGFCGame;
+@class SGFCGameInfo;
+@class SGFCGoGameInfo;
 @class SGFCNode;
 @class SGFCPropertyFactory;
 @class SGFCPropertyValueFactory;
@@ -99,6 +101,45 @@
 /// @brief Returns a newly constructed SGFCNode object that has no parent,
 /// child or sibling and is not associated with any game.
 + (SGFCNode*) node;
+
+/// @brief Returns a newly constructed SGFCGoGameInfo object with
+/// default values.
++ (SGFCGoGameInfo*) goGameInfo;
+
+/// @brief Returns a newly constructed SGFCGameInfo object with values
+/// taken from the properties in root node @a rootNode. All values that
+/// would normally be taken from the properties in the game info node have
+/// default values.
+///
+/// If the content of @a rootNode indicates that the game type is
+/// #SGFCGameTypeGo then the returned object is an SGFCGoGameInfo object.
+/// The game type is #SGFCGameTypeGo in the following cases:
+/// - If @a rootNode contains a property of type #SGFCPropertyTypeGM
+///   that either has no value, or that has a single Number value, and that
+///   value is 0.
+/// - Or if @a rootNode does not contain a property of type
+///   #SGFCPropertyTypeGM.
+///
+/// @exception NSInvalidArgumentException Is raised if @a rootNode is @e nil.
++ (SGFCGameInfo*) gameInfoWithRootNode:(SGFCNode*)rootNode;
+
+/// @brief Returns a newly constructed SGFCGameInfo object with values
+/// taken from the properties in root node @a rootNode and from game info
+/// node @a gameInfoNode.
+///
+/// If the content in @a rootNode indicates that the game type is
+/// #SGFCGameTypeGo then the returned object is an SGFCGoGameInfo object.
+/// The game type is #SGFCGameTypeGo in the following cases:
+/// - If @a rootNode contains a property of type #SGFCPropertyTypeGM
+///   that either has no value, or that has a single Number value, and that
+///   value is 0.
+/// - Or if @a rootNode does not contain a property of type
+///   #SGFCPropertyTypeGM.
+///
+/// @exception NSInvalidArgumentException Is raised if @a rootNode is @e nil
+/// or if @a gameInfoNode is @e nil.
++ (SGFCGameInfo*) gameInfoWithRootNode:(SGFCNode*)rootNode
+                          gameInfoNode:(SGFCNode*)gameInfoNode;
 
 /// @brief Returns a newly constructed SGFCPropertyFactory object
 /// that can be used to create SGFCProperty objects, and objects of every

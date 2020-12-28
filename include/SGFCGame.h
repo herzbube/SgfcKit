@@ -25,6 +25,7 @@
 #import <Foundation/NSObject.h>
 
 // Forward declarations
+@class SGFCGameInfo;
 @class SGFCNode;
 @class SGFCTreeBuilder;
 
@@ -194,6 +195,63 @@
 ///
 /// @see #SGFCNodeTraitsGameInfo
 @property(nonatomic, strong, readonly) NSArray* gameInfoNodes;
+
+/// @brief Returns a newly constructed SGFCGameInfo object with values
+/// taken from the properties in the root node that rootNode() returns
+/// and the first game info node in the list of game info nodes returned by
+/// gameInfoNodes().
+///
+/// This is a convenience method that is useful if a game contains only one
+/// game tree (gameInfoNodes() returns only one game info node). If the
+/// game contains more than one game tree, an SGFCGameInfo object that
+/// describes the second, third, etc. game tree can be obtained by invoking
+/// SGFCNode::createGameInfo() on the second, third, etc. game info nodes
+/// returned by gameInfoNodes().
+///
+/// If the game has no game trees (gameInfoNodes() returns an empty list)
+/// then the SGFCGameInfo object returned by this method contains only
+/// values taken from the properties in the root node, but all values that
+/// would normally be taken from the properties in the game info node have
+/// default values.
+///
+/// If the game has no root node (hasRootNode() returns NO) then the
+/// SGFCGameInfo object contains default values.
+///
+/// If gameType() returns #SGFCGameTypeGo then the returned object is
+/// an SGFCGoGameInfo object.
+///
+/// @see SGFCNode::createGameInfo()
+- (SGFCGameInfo*) createGameInfo;
+
+/// @brief Writes all root property values in @a gameInfo to the
+/// corresponding properties in the root node that rootNode() returns,
+/// and all game info property values in @a gameInfo to the first game
+/// info node in the list of game info nodes returned by gameInfoNodes().
+///
+/// This is a convenience method that is useful if a game contains only one
+/// game tree (gameInfoNodes() returns only one game info node). If the
+/// game contains more than one game tree, then SGFCNode::writeGameInfo()
+/// can be invoked to write the content of @a gameInfo to the second, third,
+/// etc. game info nodes returned by gameInfoNodes().
+///
+/// If the game has no game trees (gameInfoNodes() returns an empty list)
+/// then the game info property values in @a gameInfo are written to the
+/// root node that rootNode() returns.
+///
+/// If the game has no root node (hasRootNode() returns NO) then a new
+/// root node is created and all property values in @a gameInfo are written
+/// to the new node.
+///
+/// Game info property values are written only if they are not equal to
+/// their default values (already existing property values are overwritten).
+/// Game info property values that are equal to their default value cause
+/// the property to be removed, if it exists, from the game info node.
+///
+/// Root property values are always written, regardless of whether they
+/// are equal to their default values.
+///
+/// @exception NSInvalidArgumentException Is raised if @a gameInfo is @e nil.
+- (void) writeGameInfo:(SGFCGameInfo*)gameInfo;
 
 /// @brief Returns an SGFCTreeBuilder object that can be used to manipulate the
 /// game tree.

@@ -26,6 +26,7 @@
 
 // Forward declarations
 @class NSArray;
+@class SGFCGameInfo;
 @class SGFCProperty;
 
 /// @brief The SGFCNode class provides access to the data of a single
@@ -211,6 +212,49 @@
 /// This is a convenience method that is most useful when invoked on a
 /// game info node, i.e. a node that has the trait #SGFCNodeTraitGameInfo.
 @property(nonatomic, strong, readonly) NSArray* mainVariationNodes;
+//@}
+
+/// @name Game info access
+//@{
+/// @brief Returns a newly constructed SGFCGameInfo object with values
+/// taken from the properties in the root node that root() returns
+/// and the game info node that gameInfoNode() returns.
+///
+/// If gameInfoNode() returns @e nil then the SGFCGameInfo object
+/// contains only values taken from the properties in the root node, but
+/// all values that would normally be taken from the properties in the game
+/// info node have default values.
+///
+/// If the content in the root node indicates that the game type is
+/// #SGFCGameTypeGo then the returned object is an SGFCGoGameInfo object.
+/// The game type is #SGFCGameTypeGo in the following cases:
+/// - If the root node contains a property of type #SGFCPropertyTypeGM
+///   that either has no value, or that has a single Number value, and that
+///   value is 0.
+/// - Or if the root node does not contain a property of type
+///   #SGFCPropertyTypeGM.
+///
+/// @see SGFCcGame::createGameInfo()
+- (SGFCGameInfo*) createGameInfo;
+
+/// @brief Writes all root property values in @a gameInfo to the
+/// corresponding properties in the root node that root() returns,
+/// and all game info property values in @a gameInfo to the game info node
+/// that gameInfoNode() returns.
+///
+/// If gameInfoNode() returns @e nil then the game info property
+/// values in @a gameInfo are written to the root node.
+///
+/// Game info property values are written only if they are not equal to
+/// their default values (already existing property values are overwritten).
+/// Game info property values that are equal to their default value cause
+/// the property to be removed, if it exists, from the game info node.
+///
+/// Root property values are always written, regardless of whether they
+/// are equal to their default values.
+///
+/// @exception NSInvalidArgumentException Is raised if @a gameInfo is @e nil.
+- (void) writeGameInfo:(SGFCGameInfo*)gameInfo;
 //@}
 
 /// @name Property access
