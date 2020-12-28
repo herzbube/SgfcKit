@@ -36,7 +36,7 @@ NSString* SGFCSgfcVersion = @"1.18";
 //const int SGFCInvalidColumnNumber = -1;
 //const int SGFCLibraryErrorNumberNoError = 0;
 
-//NSString* SGFCNoneValueString = SgfcPrivateConstants::EmptyString;
+NSString* SGFCNoneValueString = @"";
 NSString* SGFCDoubleNormalString = @"1";
 NSString* SGFCDoubleEmphasizedString = @"2";
 NSString* SGFCColorBlackString = @"B";

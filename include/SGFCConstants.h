@@ -69,7 +69,7 @@ extern NSString* SGFCSgfcVersion;
 /// defined by the SGF standard.
 ///
 /// The SGF standard defines this to be an empty string.
-//extern NSString* SGFCNoneValueString;
+extern NSString* SGFCNoneValueString;
 /// @brief The raw string value that corresponds to the Double value
 /// #SGFCDoubleNormal, as defined by the SGF standard.
 ///
@@ -90,6 +90,10 @@ extern NSString* SGFCColorBlackString;
 ///
 /// The SGF standard defines this to be the string "W".
 extern NSString* SGFCColorWhiteString;
+//@}
+
+/// @name Mappings between libsgfc++ values and SGF standard values, and vice versa
+//@{
 /// @brief The raw string value that corresponds to a pass Move value for
 /// #SGFCGameTypeGo, as defined by the SGF standard.
 ///
@@ -196,7 +200,7 @@ extern const SGFCBoardSize SGFCBoardSizeNone;
 /// - All game types: If the board size is below the minimum size
 ///   #BoardSizeMinimum.
 /// - For #SGFCGameTypeGo: If the board size is above the maximum size
-///   #BoardSizeMaximumGo, or if the board size is not square.
+///   #BoardSizeMaximumGo.
 ///
 /// SGFCGame::boardSize() returns this value, for instance, if the
 /// #SGFCPropertyTypeSZ property is present in a game's root node but has

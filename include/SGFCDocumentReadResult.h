@@ -49,7 +49,6 @@
 /// is invoked.
 - (instancetype) init;
 
-
 /// @brief Returns an SGFCExitCode value that best fits the result of the
 /// read operation. The numeric value of the SGFCExitCode corresponds to
 /// one of the exit codes of SGFC.

@@ -136,7 +136,7 @@
   self.goMove = nil;
 }
 
-#pragma mark - SGFCStonePropertyValue overrides
+#pragma mark - SGFCMovePropertyValue overrides
 
 - (SGFCGoMovePropertyValue*) toGoMoveValue
 {
