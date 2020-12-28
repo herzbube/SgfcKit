@@ -70,6 +70,14 @@ extern NSDictionary* exitCodeToSgfcKitMap;
 /// values from the libsgfc++ enumeration SgfcExitCode.
 extern NSDictionary* exitCodeFromSgfcKitMap;
 
+/// @brief Maps values from the libsgfc++ enumeration SgfcGameResultType to
+/// values from the SgfcKit enumeration SGFCGameResultType.
+extern NSDictionary* gameResultTypeToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCGameResultType to
+/// values from the libsgfc++ enumeration SgfcGameResultType.
+extern NSDictionary* gameResultTypeFromSgfcKitMap;
+
 /// @brief Maps values from the libsgfc++ enumeration SgfcGameType to values
 /// from the SgfcKit enumeration SGFCGameType.
 extern NSDictionary* gameTypeToSgfcKitMap;
@@ -78,6 +86,22 @@ extern NSDictionary* gameTypeToSgfcKitMap;
 /// from the libsgfc++ enumeration SgfcGameType.
 extern NSDictionary* gameTypeFromSgfcKitMap;
 
+/// @brief Maps values from the libsgfc++ enumeration SgfcGoPlayerRankType to
+/// values from the SgfcKit enumeration SGFCGoPlayerRankType.
+extern NSDictionary* goPlayerRankTypeToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCGoPlayerRankType to
+/// values from the libsgfc++ enumeration SgfcGoPlayerRankType.
+extern NSDictionary* goPlayerRankTypeFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcGoPlayerRatingType to
+/// values from the SgfcKit enumeration SGFCGoPlayerRatingType.
+extern NSDictionary* goPlayerRatingTypeToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCGoPlayerRatingType to
+/// values from the libsgfc++ enumeration SgfcGoPlayerRatingType.
+extern NSDictionary* goPlayerRatingTypeFromSgfcKitMap;
+
 /// @brief Maps values from the libsgfc++ enumeration SgfcGoPointNotation to
 /// values from the SgfcKit enumeration SGFCGoPointNotation.
 extern NSDictionary* goPointNotationToSgfcKitMap;
@@ -85,6 +109,14 @@ extern NSDictionary* goPointNotationToSgfcKitMap;
 /// @brief Maps values from the SgfcKit enumeration SGFCGoPointNotation to
 /// values from the libsgfc++ enumeration SgfcGoPointNotation.
 extern NSDictionary* goPointNotationFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcGoRulesetType to
+/// values from the SgfcKit enumeration SGFCGoRulesetType.
+extern NSDictionary* goRulesetTypeToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCGoRulesetType to
+/// values from the libsgfc++ enumeration SgfcGoRulesetType.
+extern NSDictionary* goRulesetTypeFromSgfcKitMap;
 
 /// @brief Maps values from the libsgfc++ enumeration SgfcMessageID to
 /// values from the SgfcKit enumeration SGFCMessageID.
@@ -141,4 +173,12 @@ extern NSDictionary* propertyValueTypeToSgfcKitMap;
 /// @brief Maps values from the SgfcKit enumeration SGFCPropertyValueType to
 /// values from the libsgfc++ enumeration SgfcPropertyValueType.
 extern NSDictionary* propertyValueTypeFromSgfcKitMap;
+
+/// @brief Maps values from the libsgfc++ enumeration SgfcWinType to
+/// values from the SgfcKit enumeration SGFCWinType.
+extern NSDictionary* winTypeToSgfcKitMap;
+
+/// @brief Maps values from the SgfcKit enumeration SGFCWinType to
+/// values from the libsgfc++ enumeration SgfcWinType.
+extern NSDictionary* winTypeFromSgfcKitMap;
 //@}

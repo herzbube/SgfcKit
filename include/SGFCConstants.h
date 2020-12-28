@@ -203,6 +203,14 @@ extern const SGFCBoardSize SGFCBoardSizeNone;
 /// an invalid size.
 extern const SGFCBoardSize SGFCBoardSizeInvalid;
 
+/// @brief A Number value that denotes "no handicap stones" value for
+/// #SGFCPropertyTypeHA (a Go specific property).
+extern const SGFCNumber HandicapStonesNone;
+
+/// @brief A Real value that denotes "no komi" value for
+/// #SGFCPropertyTypeKM (a Go specific property).
+extern const SGFCReal KomiNone;
+
 /// @brief An SGFCNodeTraits value that denotes a node that has no traits.
 extern const SGFCNodeTraits NodeTraitsNone;
 

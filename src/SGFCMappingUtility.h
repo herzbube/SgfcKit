@@ -23,8 +23,12 @@
 #import "../include/SGFCCoordinateSystem.h"
 #import "../include/SGFCDouble.h"
 #import "../include/SGFCExitCode.h"
+#import "../include/SGFCGameResultType.h"
 #import "../include/SGFCGameType.h"
+#import "../include/SGFCGoPlayerRankType.h"
+#import "../include/SGFCGoPlayerRatingType.h"
 #import "../include/SGFCGoPointNotation.h"
+#import "../include/SGFCGoRulesetType.h"
 #import "../include/SGFCMessageID.h"
 #import "../include/SGFCMessageType.h"
 #import "../include/SGFCNodeTraits.h"
@@ -33,6 +37,7 @@
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
 #import "../include/SGFCTypedefs.h"
+#import "../include/SGFCWinType.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcArgumentType.h>
@@ -41,8 +46,12 @@
 #import <libsgfcplusplus/SgfcCoordinateSystem.h>
 #import <libsgfcplusplus/SgfcDouble.h>
 #import <libsgfcplusplus/SgfcExitCode.h>
+#import <libsgfcplusplus/SgfcGameResultType.h>
 #import <libsgfcplusplus/SgfcGameType.h>
+#import <libsgfcplusplus/SgfcGoPlayerRankType.h>
+#import <libsgfcplusplus/SgfcGoPlayerRatingType.h>
 #import <libsgfcplusplus/SgfcGoPointNotation.h>
+#import <libsgfcplusplus/SgfcGoRulesetType.h>
 #import <libsgfcplusplus/SgfcMessageID.h>
 #import <libsgfcplusplus/SgfcMessageType.h>
 #import <libsgfcplusplus/SgfcNodeTraits.h>
@@ -51,6 +60,7 @@
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
 #import <libsgfcplusplus/SgfcTypedefs.h>
+#import <libsgfcplusplus/SgfcWinType.h>
 
 // C++ Standard Library includes
 #import <string>
@@ -219,6 +229,34 @@
 /// #exitCodeFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcExitCode) fromSgfcKitExitCode:(SGFCExitCode)exitCode;
 
+/// @brief Maps a value from the SgfcKit enumeration SGFCGameResultType to the
+/// corresponding value from the libsgfc++ enumeration SgfcGameResultType.
+///
+/// This is a convenience function that looks up @a gameResultType in
+/// #gameResultTypeToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a gameResultType does not appear in
+/// #gameResultTypeToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcGameResultType value was not added to
+/// #gameResultTypeToSgfcKitMap.
++ (SGFCGameResultType) toSgfcKitGameResultType:(LibSgfcPlusPlus::SgfcGameResultType)gameResultType;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcGameResultType to the
+/// corresponding value from the the SgfcKit enumeration SGFCGameResultType.
+///
+/// This is a convenience function that looks up @a gameResultType in
+/// #gameResultTypeFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a gameResultType does not appear in
+/// #gameResultTypeFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCGameResultType value was not added to
+/// #gameResultTypeFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcGameResultType) fromSgfcKitGameResultType:(SGFCGameResultType)gameResultType;
+
 /// @brief Maps a value from the SgfcKit enumeration SGFCGameType to the
 /// corresponding value from the libsgfc++ enumeration SgfcGameType.
 ///
@@ -246,6 +284,64 @@
 /// SGFCGameType value was not added to
 /// #gameTypeFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcGameType) fromSgfcKitGameType:(SGFCGameType)gameType;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCGoPlayerRankType to the
+/// corresponding value from the libsgfc++ enumeration SgfcGoPlayerRankType.
+///
+/// This is a convenience function that looks up @a goPlayerRankType in
+/// #goPlayerRankTypeToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a goPlayerRankType does not appear in
+/// #goPlayerRankTypeToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcGoPlayerRankType value was not added to
+/// #goPlayerRankTypeToSgfcKitMap.
++ (SGFCGoPlayerRankType) toSgfcKitGoPlayerRankType:(LibSgfcPlusPlus::SgfcGoPlayerRankType)goPlayerRankType;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcGoPlayerRankType to the
+/// corresponding value from the the SgfcKit enumeration SGFCGoPlayerRankType.
+///
+/// This is a convenience function that looks up @a goPlayerRankType in
+/// #goPlayerRankTypeFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a goPlayerRankType does not appear in
+/// #goPlayerRankTypeFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCGoPlayerRankType value was not added to
+/// #goPlayerRankTypeFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcGoPlayerRankType) fromSgfcKitGoPlayerRankType:(SGFCGoPlayerRankType)goPlayerRankType;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCGoPlayerRatingType
+/// to the corresponding value from the libsgfc++ enumeration
+/// SgfcGoPlayerRatingType.
+///
+/// This is a convenience function that looks up @a goPlayerRatingType in
+/// #goPlayerRatingTypeToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a goPlayerRatingType does not appear in
+/// #goPlayerRatingTypeToSgfcKitMap. In practice this should never occur.
+/// If it occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcGoPlayerRatingType value was not added to
+/// #goPlayerRatingTypeToSgfcKitMap.
++ (SGFCGoPlayerRatingType) toSgfcKitGoPlayerRatingType:(LibSgfcPlusPlus::SgfcGoPlayerRatingType)goPlayerRatingType;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcGoPlayerRatingType
+/// to the corresponding value from the the SgfcKit enumeration
+/// SGFCGoPlayerRatingType.
+///
+/// This is a convenience function that looks up @a goPlayerRatingType in
+/// #goPlayerRatingTypeFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a goPlayerRatingType does not appear in
+/// #goPlayerRatingTypeFromSgfcKitMap. In practice this should never occur.
+/// If it occurs it indicates a programming error in the library, i.e. an
+/// SGFCGoPlayerRatingType value was not added to
+/// #goPlayerRatingTypeFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcGoPlayerRatingType) fromSgfcKitGoPlayerRatingType:(SGFCGoPlayerRatingType)goPlayerRatingType;
 
 /// @brief Maps a value from the SgfcKit enumeration SGFCGoPointNotation to
 /// the corresponding value from the libsgfc++ enumeration
@@ -276,6 +372,34 @@
 /// SGFCGoPointNotation value was not added to
 /// #goPointNotationFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcGoPointNotation) fromSgfcKitGoPointNotation:(SGFCGoPointNotation)goPointNotation;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCGoRulesetType to the
+/// corresponding value from the libsgfc++ enumeration SgfcGoRulesetType.
+///
+/// This is a convenience function that looks up @a goRulesetType in
+/// #goRulesetTypeToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a goRulesetType does not appear in
+/// #goRulesetTypeToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcGoRulesetType value was not added to
+/// #goRulesetTypeToSgfcKitMap.
++ (SGFCGoRulesetType) toSgfcKitGoRulesetType:(LibSgfcPlusPlus::SgfcGoRulesetType)goRulesetType;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcGoRulesetType to the
+/// corresponding value from the the SgfcKit enumeration SGFCGoRulesetType.
+///
+/// This is a convenience function that looks up @a goRulesetType in
+/// #goRulesetTypeFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a goRulesetType does not appear in
+/// #goRulesetTypeFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCGoRulesetType value was not added to
+/// #goRulesetTypeFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcGoRulesetType) fromSgfcKitGoRulesetType:(SGFCGoRulesetType)goRulesetType;
 
 /// @brief Maps a value from the SgfcKit enumeration SGFCMessageID to
 /// the corresponding value from the libsgfc++ enumeration
@@ -479,6 +603,34 @@
 /// SGFCPropertyValueType value was not added to
 /// #propertyValueTypeFromSgfcKitMap.
 + (LibSgfcPlusPlus::SgfcPropertyValueType) fromSgfcKitPropertyValueType:(SGFCPropertyValueType)propertyValueType;
+
+/// @brief Maps a value from the SgfcKit enumeration SGFCWinType to the
+/// corresponding value from the libsgfc++ enumeration SgfcWinType.
+///
+/// This is a convenience function that looks up @a winType in
+/// #winTypeToSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a winType does not appear in
+/// #winTypeToSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// LibSgfcPlusPlus::SgfcWinType value was not added to
+/// #winTypeToSgfcKitMap.
++ (SGFCWinType) toSgfcKitWinType:(LibSgfcPlusPlus::SgfcWinType)winType;
+
+/// @brief Maps a value from the libsgfc++ enumeration SgfcWinType to the
+/// corresponding value from the the SgfcKit enumeration SGFCWinType.
+///
+/// This is a convenience function that looks up @a winType in
+/// #winTypeFromSgfcKitMap.
+///
+/// @exception NSInternalInconsistencyException Is raised if there is no
+/// mapping, i.e. if @a winType does not appear in
+/// #winTypeFromSgfcKitMap. In practice this should never occur. If it
+/// occurs it indicates a programming error in the library, i.e. an
+/// SGFCWinType value was not added to
+/// #winTypeFromSgfcKitMap.
++ (LibSgfcPlusPlus::SgfcWinType) fromSgfcKitWinType:(SGFCWinType)winType;
 
 /// @brief Maps an int value (used in libsgfc++) to an NSInteger value
 /// (used in SgfcKit).

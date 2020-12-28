@@ -20,8 +20,12 @@
 #import "../include/SGFCCoordinateSystem.h"
 #import "../include/SGFCDouble.h"
 #import "../include/SGFCExitCode.h"
+#import "../include/SGFCGameResultType.h"
 #import "../include/SGFCGameType.h"
+#import "../include/SGFCGoPlayerRankType.h"
+#import "../include/SGFCGoPlayerRatingType.h"
 #import "../include/SGFCGoPointNotation.h"
+#import "../include/SGFCGoRulesetType.h"
 #import "../include/SGFCMessageID.h"
 #import "../include/SGFCMessageType.h"
 #import "../include/SGFCNodeTraits.h"
@@ -29,6 +33,7 @@
 #import "../include/SGFCPropertyTraits.h"
 #import "../include/SGFCPropertyType.h"
 #import "../include/SGFCPropertyValueType.h"
+#import "../include/SGFCWinType.h"
 #import "SGFCPrivateConstants.h"
 
 // libsgfc++ includes
@@ -37,8 +42,12 @@
 #import <libsgfcplusplus/SgfcCoordinateSystem.h>
 #import <libsgfcplusplus/SgfcDouble.h>
 #import <libsgfcplusplus/SgfcExitCode.h>
+#import <libsgfcplusplus/SgfcGameResultType.h>
 #import <libsgfcplusplus/SgfcGameType.h>
+#import <libsgfcplusplus/SgfcGoPlayerRankType.h>
+#import <libsgfcplusplus/SgfcGoPlayerRatingType.h>
 #import <libsgfcplusplus/SgfcGoPointNotation.h>
+#import <libsgfcplusplus/SgfcGoRulesetType.h>
 #import <libsgfcplusplus/SgfcMessageID.h>
 #import <libsgfcplusplus/SgfcMessageType.h>
 #import <libsgfcplusplus/SgfcNodeTraits.h>
@@ -46,6 +55,7 @@
 #import <libsgfcplusplus/SgfcPropertyTraits.h>
 #import <libsgfcplusplus/SgfcPropertyType.h>
 #import <libsgfcplusplus/SgfcPropertyValueType.h>
+#import <libsgfcplusplus/SgfcWinType.h>
 
 // System includes
 #import <Foundation/NSValue.h>
@@ -128,6 +138,24 @@ NSDictionary* exitCodeFromSgfcKitMap =
   @(SGFCExitCodeWarning) : @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::Warning)),
   @(SGFCExitCodeError) : @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::Error)),
   @(SGFCExitCodeFatalError) : @(static_cast<int>(LibSgfcPlusPlus::SgfcExitCode::FatalError)),
+};
+
+NSDictionary* gameResultTypeToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::BlackWin)) : @(SGFCGameResultTypeBlackWin),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::WhiteWin)) : @(SGFCGameResultTypeWhiteWin),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::Draw)) : @(SGFCGameResultTypeDraw),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::NoResult)) : @(SGFCGameResultTypeNoResult),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::UnknownResult)) : @(SGFCGameResultTypeUnknownResult),
+};
+
+NSDictionary* gameResultTypeFromSgfcKitMap =
+@{
+  @(SGFCGameResultTypeBlackWin) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::BlackWin)),
+  @(SGFCGameResultTypeWhiteWin) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::WhiteWin)),
+  @(SGFCGameResultTypeDraw) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::Draw)),
+  @(SGFCGameResultTypeNoResult) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::NoResult)),
+  @(SGFCGameResultTypeUnknownResult) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameResultType::UnknownResult)),
 };
 
 NSDictionary* gameTypeToSgfcKitMap =
@@ -218,6 +246,50 @@ NSDictionary* gameTypeFromSgfcKitMap =
   @(SGFCGameTypeGipf) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameType::Gipf)),
   @(SGFCGameTypeKropki) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameType::Kropki)),
   @(SGFCGameTypeUnknown) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGameType::Unknown)),
+};
+
+NSDictionary* goPlayerRankTypeToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRankType::Kyu)) : @(SGFCGoPlayerRankTypeKyu),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRankType::AmateurDan)) : @(SGFCGoPlayerRankTypeAmateurDan),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRankType::ProfessionalDan)) : @(SGFCGoPlayerRankTypeProfessionalDan),
+};
+
+NSDictionary* goPlayerRankTypeFromSgfcKitMap =
+@{
+  @(SGFCGoPlayerRankTypeKyu) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRankType::Kyu)),
+  @(SGFCGoPlayerRankTypeAmateurDan) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRankType::AmateurDan)),
+  @(SGFCGoPlayerRankTypeProfessionalDan) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRankType::ProfessionalDan)),
+};
+
+NSDictionary* goPlayerRatingTypeToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Uncertain)) : @(SGFCGoPlayerRatingTypeUncertain),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Established)) : @(SGFCGoPlayerRatingTypeEstablished),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Unspecified)) : @(SGFCGoPlayerRatingTypeUnspecified),
+};
+
+NSDictionary* goPlayerRatingTypeFromSgfcKitMap =
+@{
+  @(SGFCGoPlayerRatingTypeUncertain) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Uncertain)),
+  @(SGFCGoPlayerRatingTypeEstablished) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Established)),
+  @(SGFCGoPlayerRatingTypeUnspecified) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Unspecified)),
+};
+
+NSDictionary* goRulesetTypeToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoRulesetType::AGA)) : @(SGFCGoRulesetTypeAGA),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoRulesetType::Ing)) : @(SGFCGoRulesetTypeIng),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoRulesetType::Japanese)) : @(SGFCGoRulesetTypeJapanese),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoRulesetType::NZ)) : @(SGFCGoRulesetTypeNZ),
+};
+
+NSDictionary* goRulesetTypeFromSgfcKitMap =
+@{
+  @(SGFCGoRulesetTypeAGA) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoRulesetType::AGA)),
+  @(SGFCGoRulesetTypeIng) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoRulesetType::Ing)),
+  @(SGFCGoRulesetTypeJapanese) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoRulesetType::Japanese)),
+  @(SGFCGoRulesetTypeNZ) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoRulesetType::NZ)),
 };
 
 NSDictionary* messageIDToSgfcKitMap =
@@ -678,6 +750,24 @@ NSDictionary* propertyValueTypeFromSgfcKitMap =
   @(SGFCPropertyValueTypeMove) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Move)),
   @(SGFCPropertyValueTypeStone) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Stone)),
   @(SGFCPropertyValueTypeUnknown) : @(static_cast<int>(LibSgfcPlusPlus::SgfcPropertyValueType::Unknown)),
+};
+
+NSDictionary* winTypeToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinWithScore)) : @(SGFCWinTypeWinWithScore),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinWithoutScore)) : @(SGFCWinTypeWinWithoutScore),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinByResignation)) : @(SGFCWinTypeWinByResignation),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinOnTime)) : @(SGFCWinTypeWinOnTime),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinByForfeit)) : @(SGFCWinTypeWinByForfeit),
+};
+
+NSDictionary* winTypeFromSgfcKitMap =
+@{
+  @(SGFCWinTypeWinWithScore) : @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinWithScore)),
+  @(SGFCWinTypeWinWithoutScore) : @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinWithoutScore)),
+  @(SGFCWinTypeWinByResignation) : @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinByResignation)),
+  @(SGFCWinTypeWinOnTime) : @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinOnTime)),
+  @(SGFCWinTypeWinByForfeit) : @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinByForfeit)),
 };
 
 NSDictionary* coordinateSystemToSgfcKitMap =

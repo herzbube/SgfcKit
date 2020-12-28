@@ -27,7 +27,13 @@ set (
   game/go/SGFCGoMove.mm
   game/go/SGFCGoPoint.mm
   game/go/SGFCGoStone.mm
+  game/NSValue+SGFCDate.mm
   game/SGFCBoardSize.mm
+  game/SGFCDate.mm
+  game/SGFCGameResult.mm
+  game/SGFCGoPlayerRank.mm
+  game/SGFCGoRuleset.mm
+  game/SGFCRoundInformation.mm
   sgfc/argument/SGFCArgument.mm
   sgfc/argument/SGFCArguments.mm
   sgfc/frontend/SGFCCommandLine.mm
@@ -82,6 +88,7 @@ set (
 
 set (
   HEADERS_PUBLIC
+  ../include/NSValue+SGFCDate.h
   ../include/SGFCArgument.h
   ../include/SGFCArguments.h
   ../include/SGFCArgumentType.h
@@ -92,6 +99,7 @@ set (
   ../include/SGFCComposedPropertyValue.h
   ../include/SGFCConstants.h
   ../include/SGFCCoordinateSystem.h
+  ../include/SGFCDate.h
   ../include/SGFCDocument.h
   ../include/SGFCDocumentReader.h
   ../include/SGFCDocumentReadResult.h
@@ -101,12 +109,19 @@ set (
   ../include/SGFCDoublePropertyValue.h
   ../include/SGFCExitCode.h
   ../include/SGFCGame.h
+  ../include/SGFCGameResult.h
+  ../include/SGFCGameResultType.h
   ../include/SGFCGameType.h
   ../include/SGFCGoMove.h
   ../include/SGFCGoMovePropertyValue.h
+  ../include/SGFCGoPlayerRank.h
+  ../include/SGFCGoPlayerRankType.h
+  ../include/SGFCGoPlayerRatingType.h
   ../include/SGFCGoPoint.h
   ../include/SGFCGoPointNotation.h
   ../include/SGFCGoPointPropertyValue.h
+  ../include/SGFCGoRuleset.h
+  ../include/SGFCGoRulesetType.h
   ../include/SGFCGoStone.h
   ../include/SGFCGoStonePropertyValue.h
   ../include/SGFCMovePropertyValue.h
@@ -127,10 +142,12 @@ set (
   ../include/SGFCPropertyValueFactory.h
   ../include/SGFCPropertyValueType.h
   ../include/SGFCRealPropertyValue.h
+  ../include/SGFCRoundInformation.h
   ../include/SGFCSimpleTextPropertyValue.h
   ../include/SGFCSinglePropertyValue.h
   ../include/SGFCStonePropertyValue.h
   ../include/SGFCTextPropertyValue.h
   ../include/SGFCTreeBuilder.h
   ../include/SGFCTypedefs.h
+  ../include/SGFCWinType.h
 )

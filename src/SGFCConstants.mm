@@ -556,6 +556,9 @@ NSExceptionName const SGFCNotImplementedException = @"SGFCNotImplementedExceptio
 const SGFCBoardSize SGFCBoardSizeNone = SGFCBoardSizeMake(-1, -1);
 const SGFCBoardSize SGFCBoardSizeInvalid = SGFCBoardSizeMake(-2, -2);
 
+const SGFCNumber SGFCHandicapStonesNone = 0;
+const SGFCReal SGFCKomiNone = 0.0;
+
 const SGFCNodeTraits NodeTraitsNone = 0;
 const SGFCNodeTraits NodeTraitsAll = std::numeric_limits<SGFCNodeTraits>::max();
 const SGFCPropertyTraits PropertyTraitsNone = 0;

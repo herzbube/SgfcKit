@@ -110,6 +110,22 @@
   return static_cast<LibSgfcPlusPlus::SgfcExitCode>(mappedValue);
 }
 
++ (SGFCGameResultType) toSgfcKitGameResultType:(LibSgfcPlusPlus::SgfcGameResultType)gameResultType
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(gameResultType)
+                                                     usingMap:gameResultTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcGameResultType"];
+  return static_cast<SGFCGameResultType>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcGameResultType) fromSgfcKitGameResultType:(SGFCGameResultType)gameResultType
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:gameResultType
+                                                usingMap:gameResultTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCGameResultType"];
+  return static_cast<LibSgfcPlusPlus::SgfcGameResultType>(mappedValue);
+}
+
 + (SGFCGameType) toSgfcKitGameType:(LibSgfcPlusPlus::SgfcGameType)gameType
 {
   NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(gameType)
@@ -126,6 +142,38 @@
   return static_cast<LibSgfcPlusPlus::SgfcGameType>(mappedValue);
 }
 
++ (SGFCGoPlayerRankType) toSgfcKitGoPlayerRankType:(LibSgfcPlusPlus::SgfcGoPlayerRankType)goPlayerRankType
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(goPlayerRankType)
+                                                     usingMap:goPlayerRankTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcGoPlayerRankType"];
+  return static_cast<SGFCGoPlayerRankType>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcGoPlayerRankType) fromSgfcKitGoPlayerRankType:(SGFCGoPlayerRankType)goPlayerRankType
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:goPlayerRankType
+                                                usingMap:goPlayerRankTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCGoPlayerRankType"];
+  return static_cast<LibSgfcPlusPlus::SgfcGoPlayerRankType>(mappedValue);
+}
+
++ (SGFCGoPlayerRatingType) toSgfcKitGoPlayerRatingType:(LibSgfcPlusPlus::SgfcGoPlayerRatingType)goPlayerRatingType
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(goPlayerRatingType)
+                                                     usingMap:goPlayerRatingTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcGoPlayerRatingType"];
+  return static_cast<SGFCGoPlayerRatingType>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcGoPlayerRatingType) fromSgfcKitGoPlayerRatingType:(SGFCGoPlayerRatingType)goPlayerRatingType
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:goPlayerRatingType
+                                                usingMap:goPlayerRatingTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCGoPlayerRatingType"];
+  return static_cast<LibSgfcPlusPlus::SgfcGoPlayerRatingType>(mappedValue);
+}
+
 + (SGFCGoPointNotation) toSgfcKitGoPointNotation:(LibSgfcPlusPlus::SgfcGoPointNotation)goPointNotation
 {
   NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(goPointNotation)
@@ -140,6 +188,22 @@
                                                 usingMap:goPointNotationFromSgfcKitMap
                                             withEnumName:@"SGFCGoPointNotation"];
   return static_cast<LibSgfcPlusPlus::SgfcGoPointNotation>(mappedValue);
+}
+
++ (SGFCGoRulesetType) toSgfcKitGoRulesetType:(LibSgfcPlusPlus::SgfcGoRulesetType)goRulesetType
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(goRulesetType)
+                                                     usingMap:goRulesetTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcGoRulesetType"];
+  return static_cast<SGFCGoRulesetType>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcGoRulesetType) fromSgfcKitGoRulesetType:(SGFCGoRulesetType)goRulesetType
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:goRulesetType
+                                                usingMap:goRulesetTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCGoRulesetType"];
+  return static_cast<LibSgfcPlusPlus::SgfcGoRulesetType>(mappedValue);
 }
 
 + (SGFCMessageID) toSgfcKitMessageID:(LibSgfcPlusPlus::SgfcMessageID)messageID
@@ -252,6 +316,22 @@
                                                 usingMap:propertyValueTypeFromSgfcKitMap
                                             withEnumName:@"SGFCPropertyValueType"];
   return static_cast<LibSgfcPlusPlus::SgfcPropertyValueType>(mappedValue);
+}
+
++ (SGFCWinType) toSgfcKitWinType:(LibSgfcPlusPlus::SgfcWinType)winType
+{
+  NSUInteger mappedValue = [SGFCMappingUtility toSgfcKitValue:static_cast<int>(winType)
+                                                     usingMap:winTypeToSgfcKitMap
+                                                 withEnumName:@"SgfcWinType"];
+  return static_cast<SGFCWinType>(mappedValue);
+}
+
++ (LibSgfcPlusPlus::SgfcWinType) fromSgfcKitWinType:(SGFCWinType)winType
+{
+  int mappedValue = [SGFCMappingUtility fromSgfcKitValue:winType
+                                                usingMap:winTypeFromSgfcKitMap
+                                            withEnumName:@"SGFCWinType"];
+  return static_cast<LibSgfcPlusPlus::SgfcWinType>(mappedValue);
 }
 
 + (NSInteger) toSgfcKitInteger:(int)intValue
