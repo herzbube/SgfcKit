@@ -167,6 +167,14 @@ else()
     message ( STATUS "Using user-provided installation prefix to find libsgfc++ CMake package." )
   endif()
 
+  # When cross-compiling for iOS find_package ignores the folder specified for
+  # the PATHS option. Directly setting the <PackageName>_DIR variable causes
+  # find_package to skip the search for the package's config file.
+  if (${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
+    set ( ${LIBSGFCPLUSPLUS_PACKAGE_NAME}_DIR "${LIBSGFCPLUSPLUS_INSTALLATION_PREFIX}/lib/${LIBSGFCPLUSPLUS_PACKAGE_NAME}" )
+    message ( STATUS "iOS cross-compiling hack: Setting ${LIBSGFCPLUSPLUS_PACKAGE_NAME}_DIR = ${${LIBSGFCPLUSPLUS_PACKAGE_NAME}_DIR}" )
+  endif()
+
   find_package (
     ${LIBSGFCPLUSPLUS_PACKAGE_NAME}
     0.1
