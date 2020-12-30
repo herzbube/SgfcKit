@@ -16,9 +16,7 @@ set (
   document/SGFCDocument.mm
   document/SGFCGame.mm
   document/SGFCNode.mm
-  document/SGFCNodeTraits.mm
   document/SGFCProperty.mm
-  document/SGFCPropertyTraits.mm
   document/SGFCSinglePropertyValue.mm
   document/SGFCTreeBuilder.mm
   factory/SGFCKitFactory.mm
