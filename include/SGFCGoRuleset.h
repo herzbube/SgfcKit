@@ -39,7 +39,7 @@
 typedef struct
 {
   /// @brief The ruleset type. The default is #SGFCGoRulesetTypeAGA.
-  SGFCGoRulesetType GoRulesetType = SGFCGoRulesetTypeAGA;
+  SGFCGoRulesetType GoRulesetType;
 
   /// @brief YES if the SGFCGoRuleset object holds a valid Go ruleset.
   /// NO if the SGFCGoRuleset object holds an invalid Go ruleset.
@@ -50,7 +50,7 @@ typedef struct
   /// the #SGFCPropertyTypeRU property value. A library client that manually
   /// creates an SGFCGoRuleset object can simply set this to YES to assert
   /// a valid Go ruleset.
-  bool IsValid = NO;
+  bool IsValid;
 } SGFCGoRuleset;
 
 /// @brief Returns an SGFCGoRuleset value initialized with @a goRulesetType

@@ -40,20 +40,20 @@ typedef struct
 {
   /// @brief The result type. The default is
   /// #GFCGameResultTypeUnknownResult.
-  SGFCGameResultType GameResultType = SGFCGameResultTypeUnknownResult;
+  SGFCGameResultType GameResultType;
 
   /// @brief The win type. The default is #SGFCWinTypeWinWithScore.
   ///
   /// The win type only has meaning if SGFCGameResult::GameResultType is
   /// either #SGFCGameResultTypeBlackWin or #SGFCGameResultTypeWhiteWin.
-  SGFCWinType WinType = SGFCWinTypeWinWithScore;
+  SGFCWinType WinType;
 
   /// @brief The score. The default is 0.0.
   ///
   /// The score only has meaning if SGFCGameResult::GameResultType is
   /// either #SGFCGameResultTypeBlackWin or #SGFCGameResultTypeWhiteWin and
   /// if #SGFCGameResultTypeWinType is #SGFCWinTypeWinWithScore.
-  SGFCReal Score = 0.0;
+  SGFCReal Score;
 
   /// @brief YES if the SGFCGameResult object holds a valid game result.
   /// NO if the SGFCGameResult object holds an invalid game result. The
@@ -64,7 +64,7 @@ typedef struct
   /// the #SGFCPropertyTypeRE property value. A library client that manually
   /// creates an SGFCGameResult object can simply set this to YES to
   /// assert a valid game result.
-  BOOL IsValid = NO;
+  BOOL IsValid;
 } SGFCGameResult;
 
 /// @brief Returns an SGFCGameResult value initialized with @a gameResultType,

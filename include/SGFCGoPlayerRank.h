@@ -41,14 +41,14 @@
 typedef struct
 {
   /// @brief The rank. The default is 30.
-  SGFCNumber Rank = 30;
+  SGFCNumber Rank;
 
   /// @brief The rank type. The default is #SGFCGoPlayerRankTypeKyu.
-  SGFCGoPlayerRankType RankType = SGFCGoPlayerRankTypeKyu;
+  SGFCGoPlayerRankType RankType;
 
   /// @brief The optional rating type that applies to the rank (e.g. the rank
   /// is established). The default is #SGFCGoPlayerRatingTypeUnspecified.
-  SGFCGoPlayerRatingType RatingType = SGFCGoPlayerRatingTypeUnspecified;
+  SGFCGoPlayerRatingType RatingType;
 
   /// @brief YES if the SGFCGoPlayerRank object holds a valid Go player rank.
   /// NO if the SGFCGoPlayerRank object holds an invalid Go player rank.
@@ -59,7 +59,7 @@ typedef struct
   /// the #SGFCPropertyTypeBR or #SGFCPropertyTypeWR property value. A
   /// library client that manually creates an SGFCGoPlayerRank object can
   /// simply set this to YES to assert a valid Go player rank.
-  BOOL IsValid = NO;
+  BOOL IsValid;
 } SGFCGoPlayerRank;
 
 /// @brief Returns an SGFCGoPlayerRank value initialized with @a rank,

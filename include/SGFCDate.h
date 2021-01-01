@@ -46,7 +46,7 @@ typedef struct
   /// @see SGFCDateIsPartialDate()
   /// @see SGFCDateIsValidCalendarDate()
   /// @see SGFCDateIsValidSgfDate()
-  SGFCNumber Year = 0;
+  SGFCNumber Year;
 
   /// @brief The date's month part. Valid values are in the range from 0-12.
   /// The value 0 denotes that the date has no month part. The default is 0.
@@ -54,7 +54,7 @@ typedef struct
   /// @see SGFCDateIsPartialDate()
   /// @see SGFCDateIsValidCalendarDate()
   /// @see SGFCDateIsValidSgfDate()
-  SGFCNumber Month = 0;
+  SGFCNumber Month;
 
   /// @brief The date's day part. Valid values are based on the month part
   /// and, if the month is February, the year part (for leap years). The
@@ -63,7 +63,7 @@ typedef struct
   /// @see SGFCDateIsPartialDate()
   /// @see SGFCDateIsValidCalendarDate()
   /// @see SGFCDateIsValidSgfDate()
-  SGFCNumber Day = 0;
+  SGFCNumber Day;
 } SGFCDate;
 
 /// @brief Returns an SGFCDate value initialized with @a year, @a month and
