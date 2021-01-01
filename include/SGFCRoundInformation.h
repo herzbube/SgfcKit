@@ -65,7 +65,7 @@ typedef struct
   /// the #SGFCPropertyTypeRO property value. A library client that manually
   /// creates an SGFCRoundInformation object can simply set this to YES to
   /// assert valid values.
-  BOOL IsValid = NO;
+  BOOL IsValid;
 } SGFCRoundInformation;
 
 /// @brief Returns an SGFCRoundInformation value initialized with
