@@ -73,6 +73,21 @@ typedef struct
 extern "C"
 {
 #endif
+
+// Because the struct SGFCRoundInformation contains NSString references the
+// struct is incompatible with C (a class like NSString can never be fully
+// declared in a way that C will understand). Because of this, and because some
+// of the following functions with C linkage return an SGFCRoundInformation
+// object, the compiler issues an incompatibility warning. The warnings are
+// misleading, though, because we don't intend the code to be compiled for /
+// used by C - we intend it to be compiled for / used by Objective-C.
+// Because of this we suppress the misleading compiler warnings with the
+// following pragmas.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type-c-linkage"
+
   /// @brief Returns an SGFCRoundInformation value initialized with
   /// @a roundNumber, @a roundType and @a isValid.
   extern SGFCRoundInformation SGFCRoundInformationMake(NSString* roundNumber, NSString* roundType, BOOL isValid);
@@ -115,6 +130,10 @@ extern "C"
   /// @e IsValid are different for @a roundInformation1 and for
   /// @a roundInformation2. Returns NO if all properties are the same.
   extern BOOL SGFCRoundInformationNotEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2);
+
+#pragma GCC diagnostic pop
+#pragma clang diagnostic pop
+
 #ifdef __cplusplus
 }
 #endif
