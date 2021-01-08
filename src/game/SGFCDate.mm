@@ -22,81 +22,85 @@
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcDate.h>
 
-SGFCDate SGFCDateMake(SGFCNumber year, SGFCNumber month, SGFCNumber day)
+// Prevent C++ name mangling
+extern "C"
 {
-  SGFCDate date;
-
-  date.Year = year;
-  date.Month = month;
-  date.Day = day;
-
-  return date;
-}
-
-BOOL SGFCDateIsPartialDate(SGFCDate date)
-{
-  LibSgfcPlusPlus::SgfcDate mappedDate =
+  SGFCDate SGFCDateMake(SGFCNumber year, SGFCNumber month, SGFCNumber day)
   {
-    [SGFCMappingUtility fromSgfcKitNumber:date.Year],
-    [SGFCMappingUtility fromSgfcKitNumber:date.Month],
-    [SGFCMappingUtility fromSgfcKitNumber:date.Day],
-  };
+    SGFCDate date;
 
-  return [SGFCMappingUtility toSgfcKitBoolean:mappedDate.IsPartialDate()];
-}
+    date.Year = year;
+    date.Month = month;
+    date.Day = day;
 
-BOOL SGFCDateIsValidCalendarDate(SGFCDate date)
-{
-  LibSgfcPlusPlus::SgfcDate mappedDate =
+    return date;
+  }
+
+  BOOL SGFCDateIsPartialDate(SGFCDate date)
   {
-    [SGFCMappingUtility fromSgfcKitNumber:date.Year],
-    [SGFCMappingUtility fromSgfcKitNumber:date.Month],
-    [SGFCMappingUtility fromSgfcKitNumber:date.Day],
-  };
+    LibSgfcPlusPlus::SgfcDate mappedDate =
+    {
+      [SGFCMappingUtility fromSgfcKitNumber:date.Year],
+      [SGFCMappingUtility fromSgfcKitNumber:date.Month],
+      [SGFCMappingUtility fromSgfcKitNumber:date.Day],
+    };
 
-  return [SGFCMappingUtility toSgfcKitBoolean:mappedDate.IsValidCalendarDate()];
-}
+    return [SGFCMappingUtility toSgfcKitBoolean:mappedDate.IsPartialDate()];
+  }
 
-BOOL SGFCDateIsValidSgfDate(SGFCDate date)
-{
-  LibSgfcPlusPlus::SgfcDate mappedDate =
+  BOOL SGFCDateIsValidCalendarDate(SGFCDate date)
   {
-    [SGFCMappingUtility fromSgfcKitNumber:date.Year],
-    [SGFCMappingUtility fromSgfcKitNumber:date.Month],
-    [SGFCMappingUtility fromSgfcKitNumber:date.Day],
-  };
+    LibSgfcPlusPlus::SgfcDate mappedDate =
+    {
+      [SGFCMappingUtility fromSgfcKitNumber:date.Year],
+      [SGFCMappingUtility fromSgfcKitNumber:date.Month],
+      [SGFCMappingUtility fromSgfcKitNumber:date.Day],
+    };
 
-  return [SGFCMappingUtility toSgfcKitBoolean:mappedDate.IsValidSgfDate()];
-}
+    return [SGFCMappingUtility toSgfcKitBoolean:mappedDate.IsValidCalendarDate()];
+  }
 
-NSArray* SGFCDateFromPropertyValue(NSString* propertyValue)
-{
-  auto dates = LibSgfcPlusPlus::SgfcDate::FromPropertyValue(
-    [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
+  BOOL SGFCDateIsValidSgfDate(SGFCDate date)
+  {
+    LibSgfcPlusPlus::SgfcDate mappedDate =
+    {
+      [SGFCMappingUtility fromSgfcKitNumber:date.Year],
+      [SGFCMappingUtility fromSgfcKitNumber:date.Month],
+      [SGFCMappingUtility fromSgfcKitNumber:date.Day],
+    };
 
-  return [SGFCMappingUtility toSgfcKitDates:dates];
-}
+    return [SGFCMappingUtility toSgfcKitBoolean:mappedDate.IsValidSgfDate()];
+  }
 
-NSString* SGFCDateToPropertyValue(NSArray* gameDates)
-{
-  auto mappedGameDates = [SGFCMappingUtility fromSgfcKitDates:gameDates];
+  NSArray* SGFCDateFromPropertyValue(NSString* propertyValue)
+  {
+    auto dates = LibSgfcPlusPlus::SgfcDate::FromPropertyValue(
+      [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcDate::ToPropertyValue(mappedGameDates)];
-}
+    return [SGFCMappingUtility toSgfcKitDates:dates];
+  }
 
-BOOL SGFCDateEqualToDate(SGFCDate date1, SGFCDate date2)
-{
-  if (date1.Year != date2.Year)
-    return NO;
-  else if (date1.Month != date2.Month)
-    return NO;
-  else if (date1.Day != date2.Day)
-    return NO;
-  else
-    return YES;
-}
+  NSString* SGFCDateToPropertyValue(NSArray* gameDates)
+  {
+    auto mappedGameDates = [SGFCMappingUtility fromSgfcKitDates:gameDates];
 
-BOOL SGFCDateNotEqualToDate(SGFCDate date1, SGFCDate date2)
-{
-  return SGFCDateEqualToDate(date1, date2) ? NO : YES;
+    return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcDate::ToPropertyValue(mappedGameDates)];
+  }
+
+  BOOL SGFCDateEqualToDate(SGFCDate date1, SGFCDate date2)
+  {
+    if (date1.Year != date2.Year)
+      return NO;
+    else if (date1.Month != date2.Month)
+      return NO;
+    else if (date1.Day != date2.Day)
+      return NO;
+    else
+      return YES;
+  }
+
+  BOOL SGFCDateNotEqualToDate(SGFCDate date1, SGFCDate date2)
+  {
+    return SGFCDateEqualToDate(date1, date2) ? NO : YES;
+  }
 }

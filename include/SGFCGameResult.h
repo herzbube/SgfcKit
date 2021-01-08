@@ -67,40 +67,48 @@ typedef struct
   BOOL IsValid;
 } SGFCGameResult;
 
-/// @brief Returns an SGFCGameResult value initialized with @a gameResultType,
-/// @a winType, @a score and @a isValid.
-extern SGFCGameResult SGFCGameResultMake(SGFCGameResultType gameResultType, SGFCWinType winType, SGFCReal score, BOOL isValid);
+// Prevent C++ name mangling
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+  /// @brief Returns an SGFCGameResult value initialized with @a gameResultType,
+  /// @a winType, @a score and @a isValid.
+  extern SGFCGameResult SGFCGameResultMake(SGFCGameResultType gameResultType, SGFCWinType winType, SGFCReal score, BOOL isValid);
 
-/// @brief Decomposes the content of @a propertyValue into distinct game
-/// result type, win type and score values.
-///
-/// See the SGF standard specification for the mandatory structure of an
-/// #SGFCPropertyTypeRE property value.
-///
-/// @return SGFCGameResult An object with the decomposed game
-/// result type, win type and score values. The object's
-/// SGFCGameResult::IsValid member is YES if decomposition was successful,
-/// otherwise it is NO.
-extern SGFCGameResult SGFCGameResultFromPropertyValue(NSString* propertyValue);
+  /// @brief Decomposes the content of @a propertyValue into distinct game
+  /// result type, win type and score values.
+  ///
+  /// See the SGF standard specification for the mandatory structure of an
+  /// #SGFCPropertyTypeRE property value.
+  ///
+  /// @return SGFCGameResult An object with the decomposed game
+  /// result type, win type and score values. The object's
+  /// SGFCGameResult::IsValid member is YES if decomposition was successful,
+  /// otherwise it is NO.
+  extern SGFCGameResult SGFCGameResultFromPropertyValue(NSString* propertyValue);
 
-/// @brief Composes a property value for #SGFCPropertyTypeRE from the
-/// game result type, win type and score values in @a gameResult.
-///
-/// See the SGF standard specification for the mandatory structure of an
-/// #SGFCPropertyTypeRE property value.
-///
-/// @return NSString A property value for #SGFCPropertyTypeRE that
-/// conforms to the SGF standard's mandatory formatting, or
-/// #SGFCNoneValueString if the SGFCGameResult::IsValid
-/// member of @a gameResult is NO.
-extern NSString* SGFCGameResultToPropertyValue(SGFCGameResult gameResult);
+  /// @brief Composes a property value for #SGFCPropertyTypeRE from the
+  /// game result type, win type and score values in @a gameResult.
+  ///
+  /// See the SGF standard specification for the mandatory structure of an
+  /// #SGFCPropertyTypeRE property value.
+  ///
+  /// @return NSString A property value for #SGFCPropertyTypeRE that
+  /// conforms to the SGF standard's mandatory formatting, or
+  /// #SGFCNoneValueString if the SGFCGameResult::IsValid
+  /// member of @a gameResult is NO.
+  extern NSString* SGFCGameResultToPropertyValue(SGFCGameResult gameResult);
 
-/// @brief Returns YES if the properties @e GameResultType, @e WinType,
-/// @e Score and @e IsValid are the same for @a gameResult1 and @a gameResult2.
-/// Returns NO if any of these properties are different.
-extern BOOL SGFCGameResultEqualToGameResult(SGFCGameResult gameResult1, SGFCGameResult gameResult2);
+  /// @brief Returns YES if the properties @e GameResultType, @e WinType,
+  /// @e Score and @e IsValid are the same for @a gameResult1 and @a gameResult2.
+  /// Returns NO if any of these properties are different.
+  extern BOOL SGFCGameResultEqualToGameResult(SGFCGameResult gameResult1, SGFCGameResult gameResult2);
 
-/// @brief Returns YES if any of the properties @e GameResultType,
-/// @e WinType, @e Score or @e IsValid are different for @a gameResult1 and
-/// @a gameResult2. Returns NO if all properties are the same.
-extern BOOL SGFCGameResultNotEqualToGameResult(SGFCGameResult gameResult1, SGFCGameResult gameResult2);
+  /// @brief Returns YES if any of the properties @e GameResultType,
+  /// @e WinType, @e Score or @e IsValid are different for @a gameResult1 and
+  /// @a gameResult2. Returns NO if all properties are the same.
+  extern BOOL SGFCGameResultNotEqualToGameResult(SGFCGameResult gameResult1, SGFCGameResult gameResult2);
+#ifdef __cplusplus
+}
+#endif

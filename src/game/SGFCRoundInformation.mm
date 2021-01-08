@@ -21,46 +21,50 @@
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcRoundInformation.h>
 
-SGFCRoundInformation SGFCRoundInformationMake(NSString* roundNumber, NSString* roundType, BOOL isValid)
+// Prevent C++ name mangling
+extern "C"
 {
-  SGFCRoundInformation roundInformation;
+  SGFCRoundInformation SGFCRoundInformationMake(NSString* roundNumber, NSString* roundType, BOOL isValid)
+  {
+    SGFCRoundInformation roundInformation;
 
-  roundInformation.RoundNumber = [NSString stringWithString:roundNumber];
-  roundInformation.RoundType = [NSString stringWithString:roundType];
-  roundInformation.IsValid = isValid;
+    roundInformation.RoundNumber = [NSString stringWithString:roundNumber];
+    roundInformation.RoundType = [NSString stringWithString:roundType];
+    roundInformation.IsValid = isValid;
 
-  return roundInformation;
-}
+    return roundInformation;
+  }
 
-SGFCRoundInformation SGFCRoundInformationFromPropertyValue(NSString* propertyValue)
-{
-  auto roundInformation = LibSgfcPlusPlus::SgfcRoundInformation::FromPropertyValue(
-    [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
+  SGFCRoundInformation SGFCRoundInformationFromPropertyValue(NSString* propertyValue)
+  {
+    auto roundInformation = LibSgfcPlusPlus::SgfcRoundInformation::FromPropertyValue(
+      [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return [SGFCMappingUtility toSgfcKitRoundInformation:roundInformation];
-}
+    return [SGFCMappingUtility toSgfcKitRoundInformation:roundInformation];
+  }
 
-NSString* SGFCRoundInformationToPropertyValue(SGFCRoundInformation roundInformation)
-{
-  LibSgfcPlusPlus::SgfcRoundInformation mappedRoundInformation =
-    [SGFCMappingUtility fromSgfcKitRoundInformation:roundInformation];
+  NSString* SGFCRoundInformationToPropertyValue(SGFCRoundInformation roundInformation)
+  {
+    LibSgfcPlusPlus::SgfcRoundInformation mappedRoundInformation =
+      [SGFCMappingUtility fromSgfcKitRoundInformation:roundInformation];
 
-  return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcRoundInformation::ToPropertyValue(mappedRoundInformation)];
-}
+    return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcRoundInformation::ToPropertyValue(mappedRoundInformation)];
+  }
 
-BOOL SGFCRoundInformationEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2)
-{
-  if (! [roundInformation1.RoundNumber isEqualToString:roundInformation2.RoundNumber])
-    return NO;
-  else if (! [roundInformation1.RoundType isEqualToString:roundInformation2.RoundType])
-    return NO;
-  else if (roundInformation1.IsValid != roundInformation2.IsValid)
-    return NO;
-  else
-    return YES;
-}
+  BOOL SGFCRoundInformationEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2)
+  {
+    if (! [roundInformation1.RoundNumber isEqualToString:roundInformation2.RoundNumber])
+      return NO;
+    else if (! [roundInformation1.RoundType isEqualToString:roundInformation2.RoundType])
+      return NO;
+    else if (roundInformation1.IsValid != roundInformation2.IsValid)
+      return NO;
+    else
+      return YES;
+  }
 
-BOOL SGFCRoundInformationNotEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2)
-{
-  return SGFCRoundInformationEqualToRoundInformation(roundInformation1, roundInformation2) ? NO : YES;
+  BOOL SGFCRoundInformationNotEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2)
+  {
+    return SGFCRoundInformationEqualToRoundInformation(roundInformation1, roundInformation2) ? NO : YES;
+  }
 }

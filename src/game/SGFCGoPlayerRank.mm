@@ -21,48 +21,52 @@
 // libsgfc++ includes
 #import <libsgfcplusplus/SGFCGoPlayerRank.h>
 
-SGFCGoPlayerRank SGFCGoPlayerRankMake(SGFCNumber rank, SGFCGoPlayerRankType rankType, SGFCGoPlayerRatingType ratingType, BOOL isValid)
+// Prevent C++ name mangling
+extern "C"
 {
-  SGFCGoPlayerRank goPlayerRank;
+  SGFCGoPlayerRank SGFCGoPlayerRankMake(SGFCNumber rank, SGFCGoPlayerRankType rankType, SGFCGoPlayerRatingType ratingType, BOOL isValid)
+  {
+    SGFCGoPlayerRank goPlayerRank;
 
-  goPlayerRank.Rank = rank;
-  goPlayerRank.RankType = rankType;
-  goPlayerRank.RatingType = ratingType;
-  goPlayerRank.IsValid = isValid;
+    goPlayerRank.Rank = rank;
+    goPlayerRank.RankType = rankType;
+    goPlayerRank.RatingType = ratingType;
+    goPlayerRank.IsValid = isValid;
 
-  return goPlayerRank;
-}
+    return goPlayerRank;
+  }
 
-SGFCGoPlayerRank SGFCGoPlayerRankFromPropertyValue(NSString* propertyValue)
-{
-  auto goPlayerRank = LibSgfcPlusPlus::SgfcGoPlayerRank::FromPropertyValue(
-    [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
+  SGFCGoPlayerRank SGFCGoPlayerRankFromPropertyValue(NSString* propertyValue)
+  {
+    auto goPlayerRank = LibSgfcPlusPlus::SgfcGoPlayerRank::FromPropertyValue(
+      [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return [SGFCMappingUtility toSgfcKitGoPlayerRank:goPlayerRank];
-}
+    return [SGFCMappingUtility toSgfcKitGoPlayerRank:goPlayerRank];
+  }
 
-NSString* SGFCGoPlayerRankToPropertyValue(SGFCGoPlayerRank goPlayerRank)
-{
-  LibSgfcPlusPlus::SgfcGoPlayerRank mappedGoPlayerRank = [SGFCMappingUtility fromSgfcKitGoPlayerRank:goPlayerRank];
+  NSString* SGFCGoPlayerRankToPropertyValue(SGFCGoPlayerRank goPlayerRank)
+  {
+    LibSgfcPlusPlus::SgfcGoPlayerRank mappedGoPlayerRank = [SGFCMappingUtility fromSgfcKitGoPlayerRank:goPlayerRank];
 
-  return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGoPlayerRank::ToPropertyValue(mappedGoPlayerRank)];
-}
+    return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGoPlayerRank::ToPropertyValue(mappedGoPlayerRank)];
+  }
 
-BOOL SGFCGoPlayerRankEqualToGoPlayerRank(SGFCGoPlayerRank goPlayerRank1, SGFCGoPlayerRank goPlayerRank2)
-{
-  if (goPlayerRank1.Rank != goPlayerRank2.Rank)
-    return NO;
-  else if (goPlayerRank1.RankType != goPlayerRank2.RankType)
-    return NO;
-  else if (goPlayerRank1.RatingType != goPlayerRank2.RatingType)
-    return NO;
-  else if (goPlayerRank1.IsValid != goPlayerRank2.IsValid)
-    return NO;
-  else
-    return YES;
-}
+  BOOL SGFCGoPlayerRankEqualToGoPlayerRank(SGFCGoPlayerRank goPlayerRank1, SGFCGoPlayerRank goPlayerRank2)
+  {
+    if (goPlayerRank1.Rank != goPlayerRank2.Rank)
+      return NO;
+    else if (goPlayerRank1.RankType != goPlayerRank2.RankType)
+      return NO;
+    else if (goPlayerRank1.RatingType != goPlayerRank2.RatingType)
+      return NO;
+    else if (goPlayerRank1.IsValid != goPlayerRank2.IsValid)
+      return NO;
+    else
+      return YES;
+  }
 
-BOOL SGFCGoPlayerRankNotEqualToGoPlayerRank(SGFCGoPlayerRank goPlayerRank1, SGFCGoPlayerRank goPlayerRank2)
-{
-  return SGFCGoPlayerRankEqualToGoPlayerRank(goPlayerRank1, goPlayerRank2) ? NO : YES;
+  BOOL SGFCGoPlayerRankNotEqualToGoPlayerRank(SGFCGoPlayerRank goPlayerRank1, SGFCGoPlayerRank goPlayerRank2)
+  {
+    return SGFCGoPlayerRankEqualToGoPlayerRank(goPlayerRank1, goPlayerRank2) ? NO : YES;
+  }
 }

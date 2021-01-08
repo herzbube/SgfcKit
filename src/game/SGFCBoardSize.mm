@@ -17,31 +17,35 @@
 // Project includes
 #import "../../include/SGFCBoardSize.h"
 
-SGFCBoardSize SGFCBoardSizeMake(SGFCNumber columns, SGFCNumber rows)
+// Prevent C++ name mangling
+extern "C"
 {
-  SGFCBoardSize boardSize;
-  boardSize.Columns = columns;
-  boardSize.Rows = rows;
+  SGFCBoardSize SGFCBoardSizeMake(SGFCNumber columns, SGFCNumber rows)
+  {
+    SGFCBoardSize boardSize;
+    boardSize.Columns = columns;
+    boardSize.Rows = rows;
 
-  return boardSize;
-}
+    return boardSize;
+  }
 
-BOOL SGFCBoardSizeIsSquare(SGFCBoardSize boardSize)
-{
-  return (boardSize.Columns == boardSize.Rows ? YES : NO);
-}
+  BOOL SGFCBoardSizeIsSquare(SGFCBoardSize boardSize)
+  {
+    return (boardSize.Columns == boardSize.Rows ? YES : NO);
+  }
 
-BOOL SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
-{
-  if (boardSize1.Columns != boardSize2.Columns)
-    return NO;
-  else if (boardSize1.Rows != boardSize2.Rows)
-    return NO;
-  else
-    return YES;
-}
+  BOOL SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
+  {
+    if (boardSize1.Columns != boardSize2.Columns)
+      return NO;
+    else if (boardSize1.Rows != boardSize2.Rows)
+      return NO;
+    else
+      return YES;
+  }
 
-BOOL SGFCBoardSizeNotEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
-{
-  return SGFCBoardSizeEqualToBoardSize(boardSize1, boardSize2) ? NO : YES;
+  BOOL SGFCBoardSizeNotEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
+  {
+    return SGFCBoardSizeEqualToBoardSize(boardSize1, boardSize2) ? NO : YES;
+  }
 }

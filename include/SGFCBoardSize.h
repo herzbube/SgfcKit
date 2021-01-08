@@ -51,20 +51,28 @@ typedef struct
   SGFCNumber Rows;
 } SGFCBoardSize;
 
-/// @brief Returns an SGFCBoardSize value initialized with @a columns and
-/// @a rows.
-extern SGFCBoardSize SGFCBoardSizeMake(SGFCNumber columns, SGFCNumber rows);
+// Prevent C++ name mangling
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+  /// @brief Returns an SGFCBoardSize value initialized with @a columns and
+  /// @a rows.
+  extern SGFCBoardSize SGFCBoardSizeMake(SGFCNumber columns, SGFCNumber rows);
 
-/// @brief Returns YES if @a boardSize represents a square board. Returns NO
-/// if @a boardSize represents a rectangular board.
-extern BOOL SGFCBoardSizeIsSquare(SGFCBoardSize boardSize);
+  /// @brief Returns YES if @a boardSize represents a square board. Returns NO
+  /// if @a boardSize represents a rectangular board.
+  extern BOOL SGFCBoardSizeIsSquare(SGFCBoardSize boardSize);
 
-/// @brief Returns YES if the number of columns and rows is the same for
-/// @a boardSize1 and @a boardSize2. Returns NO if either the number of
-/// columns or rows or both is different.
-extern BOOL SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2);
+  /// @brief Returns YES if the number of columns and rows is the same for
+  /// @a boardSize1 and @a boardSize2. Returns NO if either the number of
+  /// columns or rows or both is different.
+  extern BOOL SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2);
 
-/// @brief Returns YES if either the number of columns or rows or both
-/// is different for @a boardSize1 and @a boardSize2. Returns NO if the
-/// number of columns and rows is the same.
-extern BOOL SGFCBoardSizeNotEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2);
+  /// @brief Returns YES if either the number of columns or rows or both
+  /// is different for @a boardSize1 and @a boardSize2. Returns NO if the
+  /// number of columns and rows is the same.
+  extern BOOL SGFCBoardSizeNotEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2);
+#ifdef __cplusplus
+}
+#endif

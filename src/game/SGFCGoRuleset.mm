@@ -21,42 +21,46 @@
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcGoRuleset.h>
 
-SGFCGoRuleset SGFCGoRulesetMake(SGFCGoRulesetType goRulesetType, BOOL isValid)
+// Prevent C++ name mangling
+extern "C"
 {
-  SGFCGoRuleset goRuleset;
+  SGFCGoRuleset SGFCGoRulesetMake(SGFCGoRulesetType goRulesetType, BOOL isValid)
+  {
+    SGFCGoRuleset goRuleset;
 
-  goRuleset.GoRulesetType = goRulesetType;
-  goRuleset.IsValid = isValid;
+    goRuleset.GoRulesetType = goRulesetType;
+    goRuleset.IsValid = isValid;
 
-  return goRuleset;
-}
+    return goRuleset;
+  }
 
-SGFCGoRuleset SGFCGoRulesetFromPropertyValue(NSString* propertyValue)
-{
-  auto goRuleset = LibSgfcPlusPlus::SgfcGoRuleset::FromPropertyValue(
-    [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
+  SGFCGoRuleset SGFCGoRulesetFromPropertyValue(NSString* propertyValue)
+  {
+    auto goRuleset = LibSgfcPlusPlus::SgfcGoRuleset::FromPropertyValue(
+      [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return [SGFCMappingUtility toSgfcKitGoRuleset:goRuleset];
-}
+    return [SGFCMappingUtility toSgfcKitGoRuleset:goRuleset];
+  }
 
-NSString* SGFCGoRulesetToPropertyValue(SGFCGoRuleset goRuleset)
-{
-  LibSgfcPlusPlus::SgfcGoRuleset mappedGoRuleset = [SGFCMappingUtility fromSgfcKitGoRuleset:goRuleset];
+  NSString* SGFCGoRulesetToPropertyValue(SGFCGoRuleset goRuleset)
+  {
+    LibSgfcPlusPlus::SgfcGoRuleset mappedGoRuleset = [SGFCMappingUtility fromSgfcKitGoRuleset:goRuleset];
 
-  return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGoRuleset::ToPropertyValue(mappedGoRuleset)];
-}
+    return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGoRuleset::ToPropertyValue(mappedGoRuleset)];
+  }
 
-BOOL SGFCGoRulesetEqualToGoRuleset(SGFCGoRuleset goRuleset1, SGFCGoRuleset goRuleset2)
-{
-  if (goRuleset1.GoRulesetType != goRuleset2.GoRulesetType)
-    return NO;
-  else if (goRuleset1.IsValid != goRuleset2.IsValid)
-    return NO;
-  else
-    return YES;
-}
+  BOOL SGFCGoRulesetEqualToGoRuleset(SGFCGoRuleset goRuleset1, SGFCGoRuleset goRuleset2)
+  {
+    if (goRuleset1.GoRulesetType != goRuleset2.GoRulesetType)
+      return NO;
+    else if (goRuleset1.IsValid != goRuleset2.IsValid)
+      return NO;
+    else
+      return YES;
+  }
 
-BOOL SGFCGoRulesetNotEqualToGoRuleset(SGFCGoRuleset goRuleset1, SGFCGoRuleset goRuleset2)
-{
-  return SGFCGoRulesetEqualToGoRuleset(goRuleset1, goRuleset2) ? NO : YES;
+  BOOL SGFCGoRulesetNotEqualToGoRuleset(SGFCGoRuleset goRuleset1, SGFCGoRuleset goRuleset2)
+  {
+    return SGFCGoRulesetEqualToGoRuleset(goRuleset1, goRuleset2) ? NO : YES;
+  }
 }

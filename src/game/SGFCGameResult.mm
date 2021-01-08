@@ -21,49 +21,53 @@
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcGameResult.h>
 
-SGFCGameResult SGFCGameResultMake(SGFCGameResultType gameResultType, SGFCWinType winType, SGFCReal score, BOOL isValid)
+// Prevent C++ name mangling
+extern "C"
 {
-  SGFCGameResult gameResult;
+  SGFCGameResult SGFCGameResultMake(SGFCGameResultType gameResultType, SGFCWinType winType, SGFCReal score, BOOL isValid)
+  {
+    SGFCGameResult gameResult;
 
-  gameResult.GameResultType = gameResultType;
-  gameResult.WinType = winType;
-  gameResult.Score = score;
-  gameResult.IsValid = isValid;
+    gameResult.GameResultType = gameResultType;
+    gameResult.WinType = winType;
+    gameResult.Score = score;
+    gameResult.IsValid = isValid;
 
-  return gameResult;
-}
+    return gameResult;
+  }
 
-SGFCGameResult SGFCGameResultFromPropertyValue(NSString* propertyValue)
-{
-  auto gameResult = LibSgfcPlusPlus::SgfcGameResult::FromPropertyValue(
-    [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
+  SGFCGameResult SGFCGameResultFromPropertyValue(NSString* propertyValue)
+  {
+    auto gameResult = LibSgfcPlusPlus::SgfcGameResult::FromPropertyValue(
+      [SGFCMappingUtility fromSgfcKitSimpleText:propertyValue]);
 
-  return [SGFCMappingUtility toSgfcKitGameResult:gameResult];
-}
+    return [SGFCMappingUtility toSgfcKitGameResult:gameResult];
+  }
 
-NSString* SGFCGameResultToPropertyValue(SGFCGameResult gameResult)
-{
-  LibSgfcPlusPlus::SgfcGameResult mappedGameResult =
-    [SGFCMappingUtility fromSgfcKitGameResult:gameResult];
+  NSString* SGFCGameResultToPropertyValue(SGFCGameResult gameResult)
+  {
+    LibSgfcPlusPlus::SgfcGameResult mappedGameResult =
+      [SGFCMappingUtility fromSgfcKitGameResult:gameResult];
 
-  return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGameResult::ToPropertyValue(mappedGameResult)];
-}
+    return [SGFCMappingUtility toSgfcKitString:LibSgfcPlusPlus::SgfcGameResult::ToPropertyValue(mappedGameResult)];
+  }
 
-BOOL SGFCGameResultEqualToGameResult(SGFCGameResult gameResult1, SGFCGameResult gameResult2)
-{
-  if (gameResult1.GameResultType != gameResult2.GameResultType)
-    return NO;
-  else if (gameResult1.WinType != gameResult2.WinType)
-    return NO;
-  else if (gameResult1.Score != gameResult2.Score)
-    return NO;
-  else if (gameResult1.IsValid != gameResult2.IsValid)
-    return NO;
-  else
-    return YES;
-}
+  BOOL SGFCGameResultEqualToGameResult(SGFCGameResult gameResult1, SGFCGameResult gameResult2)
+  {
+    if (gameResult1.GameResultType != gameResult2.GameResultType)
+      return NO;
+    else if (gameResult1.WinType != gameResult2.WinType)
+      return NO;
+    else if (gameResult1.Score != gameResult2.Score)
+      return NO;
+    else if (gameResult1.IsValid != gameResult2.IsValid)
+      return NO;
+    else
+      return YES;
+  }
 
-BOOL SGFCGameResultNotEqualToGameResult(SGFCGameResult gameResult1, SGFCGameResult gameResult2)
-{
-  return SGFCGameResultEqualToGameResult(gameResult1, gameResult2) ? NO : YES;
+  BOOL SGFCGameResultNotEqualToGameResult(SGFCGameResult gameResult1, SGFCGameResult gameResult2)
+  {
+    return SGFCGameResultEqualToGameResult(gameResult1, gameResult2) ? NO : YES;
+  }
 }

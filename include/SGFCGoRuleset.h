@@ -53,39 +53,47 @@ typedef struct
   bool IsValid;
 } SGFCGoRuleset;
 
-/// @brief Returns an SGFCGoRuleset value initialized with @a goRulesetType
-/// and @a isValid.
-extern SGFCGoRuleset SGFCGoRulesetMake(SGFCGoRulesetType goRulesetType, BOOL isValid);
+// Prevent C++ name mangling
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+  /// @brief Returns an SGFCGoRuleset value initialized with @a goRulesetType
+  /// and @a isValid.
+  extern SGFCGoRuleset SGFCGoRulesetMake(SGFCGoRulesetType goRulesetType, BOOL isValid);
 
-/// @brief Decomposes the content of @a propertyValue into a distinct
-/// ruleset type value.
-///
-/// See the SGF standard specification for the recommended structure of an
-/// #SGFCPropertyTypeRU property value.
-///
-/// @return SGFCGoRuleset An object with the decomposed ruleset type value.
-/// The object's SGFCGoRuleset::IsValid member is YES if decomposition was
-/// successful, otherwise it is NO.
-extern SGFCGoRuleset SGFCGoRulesetFromPropertyValue(NSString* propertyValue);
+  /// @brief Decomposes the content of @a propertyValue into a distinct
+  /// ruleset type value.
+  ///
+  /// See the SGF standard specification for the recommended structure of an
+  /// #SGFCPropertyTypeRU property value.
+  ///
+  /// @return SGFCGoRuleset An object with the decomposed ruleset type value.
+  /// The object's SGFCGoRuleset::IsValid member is YES if decomposition was
+  /// successful, otherwise it is NO.
+  extern SGFCGoRuleset SGFCGoRulesetFromPropertyValue(NSString* propertyValue);
 
-/// @brief Composes a property value for #SGFCPropertyTypeRU from the
-/// ruleset type value in @a goRuleset.
-///
-/// See the SGF standard specification for the recommended structure of an
-/// #SGFCPropertyTypeRU property value.
-///
-/// @return NSString A property value for #SGFCPropertyTypeRU that
-/// conforms to the SGF standard's mandatory formatting, or
-/// #SGFCNoneValueString if the SGFCGoRuleset::IsValid member of
-/// @a goRuleset is NO.
-extern NSString* SGFCGoRulesetToPropertyValue(SGFCGoRuleset goRuleset);
+  /// @brief Composes a property value for #SGFCPropertyTypeRU from the
+  /// ruleset type value in @a goRuleset.
+  ///
+  /// See the SGF standard specification for the recommended structure of an
+  /// #SGFCPropertyTypeRU property value.
+  ///
+  /// @return NSString A property value for #SGFCPropertyTypeRU that
+  /// conforms to the SGF standard's mandatory formatting, or
+  /// #SGFCNoneValueString if the SGFCGoRuleset::IsValid member of
+  /// @a goRuleset is NO.
+  extern NSString* SGFCGoRulesetToPropertyValue(SGFCGoRuleset goRuleset);
 
-/// @brief Returns YES if the properties @e GoRulesetType and @a IsValid are
-/// the same for the current SGFCGoRuleset object and for @a other. Returns NO
-/// if any of these properties are different.
-extern BOOL SGFCGoRulesetEqualToGoRuleset(SGFCGoRuleset goRuleset1, SGFCGoRuleset goRuleset2);
+  /// @brief Returns YES if the properties @e GoRulesetType and @a IsValid are
+  /// the same for the current SGFCGoRuleset object and for @a other. Returns NO
+  /// if any of these properties are different.
+  extern BOOL SGFCGoRulesetEqualToGoRuleset(SGFCGoRuleset goRuleset1, SGFCGoRuleset goRuleset2);
 
-/// @brief Returns YES if the properties @e GoRulesetType and @e IsValid are
-/// different for the current SGFCGoRuleset object and for @a other. Returns NO
-/// if all properties are the same.
-extern BOOL SGFCGoRulesetNotEqualToGoRuleset(SGFCGoRuleset goRuleset1, SGFCGoRuleset goRuleset2);
+  /// @brief Returns YES if the properties @e GoRulesetType and @e IsValid are
+  /// different for the current SGFCGoRuleset object and for @a other. Returns NO
+  /// if all properties are the same.
+  extern BOOL SGFCGoRulesetNotEqualToGoRuleset(SGFCGoRuleset goRuleset1, SGFCGoRuleset goRuleset2);
+#ifdef __cplusplus
+}
+#endif

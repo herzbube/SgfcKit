@@ -68,45 +68,53 @@ typedef struct
   BOOL IsValid;
 } SGFCRoundInformation;
 
-/// @brief Returns an SGFCRoundInformation value initialized with
-/// @a roundNumber, @a roundType and @a isValid.
-extern SGFCRoundInformation SGFCRoundInformationMake(NSString* roundNumber, NSString* roundType, BOOL isValid);
+// Prevent C++ name mangling
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+  /// @brief Returns an SGFCRoundInformation value initialized with
+  /// @a roundNumber, @a roundType and @a isValid.
+  extern SGFCRoundInformation SGFCRoundInformationMake(NSString* roundNumber, NSString* roundType, BOOL isValid);
 
-/// @brief Decomposes the content of @a propertyValue into distinct round
-/// number and round type values.
-///
-/// The SGF standard specifies that @a propertyValue for
-/// #SGFCPropertyTypeRO should be written as "xx (tt)", where "xx" is the
-/// number of the round and "(tt)" the type of the round. This method
-/// attempts to parse @a propertyValue according to the SGF standard's
-/// suggested formatting.
-///
-/// @return SGFCRoundInformation An object with the decomposed round number
-/// and round type values. The object's SGFCRoundInformation::IsValid member
-/// is YES if decomposition was successful, otherwise it is NO.
-extern SGFCRoundInformation SGFCRoundInformationFromPropertyValue(NSString* propertyValue);
+  /// @brief Decomposes the content of @a propertyValue into distinct round
+  /// number and round type values.
+  ///
+  /// The SGF standard specifies that @a propertyValue for
+  /// #SGFCPropertyTypeRO should be written as "xx (tt)", where "xx" is the
+  /// number of the round and "(tt)" the type of the round. This method
+  /// attempts to parse @a propertyValue according to the SGF standard's
+  /// suggested formatting.
+  ///
+  /// @return SGFCRoundInformation An object with the decomposed round number
+  /// and round type values. The object's SGFCRoundInformation::IsValid member
+  /// is YES if decomposition was successful, otherwise it is NO.
+  extern SGFCRoundInformation SGFCRoundInformationFromPropertyValue(NSString* propertyValue);
 
-/// @brief Composes a property value for #SGFCPropertyTypeRO from the
-/// round number and round type values in @a roundInformation.
-///
-/// The SGF standard specifies that a property value for
-/// #SGFCPropertyTypeRO should be written as "xx (tt)", where "xx" is the
-/// number of the round and "(tt)" the type of the round. This method
-/// composes a return value that conforms to the SGF standard's suggested
-/// formatting.
-///
-/// @return NSString A property value for #SGFCPropertyTypeRO that
-/// conforms to the SGF standard's suggested formatting, or
-/// #SGFCNoneValueString if the SGFCRoundInformation::IsValid
-/// member of @a roundInformation is NO.
-extern NSString* SGFCRoundInformationToPropertyValue(SGFCRoundInformation roundInformation);
+  /// @brief Composes a property value for #SGFCPropertyTypeRO from the
+  /// round number and round type values in @a roundInformation.
+  ///
+  /// The SGF standard specifies that a property value for
+  /// #SGFCPropertyTypeRO should be written as "xx (tt)", where "xx" is the
+  /// number of the round and "(tt)" the type of the round. This method
+  /// composes a return value that conforms to the SGF standard's suggested
+  /// formatting.
+  ///
+  /// @return NSString A property value for #SGFCPropertyTypeRO that
+  /// conforms to the SGF standard's suggested formatting, or
+  /// #SGFCNoneValueString if the SGFCRoundInformation::IsValid
+  /// member of @a roundInformation is NO.
+  extern NSString* SGFCRoundInformationToPropertyValue(SGFCRoundInformation roundInformation);
 
-/// @brief Returns YES if the properties @e RoundNumber, @e RoundType and
-/// @e IsValid are the same for @a roundInformation1 and for
-/// @a roundInformation2. Returns NO if any of these properties are different.
-extern BOOL SGFCRoundInformationEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2);
+  /// @brief Returns YES if the properties @e RoundNumber, @e RoundType and
+  /// @e IsValid are the same for @a roundInformation1 and for
+  /// @a roundInformation2. Returns NO if any of these properties are different.
+  extern BOOL SGFCRoundInformationEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2);
 
-/// @brief Returns YES if any of the properties @e RoundNumber, @e RoundType or
-/// @e IsValid are different for @a roundInformation1 and for
-/// @a roundInformation2. Returns NO if all properties are the same.
-extern BOOL SGFCRoundInformationNotEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2);
+  /// @brief Returns YES if any of the properties @e RoundNumber, @e RoundType or
+  /// @e IsValid are different for @a roundInformation1 and for
+  /// @a roundInformation2. Returns NO if all properties are the same.
+  extern BOOL SGFCRoundInformationNotEqualToRoundInformation(SGFCRoundInformation roundInformation1, SGFCRoundInformation roundInformation2);
+#ifdef __cplusplus
+}
+#endif
