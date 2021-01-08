@@ -24,15 +24,15 @@ set (
   factory/SGFCPropertyValueFactory.mm
   game/go/SGFCGoGameInfo.mm
   game/go/SGFCGoMove.mm
+  game/go/SGFCGoPlayerRank.mm
   game/go/SGFCGoPoint.mm
+  game/go/SGFCGoRuleset.mm
   game/go/SGFCGoStone.mm
   game/NSValue+SGFCDate.mm
   game/SGFCBoardSize.mm
   game/SGFCDate.mm
   game/SGFCGameInfo.mm
   game/SGFCGameResult.mm
-  game/SGFCGoPlayerRank.mm
-  game/SGFCGoRuleset.mm
   game/SGFCRoundInformation.mm
   sgfc/argument/SGFCArgument.mm
   sgfc/argument/SGFCArguments.mm

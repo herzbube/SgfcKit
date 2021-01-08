@@ -15,8 +15,8 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
-#import "../../include/SGFCGoRuleset.h"
-#import "../SGFCMappingUtility.h"
+#import "../../../include/SGFCGoRuleset.h"
+#import "../../SGFCMappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/SgfcGoRuleset.h>

@@ -15,8 +15,8 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
-#import "../../include/SGFCGoPlayerRank.h"
-#import "../SGFCMappingUtility.h"
+#import "../../../include/SGFCGoPlayerRank.h"
+#import "../../SGFCMappingUtility.h"
 
 // libsgfc++ includes
 #import <libsgfcplusplus/SGFCGoPlayerRank.h>
