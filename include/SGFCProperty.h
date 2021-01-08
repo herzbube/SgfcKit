@@ -357,7 +357,7 @@
 /// clear: Something like XY[] is possible. In the library's object model,
 /// however, a "None" value is translated to an empty collection.
 ///
-/// /// The setter makes no attempt to check the validity of the property
+/// The setter makes no attempt to check the validity of the property
 /// values. A last-ditch attempt at validation is made by SGFC later when
 /// the game tree is written to an SGF file or to an SGF content string, but
 /// this is unlikely to catch all mistakes. It is ultimately the
