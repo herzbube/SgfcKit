@@ -322,7 +322,10 @@
   auto propertyWithType = _wrappedNode->GetProperty(
     [SGFCMappingUtility fromSgfcKitPropertyType:propertyType]);
 
-  return [SGFCWrappingUtility wrapProperty:propertyWithType];
+  if (propertyWithType == nullptr)
+    return nil;
+  else
+    return [SGFCWrappingUtility wrapProperty:propertyWithType];
 }
 
 - (SGFCProperty*) propertyWithName:(NSString*)propertyName
@@ -333,7 +336,10 @@
   auto propertyWithName = _wrappedNode->GetProperty(
     [SGFCMappingUtility fromSgfcKitString:propertyName]);
 
-  return [SGFCWrappingUtility wrapProperty:propertyWithName];
+  if (propertyWithName == nullptr)
+    return nil;
+  else
+    return [SGFCWrappingUtility wrapProperty:propertyWithName];
 }
 
 - (NSArray*) propertiesWithCategory:(SGFCPropertyCategory)propertyCategory
