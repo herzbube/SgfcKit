@@ -20,6 +20,7 @@
 #import "SGFCBoardSize.h"
 #import "SGFCColor.h"
 #import "SGFCDouble.h"
+#import "SGFCGameType.h"
 #import "SGFCTypedefs.h"
 
 // System includes
@@ -40,6 +41,7 @@
 @class SGFCSinglePropertyValue;
 @class SGFCStonePropertyValue;
 @class SGFCTextPropertyValue;
+@protocol SGFCPropertyValue;
 
 /// @brief The SGFCPropertyValueFactory class is a class that contains only
 /// class methods. The class methods are factory methods used to construct
@@ -113,6 +115,35 @@
 /// @exception NSInvalidArgumentException Is raised if @a value
 /// is @e nil.
 + (SGFCSinglePropertyValue*) propertyValueWithValue:(NSString*)value;
+//@}
+
+/// @name Single property values - Special value types
+//@{
+/// @brief Returns a newly constructed SGFCNumberPropertyValue object
+/// that has an SGFCNumber value that corresponds to @a gameType.
+/// @a gameType must not be #SGFCGameTypeUnknown.
+///
+/// @exception NSInvalidArgumentException Is raised if @a gameType is
+/// #SGFCGameTypeUnknown.
++ (SGFCNumberPropertyValue*) propertyValueWithGameType:(SGFCGameType)gameType;
+
+/// @brief Returns a newly constructed SGFCPropertyValue object that has a
+/// value that corresponds to @a boardSize. a boardSize must be valid.
+/// @a gameType must be provided for validating @a boardSize. @a gameType must
+/// not be #SGFCGameTypeUnknown.
+///
+/// The returned SGFCPropertyValue object is an SGFCNumberPropertyValue
+/// object if SGFCBoardSizeIsSquare() returns YES for @a boardSize.
+///
+/// The returned SGFCPropertyValue object is an SGFCComposedPropertyValue
+/// object consisting of two SGFCNumberPropertyValue objects if
+/// SGFCBoardSizeIsSquare() returns NO for @a boardSize.
+///
+/// @exception NSInvalidArgumentException Is raised if @a gameType is
+/// #SGFCGameTypeUnknown, or if @a boardSize is not valid, i.e. if
+/// SGFCBoardSizeIsValid() method returns NO for @a boardSize.
+- (id<SGFCPropertyValue>) propertyValueWithBoardSize:(SGFCBoardSize)boardSize
+                                            gameType:(SGFCGameType)gameType;
 //@}
 
 /// @name Single property values - Go game value types

@@ -85,6 +85,31 @@
   return [SGFCSinglePropertyValue singlePropertyValueWithRawValue:value];
 }
 
++ (SGFCNumberPropertyValue*) propertyValueWithGameType:(SGFCGameType)gameType
+{
+  return [SGFCNumberPropertyValue numberPropertyValueWithGameType:gameType];
+}
+
+- (id<SGFCPropertyValue>) propertyValueWithBoardSize:(SGFCBoardSize)boardSize
+                                            gameType:(SGFCGameType)gameType
+
+{
+  if (gameType == SGFCGameTypeUnknown)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"gameType\" is SGFCGameTypeUnknown"];
+  if (! SGFCBoardSizeIsValid(boardSize, gameType))
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"boardSize\" is not valid"];
+
+  if (SGFCBoardSizeIsSquare(boardSize))
+  {
+    return [SGFCPropertyValueFactory propertyValueWithNumber:boardSize.Columns];
+  }
+  else
+  {
+    return [SGFCPropertyValueFactory composedPropertyValueWithNumber:boardSize.Columns
+                                                              number:boardSize.Rows];
+  }
+}
+
 + (SGFCGoPointPropertyValue*) propertyValueWithGoPoint:(NSString*)pointValue
                                              boardSize:(SGFCBoardSize)boardSize
 {

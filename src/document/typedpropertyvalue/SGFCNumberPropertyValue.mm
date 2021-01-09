@@ -43,6 +43,11 @@
   return [[self alloc] initWithNumberValue:numberValue];
 }
 
++ (instancetype) numberPropertyValueWithGameType:(SGFCGameType)gameType
+{
+  return [[self alloc] initWithGameType:gameType];
+}
+
 - (instancetype) initWithRawValue:(NSString*)rawValue
 {
   // TODO Attempt to convert to an SGFCNumber
@@ -71,6 +76,17 @@
   [self setWrappedSinglePropertyValue:_wrappedNumberPropertyValue];
 
   return self;
+}
+
+- (instancetype) initWithGameType:(SGFCGameType)gameType
+{
+  if (gameType == SGFCGameTypeUnknown)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"gameType\" is SGFCGameTypeUnknown"];
+
+  auto wrappedNumberPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateGameTypePropertyValue(
+    [SGFCMappingUtility fromSgfcKitGameType:gameType]);
+
+  return [self initWithWrappedNumberPropertyValue:wrappedNumberPropertyValue];
 }
 
 - (instancetype) initWithWrappedNumberPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcNumberPropertyValue>)wrappedNumberPropertyValue

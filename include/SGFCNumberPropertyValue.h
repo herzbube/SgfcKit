@@ -17,6 +17,7 @@
 #pragma once
 
 // Project includes
+#import "SGFCGameType.h"
 #import "SGFCSinglePropertyValue.h"
 #import "SGFCTypedefs.h"
 
@@ -37,11 +38,27 @@
 /// The object holds the Number value @a numberValue.
 + (instancetype) numberPropertyValueWithNumberValue:(SGFCNumber)numberValue;
 
+/// @brief Returns a newly constructed SGFCNumberPropertyValue object.
+/// The object holds an SGFCNumber value that corresponds to @a gameType.
+/// @a gameType must not be #SGFCGameTypeUnknown.
+///
+/// @exception NSInvalidArgumentException Is raised if @a gameType is
+/// #SGFCGameTypeUnknown.
++ (instancetype) numberPropertyValueWithGameType:(SGFCGameType)gameType;
+
 /// @brief Initializes an SGFCNumberPropertyValue object.
 /// The object holds the Number value @a numberValue.
 ///
 /// This is the designated initializer of SGFCNumberPropertyValue.
 - (instancetype) initWithNumberValue:(SGFCNumber)numberValue NS_DESIGNATED_INITIALIZER;
+
+/// @brief Initializes an SGFCNumberPropertyValue object.
+/// The object holds an SGFCNumber value that corresponds to @a gameType.
+/// @a gameType must not be #SGFCGameTypeUnknown.
+///
+/// @exception NSInvalidArgumentException Is raised if @a gameType is
+/// #SGFCGameTypeUnknown.
+- (instancetype) initWithGameType:(SGFCGameType)gameType;
 
 /// @brief Returns the property value interpreted as an SGFCNumber value.
 @property(nonatomic, readonly) SGFCNumber numberValue;
