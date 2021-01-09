@@ -17,6 +17,7 @@
 #pragma once
 
 // Project includes
+#import "SGFCGameType.h"
 #import "SGFCTypedefs.h"
 
 // System includes
@@ -60,9 +61,22 @@ extern "C"
   /// @a rows.
   extern SGFCBoardSize SGFCBoardSizeMake(SGFCNumber columns, SGFCNumber rows);
 
+  /// @brief Returns the default board size for @a gameType, as specified by
+  /// the SGF standard. Returns #SGFCBoardSizeNone if the SGF standard does not
+  /// specify a default board size for @a gameType.
+  extern SGFCBoardSize SGFCBoardSizeMakeDefaultBoardSize(SGFCGameType gameType);
+
   /// @brief Returns YES if @a boardSize represents a square board. Returns NO
   /// if @a boardSize represents a rectangular board.
   extern BOOL SGFCBoardSizeIsSquare(SGFCBoardSize boardSize);
+
+  /// @brief Returns YES if @a boardSize is a valid board size for
+  /// @a gameType. Returns NO if @a boardSize is not a valid board size
+  /// for @a gameType.
+  ///
+  /// A board size is invalid if it violates the constraints defined by the
+  /// SGF standard. See the documentation of #SGFCBoardSizeInvalid for details.
+  extern BOOL SGFCBoardSizeIsValid(SGFCBoardSize boardSize, SGFCGameType gameType);
 
   /// @brief Returns YES if the number of columns and rows is the same for
   /// @a boardSize1 and @a boardSize2. Returns NO if either the number of

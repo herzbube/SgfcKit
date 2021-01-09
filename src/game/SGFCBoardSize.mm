@@ -16,6 +16,10 @@
 
 // Project includes
 #import "../../include/SGFCBoardSize.h"
+#import "../SGFCMappingUtility.h"
+
+// libsgfc++ includes
+#import <libsgfcplusplus/SgfcBoardSize.h>
 
 // Prevent C++ name mangling
 extern "C"
@@ -29,9 +33,25 @@ extern "C"
     return boardSize;
   }
 
+  SGFCBoardSize SGFCBoardSizeMakeDefaultBoardSize(SGFCGameType gameType)
+  {
+    auto boardSize = LibSgfcPlusPlus::SgfcBoardSize::GetDefaultBoardSize(
+      [SGFCMappingUtility fromSgfcKitGameType:gameType]);
+
+    return [SGFCMappingUtility toSgfcKitBoardSize:boardSize];
+  }
+
   BOOL SGFCBoardSizeIsSquare(SGFCBoardSize boardSize)
   {
     return (boardSize.Columns == boardSize.Rows ? YES : NO);
+  }
+
+  BOOL SGFCBoardSizeIsValid(SGFCBoardSize boardSize, SGFCGameType gameType)
+  {
+    auto boardSizeLibSgfcPlusPlus = [SGFCMappingUtility fromSgfcKitBoardSize:boardSize];
+
+    return [SGFCMappingUtility toSgfcKitBoolean:boardSizeLibSgfcPlusPlus.IsValid(
+      [SGFCMappingUtility fromSgfcKitGameType:gameType])];
   }
 
   BOOL SGFCBoardSizeEqualToBoardSize(SGFCBoardSize boardSize1, SGFCBoardSize boardSize2)
