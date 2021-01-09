@@ -16,15 +16,15 @@
 
 #pragma once
 
-// TODO Cleanup unneeded stuff
-
 // Project includes
 #import "SGFCBoardSize.h"
 #import "SGFCGameType.h"
 #import "SGFCNodeTraits.h"
 #import "SGFCPropertyTraits.h"
-#import "SGFCPropertyType.h"
 #import "SGFCTypedefs.h"
+
+// System includes
+#import <Foundation/NSDictionary.h>
 
 // Forward declarations
 @class NSString;
@@ -48,20 +48,18 @@ extern NSString* SGFCLibraryVersion;
 extern NSString* SGFCSgfcVersion;
 //@}
 
-///// @name ISgfcMessage related constants
-////@{
-///// @brief Indicates an invalid line number. This is used for fatal error
-///// messages that do not refer to a specific line number in a piece of
-///// SGF content.
-//extern const int SGFCInvalidLineNumber;
-///// @brief Indicates an invalid column number. This is used for fatal error
-///// messages that do not refer to a specific column number in a piece of
-///// SGF content.
-//extern const int SGFCInvalidColumnNumber;
-///// @brief A library error number (= errno value) indicating "no error".
-///// This is defined to be the value 0 (zero).
-//extern const int SGFCLibraryErrorNumberNoError;
-////@}
+/// @name ISgfcMessage related constants
+//@{
+/// @brief Indicates an invalid line number. This is used for messages
+/// that do not refer to a specific line number in a piece of SGF content.
+extern const int SGFCInvalidLineNumber;
+/// @brief Indicates an invalid column number. This is used for messages
+/// that do not refer to a specific column number in a piece of SGF content.
+extern const int SGFCInvalidColumnNumber;
+/// @brief A library error number (= errno value) indicating "no error".
+/// This is defined to be the value 0 (zero).
+extern const int SGFCLibraryErrorNumberNoError;
+//@}
 
 /// @name String constants defined by the SGF standard
 //@{
@@ -90,37 +88,63 @@ extern NSString* SGFCColorBlackString;
 ///
 /// The SGF standard defines this to be the string "W".
 extern NSString* SGFCColorWhiteString;
-//@}
-
-/// @name Mappings between libsgfc++ values and SGF standard values, and vice versa
-//@{
 /// @brief The raw string value that corresponds to a pass Move value for
 /// #SGFCGameTypeGo, as defined by the SGF standard.
 ///
 /// The SGF standard defines this to be an empty string.
-//extern NSString* SGFCGoMovePassString;
-///// @brief Maps property names as defined by the SGF standard to values from
-///// the enumeration SGFCPropertyType.
-//extern const std::map<NSString*, SGFCPropertyType> SGFCPropertyNameToPropertyTypeMap;
-///// @brief Maps values from the enumeration SGFCPropertyType to property
-///// names as defined by the SGF standard. #SGFCPropertyTypeUnknown does
-///// not appear in the map.
-//extern const std::map<SGFCPropertyType, NSString*> SGFCPropertyTypeToPropertyNameMap;
+extern NSString* SGFCGoMovePassString;
+//@}
 
-///// @brief Maps values from the enumeration SgfcPropertyType to values from
-///// the enumeration SgfcPropertyCategory.
-//static const std::map<SgfcPropertyType, SgfcPropertyCategory> PropertyTypeToPropertyCategoryMap;
-///// @brief Maps values from the enumeration SgfcPropertyType to
-///// SGFCPropertyTraits values.
-//static const std::map<SgfcPropertyType, SGFCPropertyTraits> PropertyTypeToPropertyTraitsMap;
+/// @name String constants defined by the SGF standard for #SGFCPropertyTypeRU
+//@{
+/// @brief The #SGFCPropertyTypeRU property value defined by the SGF
+/// standard to denote #SGFCGoRulesetTypeAGA.
+extern NSString* SGFCGoRulesetAGA;
+/// @brief The #SGFCPropertyTypeRU property value defined by the SGF
+/// standard to denote #SGFCGoRulesetTypeIng.
+extern NSString* SGFCGoRulesetIng;
+/// @brief The #SGFCPropertyTypeRU property value defined by the SGF
+/// standard to denote #SGFCGoRulesetTypeJapanese.
+extern NSString* SGFCGoRulesetJapanese;
+/// @brief The #SGFCPropertyTypeRU property value defined by the SGF
+/// standard to denote #SGFCGoRulesetTypeNZ.
+extern NSString* SGFCGoRulesetNZ;
+//@}
 
-///// @brief Maps game type Number values as defined by the SGF standard to
-///// values from the enumeration SGFCGameType.
-//extern const std::map<SgfcNumber, SGFCGameType> SGFCGameTypeAsNumberToGameTypeMap;
-///// @brief Maps values from the enumeration SGFCGameType to Number values
-///// as defined by the SGF standard. SGFCGameTypeUnknown does not appear
-///// in the map.
-//extern const std::map<SGFCGameType, SgfcNumber> SGFCGameTypeToGameTypeAsNumberMap;
+/// @name Mappings between libsgfc++ values and SGF standard values, and vice versa
+//@{
+/// @brief Maps property names as defined by the SGF standard to values from
+/// the enumeration SGFCPropertyType. Dictionary keys = NSString objects,
+/// dictionary values = NSNumber objects wrapping an SGFCPropertyType value.
+extern NSDictionary* SGFCPropertyNameToPropertyTypeMap;
+/// @brief Maps values from the enumeration SGFCPropertyType to property
+/// names as defined by the SGF standard. #SGFCPropertyTypeUnknown does
+/// not appear in the map. Dictionary keys = NSNumber objects wrapping an
+/// SGFCPropertyType value, dictionary values = NSString objects.
+extern NSDictionary* SGFCPropertyTypeToPropertyNameMap;
+
+/// @brief Maps values from the enumeration SGFCPropertyType to values from
+/// the enumeration SGFCPropertyCategory. Dictionary keys = NSNumber objects
+/// wrapping an SGFCPropertyType value, dictionary values = NSNumber objects
+/// wrapping an SGFCPropertyCategory value.
+extern NSDictionary* SGFCPropertyTypeToPropertyCategoryMap;
+/// @brief Maps values from the enumeration SGFCPropertyType to
+/// SGFCPropertyTraits values. Dictionary keys = NSNumber objects
+/// wrapping an SGFCPropertyType value, dictionary values = NSNumber objects
+/// wrapping an SGFCPropertyTrait value.
+extern NSDictionary* SGFCPropertyTypeToPropertyTraitsMap;
+
+/// @brief Maps game type Number values as defined by the SGF standard to
+/// values from the enumeration SGFCGameType. Dictionary keys = NSNumber objects
+/// wrapping an int value (NSNumber::numberWithInt:()), dictionary values =
+/// NSNumber objects wrapping an SGFCGameType value.
+extern NSDictionary* SGFCGameTypeAsNumberToGameTypeMap;
+/// @brief Maps values from the enumeration SGFCGameType to Number values
+/// as defined by the SGF standard. SGFCGameTypeUnknown does not appear
+/// in the map. Dictionary keys = NSNumber objects wrapping an SGFCGameType
+/// value, dictionary values = NSNumber objects wrapping an int value
+/// (NSNumber::numberWithInt:()).
+extern NSDictionary* SGFCGameTypeToGameTypeAsNumberMap;
 //@}
 
 /// @name Other constants for values defined by the SGF standard
@@ -209,14 +233,14 @@ extern const SGFCBoardSize SGFCBoardSizeInvalid;
 
 /// @brief A Number value that denotes "no handicap stones" value for
 /// #SGFCPropertyTypeHA (a Go specific property).
-extern const SGFCNumber HandicapStonesNone;
+extern const SGFCNumber SGFCHandicapStonesNone;
 
 /// @brief A Real value that denotes "no komi" value for
 /// #SGFCPropertyTypeKM (a Go specific property).
-extern const SGFCReal KomiNone;
+extern const SGFCReal SGFCKomiNone;
 
 /// @brief An SGFCNodeTraits value that denotes a node that has no traits.
-extern const SGFCNodeTraits NodeTraitsNone;
+extern const SGFCNodeTraits SGFCNodeTraitsNone;
 
 /// @brief An SGFCNodeTraits value that denotes a node that has all traits.
 /// It makes no sense for a node to actually have all traits, this is merely
@@ -224,11 +248,11 @@ extern const SGFCNodeTraits NodeTraitsNone;
 ///
 /// This constant is set up to have all bits set in the underlying primitive
 /// numeric type, so you should not rely on any particular numeric value.
-extern const SGFCNodeTraits NodeTraitsAll;
+extern const SGFCNodeTraits SGFCNodeTraitsAll;
 
 /// @brief An SGFCPropertyTraits value that denotes a property that has no
 /// traits.
-extern const SGFCPropertyTraits PropertyTraitsNone;
+extern const SGFCPropertyTraits SGFCPropertyTraitsNone;
 
 /// @brief An SGFCPropertyTraits value that denotes a property that has all
 /// traits. It makes no sense for a property to actually have all traits,
@@ -236,5 +260,5 @@ extern const SGFCPropertyTraits PropertyTraitsNone;
 ///
 /// This constant is set up to have all bits set in the underlying primitive
 /// numeric type, so you should not rely on any particular numeric value.
-extern const SGFCPropertyTraits PropertyTraitsAll;
+extern const SGFCPropertyTraits SGFCPropertyTraitsAll;
 //@}
