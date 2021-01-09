@@ -72,7 +72,7 @@
   _wrappedComposedPropertyValue = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyValueFactory()->CreateCustomComposedPropertyValue(
     [value1 wrappedSinglePropertyValue],
     [value2 wrappedSinglePropertyValue]);
-  self.composedValue = true;
+  self.composedValue = YES;
   self.value1 = value1;
   self.value1 = value2;
 

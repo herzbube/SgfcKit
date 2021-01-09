@@ -64,10 +64,10 @@
 @property(nonatomic) SGFCReal komi;
 
 /// @brief Returns the Go ruleset used for the game. The default value is
-/// an SGFCGoRuleset object which has the @e IsValid property set to false.
+/// an SGFCGoRuleset object which has the @e IsValid property set to NO.
 ///
 /// The returned SGFCGoRuleset also has the @e IsValid property set to
-/// false if there is a problem with decomposing the raw property value.
+/// NO if there is a problem with decomposing the raw property value.
 /// See SGFCGoRulesetFromPropertyValue() for details. An indicator that
 /// this happened is if rulesName() returns a value that is not equal to
 /// #SGFCNoneValueString.
@@ -83,10 +83,10 @@
 
 /// @brief Returns the rank of the black player. The default value is
 /// an SGFCGoPlayerRank object which has the @e IsValid property set to
-/// false.
+/// NO.
 ///
 /// The returned SGFCGoPlayerRank also has the @e IsValid property set to
-/// false if there is a problem with decomposing the raw property value.
+/// NO if there is a problem with decomposing the raw property value.
 /// See SGFCGoPlayerRankFromPropertyValue() for details. An indicator that
 /// this happened is if GetBlackPlayerRank() returns a value that is not equal
 /// to #SGFCNoneValueString.
@@ -102,10 +102,10 @@
 
 /// @brief Returns the rank of the white player. The default value is
 /// an SGFCGoPlayerRank object which has the @e IsValid property set to
-/// false.
+/// NO.
 ///
 /// The returned SGFCGoPlayerRank also has the @e IsValid property set to
-/// false if there is a problem with decomposing the raw property value.
+/// NO if there is a problem with decomposing the raw property value.
 /// See SGFCGoPlayerRankFromPropertyValue() for details. An indicator that
 /// this happened is if GetWhitePlayerRank() returns a value that is not equal
 /// to #SGFCNoneValueString.

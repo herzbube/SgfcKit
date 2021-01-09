@@ -291,10 +291,10 @@
 
 /// @brief The result of the game, decomposed into an outcome and
 /// an optional score. The default value is an SGFCGameResult object which
-/// has the @e IsValid property set to false.
+/// has the @e IsValid property set to NO.
 ///
 /// The returned SGFCGameResult also has the @e IsValid property set to
-/// false if there is a problem with decomposing the raw property value.
+/// NO if there is a problem with decomposing the raw property value.
 /// See SGFCGameResultFromPropertyValue() for details. An indicator that
 /// this happened is if rawGameResult() returns a value that is not equal to
 /// #SGFCNoneValueString.
@@ -424,10 +424,10 @@
 /// @brief The information that describes the round in which the
 /// game was played, decomposed into round number and type of round.
 /// The default value is an SGFCRoundInformation object which has the
-/// @e IsValid property set to false.
+/// @e IsValid property set to NO.
 ///
 /// The returned SGFCRoundInformation also has the @e IsValid property set
-/// to false if there is a problem with decomposing the raw property value.
+/// to NO if there is a problem with decomposing the raw property value.
 /// See SGFCRoundInformationFromPropertyValue() for details. An indicator
 /// that this happened is if rawRoundInformation() returns a value that is not
 /// equal to #SGFCNoneValueString.
