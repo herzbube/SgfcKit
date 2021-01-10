@@ -15,9 +15,10 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../include/SGFCBoardSizeProperty.h"
+#import "../../include/SGFCGameTypeProperty.h"
 #import "../../include/SGFCProperty.h"
 #import "../../include/SGFCPropertyFactory.h"
-#import "../SGFCExceptionUtility.h"
 
 @implementation SGFCPropertyFactory
 
@@ -63,32 +64,27 @@
 
 + (SGFCBoardSizeProperty*) boardSizeProperty
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"boardSizeProperty:"];
-  return nil;
+  return [SGFCBoardSizeProperty boardSizeProperty];
 }
 
-+ (SGFCBoardSizeProperty*) boardSizePropertyWithNumberValue:(SGFCNumberPropertyValue*)propertyValue
++ (SGFCBoardSizeProperty*) boardSizePropertyWithNumberPropertyValue:(SGFCNumberPropertyValue*)numberPropertyValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"boardSizePropertyWithNumberValue:"];
-  return nil;
+  return [SGFCBoardSizeProperty boardSizePropertyWithNumberPropertyValue:numberPropertyValue];
 }
 
-+ (SGFCBoardSizeProperty*) boardSizePropertyWithComposedValue:(SGFCComposedPropertyValue*)propertyValue
++ (SGFCBoardSizeProperty*) boardSizePropertyWithComposedPropertyValue:(SGFCComposedPropertyValue*)composedPropertyValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"boardSizePropertyWithComposedValue:"];
-  return nil;
+  return [SGFCBoardSizeProperty boardSizePropertyWithComposedPropertyValue:composedPropertyValue];
 }
 
 + (SGFCGameTypeProperty*) gameTypeProperty
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameTypeProperty"];
-  return nil;
+  return [SGFCGameTypeProperty gameTypeProperty];
 }
 
-+ (SGFCGameTypeProperty*) gameTypePropertyWithNumberValue:(SGFCNumberPropertyValue*)propertyValue
++ (SGFCGameTypeProperty*) gameTypePropertyWithNumberPropertyValue:(SGFCNumberPropertyValue*)numberPropertyValue
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"gameTypePropertyWithValue"];
-  return nil;
+  return [SGFCGameTypeProperty gameTypePropertyWithNumberPropertyValue:numberPropertyValue];
 }
 
 @end

@@ -17,6 +17,7 @@
 // Project includes
 #import "interface/internal/SGFCArgumentInternalAdditions.h"
 #import "interface/internal/SGFCArgumentsInternalAdditions.h"
+#import "interface/internal/SGFCBoardSizePropertyInternalAdditions.h"
 #import "interface/internal/SGFCColorPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCComposedPropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCDocumentInternalAdditions.h"
@@ -25,6 +26,7 @@
 #import "interface/internal/SGFCDoublePropertyValueInternalAdditions.h"
 #import "interface/internal/SGFCGameInternalAdditions.h"
 #import "interface/internal/SGFCGameInfoInternalAdditions.h"
+#import "interface/internal/SGFCGameTypePropertyInternalAdditions.h"
 #import "interface/internal/SGFCGoGameInfoInternalAdditions.h"
 #import "interface/internal/SGFCGoMoveInternalAdditions.h"
 #import "interface/internal/SGFCGoMovePropertyValueInternalAdditions.h"
@@ -156,7 +158,36 @@
 
 + (SGFCProperty*) wrapProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)propertyToWrap
 {
-  return [[SGFCProperty alloc] initWithWrappedProperty:propertyToWrap];
+  SGFCProperty* property;
+
+  // std::dynamic_pointer_cast performs a downcast and packages the
+  // result into a shared_ptr, all in one go. Note: We can't use
+  // std::static_pointer_cast because of multiple inheritance.
+
+  switch (propertyToWrap->GetPropertyType())
+  {
+    case LibSgfcPlusPlus::SgfcPropertyType::GM:
+    {
+      std::shared_ptr<LibSgfcPlusPlus::ISgfcGameTypeProperty> gameTypePropertyToWrap =
+        std::dynamic_pointer_cast<LibSgfcPlusPlus::ISgfcGameTypeProperty>(propertyToWrap);
+      property = [[SGFCGameTypeProperty alloc] initWithWrappedGameTypeProperty:gameTypePropertyToWrap];
+      break;
+    }
+    case LibSgfcPlusPlus::SgfcPropertyType::SZ:
+    {
+      std::shared_ptr<LibSgfcPlusPlus::ISgfcBoardSizeProperty> boardSizePropertyToWrap =
+        std::dynamic_pointer_cast<LibSgfcPlusPlus::ISgfcBoardSizeProperty>(propertyToWrap);
+      property = [[SGFCBoardSizeProperty alloc] initWithWrappedBoardSizeProperty:boardSizePropertyToWrap];
+      break;
+    }
+    default:
+    {
+      property = [[SGFCProperty alloc] initWithWrappedProperty:propertyToWrap];
+      break;
+    }
+  }
+
+  return property;
 }
 
 + (NSArray*) wrapProperties:(const std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>>&)propertiesToWrap

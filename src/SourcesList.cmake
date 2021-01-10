@@ -1,5 +1,7 @@
 set (
   SOURCES
+  document/typedproperty/SGFCBoardSizeProperty.mm
+  document/typedproperty/SGFCGameTypeProperty.mm
   document/typedpropertyvalue/go/SGFCGoMovePropertyValue.mm
   document/typedpropertyvalue/go/SGFCGoPointPropertyValue.mm
   document/typedpropertyvalue/go/SGFCGoStonePropertyValue.mm
@@ -54,6 +56,7 @@ set (
   HEADERS_PRIVATE
   interface/internal/SGFCArgumentInternalAdditions.h
   interface/internal/SGFCArgumentsInternalAdditions.h
+  interface/internal/SGFCBoardSizePropertyInternalAdditions.h
   interface/internal/SGFCColorPropertyValueInternalAdditions.h
   interface/internal/SGFCComposedPropertyValueInternalAdditions.h
   interface/internal/SGFCDocumentInternalAdditions.h
@@ -62,6 +65,7 @@ set (
   interface/internal/SGFCDoublePropertyValueInternalAdditions.h
   interface/internal/SGFCGameInfoInternalAdditions.h
   interface/internal/SGFCGameInternalAdditions.h
+  interface/internal/SGFCGameTypePropertyInternalAdditions.h
   interface/internal/SGFCGoGameInfoInternalAdditions.h
   interface/internal/SGFCGoMoveInternalAdditions.h
   interface/internal/SGFCGoMovePropertyValueInternalAdditions.h
@@ -100,6 +104,7 @@ set (
   ../include/SGFCArguments.h
   ../include/SGFCArgumentType.h
   ../include/SGFCBoardSize.h
+  ../include/SGFCBoardSizeProperty.h
   ../include/SGFCColor.h
   ../include/SGFCColorPropertyValue.h
   ../include/SGFCCommandLine.h
@@ -120,6 +125,7 @@ set (
   ../include/SGFCGameResult.h
   ../include/SGFCGameResultType.h
   ../include/SGFCGameType.h
+  ../include/SGFCGameTypeProperty.h
   ../include/SGFCGoGameInfo.h
   ../include/SGFCGoMove.h
   ../include/SGFCGoMovePropertyValue.h

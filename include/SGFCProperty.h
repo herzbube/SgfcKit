@@ -171,6 +171,13 @@
 + (instancetype) propertyWithName:(NSString*)propertyName
                            values:(NSArray*)propertyValues;
 
+/// @brief Initializes an SGFCProperty object. The object has the propert type
+/// #SGFCPropertyTypeC. The property has no values. The property is not
+/// associated with any node.
+///
+/// This is the designated initializer of SGFCGameInfo.
+- (instancetype) init NS_DESIGNATED_INITIALIZER;
+
 /// @brief Initializes an SGFCProperty object. The object has the
 /// specified property type @a propertyType. The property has no values.
 /// The property is not associated with any node.
@@ -299,10 +306,8 @@
 /// the value does not meet the requirements of these property types. See the
 /// documentation of SGFCBoardSizeProperty or SGFCGameTypeProperty
 /// for details.
-///
-/// This is the designated initializer of SGFCProperty.
 - (instancetype) initWithPropertyName:(NSString*)propertyName
-                               values:(NSArray*)propertyValues NS_DESIGNATED_INITIALIZER;
+                               values:(NSArray*)propertyValues;
 
 /// @brief Returns the type of the property. Returns
 /// #SGFCPropertyTypeUnknown if the property is a custom property that is

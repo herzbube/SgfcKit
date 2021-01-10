@@ -15,7 +15,10 @@
 // -----------------------------------------------------------------------------
 
 // Project includes
+#import "../../include/SGFCConstants.h"
 #import "../../include/SGFCProperty.h"
+#import "../interface/internal/SGFCBoardSizePropertyInternalAdditions.h"
+#import "../interface/internal/SGFCGameTypePropertyInternalAdditions.h"
 #import "../interface/internal/SGFCPropertyInternalAdditions.h"
 #import "../interface/internal/SGFCPropertyValueInternal.h"
 #import "../SGFCExceptionUtility.h"
@@ -83,7 +86,16 @@
 
 - (instancetype) init
 {
-  return [self initWithPropertyType:SGFCPropertyTypeC];
+  // Call designated initializer of superclass (NSObject)
+  self = [super init];
+  if (! self)
+    return nil;
+
+  _wrappedProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateProperty(
+    [SGFCMappingUtility fromSgfcKitPropertyType:SGFCPropertyTypeC]);
+  _propertyValues = [NSArray array];
+
+  return self;
 }
 
 - (instancetype) initWithPropertyType:(SGFCPropertyType)propertyType
@@ -129,26 +141,26 @@
 - (instancetype) initWithPropertyName:(NSString*)propertyName
                                values:(NSArray*)propertyValues
 {
-  // Call designated initializer of superclass (NSObject)
-  self = [super init];
-  if (! self)
-    return nil;
-
   [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:propertyName
                                                  invalidArgumentName:@"propertyName"];
 
+  self = [self init];
+  if (! self)
+    return nil;
+
+  // Create the actual wrapped object. Don't assign it to the member variable
+  // yet in case we are going to deallocate self.
+  std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty> wrappedProperty;
   if (propertyValues == nil)
   {
-    _wrappedProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateProperty(
+    wrappedProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateProperty(
       [SGFCMappingUtility fromSgfcKitString:propertyName]);
-
-    _propertyValues = [NSArray array];
   }
   else
   {
     try
     {
-      _wrappedProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateProperty(
+      wrappedProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateProperty(
         [SGFCMappingUtility fromSgfcKitString:propertyName],
         [SGFCProperty wrappedPropertyValuesFromArray:propertyValues]);
     }
@@ -156,8 +168,51 @@
     {
       [SGFCExceptionUtility raiseInvalidArgumentExceptionWithCStringReason:exception.what()];
     }
+  }
 
-    _propertyValues = propertyValues;
+  if ([propertyName isEqualToString:@"GM"])
+  {
+    auto wrappedGameTypeProperty = std::dynamic_pointer_cast<LibSgfcPlusPlus::ISgfcGameTypeProperty>(wrappedProperty);
+
+    // The externally allocated self has the wrong type. We deallocate the
+    // object...
+    self = nil;
+
+    // ... and allocate a new object that has the correct type. We don't need
+    // to assign the wrapped object to the member variable, this is done by
+    // initWithWrappedGameTypeProperty:().
+    if (propertyValues == nil)
+      self = [[SGFCGameTypeProperty alloc] initWithWrappedGameTypeProperty:wrappedGameTypeProperty];
+    else
+      self = [[SGFCGameTypeProperty alloc] initWithWrappedGameTypeProperty:wrappedGameTypeProperty propertyValues:propertyValues];
+
+  }
+  else if ([propertyName isEqualToString:@"SZ"])
+  {
+    auto wrappedBoardSizeProperty = std::dynamic_pointer_cast<LibSgfcPlusPlus::ISgfcBoardSizeProperty>(wrappedProperty);
+
+    // The externally allocated self has the wrong type. We deallocate the
+    // object...
+    self = nil;
+
+    // ... and allocate a new object that has the correct type. We don't need
+    // to assign the wrapped object to the member variable, this is done by
+    // initWithWrappedBoardSizeProperty:().
+    if (propertyValues == nil)
+      self = [[SGFCBoardSizeProperty alloc] initWithWrappedBoardSizeProperty:wrappedBoardSizeProperty];
+    else
+      self = [[SGFCBoardSizeProperty alloc] initWithWrappedBoardSizeProperty:wrappedBoardSizeProperty propertyValues:propertyValues];
+  }
+  else
+  {
+    // The externally allocated self has the correct type, so we can simply
+    // continue to initialize it
+    _wrappedProperty = wrappedProperty;
+
+    if (propertyValues == nil)
+      _propertyValues = [NSArray array];
+    else
+      _propertyValues = propertyValues;
   }
 
   return self;
@@ -292,13 +347,11 @@
 
 - (SGFCGameTypeProperty*) toGameTypeProperty
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"toGameTypeProperty"];
   return nil;
 }
 
 - (SGFCBoardSizeProperty*) toBoardSizeProperty
 {
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"toBoardSizeProperty"];
   return nil;
 }
 
@@ -309,15 +362,43 @@
   return _wrappedProperty;
 }
 
+- (void) setWrappedProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)wrappedProperty
+{
+  if (wrappedProperty == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedProperty\" is nullptr"];
+
+  _wrappedProperty = wrappedProperty;
+  _propertyValues = [SGFCWrappingUtility wrapPropertyValues:_wrappedProperty->GetPropertyValues()];
+}
+
+- (void) setWrappedProperty:(std::shared_ptr<LibSgfcPlusPlus::ISgfcProperty>)wrappedProperty
+             propertyValues:(NSArray*)propertyValues
+{
+  if (wrappedProperty == nullptr)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedProperty\" is nullptr"];
+  if (propertyValues == nil)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" is nullptr"];
+
+  _wrappedProperty = wrappedProperty;
+  _propertyValues = propertyValues;
+}
+
 #pragma mark - Private API
 
 + (NSString*) propertyNameForPropertyType:(SGFCPropertyType)propertyType
 {
-  // This is the only way how we can delegate the mapping to libsgfc++.
-  // Although inefficient it's better than duplicating logic.
-  auto dummyWrappedProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateProperty(
-    [SGFCMappingUtility fromSgfcKitPropertyType:propertyType]);
-  return [SGFCMappingUtility toSgfcKitString:dummyWrappedProperty->GetPropertyName()];
+  if (propertyType == SGFCPropertyTypeUnknown)
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyType\" is SGFCPropertyTypeUnknown"];
+
+  NSNumber* propertyTypeAsNumber = @(propertyType);
+  NSString* propertyName = SGFCPropertyTypeToPropertyNameMap[propertyTypeAsNumber];
+  if (! propertyName)
+  {
+    NSString* reason = [NSString stringWithFormat:@"SGFCPropertyType value not mapped: %@", propertyTypeAsNumber];
+    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+  }
+
+  return propertyName;
 }
 
 + (std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>) wrappedPropertyValueFromObject:(id<SGFCPropertyValue>)propertyValue

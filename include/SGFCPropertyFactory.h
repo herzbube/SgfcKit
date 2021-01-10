@@ -180,44 +180,41 @@
 + (SGFCBoardSizeProperty*) boardSizeProperty;
 
 /// @brief Returns a newly constructed SGFCBoardSizeProperty object that
-/// has the specified property value @a propertyValue. The property is not
+/// has the specified property value @a numberPropertyValue. The property is not
 /// associated with any node. The SGFCBoardSizeProperty object takes
-/// ownership of the SGFCNumberPropertyValue object @a propertyValue.
+/// ownership of the SGFCNumberPropertyValue object @a numberPropertyValue.
 ///
-/// This overload constructs an SGFCBoardSizeProperty object that
+/// This method constructs an SGFCBoardSizeProperty object that
 /// describes a square board.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a propertyValue is
-/// @e nil or if the @a propertyValue object's method hasTypedValue()
-/// returns NO.
-+ (SGFCBoardSizeProperty*) boardSizePropertyWithNumberValue:(SGFCNumberPropertyValue*)propertyValue;
+/// @exception NSInvalidArgumentException Is raised if @a numberPropertyValue is
+/// @e nil.
++ (SGFCBoardSizeProperty*) boardSizePropertyWithNumberPropertyValue:(SGFCNumberPropertyValue*)numberPropertyValue;
 
 /// @brief Returns a newly constructed SGFCBoardSizeProperty object that
-/// has the specified property value @a propertyValue. The property is not
-/// associated with any node. The SGFCBoardSizeProperty object takes
-/// ownership of the SGFCComposedPropertyValue object @a propertyValue.
+/// has the specified property value @a composedPropertyValue. The property is
+/// not associated with any node. The SGFCBoardSizeProperty object takes
+/// ownership of the SGFCComposedPropertyValue object @a composedPropertyValue.
 ///
-/// This overload constructs an SGFCBoardSizeProperty object that
+/// This method constructs an SGFCBoardSizeProperty object that
 /// describes a rectangular board.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a propertyValue is
-/// @e nil or if the @a propertyValue object is not composed of two
-/// SGFCNumberPropertyValue objects, or if any of the
-/// SGFCNumberPropertyValue object's method hasTypedValue() returns NO.
-+ (SGFCBoardSizeProperty*) boardSizePropertyWithComposedValue:(SGFCComposedPropertyValue*)propertyValue;
+/// @exception NSInvalidArgumentException Is raised if @a composedPropertyValue
+/// is @e nil or if the @a composedPropertyValue object is not composed of two
+/// SGFCNumberPropertyValue objects.
++ (SGFCBoardSizeProperty*) boardSizePropertyWithComposedPropertyValue:(SGFCComposedPropertyValue*)composedPropertyValue;
 
 /// @brief Returns a newly constructed SGFCGameTypeProperty object that
 /// has no value. The property is not associated with any node.
 + (SGFCGameTypeProperty*) gameTypeProperty;
 
 /// @brief Returns a newly constructed SGFCGameTypeProperty object that
-/// has the specified property value @a propertyValue. The property is not
+/// has the specified property value @a numberPropertyValue. The property is not
 /// associated with any node. The SGFCGameTypeProperty object takes
-/// ownership of the SGFCNumberPropertyValue object @a propertyValue.
+/// ownership of the SGFCNumberPropertyValue object @a numberPropertyValue.
 ///
-/// @exception NSInvalidArgumentException Is raised if @a propertyValue is
-/// @e nil or if the @a propertyValue object's method hasTypedValue()
-/// returns NO.
-+ (SGFCGameTypeProperty*) gameTypePropertyWithNumberValue:(SGFCNumberPropertyValue*)propertyValue;
+/// @exception NSInvalidArgumentException Is raised if @a numberPropertyValue is
+/// @e nil.
++ (SGFCGameTypeProperty*) gameTypePropertyWithNumberPropertyValue:(SGFCNumberPropertyValue*)numberPropertyValue;
 
 @end
