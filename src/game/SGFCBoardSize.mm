@@ -33,7 +33,16 @@ extern "C"
     return boardSize;
   }
 
-  SGFCBoardSize SGFCBoardSizeMakeDefaultBoardSize(SGFCGameType gameType)
+  SGFCBoardSize SGFCBoardSizeMakeSquare(SGFCNumber dimension)
+  {
+    SGFCBoardSize boardSize;
+    boardSize.Columns = dimension;
+    boardSize.Rows = dimension;
+
+    return boardSize;
+  }
+
+  SGFCBoardSize SGFCBoardSizeMakeDefault(SGFCGameType gameType)
   {
     auto boardSize = LibSgfcPlusPlus::SgfcBoardSize::GetDefaultBoardSize(
       [SGFCMappingUtility fromSgfcKitGameType:gameType]);

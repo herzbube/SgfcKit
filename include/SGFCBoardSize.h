@@ -38,7 +38,10 @@
 /// the same numeric value.
 ///
 /// @see SGFCBoardSizeMake
+/// @see SGFCBoardSizeMakeSquare
+/// @see SGFCBoardSizeMakeDefault
 /// @see SGFCBoardSizeIsSquare
+/// @see SGFCBoardSizeIsValid
 /// @see SGFCBoardSizeEqualToBoardSize
 /// @see SGFCBoardSizeNotEqualToBoardSize
 typedef struct
@@ -61,10 +64,15 @@ extern "C"
   /// @a rows.
   extern SGFCBoardSize SGFCBoardSizeMake(SGFCNumber columns, SGFCNumber rows);
 
+  /// @brief Returns an SGFCBoardSize value initialized with @a dimension for
+  /// both the @e Columns and @e Rows property. The SGFCBoardSize represents a
+  /// square board.
+  extern SGFCBoardSize SGFCBoardSizeMakeSquare(SGFCNumber dimension);
+
   /// @brief Returns the default board size for @a gameType, as specified by
   /// the SGF standard. Returns #SGFCBoardSizeNone if the SGF standard does not
   /// specify a default board size for @a gameType.
-  extern SGFCBoardSize SGFCBoardSizeMakeDefaultBoardSize(SGFCGameType gameType);
+  extern SGFCBoardSize SGFCBoardSizeMakeDefault(SGFCGameType gameType);
 
   /// @brief Returns YES if @a boardSize represents a square board. Returns NO
   /// if @a boardSize represents a rectangular board.
