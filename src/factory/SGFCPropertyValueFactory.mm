@@ -90,7 +90,7 @@
   return [SGFCNumberPropertyValue numberPropertyValueWithGameType:gameType];
 }
 
-- (id<SGFCPropertyValue>) propertyValueWithBoardSize:(SGFCBoardSize)boardSize
++ (id<SGFCPropertyValue>) propertyValueWithBoardSize:(SGFCBoardSize)boardSize
                                             gameType:(SGFCGameType)gameType
 
 {

@@ -142,7 +142,7 @@
 /// @exception NSInvalidArgumentException Is raised if @a gameType is
 /// #SGFCGameTypeUnknown, or if @a boardSize is not valid, i.e. if
 /// SGFCBoardSizeIsValid() method returns NO for @a boardSize.
-- (id<SGFCPropertyValue>) propertyValueWithBoardSize:(SGFCBoardSize)boardSize
++ (id<SGFCPropertyValue>) propertyValueWithBoardSize:(SGFCBoardSize)boardSize
                                             gameType:(SGFCGameType)gameType;
 //@}
 
