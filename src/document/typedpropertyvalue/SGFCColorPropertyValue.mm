@@ -119,18 +119,7 @@
 
 - (SGFCColor) colorValue
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitColor:_wrappedColorPropertyValue->GetColorValue()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return SGFCColorBlack;
-  }
+  return [SGFCMappingUtility toSgfcKitColor:_wrappedColorPropertyValue->GetColorValue()];
 }
 
 #pragma mark - Internal API - SGFCColorPropertyValueInternalAdditions overrides

@@ -105,18 +105,7 @@
 
 - (SGFCReal) realValue
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitReal:_wrappedRealPropertyValue->GetRealValue()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return 0.0;
-  }
+  return [SGFCMappingUtility toSgfcKitReal:_wrappedRealPropertyValue->GetRealValue()];
 }
 
 #pragma mark - Internal API - SGFCRealPropertyValueInternalAdditions overrides

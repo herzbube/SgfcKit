@@ -110,18 +110,7 @@
 
 - (NSString*) textValue
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitText:_wrappedTextPropertyValue->GetTextValue()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return nil;
-  }
+  return [SGFCMappingUtility toSgfcKitText:_wrappedTextPropertyValue->GetTextValue()];
 }
 
 #pragma mark - Internal API - SGFCTextPropertyValueInternalAdditions overrides

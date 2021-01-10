@@ -110,18 +110,7 @@
 
 - (NSString*) moveValue
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitMove:_wrappedMovePropertyValue->GetMoveValue()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return nil;
-  }
+  return [SGFCMappingUtility toSgfcKitMove:_wrappedMovePropertyValue->GetMoveValue()];
 }
 
 - (SGFCGoMovePropertyValue*) toGoMoveValue

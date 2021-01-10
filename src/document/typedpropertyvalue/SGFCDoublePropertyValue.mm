@@ -119,18 +119,7 @@
 
 - (SGFCDouble) doubleValue
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitDouble:_wrappedDoublePropertyValue->GetDoubleValue()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return SGFCDoubleNormal;
-  }
+  return [SGFCMappingUtility toSgfcKitDouble:_wrappedDoublePropertyValue->GetDoubleValue()];
 }
 
 #pragma mark - Internal API - SGFCDoublePropertyValueInternalAdditions overrides

@@ -110,18 +110,7 @@
 
 - (NSString*) pointValue
 {
-  try
-  {
-    return [SGFCMappingUtility toSgfcKitPoint:_wrappedPointPropertyValue->GetPointValue()];
-  }
-  catch (std::logic_error& exception)
-  {
-    [SGFCExceptionUtility raiseInvalidOperationExceptionWithCStringReason:exception.what()];
-
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return nil;
-  }
+  return [SGFCMappingUtility toSgfcKitPoint:_wrappedPointPropertyValue->GetPointValue()];
 }
 
 - (SGFCGoPointPropertyValue*) toGoPointValue
