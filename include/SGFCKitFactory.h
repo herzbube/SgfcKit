@@ -29,8 +29,6 @@
 @class SGFCGameInfo;
 @class SGFCGoGameInfo;
 @class SGFCNode;
-@class SGFCPropertyFactory;
-@class SGFCPropertyValueFactory;
 
 /// @brief The SGFCKitFactory class is a class that contains only class methods.
 /// The class methods are factory methods used to construct various library
