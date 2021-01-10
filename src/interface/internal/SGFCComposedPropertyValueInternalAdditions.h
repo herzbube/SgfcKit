@@ -39,7 +39,7 @@
 /// the libsgfc++ object @a wrappedComposedPropertyValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if
-/// @a wrappedComposedPropertyValue is  @e nullptr.
+/// @a wrappedComposedPropertyValue is @e nullptr.
 - (instancetype) initWithWrappedComposedPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcComposedPropertyValue>)wrappedComposedPropertyValue;
 
 /// @brief Returns the wrapped libsgfc++ object.

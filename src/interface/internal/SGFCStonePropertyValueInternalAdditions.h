@@ -36,7 +36,7 @@
 /// the libsgfc++ object @a wrappedStonePropertyValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if
-/// @a wrappedStonePropertyValue is  @e nullptr.
+/// @a wrappedStonePropertyValue is @e nullptr.
 - (instancetype) initWithWrappedStonePropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcStonePropertyValue>)wrappedStonePropertyValue;
 
 /// @brief Sets the wrapped libsgfc++ object to @a wrappedStonePropertyValue.

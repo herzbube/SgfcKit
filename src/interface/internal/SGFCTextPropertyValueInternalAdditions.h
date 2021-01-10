@@ -36,7 +36,7 @@
 /// the libsgfc++ object @a wrappedTextPropertyValue.
 ///
 /// @exception NSInvalidArgumentException Is raised if
-/// @a wrappedTextPropertyValue is  @e nullptr.
+/// @a wrappedTextPropertyValue is @e nullptr.
 - (instancetype) initWithWrappedTextPropertyValue:(std::shared_ptr<LibSgfcPlusPlus::ISgfcTextPropertyValue>)wrappedTextPropertyValue;
 
 /// @brief Returns the wrapped libsgfc++ object.

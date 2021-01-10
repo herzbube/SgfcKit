@@ -37,7 +37,7 @@
 /// the libsgfc++ object @a wrappedGoGameInfo.
 ///
 /// @exception NSInvalidArgumentException Is raised if
-/// @a wrappedGoGameInfo is  @e nullptr.
+/// @a wrappedGoGameInfo is @e nullptr.
 - (instancetype) initWithWrappedGoGameInfo:(std::shared_ptr<LibSgfcPlusPlus::ISgfcGoGameInfo>)wrappedGoGameInfo;
 
 /// @brief Returns the wrapped libsgfc++ object.
