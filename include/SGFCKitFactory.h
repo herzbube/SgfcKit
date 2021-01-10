@@ -141,14 +141,4 @@
 + (SGFCGameInfo*) gameInfoWithRootNode:(SGFCNode*)rootNode
                           gameInfoNode:(SGFCNode*)gameInfoNode;
 
-/// @brief Returns a newly constructed SGFCPropertyFactory object
-/// that can be used to create SGFCProperty objects, and objects of every
-/// known sub-type of SGFCProperty.
-+ (SGFCPropertyFactory*) propertyFactory;
-
-/// @brief Returns a newly constructed SGFCPropertyValueFactory object
-/// that can be used to create SGFCPropertyValue objects, and objects of
-/// every known sub-type of SGFCPropertyValue.
-+ (SGFCPropertyValueFactory*) propertyValueFactory;
-
 @end

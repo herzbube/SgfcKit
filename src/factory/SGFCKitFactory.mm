@@ -97,16 +97,4 @@
                                gameInfoNode:gameInfoNode];
 }
 
-+ (SGFCPropertyFactory*) propertyFactory
-{
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyFactory"];
-  return nil;
-}
-
-+ (SGFCPropertyValueFactory*) propertyValueFactory
-{
-  [SGFCExceptionUtility raiseNotImplementedExceptionWithReason:@"propertyValueFactory"];
-  return nil;
-}
-
 @end
