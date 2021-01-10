@@ -75,7 +75,7 @@
   auto wrappedGameTypeProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateGameTypeProperty(
     [numberPropertyValue wrappedNumberPropertyValue]);
 
-  self = [self initWithWrappedGameTypeProperty:_wrappedGameTypeProperty
+  self = [self initWithWrappedGameTypeProperty:wrappedGameTypeProperty
                                 propertyValues:[NSArray arrayWithObject:numberPropertyValue]];
   if (! self)
     return nil;
@@ -106,8 +106,8 @@
 {
   if (wrappedGameTypeProperty == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedGameTypeProperty\" is nullptr"];
-  if (propertyValues == nullptr)
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" is nullptr"];
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:propertyValues
+                                                 invalidArgumentName:@"propertyValues"];
 
   self = [self init];
   if (! self)

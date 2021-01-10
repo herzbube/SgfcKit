@@ -336,10 +336,12 @@
 {
   auto wrappedPropertyValue = _wrappedProperty->GetPropertyValue();
 
-  for (id<SGFCPropertyValueInternal> propertyValue in _propertyValues)
+  for (id propertyValueObject in _propertyValues)
   {
-    if ([propertyValue wrappedPropertyValue] == wrappedPropertyValue)
-      return propertyValue;
+    // TODO We silently assume that the object adopts SGFCPropertyValueInternal.
+    // Find a better way how to ensure that this is actually the case.
+    if ([propertyValueObject wrappedPropertyValue] == wrappedPropertyValue)
+      return propertyValueObject;
   }
 
   return nil;
@@ -376,8 +378,8 @@
 {
   if (wrappedProperty == nullptr)
     [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"wrappedProperty\" is nullptr"];
-  if (propertyValues == nil)
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" is nullptr"];
+  [SGFCExceptionUtility raiseInvalidArgumentExceptionIfArgumentIsNil:propertyValues
+                                                 invalidArgumentName:@"propertyValues"];
 
   _wrappedProperty = wrappedProperty;
   _propertyValues = propertyValues;
@@ -407,11 +409,14 @@
                                                  invalidArgumentName:@"propertyValue"];
 
   id propertyValueObject = propertyValue;
-  if (! [propertyValueObject conformsToProtocol:@protocol(SGFCPropertyValueInternal)])
-    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValueObject\" is an object that does not conform to protocol SGFCPropertyValueInternal"];
 
-  id<SGFCPropertyValueInternal> propertyValueInternal = propertyValueObject;
-  return [propertyValueInternal wrappedPropertyValue];
+  // TODO We would actually like to check for conformance to protocol
+  // SGFCPropertyValueInternal, but the current implementation does not
+  // allow this.
+  if (! [propertyValueObject respondsToSelector:@selector(wrappedPropertyValue)])
+    [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValueObject\" is an object that does not respond to selector wrappedPropertyValue"];
+
+  return [propertyValueObject wrappedPropertyValue];
 }
 
 + (std::vector<std::shared_ptr<LibSgfcPlusPlus::ISgfcPropertyValue>>) wrappedPropertyValuesFromArray:(NSArray*)propertyValues
@@ -422,11 +427,14 @@
   {
     if (! propertyValueObject)
       [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" contains a nil object"];
-    if (! [propertyValueObject conformsToProtocol:@protocol(SGFCPropertyValueInternal)])
-      [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" contains an object that does not conform to protocol SGFCPropertyValueInternal"];
 
-    id<SGFCPropertyValueInternal> propertyValue = propertyValueObject;
-    wrappedPropertyValues.push_back([propertyValue wrappedPropertyValue]);
+    // TODO We would actually like to check for conformance to protocol
+    // SGFCPropertyValueInternal, but the current implementation does not
+    // allow this.
+    if (! [propertyValueObject respondsToSelector:@selector(wrappedPropertyValue)])
+      [SGFCExceptionUtility raiseInvalidArgumentExceptionWithReason:@"Argument \"propertyValues\" contains an object that does not respond to selector wrappedPropertyValue"];
+
+    wrappedPropertyValues.push_back([propertyValueObject wrappedPropertyValue]);
   }
 
   return wrappedPropertyValues;

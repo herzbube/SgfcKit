@@ -80,7 +80,7 @@
   auto wrappedBoardSizeProperty = LibSgfcPlusPlus::SgfcPlusPlusFactory::CreatePropertyFactory()->CreateBoardSizeProperty(
     [numberPropertyValue wrappedNumberPropertyValue]);
 
-  self = [self initWithWrappedBoardSizeProperty:_wrappedBoardSizeProperty
+  self = [self initWithWrappedBoardSizeProperty:wrappedBoardSizeProperty
                                  propertyValues:[NSArray arrayWithObject:numberPropertyValue]];
   if (! self)
     return nil;
