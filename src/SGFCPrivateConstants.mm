@@ -112,6 +112,18 @@ NSDictionary* colorFromSgfcKitMap =
   @(SGFCColorWhite) : @(static_cast<int>(LibSgfcPlusPlus::SgfcColor::White)),
 };
 
+NSDictionary* coordinateSystemToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::UpperLeftOrigin)) : @(SGFCCoordinateSystemUpperLeftOrigin),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::LowerLeftOrigin)) : @(SGFCCoordinateSystemLowerLeftOrigin),
+};
+
+NSDictionary* coordinateSystemFromSgfcKitMap =
+@{
+  @(SGFCCoordinateSystemUpperLeftOrigin) : @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::UpperLeftOrigin)),
+  @(SGFCCoordinateSystemLowerLeftOrigin) : @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::LowerLeftOrigin)),
+};
+
 NSDictionary* doubleToSgfcKitMap =
 @{
   @(static_cast<int>(LibSgfcPlusPlus::SgfcDouble::Normal)) : @(SGFCDoubleNormal),
@@ -274,6 +286,20 @@ NSDictionary* goPlayerRatingTypeFromSgfcKitMap =
   @(SGFCGoPlayerRatingTypeUncertain) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Uncertain)),
   @(SGFCGoPlayerRatingTypeEstablished) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Established)),
   @(SGFCGoPlayerRatingTypeUnspecified) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPlayerRatingType::Unspecified)),
+};
+
+NSDictionary* goPointNotationToSgfcKitMap =
+@{
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Sgf)) : @(SGFCGoPointNotationSgf),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Figure)) : @(SGFCGoPointNotationFigure),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Hybrid)) : @(SGFCGoPointNotationHybrid),
+};
+
+NSDictionary* goPointNotationFromSgfcKitMap =
+@{
+  @(SGFCGoPointNotationSgf) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Sgf)),
+  @(SGFCGoPointNotationFigure) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Figure)),
+  @(SGFCGoPointNotationHybrid) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Hybrid)),
 };
 
 NSDictionary* goRulesetTypeToSgfcKitMap =
@@ -768,30 +794,4 @@ NSDictionary* winTypeFromSgfcKitMap =
   @(SGFCWinTypeWinByResignation) : @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinByResignation)),
   @(SGFCWinTypeWinOnTime) : @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinOnTime)),
   @(SGFCWinTypeWinByForfeit) : @(static_cast<int>(LibSgfcPlusPlus::SgfcWinType::WinByForfeit)),
-};
-
-NSDictionary* coordinateSystemToSgfcKitMap =
-@{
-  @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::UpperLeftOrigin)) : @(SGFCCoordinateSystemUpperLeftOrigin),
-  @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::LowerLeftOrigin)) : @(SGFCCoordinateSystemLowerLeftOrigin),
-};
-
-NSDictionary* coordinateSystemFromSgfcKitMap =
-@{
-  @(SGFCCoordinateSystemUpperLeftOrigin) : @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::UpperLeftOrigin)),
-  @(SGFCCoordinateSystemLowerLeftOrigin) : @(static_cast<int>(LibSgfcPlusPlus::SgfcCoordinateSystem::LowerLeftOrigin)),
-};
-
-NSDictionary* goPointNotationToSgfcKitMap =
-@{
-  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Sgf)) : @(SGFCGoPointNotationSgf),
-  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Figure)) : @(SGFCGoPointNotationFigure),
-  @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Hybrid)) : @(SGFCGoPointNotationHybrid),
-};
-
-NSDictionary* goPointNotationFromSgfcKitMap =
-@{
-  @(SGFCGoPointNotationSgf) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Sgf)),
-  @(SGFCGoPointNotationFigure) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Figure)),
-  @(SGFCGoPointNotationHybrid) : @(static_cast<int>(LibSgfcPlusPlus::SgfcGoPointNotation::Hybrid)),
 };
