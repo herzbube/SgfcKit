@@ -247,7 +247,7 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   SGFCArgumentTypeDeleteUnknownProperties,
 
   /// @brief Delete properties of a given property type. This argument
-  /// requires an SgfcPropertyType parameter value, the value denotes the
+  /// requires an SGFCPropertyType parameter value, the value denotes the
   /// properties to delete. This option can be specified multiple times. The
   /// corresponding SGFC command line option is -yP.
   ///
@@ -255,12 +255,12 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// counterpart. To delete these properties you have to specify their
   /// original type, i.e. the type before the conversion takes place. Exmaple:
   /// SGFC converts the "L" property to its FF4 counterpart "LB". You have
-  /// to specify SgfcPropertyType::L do delete this property.
+  /// to specify #SGFCPropertyTypeL do delete this property.
   ///
-  /// The SgfcPropertyType enumeration contains a number of values for
+  /// The SGFCPropertyType enumeration contains a number of values for
   /// properties that SGFC does not know about. Example: Game-specific
   /// property types like "CO" (Backgammon) or "BO" (Octi). The argument is
-  /// invalid if you specify an SgfcPropertyType value that refers to a
+  /// invalid if you specify an SGFCPropertyType value that refers to a
   /// property type that is not known by SGFC.
   ///
   /// @note When a property is deleted because of this argument type, this
@@ -429,9 +429,9 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// out such an object tree that contains values in mixed encodings is
   /// likely to produce invalid results.
   ///
-  /// @see SgfcArgumentType::DefaultEncoding
-  /// @see SgfcArgumentType::ForcedEncoding
-  EncodingMode,
+  /// @see #SGFCArgumentTypeDefaultEncoding
+  /// @see #SGFCArgumentTypeForcedEncoding
+  SGFCArgumentTypeEncodingMode,
 
   /// @brief Select the default encoding to be used if the SGF content does
   /// not contain a CA property. This argument requires a string parameter
@@ -441,9 +441,9 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// implementation used by SgfcKit. Invoke "iconv --list" on the command
   /// line to see a list of supported encodings.
   ///
-  /// @see SgfcArgumentType::EncodingMode
-  /// @see SgfcArgumentType::ForcedEncoding
-  DefaultEncoding,
+  /// @see #SGFCArgumentTypeEncodingMode
+  /// @see #SGFCArgumentTypeForcedEncoding
+  SGFCArgumentTypeDefaultEncoding,
 
   /// @brief Select the encoding to be used. This overrides even a CA property
   /// found in the SGF content. This argument requires a string parameter
@@ -453,6 +453,7 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// implementation used by SgfcKit. Invoke "iconv --list" on the command
   /// line to see a list of supported encodings.
   ///
-  /// @see SgfcArgumentType::EncodingMode
-  /// @see SgfcArgumentType::DefaultEncoding
-  ForcedEncoding,};
+  /// @see #SGFCArgumentTypeEncodingMode
+  /// @see #SGFCArgumentTypeDefaultEncoding
+  SGFCArgumentTypeForcedEncoding,
+};

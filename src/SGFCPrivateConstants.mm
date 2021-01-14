@@ -78,6 +78,9 @@ NSDictionary* argumentTypeToSgfcKitMap =
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::CorrectVariationLevelAndRootMoves)) : @(SGFCArgumentTypeCorrectVariationLevelAndRootMoves),
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ReverseVariationOrdering)) : @(SGFCArgumentTypeReverseVariationOrdering),
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ExpandCompressedPointLists)) : @(SGFCArgumentTypeExpandCompressedPointLists),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::EncodingMode)) : @(SGFCArgumentTypeEncodingMode),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DefaultEncoding)) : @(SGFCArgumentTypeDefaultEncoding),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ForcedEncoding)) : @(SGFCArgumentTypeForcedEncoding),
 };
 
 NSDictionary* argumentTypeFromSgfcKitMap =
@@ -98,6 +101,9 @@ NSDictionary* argumentTypeFromSgfcKitMap =
   @(SGFCArgumentTypeCorrectVariationLevelAndRootMoves) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::CorrectVariationLevelAndRootMoves)),
   @(SGFCArgumentTypeReverseVariationOrdering) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ReverseVariationOrdering)),
   @(SGFCArgumentTypeExpandCompressedPointLists) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ExpandCompressedPointLists)),
+  @(SGFCArgumentTypeEncodingMode) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::EncodingMode)),
+  @(SGFCArgumentTypeDefaultEncoding) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DefaultEncoding)),
+  @(SGFCArgumentTypeForcedEncoding) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ForcedEncoding)),
 };
 
 NSDictionary* colorToSgfcKitMap =
