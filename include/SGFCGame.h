@@ -205,7 +205,7 @@
 /// game tree (gameInfoNodes() returns only one game info node). If the
 /// game contains more than one game tree, an SGFCGameInfo object that
 /// describes the second, third, etc. game tree can be obtained by invoking
-/// SGFCNode::createGameInfo() on the second, third, etc. game info nodes
+/// SGFCNode::gameInfo() on the second, third, etc. game info nodes
 /// returned by gameInfoNodes().
 ///
 /// If the game has no game trees (gameInfoNodes() returns an empty list)
@@ -220,8 +220,8 @@
 /// If gameType() returns #SGFCGameTypeGo then the returned object is
 /// an SGFCGoGameInfo object.
 ///
-/// @see SGFCNode::createGameInfo()
-- (SGFCGameInfo*) createGameInfo;
+/// @see SGFCNode::gameInfo()
+@property(nonatomic, strong, readonly) SGFCGameInfo* gameInfo;
 
 /// @brief Writes all root property values in @a gameInfo to the
 /// corresponding properties in the root node that rootNode() returns,

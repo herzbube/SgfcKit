@@ -251,8 +251,8 @@
 /// - Or if the root node does not contain a property of type
 ///   #SGFCPropertyTypeGM.
 ///
-/// @see SGFCcGame::createGameInfo()
-- (SGFCGameInfo*) createGameInfo;
+/// @see SGFCGame::gameInfo()
+@property(nonatomic, strong, readonly) SGFCGameInfo* gameInfo;
 
 /// @brief Writes all root property values in @a gameInfo to the
 /// corresponding properties in the root node that root() returns,

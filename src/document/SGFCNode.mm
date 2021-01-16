@@ -218,7 +218,7 @@
 
 #pragma mark - Public API - Game info access
 
-- (SGFCGameInfo*) createGameInfo
+- (SGFCGameInfo*) gameInfo
 {
   return [SGFCWrappingUtility wrapGameInfo:_wrappedNode->CreateGameInfo()];
 }

@@ -150,7 +150,7 @@
   return [SGFCWrappingUtility wrapNodes:_wrappedGame->GetGameInfoNodes()];
 }
 
-- (SGFCGameInfo*) createGameInfo
+- (SGFCGameInfo*) gameInfo
 {
   return [SGFCWrappingUtility wrapGameInfo:_wrappedGame->CreateGameInfo()];
 }
