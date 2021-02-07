@@ -39,6 +39,12 @@
 /// an SGFCRoundInformation object back together to a composite property
 /// value.
 ///
+/// @note It is safe to pass around copies of SGFCRoundInformation even though
+/// it contains references to Objective-C objects. These are strong references
+/// and ARC will take care of retaining/releasing these objects at the
+/// appropriate time (e.g. when SGFCRoundInformation is copied or when
+/// SGFCRoundInformation goes out of scope).
+///
 /// @see SGFCRoundInformationMake
 /// @see SGFCRoundInformationFromPropertyValue
 /// @see SGFCRoundInformationToPropertyValue
@@ -51,10 +57,10 @@ typedef struct
   /// Although the term "round number" implies a numeric value, the
   /// SGFCRoundInformation struct defines this to be a string, because the
   /// SGF standard also does not define a specific value type.
-  NSString* RoundNumber;
+  NSString* __strong RoundNumber;
 
   /// @brief The round type. The default is an empty string.
-  NSString* RoundType;
+  NSString* __strong RoundType;
 
   /// @brief YES if the SGFCRoundInformation object holds valid round
   /// number and round type values. NO if the round number and round type
