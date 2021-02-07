@@ -60,9 +60,6 @@
 ///
 /// Typical fatal errors are invalid arguments, or the SGF data could not
 /// be read e.g. because the specified SGF file does not exist.
-///
-/// @todo The SGF data should probably also be considered invalid if
-/// there were critical errors.
 @property(nonatomic, readonly, getter=isSgfDataValid) BOOL sgfDataValid;
 
 /// @brief Returns a collection of SGFCMessage objects which together form
@@ -78,8 +75,6 @@
 
 /// @brief Prints the content of the SGFCDocumentReadResult to stdout for
 /// debugging purposes.
-///
-/// @todo Remove this prior to release.
 - (void) debugPrintToConsole;
 
 @end

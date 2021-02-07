@@ -75,16 +75,17 @@
 /// the arguments that arguments() returns at that point. The processing
 /// is almost exactly the same as when SGFCDocumentReader had been used to
 /// read the SGF data. If the library client does not do anything special,
-/// this is the default behahviour:
+/// this is the default behaviour:
 /// - #SGFCArgumentTypeEncodingMode 1 is used.
 /// - The first CA property value determines the encoding to use.
-/// - UTF-8 is used as the default encoding if there is no CA property value.
+/// - #SGFCArgumentTypeDefaultEncoding UTF-8 is used if there is no
+///   CA property value.
 ///
 /// The last point is the only difference to SGFCDocumentReader, which uses
-/// ISO-8859-1 as the default encoding. SGFCDocumentWriter uses UTF-8 because
-/// it assumes that library clients work with UTF-8. A library client that
-/// wants a different default encoding must change the arguments returned by
-/// arguments().
+/// #SGFCArgumentTypeDefaultEncoding ISO-8859-1. SGFCDocumentWriter uses
+/// UTF-8 because it assumes that library clients work with UTF-8. A library
+/// client that wants a different default encoding must change the arguments
+/// returned by arguments().
 @interface SGFCDocumentWriter : NSObject
 {
 }
@@ -178,8 +179,6 @@
 ///
 /// This is useful to see the SGF content that the writer would pass to
 /// SGFC for parsing and writing.
-///
-/// @todo Remove this prior to release.
 - (void) debugPrintToConsole:(SGFCDocument*)document;
 
 @end

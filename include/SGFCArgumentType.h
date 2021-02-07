@@ -397,6 +397,15 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   ///   ASCII/ISO-8859-1.
   /// - Mode 3: No decoding takes place.
   ///
+  /// @attention In SgfcKit you should @b never use parameter value 3! SgfcKit
+  /// uses NSString everywhere and NSString is designed to hold a Unicode
+  /// string. When SgfcKit obtains string data from libsgfc++ it has to specify
+  /// an encoding with which to marshal the string data from the C++ string
+  /// type std::string into NSString. SgfcKit assumes UTF-8, because that is the
+  /// encoding in which libsgfc++ (and the underlying SGFC) provides string data
+  /// when encoding modes 1 and 2 are used. If you use encoding mode 3 then you
+  /// invalidate SgfcKit's assumption and you will get wrong data.
+  ///
   /// @note Mode 2 is the behaviour as designed by the SGF standard. This is
   /// somewhat antiquated as it not only allows SGF content to be partially
   /// encoded, it even allows different encodings to be used within the same
@@ -415,7 +424,8 @@ typedef NS_ENUM(NSUInteger, SGFCArgumentType)
   /// When mode 1 or 2 are used for reading, the SGF content is decoded and
   /// made available to the library client as UTF-8. Accordingly each decoded
   /// game tree's root node is populated with a CA property value "UTF-8".
-  /// When mode 3 is used no decoding takes place and the library client
+  /// See the documentation of SGFCDocumentReader for details how this is
+  /// done. When mode 3 is used no decoding takes place and the library client
   /// receives the SGF content as-is.
   ///
   /// When node 1 or 2 are used for @b writing, the SGF content in the

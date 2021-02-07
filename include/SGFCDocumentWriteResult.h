@@ -58,8 +58,6 @@
 
 /// @brief Prints the content of the SGFCDocumentWriteResult to stdout for
 /// debugging purposes.
-///
-/// @todo Remove this prior to release.
 - (void) debugPrintToConsole;
 
 @end

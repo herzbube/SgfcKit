@@ -45,15 +45,22 @@
 /// properties (#SGFCPropertyCategoryGameInfo) found in the root node and the
 /// game info node, respectively, at the time the query is made.
 ///
+/// @note It is not possible to distinguish between a property that was not
+/// present in the root or game info node, and a property that was present
+/// in the root or game info but had the default property value.
+///
 /// Alternatively a new but empty SGFCGameInfo object can be created via
 /// SGFCKitFactory and then populated with data as the library client
-/// sees fit.
+/// sees fit. The empty SGFCGameInfo object is initialized with default
+/// values.
 ///
 /// The values that an SGFCGameInfo object holds can be written to an
 /// SGFCGame or SGFCNode. The values are converted to properties and
 /// property values that are then stored in the root node and the game info
 /// node, respectively. Properties and property values that already exist at
 /// that time are overwritten.
+///
+/// @note It is not possible to write a property with its default value.
 ///
 /// Root property values are read-only - they must be provided at the time the
 /// SGFCGameInfo object is constructed and cannot be changed later on. The
@@ -258,6 +265,11 @@
 ///
 /// Invoking the setter of this property also changes the information returned
 /// by rawGameDates().
+///
+/// The array elements are NSValue objects. Use the NSValueAdditionsSGFCDate
+/// category (which is declared in the NSValue+SGFCDate.h header file) to store
+/// SGFCDate inside an NSValue object, or to retrieve an SGFCDate from an
+/// NSValue object.
 ///
 /// @exception NSInvalidArgumentException Is raised if the property is set with
 /// a @e nil value.
