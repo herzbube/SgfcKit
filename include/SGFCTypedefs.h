@@ -22,10 +22,21 @@
 /// the SGF standard. Values are signed integer numbers.
 ///
 /// @ingroup public-api
-typedef NSInteger SGFCNumber;
+///
+/// The value range of SGFCNumber must be fully mappable to the value range
+/// of LibSgfcPlusPlus::SgfcNumber, in both directions. SGFCNumber must
+/// therefore use the same primitive underlying type as
+/// LibSgfcPlusPlus::SgfcNumber. NSInteger is not an option because on 64-bit
+/// platforms it has a wider value range than LibSgfcPlusPlus::SgfcNumber.
+typedef long SGFCNumber;
 
 /// @brief The SGFCReal type represents the Real value type defined by
 /// the SGF standard. Values are signed floating point numbers.
 ///
 /// @ingroup public-api
+///
+/// The value range of SGFCReal must be fully mappable to the value range
+/// of LibSgfcPlusPlus::SgfcReal, in both directions. SGFCReal must
+/// therefore use the same primitive underlying type as
+/// LibSgfcPlusPlus::SgfcReal.
 typedef double SGFCReal;

@@ -463,49 +463,33 @@
 
 + (SGFCNumber) toSgfcKitNumber:(LibSgfcPlusPlus::SgfcNumber)numberValue
 {
-  if (numberValue >= std::numeric_limits<SGFCNumber>::min() &&
-      numberValue <= std::numeric_limits<SGFCNumber>::max())
-  {
-    return static_cast<SGFCNumber>(numberValue);
-  }
-  else
-  {
-    NSString* reason = [NSString stringWithFormat:@"LibSgfcPlusPlus::SgfcNumber value cannot be mapped to SGFCNumber: %@", @(numberValue)];
-    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+  static_assert(sizeof(SGFCNumber) >= sizeof(LibSgfcPlusPlus::SgfcNumber), "SGFCNumber is not big enough to hold all LibSgfcPlusPlus::SgfcNumber values");
 
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return 0;
-  }
+  // No runtime checks necessary because of static_assert above
+  return static_cast<SGFCNumber>(numberValue);
 }
 
 + (LibSgfcPlusPlus::SgfcNumber) fromSgfcKitNumber:(SGFCNumber)numberValue
 {
-  if (numberValue >= std::numeric_limits<LibSgfcPlusPlus::SgfcNumber>::min() &&
-      numberValue <= std::numeric_limits<LibSgfcPlusPlus::SgfcNumber>::max())
-  {
-    return static_cast<LibSgfcPlusPlus::SgfcNumber>(numberValue);
-  }
-  else
-  {
-    NSString* reason = [NSString stringWithFormat:@"SGFCNumber value cannot be mapped to LibSgfcPlusPlus::SgfcNumber: %@", @(numberValue)];
-    [SGFCExceptionUtility raiseInternalInconsistencyExceptionWithReason:reason];
+  static_assert(sizeof(LibSgfcPlusPlus::SgfcNumber) >= sizeof(SGFCNumber), "LibSgfcPlusPlus::SgfcNumber is not big enough to hold all SGFCNumber values");
 
-    // Dummy return to make compiler happy (compiler does not see that an
-    // exception is raised)
-    return 0;
-  }
+  // No runtime checks necessary because of static_assert above
+  return static_cast<LibSgfcPlusPlus::SgfcNumber>(numberValue);
 }
 
 + (SGFCReal) toSgfcKitReal:(LibSgfcPlusPlus::SgfcReal)realValue
 {
-  // The typedefs in libsgfc++ and SgfcKit have the same underlying type
+  static_assert(sizeof(SGFCReal) >= sizeof(LibSgfcPlusPlus::SgfcReal), "SGFCReal is not big enough to hold all LibSgfcPlusPlus::SgfcReal values");
+
+  // No runtime checks necessary because of static_assert above
   return static_cast<SGFCReal>(realValue);
 }
 
 + (LibSgfcPlusPlus::SgfcReal) fromSgfcKitReal:(SGFCReal)realValue
 {
-  // The typedefs in libsgfc++ and SgfcKit have the same underlying type
+  static_assert(sizeof(LibSgfcPlusPlus::SgfcReal) >= sizeof(SGFCReal), "LibSgfcPlusPlus::SgfcReal is not big enough to hold all SGFCReal values");
+
+  // No runtime checks necessary because of static_assert above
   return static_cast<LibSgfcPlusPlus::SgfcReal>(realValue);
 }
 
