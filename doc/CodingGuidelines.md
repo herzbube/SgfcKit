@@ -2,7 +2,7 @@
 
 ## Naming
 
-- Class names and types that are visible in thhe public API start with the library prefix `SGFC` to avoid namespace clashes when a program combines this with several other libraries in a single global namespace. Remember: Objective-C has no namespaces!
+- Class names and types that are visible in the public API start with the library prefix `SGFC` to avoid namespace clashes when a program combines this with several other libraries in a single global namespace. Remember: Objective-C has no namespaces!
 - After the prefix class names start with an uppercase letter. Example: `SGFCFactory`.
 - Method names start with a lowercase letter.
 - Variable names start with a lowercase letter.
