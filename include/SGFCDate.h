@@ -30,6 +30,10 @@
 /// @ingroup property-value
 /// @ingroup game
 ///
+/// Use the NSValueAdditionsSGFCDate category (which is declared in the
+/// NSValue+SGFCDate.h header file) to store SGFCDate inside an NSValue object,
+/// or to retrieve an SGFCDate from an NSValue object.
+///
 /// @see SGFCDateMake
 /// @see SGFCDateIsPartialDate
 /// @see SGFCDateIsValidCalendarDate
@@ -38,6 +42,7 @@
 /// @see SGFCDateToPropertyValue
 /// @see SGFCDateEqualToDate
 /// @see SGFCDateNotEqualToDate
+/// @see NSValueAdditionsSGFCDate
 typedef struct
 {
   /// @brief The date's year part. Valid values are in the range from 0-9999.
