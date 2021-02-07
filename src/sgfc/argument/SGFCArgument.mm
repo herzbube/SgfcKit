@@ -38,17 +38,6 @@
 
 #pragma mark - Initialization and deallocation
 
-- (instancetype) init
-{
-  // Always raising an exception is intended. This guards against the library
-  // client attempting to manually allocate/initialize an SGFCArgument.
-  [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCArgument cannot be instantiated from outside of the library"];
-
-  // Dummy return to make compiler happy (compiler does not see that an
-  // exception is raised)
-  return [self initWithWrappedArgument:nullptr];
-}
-
 - (instancetype) initWithWrappedArgument:(std::shared_ptr<LibSgfcPlusPlus::ISgfcArgument>)wrappedArgument
 {
   // Call designated initializer of superclass (NSObject)

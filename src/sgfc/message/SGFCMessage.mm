@@ -38,17 +38,6 @@
 
 #pragma mark - Initialization and deallocation
 
-- (instancetype) init
-{
-  // Always raising an exception is intended. This guards against the library
-  // client attempting to manually allocate/initialize an SGFCMessage.
-  [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCMessage cannot be instantiated from outside of the library"];
-
-  // Dummy return to make compiler happy (compiler does not see that an
-  // exception is raised)
-  return [self initWithWrappedMessage:nullptr];
-}
-
 - (instancetype) initWithWrappedMessage:(std::shared_ptr<LibSgfcPlusPlus::ISgfcMessage>)wrappedMessage
 {
   // Call designated initializer of superclass (NSObject)

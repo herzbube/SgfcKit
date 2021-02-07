@@ -41,17 +41,6 @@
 
 #pragma mark - Initialization and deallocation
 
-- (instancetype) init
-{
-  // Always raising an exception is intended. This guards against the library
-  // client attempting to manually allocate/initialize an SGFCDocumentReadResult.
-  [SGFCExceptionUtility raiseInvalidOperationExceptionWithReason:@"SGFCDocumentReadResult cannot be instantiated from outside of the library"];
-
-  // Dummy return to make compiler happy (compiler does not see that an
-  // exception is raised)
-  return [self initWithWrappedDocumentReadResult:nullptr];
-}
-
 - (instancetype) initWithWrappedDocumentReadResult:(std::shared_ptr<LibSgfcPlusPlus::ISgfcDocumentReadResult>)wrappedDocumentReadResult
 {
   // Call designated initializer of superclass (NSObject)

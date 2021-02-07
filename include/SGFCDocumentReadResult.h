@@ -42,12 +42,8 @@
 {
 }
 
-/// @brief Do @b NOT use this initializer, it always raises
-/// SGFCInvalidOperationException.
-///
-/// @exception SGFCInvalidOperationException Is raised whenever this initializer
-/// is invoked.
-- (instancetype) init;
+/// @brief Do @b NOT use this initializer.
+- (instancetype) init NS_UNAVAILABLE;
 
 /// @brief Returns an SGFCExitCode value that best fits the result of the
 /// read operation. The numeric value of the SGFCExitCode corresponds to

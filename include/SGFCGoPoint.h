@@ -55,12 +55,8 @@
 {
 }
 
-/// @brief Do @b NOT use this initializer, it always raises
-/// SGFCInvalidOperationException.
-///
-/// @exception SGFCInvalidOperationException Is raised whenever this initializer
-/// is invoked.
-- (id) init;
+/// @brief Do @b NOT use this initializer.
+- (id) init NS_UNAVAILABLE;
 
 /// @brief Returns the 1-based numeric x-axis position of the point in the
 /// desired coordinate system @a coordinateSystem.
