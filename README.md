@@ -2,10 +2,6 @@
 [![Github Releases](https://img.shields.io/github/release/herzbube/sgfckit.svg)](https://github.com/herzbube/sgfckit/releases)
 [![Github Releases](https://img.shields.io/github/license/herzbube/sgfckit.svg)](https://github.com/herzbube/sgfckit/blob/master/LICENSE)
 
-## Project status
-
-SgfcKit is still in a pre-release stage, mainly because the underlying libsgfc++ is also pre-release. Please don't use SgfcKit in other software projects yet.
-
 ## What is it?
 
 SgfcKit is an Objective-C wrapper library around the C++ library [libsgfc++](https://github.com/herzbube/libsgfcplusplus), which in turn is a wrapper for [SGFC](https://www.red-bean.com/sgf/sgfc/), the SGF Syntax Checker & Converter. SgfcKit transitively inherits SGFC's core functionality from libsgfc++:
@@ -47,7 +43,10 @@ The project build system is [documented here](doc/Build.md).
 
 ## More documentation
 
+- [Library design and working principles](doc/Principles.md)
+- [Bugs and limitations](doc/Bugs.md)
 - [Coding guidelines](doc/CodingGuidelines.md)
+- If you have SGF-related questions you may find them answered in the [document section of libsgfc++](https://github.com/herzbube/libsgfcplusplus/tree/develop/doc).
 
 ## License
 
