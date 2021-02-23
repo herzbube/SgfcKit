@@ -146,7 +146,7 @@ set ( LIBSGFCPLUSPLUS_STATIC_FRAMEWORK_TARGET_NAME ${LIBSGFCPLUSPLUS_STATIC_LIBR
 # Git submodule, but the user can override this.
 find_package (
   ${LIBSGFCPLUSPLUS_PACKAGE_NAME}
-  0.1
+  1.0
   EXACT
   QUIET
 )
@@ -177,7 +177,7 @@ else()
 
   find_package (
     ${LIBSGFCPLUSPLUS_PACKAGE_NAME}
-    0.1
+    1.0
     EXACT
     QUIET
     PATHS ${LIBSGFCPLUSPLUS_INSTALLATION_PREFIX}
