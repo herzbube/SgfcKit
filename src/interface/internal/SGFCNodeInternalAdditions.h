@@ -28,7 +28,7 @@
 /// @brief The SGFCNodeInternalAdditions category adds a library-internal API to
 /// the SGFCNode class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup game-tree
 @interface SGFCNode(SGFCNodeInternalAdditions)
 

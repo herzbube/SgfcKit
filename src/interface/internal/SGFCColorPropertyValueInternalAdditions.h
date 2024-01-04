@@ -28,7 +28,7 @@
 /// @brief The SGFCColorPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCColorPropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCColorPropertyValue(SGFCColorPropertyValueInternalAdditions)
 

@@ -28,7 +28,7 @@
 /// @brief The SGFCMessageInternalAdditions category adds a library-internal
 /// API to the SGFCMessage class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup sgfc-message
 @interface SGFCMessage(SGFCMessageInternalAdditions)
 

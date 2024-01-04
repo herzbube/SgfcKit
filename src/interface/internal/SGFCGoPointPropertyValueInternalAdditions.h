@@ -28,7 +28,7 @@
 /// @brief The SGFCGoPointPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCGoPointPropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 /// @ingroup go
 @interface SGFCGoPointPropertyValue(SGFCGoPointPropertyValueInternalAdditions)

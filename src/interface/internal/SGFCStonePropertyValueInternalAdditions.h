@@ -28,7 +28,7 @@
 /// @brief The SGFCStonePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCStonePropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCStonePropertyValue(SGFCStonePropertyValueInternalAdditions)
 

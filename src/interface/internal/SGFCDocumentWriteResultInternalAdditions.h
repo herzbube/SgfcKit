@@ -28,7 +28,7 @@
 /// @brief The SGFCDocumentWriteResultInternalAdditions category adds a
 /// library-internal API to the SGFCDocumentWriteResult class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup sgfc-frontend
 /// @ingroup document
 @interface SGFCDocumentWriteResult(SGFCDocumentWriteResultInternalAdditions)

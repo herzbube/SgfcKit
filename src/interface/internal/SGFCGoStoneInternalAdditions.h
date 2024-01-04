@@ -28,7 +28,7 @@
 /// @brief The SGFCGoStoneInternalAdditions category adds a library-internal
 /// API to the SGFCGoStone class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup go
 @interface SGFCGoStone(SGFCGoStoneInternalAdditions)
 

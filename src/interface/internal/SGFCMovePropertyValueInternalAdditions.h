@@ -28,7 +28,7 @@
 /// @brief The SGFCMovePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCMovePropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCMovePropertyValue(SGFCMovePropertyValueInternalAdditions)
 

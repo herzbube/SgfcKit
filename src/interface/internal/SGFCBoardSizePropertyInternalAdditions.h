@@ -28,7 +28,7 @@
 /// @brief The SGFCBoardSizePropertyInternalAdditions category adds a
 /// library-internal API to the SGFCBoardSizeProperty class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property
 @interface SGFCBoardSizeProperty(SGFCBoardSizePropertyInternalAdditions)
 

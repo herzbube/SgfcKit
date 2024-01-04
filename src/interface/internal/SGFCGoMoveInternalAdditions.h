@@ -28,7 +28,7 @@
 /// @brief The SGFCGoMoveInternalAdditions category adds a library-internal
 /// API to the SGFCGoMove class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup go
 @interface SGFCGoMove(SGFCGoMoveInternalAdditions)
 

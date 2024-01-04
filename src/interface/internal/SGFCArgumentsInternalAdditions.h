@@ -28,7 +28,7 @@
 /// @brief The SGFCArgumentsInternalAdditions category adds a library-internal
 /// API to the SGFCArguments class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup sgfc-arguments
 @interface SGFCArguments(SGFCArgumentsInternalAdditions)
 

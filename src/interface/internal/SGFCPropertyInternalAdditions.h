@@ -28,7 +28,7 @@
 /// @brief The SGFCPropertyInternalAdditions category adds a
 /// library-internal API to the SGFCProperty class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property
 @interface SGFCProperty(SGFCPropertyInternalAdditions)
 

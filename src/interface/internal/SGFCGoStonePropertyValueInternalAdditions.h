@@ -28,7 +28,7 @@
 /// @brief The SGFCGoStonePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCGoStonePropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 /// @ingroup go
 @interface SGFCGoStonePropertyValue(SGFCGoStonePropertyValueInternalAdditions)

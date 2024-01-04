@@ -28,7 +28,7 @@
 /// @brief The SGFCGoGameInfoInternalAdditions category adds a
 /// library-internal API to the SGFCGoGameInfo class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 /// @ingroup go
 @interface SGFCGoGameInfo(SGFCGoGameInfoInternalAdditions)

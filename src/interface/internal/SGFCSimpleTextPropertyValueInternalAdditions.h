@@ -28,7 +28,7 @@
 /// @brief The SGFCSimpleTextPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCSimpleTextPropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCSimpleTextPropertyValue(SGFCSimpleTextPropertyValueInternalAdditions)
 

@@ -28,7 +28,7 @@
 /// @brief The SGFCNumberPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCNumberPropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCNumberPropertyValue(SGFCNumberPropertyValueInternalAdditions)
 

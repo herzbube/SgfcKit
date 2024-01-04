@@ -22,7 +22,7 @@
 /// @brief The SGFCTreeBuilderInternalAdditions category adds a library-internal
 /// API to the SGFCTreeBuilder class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup game-tree
 @interface SGFCTreeBuilder(SGFCTreeBuilderInternalAdditions)
 

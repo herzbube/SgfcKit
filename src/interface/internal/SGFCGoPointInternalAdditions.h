@@ -28,7 +28,7 @@
 /// @brief The SGFCGoPointInternalAdditions category adds a library-internal
 /// API to the SGFCGoPoint class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup go
 @interface SGFCGoPoint(SGFCGoPointInternalAdditions)
 

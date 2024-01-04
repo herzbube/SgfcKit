@@ -28,7 +28,7 @@
 /// @brief The SGFCDoublePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCDoublePropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCDoublePropertyValue(SGFCDoublePropertyValueInternalAdditions)
 

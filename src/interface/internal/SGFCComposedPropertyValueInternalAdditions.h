@@ -31,7 +31,7 @@
 /// declaring methods unique to the category, and second by adopting the
 /// SGFCPropertyValueInternal protocol.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCComposedPropertyValue(SGFCComposedPropertyValueInternalAdditions) <SGFCPropertyValueInternal>
 

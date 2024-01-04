@@ -290,7 +290,7 @@
 /// node. This is the reason why the setter prevents setting a collection
 /// that contains duplicate property types or names. Names are checked to
 /// prevent duplicates of custom properties, which have
-/// #SGFCPropertyTypeUnknow.
+/// #SGFCPropertyTypeUnknown.
 ///
 /// The SGF standard does not define an order in which properties have to
 /// appear within a node. In fact, it explicitly states that different

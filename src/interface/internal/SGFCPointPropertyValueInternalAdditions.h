@@ -28,7 +28,7 @@
 /// @brief The SGFCPointPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCPointPropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCPointPropertyValue(SGFCPointPropertyValueInternalAdditions)
 

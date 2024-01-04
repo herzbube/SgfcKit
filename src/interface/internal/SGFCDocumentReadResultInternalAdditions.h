@@ -28,7 +28,7 @@
 /// @brief The SGFCDocumentReadResultInternalAdditions category adds a
 /// library-internal API to the SGFCDocumentReadResult class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup sgfc-frontend
 /// @ingroup document
 @interface SGFCDocumentReadResult(SGFCDocumentReadResultInternalAdditions)

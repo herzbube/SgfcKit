@@ -30,7 +30,7 @@
 /// SGFCPropertyValueInternal, not SGFCPropertyValue, because parts of the
 /// library implementation.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @protocol SGFCPropertyValueInternal <SGFCPropertyValue>
 

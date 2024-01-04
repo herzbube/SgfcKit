@@ -28,7 +28,7 @@
 /// @brief The SGFCRealPropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCRealPropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 @interface SGFCRealPropertyValue(SGFCRealPropertyValueInternalAdditions)
 

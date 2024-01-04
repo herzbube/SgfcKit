@@ -20,7 +20,7 @@
 #import <Foundation/NSObjCRuntime.h>
 
 /// @brief SGFCDouble enumerates the values that a property value of type
-/// #SgfcPropertyValueTypeDouble can have.
+/// #SGFCPropertyValueTypeDouble can have.
 ///
 /// @ingroup public-api
 ///

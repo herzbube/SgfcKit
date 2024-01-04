@@ -28,7 +28,7 @@
 /// @brief The SGFCGameTypePropertyInternalAdditions category adds a
 /// library-internal API to the SGFCGameTypeProperty class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property
 @interface SGFCGameTypeProperty(SGFCGameTypePropertyInternalAdditions)
 

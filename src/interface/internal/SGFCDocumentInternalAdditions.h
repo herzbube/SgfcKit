@@ -28,7 +28,7 @@
 /// @brief The SGFCDocumentInternalAdditions category adds a library-internal
 /// API to the SGFCDocument class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup document
 @interface SGFCDocument(SGFCDocumentInternalAdditions)
 

@@ -39,7 +39,7 @@
 typedef struct
 {
   /// @brief The result type. The default is
-  /// #GFCGameResultTypeUnknownResult.
+  /// #SGFCGameResultTypeUnknownResult.
   SGFCGameResultType GameResultType;
 
   /// @brief The win type. The default is #SGFCWinTypeWinWithScore.
@@ -52,7 +52,7 @@ typedef struct
   ///
   /// The score only has meaning if SGFCGameResult::GameResultType is
   /// either #SGFCGameResultTypeBlackWin or #SGFCGameResultTypeWhiteWin and
-  /// if #SGFCGameResultTypeWinType is #SGFCWinTypeWinWithScore.
+  /// if #SGFCGameResult::WinType is #SGFCWinTypeWinWithScore.
   SGFCReal Score;
 
   /// @brief YES if the SGFCGameResult object holds a valid game result.

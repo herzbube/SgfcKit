@@ -222,9 +222,9 @@ extern const SGFCBoardSize SGFCBoardSizeNone;
 /// A board size is invalid if it violates the constraints defined by the
 /// SGF standard:
 /// - All game types: If the board size is below the minimum size
-///   #BoardSizeMinimum.
+///   #SGFCBoardSizeMinimum.
 /// - For #SGFCGameTypeGo: If the board size is above the maximum size
-///   #BoardSizeMaximumGo.
+///   #SGFCBoardSizeMaximumGo.
 ///
 /// SGFCGame::boardSize() returns this value, for instance, if the
 /// #SGFCPropertyTypeSZ property is present in a game's root node but has

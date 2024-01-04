@@ -28,7 +28,7 @@
 /// @brief The SGFCGoMovePropertyValueInternalAdditions category adds a
 /// library-internal API to the SGFCGoMovePropertyValue class.
 ///
-/// @ingroup private-api
+/// @ingroup internals
 /// @ingroup property-value
 /// @ingroup go
 @interface SGFCGoMovePropertyValue(SGFCGoMovePropertyValueInternalAdditions)

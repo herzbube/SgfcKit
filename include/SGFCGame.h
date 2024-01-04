@@ -193,7 +193,7 @@
 ///   SGF content out there.
 /// - The search is performed depth-first.
 ///
-/// @see #SGFCNodeTraitsGameInfo
+/// @see #SGFCNodeTraitGameInfo
 @property(nonatomic, strong, readonly) NSArray* gameInfoNodes;
 
 /// @brief Returns a newly constructed SGFCGameInfo object with values
