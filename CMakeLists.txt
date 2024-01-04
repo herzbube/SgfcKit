@@ -153,7 +153,7 @@ find_package (
 )
 if ( ${${LIBSGFCPLUSPLUS_PACKAGE_FOUND_VARIABLE_NAME}} )
   message ( STATUS "Found system-wide libsgfc++ CMake package." )
-  message ( STATUS "libsgfcplusplus_FOUND = ${libsgfcplusplus_FOUND}" )
+  message ( STATUS "${LIBSGFCPLUSPLUS_PACKAGE_FOUND_VARIABLE_NAME} = ${${LIBSGFCPLUSPLUS_PACKAGE_FOUND_VARIABLE_NAME}}" )
 else()
   message ( STATUS "System-wide libsgfc++ CMake package not found." )
 
@@ -281,10 +281,10 @@ else()
   set ( AT_LEAST_ONE_STATIC_LIBRARY_IS_ENABLED NO )
 endif()
 
-# Unit tests test library-internal classes. The symbols for these internal
-# classes might not be visible in shared libraries (depends on the compiler).
-# To be on the safe side, the unit test target therefore links against a static
-# library to gain access to all symbols.
+# Unit tests of course also test library-internal classes. The symbols for these
+# internal classes might not be visible in shared libraries (depends on the
+# compiler). To be on the safe side, the unit test target therefore links
+# against a static library to gain access to all symbols.
 if ( ENABLE_STATIC_LIBRARY )
   set ( LINK_LIBRARY_TARGET_NAME ${STATIC_LIBRARY_TARGET_NAME} )
 elseif ( ENABLE_STATIC_FRAMEWORK )
