@@ -60,8 +60,8 @@ The library's source code is documented with [Doxygen](https://www.doxygen.org/)
 Generating and installing the API documentation is optional, and therefore is not part of the regular software build. These are the commands that need be invoked separately:
 
     cd build
-    cmake --build   . --target    sgfckit-doc
-    cmake --install . --component sgfckit-doc --prefix /path/to/destfolder
+    cmake --build   . --target    SgfcKit-doc
+    cmake --install . --component SgfcKit-doc --prefix /path/to/destfolder
 
 Notes:
 
