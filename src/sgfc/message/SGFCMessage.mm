@@ -70,14 +70,14 @@
   return [SGFCMappingUtility toSgfcKitMessageType:_wrappedMessage->GetMessageType()];
 }
 
-- (NSInteger) lineNumber
+- (NSNumber*) lineNumber
 {
-  return [SGFCMappingUtility toSgfcKitInteger:_wrappedMessage->GetLineNumber()];
+  return [SGFCMappingUtility toSgfcKitUnsignedLong:_wrappedMessage->GetLineNumber()];
 }
 
-- (NSInteger) columnNumber
+- (NSNumber*) columnNumber
 {
-  return [SGFCMappingUtility toSgfcKitInteger:_wrappedMessage->GetColumnNumber()];
+  return [SGFCMappingUtility toSgfcKitUnsignedLong:_wrappedMessage->GetColumnNumber()];
 }
 
 - (BOOL) isCriticalMessage

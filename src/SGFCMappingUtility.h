@@ -664,6 +664,14 @@
 /// outside the range of the primitive C++ type @e unsigned int.
 + (unsigned int) fromSgfcKitUInteger:(NSUInteger)uintValue;
 
+/// @brief Maps an unsigned long value (used in libsgfc++) to an NSNumber value
+/// wrapping the unsigned long value (used in SgfcKit).
++ (NSNumber*) toSgfcKitUnsignedLong:(unsigned long)ulongValue;
+
+/// @brief Maps an NSNumber wrapping an unsigned long value (used in SgfcKit)
+/// to an unsigned long value (used in libsgfc++).
++ (unsigned long) fromSgfcKitUnsignedLong:(NSNumber*)ulongValue;
+
 /// @brief Maps a bool value (used in libsgfc++) to a BOOL value
 /// (used in SgfcKit).
 + (BOOL) toSgfcKitBoolean:(bool)boolValue;

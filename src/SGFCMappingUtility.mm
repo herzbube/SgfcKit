@@ -385,6 +385,19 @@
   }
 }
 
++ (NSNumber*) toSgfcKitUnsignedLong:(unsigned long)ulongValue
+{
+  // Can't map "unsigned long" to NSUInteger, because on some platforms
+  // NSUinteger is defined as "unsigned int", and long has the potential to be
+  // larger than int.
+  return [NSNumber numberWithUnsignedLong:ulongValue];
+}
+
++ (unsigned long) fromSgfcKitUnsignedLong:(NSNumber*)ulongValue;
+{
+  return [ulongValue unsignedLongValue];
+}
+
 + (BOOL) toSgfcKitBoolean:(bool)boolValue
 {
   return boolValue ? YES : NO;

@@ -52,10 +52,10 @@ extern NSString* SGFCSgfcVersion;
 //@{
 /// @brief Indicates an invalid line number. This is used for messages
 /// that do not refer to a specific line number in a piece of SGF content.
-extern const int SGFCInvalidLineNumber;
+extern NSNumber* SGFCInvalidLineNumber;
 /// @brief Indicates an invalid column number. This is used for messages
 /// that do not refer to a specific column number in a piece of SGF content.
-extern const int SGFCInvalidColumnNumber;
+extern NSNumber* SGFCInvalidColumnNumber;
 /// @brief A library error number (= errno value) indicating "no error".
 /// This is defined to be the value 0 (zero).
 extern const int SGFCLibraryErrorNumberNoError;

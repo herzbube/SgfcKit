@@ -72,13 +72,13 @@
 /// that caused the message. Returns #SGFCInvalidLineNumber if
 /// the message does not refer to a specific line in the SGF data (most
 /// fatal errors, but also some errors and warnings).
-@property(nonatomic, readonly) NSInteger lineNumber;
+@property(nonatomic, readonly) NSNumber* lineNumber;
 
 /// @brief Returns the number of the column (1-based) in the parsed SGF data
 /// that caused the message. Returns #SGFCInvalidColumnNumber if
 /// the message does not refer to a specific column in the SGF data (most
 /// fatal errors, but also some errors and warnings).
-@property(nonatomic, readonly) NSInteger columnNumber;
+@property(nonatomic, readonly) NSNumber* columnNumber;
 
 /// @brief Returns YES if the message describes a critical problem. Only
 /// warning and error messages can be critical. Always returns NO for
