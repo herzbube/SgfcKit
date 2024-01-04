@@ -271,7 +271,7 @@ typedef NS_ENUM(NSInteger, SGFCMessageID)
   /// @brief SGFC found (and fixed) a node that was not in any variation.
   SGFCMessageIDNodeNotInVariation = 66,
   /// @brief SGFC found (and corrected) an illegal variation start.
-  SGFCMessageIDIllegalVariationStartCorrected = 21,
+  SGFCMessageIDIllegalVariationStartCorrected = 67,
   /// @brief SGFC was invoked with an argument that is not a supported long
   /// command line option.
   ///
