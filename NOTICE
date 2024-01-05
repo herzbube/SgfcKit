@@ -1,0 +1,12 @@
+SgfcKit
+Copyright 2020-2024 Patrick Näf (herzbube@herzbube.ch)
+
+This product is an Objective-C wrapper library around the API provided by the
+libsgfc++ library. libsgfc++ in turn uses the source code provided by the SGFC
+command line utility to read, parse and write SGF data. libsgfc++ is copyright
+by Patrick Näf and released under the Apache License, version 2.0. SGFC is
+copyright by Arno Hollosi and released under the BSD 3-Clause license. The
+respective original software is available from these sites:
+  https://github.com/herzbube/libsgfcplusplus
+  https://www.red-bean.com/sgf/sgfc/
+
