@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2020 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2020-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,8 +27,7 @@
 
 /// @brief The SGFCArgument class represents a single argument to be
 /// passed on to SGFC when it reads or writes SGF content. Depending on the
-/// argument type, the argument also has either an integer type or an
-/// SGFCPropertyType parameter.
+/// argument type, the argument may have a parameter.
 ///
 /// @ingroup public-api
 /// @ingroup sgfc-arguments
@@ -74,8 +73,13 @@
 /// return value is undefined if hasMessageIDParameter() returns NO.
 @property(nonatomic, readonly) SGFCMessageID messageIDParameter;
 
+/// @brief Returns YES if the argument has a string representation, i.e.
+/// if toString() can be invoked.
+@property(nonatomic, readonly) BOOL hasStringRepresentation;
+
 /// @brief Returns the argument as a string, exactly as it would be
-/// specified on the SGFC command line. Examples: -n, -b1, -yMA.
+/// specified on the SGFC command line. Examples: -n, -b1, -yMA. The
+/// return value is undefined if hasStringRepresentation() returns NO.
 - (NSString*) toString;
 
 @end

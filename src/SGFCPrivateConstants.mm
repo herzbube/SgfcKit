@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2020 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2020-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -81,6 +81,7 @@ NSDictionary* argumentTypeToSgfcKitMap =
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::EncodingMode)) : @(SGFCArgumentTypeEncodingMode),
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DefaultEncoding)) : @(SGFCArgumentTypeDefaultEncoding),
   @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ForcedEncoding)) : @(SGFCArgumentTypeForcedEncoding),
+  @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DoNotAddSgfcApProperty)) : @(SGFCArgumentTypeDoNotAddSgfcApProperty),
 };
 
 NSDictionary* argumentTypeFromSgfcKitMap =
@@ -104,6 +105,7 @@ NSDictionary* argumentTypeFromSgfcKitMap =
   @(SGFCArgumentTypeEncodingMode) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::EncodingMode)),
   @(SGFCArgumentTypeDefaultEncoding) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DefaultEncoding)),
   @(SGFCArgumentTypeForcedEncoding) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::ForcedEncoding)),
+  @(SGFCArgumentTypeDoNotAddSgfcApProperty) : @(static_cast<int>(LibSgfcPlusPlus::SgfcArgumentType::DoNotAddSgfcApProperty)),
 };
 
 NSDictionary* colorToSgfcKitMap =
