@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2020 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2020-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -63,6 +63,15 @@
 
 /// @brief Returns a newly constructed SGFCRealPropertyValue object
 /// that has the SGFCReal value @a realValue.
+///
+/// The floating point value of @a realValue is converted to text and is
+/// then used as the raw property value of the resulting
+/// SGFCRealPropertyValue object. See SgfNotes.md in the libsgfc++ project,
+/// section "Precision of properties with SGF type Real" for details about the
+/// floating point precision used during conversion
+///
+/// Use propertyValueWithValue:() if you prefer to perform your own
+/// floating-point to string conversion.
 + (SGFCRealPropertyValue*) propertyValueWithReal:(SGFCReal)realValue;
 
 /// @brief Returns a newly constructed SGFCDoublePropertyValue object

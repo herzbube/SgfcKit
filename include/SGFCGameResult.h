@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2024 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2024-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -93,6 +93,10 @@ extern "C"
   ///
   /// See the SGF standard specification for the mandatory structure of an
   /// #SGFCPropertyTypeRE property value.
+  ///
+  /// See SgfNotes.md in the libsgfc++ project, section "Precision of properties
+  /// with SGF type Real" for details about the floating point precision used
+  /// during conversion.
   ///
   /// @return NSString A property value for #SGFCPropertyTypeRE that
   /// conforms to the SGF standard's mandatory formatting, or
