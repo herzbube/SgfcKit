@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2024 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2024-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@
 #import <Foundation/NSString.h>
 
 NSString* SGFCLibraryName = @"SgfcKit";
-NSString* SGFCLibraryVersion = @"2.0.1";
-NSString* SGFCSgfcVersion = @"2.0";
+NSString* SGFCLibraryVersion = @"2.1.0";
+NSString* SGFCSgfcVersion = @"2.1";
 
 NSNumber* SGFCInvalidLineNumber = @(0);
 NSNumber* SGFCInvalidColumnNumber = @(0);
