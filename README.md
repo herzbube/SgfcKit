@@ -31,7 +31,7 @@ At runtime SgfcKit only depends on libsgfc++, the C/C++/Objective-C runtime libr
 
 At build time SgfcKit has the following dependencies:
 
-1. The main dependency, of course, is [libsgfc++](https://github.com/herzbube/libsgfcplusplus).
+1. The main dependency, of course, is [libsgfc++](https://github.com/herzbube/libsgfcplusplus). To compile libsgfc++, a compiler is required that supports a relatively modern version of the C++ standard - see the top-level `CMakeLists.txt` file in the libsgfc++ project which version this is.
 2. The second dependency is the build management tool [CMake](https://cmake.org/cmake/help/latest/).
 3. A last dependency is [Doxygen](https://www.doxygen.org/), used to optionally generate the project's API documentation.
 

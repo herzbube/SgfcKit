@@ -13,10 +13,20 @@ jobs:
     #   on macOS builds.
     # - The project attempts to remain platform independent, so in the future
     #   it should hopefully be possible to also build on at least Ubuntu/Linux.
+    # - We use the *-latest runners because we strive to build with relatively
+    #   new versions of each environment that have modern compilers (see CMakeLists.txt
+    #   in the libsgfc++ project for the minimum version of the C++ standard that we
+    #   need) and tools.    
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [macos-latest]
+
+    # Use the same shell on all runners so can we use the same scripts. Without this,
+    # the Windows runner would use PowerShell.
+    defaults:
+      run:
+        shell: bash
 
     steps:
     - name: Checking out the sources

@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2020 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2020-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -128,7 +128,7 @@
 ///   SgfcKit attempts to interpret the raw property string value
 ///   according to the value type defined property in the SGF standard.
 ///   hasTypedValue() returns YES if that interpretation succeeds,
-///   otherwwise it returns NO and typeConversionErrorMessage()
+///   otherwise it returns NO and typeConversionErrorMessage()
 ///   returns a description of why the interpretation failed.
 /// - hasTypedValue() always returns NO for values of properties that
 ///   are not defined in the SGF standard (aka "custom properties").

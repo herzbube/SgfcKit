@@ -1,5 +1,5 @@
 SgfcKit
-Copyright 2020-2024 Patrick Näf (herzbube@herzbube.ch)
+Copyright 2020-2026 Patrick Näf (herzbube@herzbube.ch)
 
 This product is an Objective-C wrapper library around the API provided by the
 libsgfc++ library. libsgfc++ in turn uses the source code provided by the SGFC

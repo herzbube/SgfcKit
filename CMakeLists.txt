@@ -32,7 +32,7 @@ project (
 
   # Some informational package metadata. Not necessary for the build.
   # Sets PROJECT_HOMEPAGE_URL and PROJECT_DESCRIPTION
-  HOMEPAGE_URL https://github.com/herzbube/SgfcKit
+  HOMEPAGE_URL "https://github.com/herzbube/SgfcKit"
   DESCRIPTION "An Objective-C library that uses SGFC for reading and writing SGF (Smart Game Format) data."
 )
 
@@ -55,7 +55,7 @@ endif()
 # If we don't set a standard the compiler has problems parsing the upstream
 # header files. To be on the safe side we set the same version of the standard
 # that libsgfc++ uses.
-set ( CMAKE_CXX_STANDARD 17 )
+set ( CMAKE_CXX_STANDARD 20 )
 set ( CMAKE_CXX_STANDARD_REQUIRED True )
 
 # Enable testing for this folder and all subfolders. Because this appears in

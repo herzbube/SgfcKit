@@ -75,6 +75,8 @@ Notes:
 
 Currently the project does not contain any useful sample code beyond a basic working demo on the level of a "Hello World" program. See [GitHub issue #5](https://github.com/herzbube/SgfcKit/issues/5).
 
+The libsgfc++ project has a more elaborate sample project. Based on this and the congruence of the libsgfc++ and SgfcKit APIs it should be possible to derive some usages of the SgfcKit API.
+
 ## Enabling/disabling build products
 
 The default build builds everything, but if you wish you can disable certain build products by setting the corresponding variables:
