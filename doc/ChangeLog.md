@@ -1,15 +1,21 @@
 # ChangeLog
 
-## Version 2.1.0 (January 23 2026)
+## Version 3.0.0 (February 07 2026)
 
 ### Features
 
+- The `SGFCNumber` type now has the underlying fixed width integer type `int64_t`, guaranteeing a 64-bit value range on all platforms (#13). In previous versions of the library, the underlying type was `long`, which was ambiguous and caused the value range of `SGFCNumber` to be platform-dependent. An identical change occurred in libsgfc++ 3.0.0.
+- In a similar vein, several other data types in the public interface of the library have been changed to use fixed width integer types instead of ambiguous sized data types (#14). Again, identical changes occurred in libsgfc++ 3.0.0.
+  - `SGFCMessage`: Line and column numbers now use `uint64_t` instead of `long`.
+  - `SGFCGoPoint`: x- and y-position now use `uint64_t` instead of `unsigned int`.
+  - `SGFCNodeTraits` and `SGFCPropertyTraits`: These typedefs now use the underlying type `uint64_t` instead of `unsigned long long`.
 - Library clients can now set a custom value for the SGF property AP (#11). To do so, a library client must use `SGFCArgumentTypeDoNotAddSgfcApProperty` when writing SGF content, in addition to adding the AP property to the document tree. If the library client does not use the argument, then SGFC will write its own AP property with value "SGFC:<sgfc-version>". See SgfcNotes.md in the libsgfc++ project for details.
 
 ### Bugfixes
 
 - Fixed a bug in SGFC that, when saving SGF files with 5'000 characters or more, would write one or more random byte values into the file. (#9). When generating SGF content, SGFC uses an internal buffer that starts with a size of 5'000 bytes and then doubles in size whenever the buffer end is reached (5'000, 10'000, 20'000, 40'000, etc.). When the buffer was doubled, the bug caused the byte at position `buffer size - 1` to be skipped, thus introducing a random value at byte positions 4'999, 9'999, 19'999, 39'999, etc.
 - Fixed bugs when converting SGF property values of type "Real" and "Number" to string (#10). Depending on the numeric value, it was possible that "Real" values would be converted using the scientific notation or with a maximum precision of 6 decimal digits, while "Number" values would be converted with thousands separators. After the fix, scientific notation and thousands separators will no longer be used, and "Real" values will have a precision of up to 16 decimal digits. See SgfNotes.md in the libsgfc++ project for details about the floating point precision used during conversion.
+- `SGFCGoPlayerRankFromPropertyValue` no longer throws `std::logic_error` if the rank number exceeds the `SGFCNumber` value range (#12). The function instead returns an `SGFCGoPlayerRank` value whose `IsValid` property has value `NO`.
 
 ### Regressions
 
@@ -17,7 +23,7 @@
 
 ### Technical changes
 
-- Updated libsgfc++ from 2.0.1 to 2.1.0.
+- Updated libsgfc++ from 2.0.1 to 3.0.0.
 
 ### GitHub issue list
 

@@ -26,7 +26,7 @@
 #import <Foundation/NSString.h>
 
 NSString* SGFCLibraryName = @"SgfcKit";
-NSString* SGFCLibraryVersion = @"2.1.0";
+NSString* SGFCLibraryVersion = @"3.0.0";
 NSString* SGFCSgfcVersion = @"2.2";
 
 SGFCTextOffset SGFCInvalidLineNumber = 0;
