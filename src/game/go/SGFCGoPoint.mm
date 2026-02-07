@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2020 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2020-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -61,15 +61,15 @@
 
 #pragma mark - Public API
 
-- (NSUInteger) xPositionInCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem
+- (SGFCGoPointAxisPosition) xPositionInCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem
 {
-  return [SGFCMappingUtility toSgfcKitUInteger:_wrappedGoPoint->GetXPosition(
+  return [SGFCMappingUtility toSgfcKitGoPointAxisPosition:_wrappedGoPoint->GetXPosition(
     [SGFCMappingUtility fromSgfcKitCoordinateSystem:coordinateSystem])];
 }
 
-- (NSUInteger) yPositionInCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem
+- (SGFCGoPointAxisPosition) yPositionInCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem
 {
-  return [SGFCMappingUtility toSgfcKitUInteger:_wrappedGoPoint->GetYPosition(
+  return [SGFCMappingUtility toSgfcKitGoPointAxisPosition:_wrappedGoPoint->GetYPosition(
     [SGFCMappingUtility fromSgfcKitCoordinateSystem:coordinateSystem])];
 }
 

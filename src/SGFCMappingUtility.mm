@@ -509,6 +509,22 @@
   return static_cast<LibSgfcPlusPlus::SgfcTextOffset>(textOffsetValue);
 }
 
++ (SGFCGoPointAxisPosition) toSgfcKitGoPointAxisPosition:(LibSgfcPlusPlus::SgfcGoPointAxisPosition)goPointAxisPositionValue
+{
+  static_assert(sizeof(SGFCGoPointAxisPosition) >= sizeof(LibSgfcPlusPlus::SgfcGoPointAxisPosition), "SGFCGoPointAxisPosition is not big enough to hold all LibSgfcPlusPlus::SgfcGoPointAxisPosition values");
+
+  // No runtime checks necessary because of static_assert above
+  return static_cast<SGFCGoPointAxisPosition>(goPointAxisPositionValue);
+}
+
++ (LibSgfcPlusPlus::SgfcGoPointAxisPosition) fromSgfcKitGoPointAxisPosition:(SGFCGoPointAxisPosition)goPointAxisPositionValue
+{
+  static_assert(sizeof(LibSgfcPlusPlus::SgfcGoPointAxisPosition) >= sizeof(SGFCGoPointAxisPosition), "LibSgfcPlusPlus::SgfcGoPointAxisPosition is not big enough to hold all SGFCGoPointAxisPosition values");
+
+  // No runtime checks necessary because of static_assert above
+  return static_cast<LibSgfcPlusPlus::SgfcGoPointAxisPosition>(goPointAxisPositionValue);
+}
+
 + (SGFCNodeTraits) toSgfcKitNodeTraits:(LibSgfcPlusPlus::SgfcNodeTraits)nodeTraits
 {
   unsigned long long mappedValue = [SGFCMappingUtility mapFlagValue:static_cast<unsigned long long>(nodeTraits)

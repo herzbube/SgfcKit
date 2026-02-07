@@ -744,6 +744,14 @@
 /// SgfcTextOffset value (used in libsgfc++).
 + (LibSgfcPlusPlus::SgfcTextOffset) fromSgfcKitTextOffset:(SGFCTextOffset)textOffsetValue;
 
+/// @brief Maps an SgfcGoPointAxisPosition value (used in libsgfc++) to an
+/// SGFCGoPointAxisPosition value (used in SgfcKit).
++ (SGFCGoPointAxisPosition) toSgfcKitGoPointAxisPosition:(LibSgfcPlusPlus::SgfcGoPointAxisPosition)goPointAxisPositionValue;
+
+/// @brief Maps an SGFCGoPointAxisPosition value (used in SgfcKit) to an
+/// SgfcGoPointAxisPosition value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcGoPointAxisPosition) fromSgfcKitGoPointAxisPosition:(SGFCGoPointAxisPosition)goPointAxisPositionValue;
+
 /// @brief Maps an SgfcBoardSize value (used in libsgfc++) to an SGFCBoardSize
 /// value (used in SgfcKit).
 + (SGFCBoardSize) toSgfcKitBoardSize:(LibSgfcPlusPlus::SgfcBoardSize)boardSizeValue;

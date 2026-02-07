@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2020 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2020-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 // Project includes
 #import "SGFCCoordinateSystem.h"
 #import "SGFCGoPointNotation.h"
+#import "SGFCTypedefs.h"
 
 // System includes
 #import <Foundation/NSObject.h>
@@ -60,11 +61,11 @@
 
 /// @brief Returns the 1-based numeric x-axis position of the point in the
 /// desired coordinate system @a coordinateSystem.
-- (NSUInteger) xPositionInCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem;
+- (SGFCGoPointAxisPosition) xPositionInCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem;
 
 /// @brief Returns the 1-based numeric y-axis position of the point in the
 /// desired coordinate system @a coordinateSystem.
-- (NSUInteger) yPositionInCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem;
+- (SGFCGoPointAxisPosition) yPositionInCoordinateSystem:(SGFCCoordinateSystem)coordinateSystem;
 
 /// @brief Returns YES if positionInGoPointNotation:(),
 /// xPositionInGoPointNotation:() and yPositionInGoPointNotation:()
