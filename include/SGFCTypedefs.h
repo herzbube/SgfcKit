@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2020 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2020-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,22 +16,24 @@
 
 #pragma once
 
+// System includes
 #import <Foundation/NSObjCRuntime.h>
 
 /// @brief The SGFCNumber type represents the Number value type defined by
-/// the SGF standard. Values are signed integer numbers.
+/// the SGF standard. Values are signed integer numbers. The underlying data
+/// type is guaranteed to be 64 bit wide on all platforms.
 ///
 /// @ingroup public-api
 ///
 /// The value range of SGFCNumber must be fully mappable to the value range
 /// of LibSgfcPlusPlus::SgfcNumber, in both directions. SGFCNumber must
 /// therefore use the same primitive underlying type as
-/// LibSgfcPlusPlus::SgfcNumber. NSInteger is not an option because on 64-bit
-/// platforms it has a wider value range than LibSgfcPlusPlus::SgfcNumber.
-typedef long SGFCNumber;
+/// LibSgfcPlusPlus::SgfcNumber.
+typedef int64_t SGFCNumber;
 
 /// @brief The SGFCReal type represents the Real value type defined by
-/// the SGF standard. Values are signed floating point numbers.
+/// the SGF standard. Values are signed floating point numbers. The underlying
+/// data type is a double-precision floating point type on all platforms.
 ///
 /// @ingroup public-api
 ///
