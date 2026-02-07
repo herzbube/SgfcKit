@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2024 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2024-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -385,19 +385,6 @@
   }
 }
 
-+ (NSNumber*) toSgfcKitUnsignedLong:(unsigned long)ulongValue
-{
-  // Can't map "unsigned long" to NSUInteger, because on some platforms
-  // NSUinteger is defined as "unsigned int", and long has the potential to be
-  // larger than int.
-  return [NSNumber numberWithUnsignedLong:ulongValue];
-}
-
-+ (unsigned long) fromSgfcKitUnsignedLong:(NSNumber*)ulongValue;
-{
-  return [ulongValue unsignedLongValue];
-}
-
 + (BOOL) toSgfcKitBoolean:(bool)boolValue
 {
   return boolValue ? YES : NO;
@@ -504,6 +491,22 @@
 
   // No runtime checks necessary because of static_assert above
   return static_cast<LibSgfcPlusPlus::SgfcReal>(realValue);
+}
+
++ (SGFCTextOffset) toSgfcKitTextOffset:(LibSgfcPlusPlus::SgfcTextOffset)textOffsetValue
+{
+  static_assert(sizeof(SGFCTextOffset) >= sizeof(LibSgfcPlusPlus::SgfcTextOffset), "SGFCTextOffset is not big enough to hold all LibSgfcPlusPlus::SgfcTextOffset values");
+
+  // No runtime checks necessary because of static_assert above
+  return static_cast<SGFCTextOffset>(textOffsetValue);
+}
+
++ (LibSgfcPlusPlus::SgfcTextOffset) fromSgfcKitTextOffset:(SGFCTextOffset)textOffsetValue
+{
+  static_assert(sizeof(LibSgfcPlusPlus::SgfcTextOffset) >= sizeof(SGFCTextOffset), "LibSgfcPlusPlus::SgfcTextOffset is not big enough to hold all SGFCTextOffset values");
+
+  // No runtime checks necessary because of static_assert above
+  return static_cast<LibSgfcPlusPlus::SgfcTextOffset>(textOffsetValue);
 }
 
 + (SGFCNodeTraits) toSgfcKitNodeTraits:(LibSgfcPlusPlus::SgfcNodeTraits)nodeTraits

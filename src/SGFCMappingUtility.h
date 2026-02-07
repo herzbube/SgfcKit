@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2024 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2024-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -664,14 +664,6 @@
 /// outside the range of the primitive C++ type @e unsigned int.
 + (unsigned int) fromSgfcKitUInteger:(NSUInteger)uintValue;
 
-/// @brief Maps an unsigned long value (used in libsgfc++) to an NSNumber value
-/// wrapping the unsigned long value (used in SgfcKit).
-+ (NSNumber*) toSgfcKitUnsignedLong:(unsigned long)ulongValue;
-
-/// @brief Maps an NSNumber wrapping an unsigned long value (used in SgfcKit)
-/// to an unsigned long value (used in libsgfc++).
-+ (unsigned long) fromSgfcKitUnsignedLong:(NSNumber*)ulongValue;
-
 /// @brief Maps a bool value (used in libsgfc++) to a BOOL value
 /// (used in SgfcKit).
 + (BOOL) toSgfcKitBoolean:(bool)boolValue;
@@ -743,6 +735,14 @@
 /// @brief Maps an SGFCReal value (used in SgfcKit) to an SgfcReal value
 /// (used in libsgfc++).
 + (LibSgfcPlusPlus::SgfcReal) fromSgfcKitReal:(SGFCReal)realValue;
+
+/// @brief Maps an SgfcTextOffset value (used in libsgfc++) to an
+/// SGFCTextOffset value (used in SgfcKit).
++ (SGFCTextOffset) toSgfcKitTextOffset:(LibSgfcPlusPlus::SgfcTextOffset)textOffsetValue;
+
+/// @brief Maps an SGFCTextOffset value (used in SgfcKit) to an
+/// SgfcTextOffset value (used in libsgfc++).
++ (LibSgfcPlusPlus::SgfcTextOffset) fromSgfcKitTextOffset:(SGFCTextOffset)textOffsetValue;
 
 /// @brief Maps an SgfcBoardSize value (used in libsgfc++) to an SGFCBoardSize
 /// value (used in SgfcKit).

@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2024 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2024-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 // Project includes
 #import "SGFCMessageID.h"
 #import "SGFCMessageType.h"
+#import "SGFCTypedefs.h"
 
 // System includes
 #import <Foundation/NSObject.h>
@@ -73,13 +74,13 @@
 /// that caused the message. Returns #SGFCInvalidLineNumber if
 /// the message does not refer to a specific line in the SGF data (most
 /// fatal errors, but also some errors and warnings).
-@property(nonatomic, readonly) NSNumber* lineNumber;
+@property(nonatomic, readonly) SGFCTextOffset lineNumber;
 
 /// @brief Returns the number of the column (1-based) in the parsed SGF data
 /// that caused the message. Returns #SGFCInvalidColumnNumber if
 /// the message does not refer to a specific column in the SGF data (most
 /// fatal errors, but also some errors and warnings).
-@property(nonatomic, readonly) NSNumber* columnNumber;
+@property(nonatomic, readonly) SGFCTextOffset columnNumber;
 
 /// @brief Returns YES if the message describes a critical problem. Only
 /// warning and error messages can be critical. Always returns NO for

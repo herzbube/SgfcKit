@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Copyright 2024 Patrick Näf (herzbube@herzbube.ch)
+// Copyright 2024-2026 Patrick Näf (herzbube@herzbube.ch)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -70,14 +70,14 @@
   return [SGFCMappingUtility toSgfcKitMessageType:_wrappedMessage->GetMessageType()];
 }
 
-- (NSNumber*) lineNumber
+- (SGFCTextOffset) lineNumber
 {
-  return [SGFCMappingUtility toSgfcKitUnsignedLong:_wrappedMessage->GetLineNumber()];
+  return [SGFCMappingUtility toSgfcKitTextOffset:_wrappedMessage->GetLineNumber()];
 }
 
-- (NSNumber*) columnNumber
+- (SGFCTextOffset) columnNumber
 {
-  return [SGFCMappingUtility toSgfcKitUnsignedLong:_wrappedMessage->GetColumnNumber()];
+  return [SGFCMappingUtility toSgfcKitTextOffset:_wrappedMessage->GetColumnNumber()];
 }
 
 - (BOOL) isCriticalMessage

@@ -42,3 +42,16 @@ typedef int64_t SGFCNumber;
 /// therefore use the same primitive underlying type as
 /// LibSgfcPlusPlus::SgfcReal.
 typedef double SGFCReal;
+
+/// @brief The SGFCTextOffset type is used to store a value that is either a
+/// line number or a column number (both 1-based) in a piece of SGF content.
+///
+/// @ingroup public-api
+///
+/// The value range of SGFCTextOffset must be fully mappable to the value range
+/// of LibSgfcPlusPlus::SgfcTextOffset, in both directions. SGFCTextOffset must
+/// therefore use the same primitive underlying type as
+/// LibSgfcPlusPlus::SgfcTextOffset.
+///
+/// @see SGFCMessage
+typedef uint64_t SGFCTextOffset;
