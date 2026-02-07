@@ -55,7 +55,7 @@
   SGFCColor colorValue;
   if ([rawValue isEqualToString:SGFCColorBlackString])
     colorValue = SGFCColorBlack;
-  else if ([rawValue isEqualToString:SGFCDoubleEmphasizedString])
+  else if ([rawValue isEqualToString:SGFCColorWhiteString])
     colorValue = SGFCColorWhite;
   else
     colorValue = SGFCColorBlack;
