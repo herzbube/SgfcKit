@@ -27,7 +27,7 @@
 
 NSString* SGFCLibraryName = @"SgfcKit";
 NSString* SGFCLibraryVersion = @"2.1.0";
-NSString* SGFCSgfcVersion = @"2.1";
+NSString* SGFCSgfcVersion = @"2.2";
 
 NSNumber* SGFCInvalidLineNumber = @(0);
 NSNumber* SGFCInvalidColumnNumber = @(0);
