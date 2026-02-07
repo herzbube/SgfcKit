@@ -45,7 +45,14 @@
 
 - (instancetype) initWithRawValue:(NSString*)rawValue
 {
-  // TODO Attempt to convert to an SGFCReal
+  // TODO Attempt to convert to an SGFCReal, to align with the behaviour
+  // of most of the other property value classes which attempt to interpret
+  // the supplied raw string value. This is not strictly necessary, though,
+  // because initWithRawValue is clearly documented in the base class to
+  // initialize the object with value type #SGFCPropertyValueTypeUnknown, so
+  // anyone who does this
+  //   [[SGFCRealPropertyValue alloc] initWithRawValue:@"42.0"]
+  // should not expect to receive a fully functional SGFCRealPropertyValue.
   return [self initWithRealValue:0.0];
 }
 
