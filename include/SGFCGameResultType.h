@@ -24,7 +24,6 @@
 /// to determine the exact nature of the game result.
 ///
 /// @ingroup public-api
-/// @ingroup game
 ///
 /// @see SGFCGameInfo
 typedef NS_ENUM(NSUInteger, SGFCGameResultType)

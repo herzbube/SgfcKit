@@ -24,7 +24,6 @@
 /// #SGFCGameResultTypeBlackWin or #SGFCGameResultTypeWhiteWin.
 ///
 /// @ingroup public-api
-/// @ingroup game
 ///
 /// @see SGFCGameInfo
 typedef NS_ENUM(NSUInteger, SGFCWinType)

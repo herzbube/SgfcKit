@@ -23,8 +23,6 @@
 /// to a Go player's rank.
 ///
 /// @ingroup public-api
-/// @ingroup game
-/// @ingroup go
 ///
 /// @see SGFCGameInfo
 typedef NS_ENUM(NSUInteger, SGFCGoPlayerRatingType)
