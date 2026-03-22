@@ -1,10 +1,10 @@
 # ChangeLog
 
-## Version 3.0.0 (February 07 2026)
+## Version 3.0.0 (March 22 2026)
 
 ### Features
 
-- The `SGFCNumber` type now has the underlying fixed width integer type `int64_t`, guaranteeing a 64-bit value range on all platforms (#13). In previous versions of the library, the underlying type was `long`, which was ambiguous and caused the value range of `SGFCNumber` to be platform-dependent. An identical change occurred in libsgfc++ 3.0.0.
+- The `SGFCNumber` type now has the underlying fixed width integer type `int64_t`, guaranteeing a 64-bit value range on all platforms (#13). In previous versions of the library, the underlying type was `long`, which was ambiguous and caused the value range of `SGFCNumber` to be platform-dependent. An identical change occurred in libsgfc++ 3.0.0. **Important:** Behind the scenes, SGFC still uses `long` to process SGF property values with the SGF type `Number`, so in practice the value range of such property values is still platform-dependent. This can be considered a "known bug", and [libsgfc++ issue #52](https://github.com/herzbube/libsgfcplusplus/issues/52) exists to track its status.
 - In a similar vein, several other data types in the public interface of the library have been changed to use fixed width integer types instead of ambiguous sized data types (#14). Again, identical changes occurred in libsgfc++ 3.0.0.
   - `SGFCMessage`: Line and column numbers now use `uint64_t` instead of `long`.
   - `SGFCGoPoint`: x- and y-position now use `uint64_t` instead of `unsigned int`.
@@ -24,6 +24,7 @@
 ### Technical changes
 
 - Updated libsgfc++ from 2.0.1 to 3.0.0.
+- Fix Doxygen documentation errors.
 
 ### GitHub issue list
 
